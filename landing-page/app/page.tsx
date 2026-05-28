@@ -1,9 +1,12 @@
+import OurServices from "@/components/sections/our services/OurServices";
+import Trust from "@/components/sections/Trust/Trust";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="text-5xl font-bold text-center mt-20">
-      maanvar 2024
+    <div className="mt-20 ">
+      <OurServices />
+      <Trust />
     </div>
   );
 }
