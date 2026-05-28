@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --font-rethink: "Rethink Sans", sans-serif;
+
+  --color-card-bg: #0d082b;
+  --color-card-border: #1d1938;
+  --color-secondary-text: #b7b7c9;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-white font-sans;
+    font-family: var(--font-rethink);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Badge */
+  .badge-text {
+    @apply text-base font-medium leading-6 text-center;
+  }
+
+  /* Heading */
+  .heading-text {
+    @apply text-[40px] font-bold leading-[40px] tracking-[1%] text-center;
+  }
+
+  /* Subheading */
+  .subheading-text {
+    @apply text-lg font-normal leading-none tracking-normal text-center text-secondary-text;
+  }
+
+  /* Card Heading */
+  .card-heading {
+    @apply text-[22px] font-semibold leading-none tracking-normal text-center text-white;
+  }
+
+  /* Card Description */
+  .card-desc {
+    @apply text-lg font-normal leading-none tracking-normal text-secondary-text;
+  }
+
+  /* Card UI */
+  .card-ui {
+    @apply rounded-3xl border border-card-border bg-card-bg p-6 shadow-[0px_-4px_100px_21px_#18193333_inset];
+  }
+
+  /* Card Layout */
+  .card-content {
+    @apply flex flex-col gap-3;
+  }
+
+  /* Common Section Spacing */
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .container-spacing {
+    @apply px-5 md:px-10 xl:px-20;
+  }
+}
