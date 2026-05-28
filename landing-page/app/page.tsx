@@ -1,6 +1,7 @@
 "use client";
 import OurServices from "@/components/sections/our services/OurServices";
 import Trust from "@/components/sections/Trust/Trust";
+import Footer from "@/components/common/footer/Footer";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
@@ -14,6 +15,7 @@ export default function Hero() {
     <div className="mt-20 ">
       <OurServices />
       <Trust />
+      <Footer />
     </div>
   );
 }
