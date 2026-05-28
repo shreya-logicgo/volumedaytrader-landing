@@ -1,3 +1,4 @@
+import IndicatorSystem from "@/components/sections/Indicator System/IndicatorSystem";
 import OurServices from "@/components/sections/our services/OurServices";
 import SignalsAndIndicators from "@/components/sections/Signals & Indicators/SignalsAndIndicators";
 import Trust from "@/components/sections/Trust/Trust";
@@ -9,6 +10,7 @@ export default function Home() {
       <OurServices />
       <Trust />
       <SignalsAndIndicators />
+      <IndicatorSystem />
     </div>
   );
 }
