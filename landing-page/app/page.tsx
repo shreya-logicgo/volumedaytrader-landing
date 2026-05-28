@@ -2,21 +2,27 @@
 import OurServices from "@/components/sections/our services/OurServices";
 import SignalsAndIndicators from "@/components/sections/Signals & Indicators/SignalsAndIndicators";
 import Trust from "@/components/sections/Trust/Trust";
+import Blogs from "@/components/sections/blogs/Blogs";
 import Footer from "@/components/common/footer/Footer";
-import Image from "next/image";
-import { useTranslation } from "react-i18next";
-
-import LanguageSwitcher from "@/components/common/LanguageSwitcher";
+import Container from "@/components/layout/container/Container";
+import FAQ from "@/components/sections/faq/FAQ";
+import Wyckoff from "@/components/sections/wyckoff-indicators/Wyckoff";
+import PTA from "@/components/sections/pta/PTA";
 
 
 export default function Hero() {
-  const { t } = useTranslation();
-
   return (
     <div className="mt-20 ">
-      <OurServices />
-      <Trust />
-      <SignalsAndIndicators />
+      <Container >
+        <OurServices />
+        <Trust />
+        <SignalsAndIndicators />
+        <PTA />
+        <Wyckoff />
+        <FAQ />
+        <Blogs />
+        </Container>
+
       <Footer />
     </div>
   );
