@@ -2,7 +2,7 @@ import Badge from '@/components/ui/badge/Badge'
 import Heading from '@/components/ui/heading/Heading'
 import SubHeading from '@/components/ui/subheading/SubHeading'
 import React from 'react'
-import IndicatorSystemCarousae from './IndicatorSystemCarousae'
+import IndicatorSystemCarousal from './IndicatorSystemCarousal'
 
 const IndicatorSystem = () => {
   return (
@@ -14,7 +14,7 @@ const IndicatorSystem = () => {
                 <Heading className=' mx-auto' text="Wyckoff Wave Volume Indicators" />
                 <SubHeading className='max-w-[780px] mx-auto leading-snug' text="Professional volume-based indicators designed to help traders understand momentum, liquidity, demand, supply, and market structure with more clarity and confidence." />
             </div>
-            <IndicatorSystemCarousae />
+            <IndicatorSystemCarousal />
 
         </div>
   )

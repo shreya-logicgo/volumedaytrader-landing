@@ -81,7 +81,7 @@ const ChartPanel = ({ path }: { path: string }) => {
   )
 }
 
-const IndicatorSystemCarousae = ({
+const IndicatorSystemCarousal = ({
   slides = defaultSlides,
   className = '',
 }: IndicatorSystemCarousaeProps) => {
@@ -137,4 +137,4 @@ const IndicatorSystemCarousae = ({
   )
 }
 
-export default IndicatorSystemCarousae
+export default IndicatorSystemCarousal
