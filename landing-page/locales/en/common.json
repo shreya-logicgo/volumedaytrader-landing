@@ -1,0 +1,390 @@
+{
+    "navbar": {
+        "features": "Features",
+        "pricing": "Pricing",
+        "community": "Community",
+        "howIndicatorsWork": "How Indicators Work",
+        "blog": "Blog",
+        "contact": "Contact",
+        "signUp": "Sign Up"
+    },
+    "hero": {
+        "newBadge": "New",
+        "badge": "All-in-One Trade Courses Platform",
+        "leftTopTag": "Smart Market Analysis",
+        "leftBottomTag": "Real-Time Trading Signals",
+        "rightTopTag": "Premium Trading Courses",
+        "rightBottomTag": "Advanced Trading Indicators",
+        "title": "Stop Guessing. Start Trading With Confidence.",
+        "description": "Learn Wyckoff-based volume analysis, get premium indicators, PTA signals, market analysis, and trading education in one platform.",
+        "primaryButton": "Get Access",
+        "secondaryButton": "How It Works"
+    },
+    "services": {
+        "badge": "Our Services",
+        "title": "What Will You Get When You Trade With Us?",
+        "description": "Professional trading tools, market insights, and structured learning designed for smarter trading decisions.",
+        "cards": {
+            "ptaSignals": {
+                "title": "PTA Signals",
+                "desc": "Get structured Potential Trading Area reports with real-time market insights and trading opportunities."
+            },
+            "marketAnalysis": {
+                "title": "Market Analysis",
+                "desc": "Daily Forex, Crypto, Stocks, Futures, and Indices analysis powered by volume and structure."
+            },
+            "premiumIndicators": {
+                "title": "Premium Indicators",
+                "desc": "Professional Wyckoff-based volume indicators built for smarter chart analysis and market understanding."
+            },
+            "tradingCourses": {
+                "title": "Trading Courses",
+                "desc": "Learn Wyckoff, VSA, Price Action, and structured trading concepts through guided education."
+            },
+            "tradingCommunity": {
+                "title": "Trading Community",
+                "desc": "Join a focused trading community for discussions, insights, updates, and market learning."
+            },
+            "practicalSessions": {
+                "title": "Practical Sessions",
+                "desc": "Analyze real market examples and improve decision-making through practical trading exercises."
+            }
+        }
+    },
+    "trust": {
+        "badge": "Trust",
+        "title": "Trusted By Traders Focused On Smarter Market Analysis",
+        "description": "Professional indicators, PTA reports, market insights, and educational trading tools designed to help traders understand market behavior with more structure and confidence.",
+        "stats": {
+            "activeTraders": {
+                "value": "14,200+",
+                "title": "Active Traders",
+                "desc": "A growing trading community focused on structured analysis, market education, and volume-based trading strategies."
+            },
+            "userSatisfaction": {
+                "value": "82%",
+                "title": "User Satisfaction",
+                "desc": "Built around structured market analysis and educational resources designed to improve trading clarity and confidence."
+            },
+            "communityRating": {
+                "value": "4.7",
+                "title": "Community Rating",
+                "desc": "Trusted by traders for professional indicators, PTA reports, and volume-based market analysis workflows."
+            },
+            "globalCommunity": {
+                "value": "14,200+",
+                "title": "Global Trading Community",
+                "desc": "Access educational trading content, indicators, and market insights anytime from anywhere in the world."
+            }
+        }
+    },
+    "signals": {
+        "badge": "Signals & Indicators",
+        "title": "Daily PTA Reports & Wyckoff Volume Indicators",
+        "description": "See how Volume Day Trader helps traders identify potential trading areas, read market volume, and understand price movement with structured reports and professional indicators.",
+        "cards": {
+            "ptaReports": {
+                "title": "Daily PTA Signal Reports",
+                "desc": "Get structured Potential Trading Area reports with volume analysis, momentum insights, and real-time market observations across Forex, Crypto, Stocks, and Indices."
+            },
+            "wyckoffIndicators": {
+                "title": "Wyckoff Wave Indicators",
+                "desc": "Professional volume-based indicators designed to help traders identify demand, supply, liquidity behavior, and market participation more clearly."
+            },
+            "marketAnalysis": {
+                "title": "Market Analysis & Insights",
+                "desc": "Daily market breakdowns covering trend structure, momentum shifts, and important trading zones backed by volume-based analysis."
+            },
+            "tradingEducation": {
+                "title": "Trading Courses & Education",
+                "desc": "Learn Wyckoff methodology, VSA, market structure, and disciplined trading concepts through practical educational resources and real market examples."
+            }
+        }
+    },
+    "indicators": {
+        "badge": "Indicator System",
+        "title": "Wyckoff Wave Volume Indicators",
+        "description": "Professional volume-based indicators designed to help traders understand momentum, liquidity, demand, supply, and market structure with more clarity and confidence.",
+        "cards": {
+            "waveIndicator": {
+                "title": "Wyckoff Wave Volume Indicator",
+                "desc": "The indicator helps traders identify buying and selling pressure by analyzing cumulative volume and market participation directly on the chart. Detect demand and supply strength Understand buyer vs seller pressure Identify momentum shifts Analyze volume-based market behavior"
+            }
+        }
+    },
+    "testimonials": {
+        "badge": "Testimonials",
+        "title": "Trusted By Traders Worldwide",
+        "description": "Experiences from traders using volume-based analysis and structured workflows.",
+        "items": [
+            {
+                "quote": "Before using CVeeBee, I barely got any callbacks. After optimizing my keywords and rewriting my resume with the AI, I started receiving interview invitations within a week. The process was fast, simple, and surprisingly accurate.",
+                "author": "Alena Vetrovs"
+            },
+            {
+                "quote": "Before using CVeeBee, I barely got any callbacks. After optimizing my keywords and rewriting my resume with the AI, I started receiving interview invitations within a week. The process was fast, simple, and surprisingly accurate.",
+                "author": "Carla Levin"
+            },
+            {
+                "quote": "Before using CVeeBee, I barely got any callbacks. After optimizing my keywords and rewriting my resume with the AI, I started receiving interview invitations within a week. The process was fast, simple, and surprisingly accurate.",
+                "author": "Carter Franci"
+            },
+            {
+                "quote": "Before using CVeeBee, I barely got any callbacks. After optimizing my keywords and rewriting my resume with the AI, I started receiving interview invitations within a week. The process was fast, simple, and surprisingly accurate.",
+                "author": "Jacob Rosser"
+            },
+            {
+                "quote": "Before using CVeeBee, I barely got any callbacks. After optimizing my keywords and rewriting my resume with the AI, I started receiving interview invitations within a week. The process was fast, simple, and surprisingly accurate.",
+                "author": "Makenna Lipshutz"
+            },
+            {
+                "quote": "Before using CVeeBee, I barely got any callbacks. After optimizing my keywords and rewriting my resume with the AI, I started receiving interview invitations within a week. The process was fast, simple, and surprisingly accurate.",
+                "author": "Sophie Hines"
+            }
+        ]
+    },
+    "ourIndicators": {
+        "badge": "Our Indicators",
+        "title": "Wyckoff Wave Volume Indicators Built For Smarter Market Analysis",
+        "description": "Professional volume-based indicators designed to help traders understand demand, supply, momentum, and market structure through structured chart analysis and real-time market behavior.",
+        "tabs": {
+            "volumeEdge": "Volume Edge",
+            "smartProfits": "Smart Profits",
+            "hiddenStrategy": "Hidden Strategy"
+        },
+        "content": {
+            "title": "Wyckoff Wave Volume Indicators For Smart Market Analysis",
+            "description": "The Wyckoff Wave Volume Indicator helps traders analyze real buying and selling pressure by visualizing cumulative volume directly on the chart.",
+            "points": {
+                "point1": "Understand demand and supply strength",
+                "point2": "Detect buyer vs seller pressure",
+                "point3": "Analyze momentum shifts more clearly",
+                "point4": "Identify stronger market participation",
+                "point5": "Improve structured decision-making",
+                "point6": "Reduce emotional trading behavior"
+            }
+        }
+    },
+    "pricing": {
+        "badge": "Pricing",
+        "title": "Choose Your Trading Experience",
+        "description": "Flexible access options designed for traders at different stages.",
+        "plans": {
+            "wyckoffIndicators": {
+                "tag": "Best Indicators",
+                "title": "Wyckoff Indicators",
+                "duration": "Monthly",
+                "price": "$67",
+                "note": "No contracts. Cancel anytime.",
+                "button": "Buy Now",
+                "includedTitle": "What's Included:",
+                "features": {
+                    "feature1": "Cumulative Volume Indicator: Wyckoff Wave Volume",
+                    "feature2": "Cumulative Volume Indicator: Wyckoff Wave Chart",
+                    "feature3": "Indicators run on the platform",
+                    "feature4": "Instructions for installing and adjusting the indicator to different videos"
+                }
+            },
+            "monthlyAccess": {
+                "tag": "Recurring Payment",
+                "title": "Monthly Access",
+                "duration": "Monthly",
+                "price": "$87",
+                "discount": "31.53% Off",
+                "note": "No contracts. Cancel anytime.",
+                "button": "Buy Now",
+                "includedTitle": "What's Included:",
+                "features": {
+                    "feature1": "Richard Wyckoff's Comprehensive Course",
+                    "feature2": "Volume Distribution Analysis (VSA) Course",
+                    "feature3": "Daily US PTA Signal Report",
+                    "feature4": "Mastering the Richard Wyckoff Method - Practical Classes for Traders",
+                    "feature5": "Premium Indicators",
+                    "feature6": "Commentary and Market Analysis",
+                    "feature7": "Discord Trading Group 24/7",
+                    "feature8": "Wyckoff Indicators",
+                    "feature9": "Advanced Forex + Price Action Course",
+                    "feature10": "Binance for Beginners - Crypto Course",
+                    "feature11": "Access to the Community"
+                }
+            },
+            "annualAccess": {
+                "tag": "Limited Time Offer",
+                "title": "Annual Access",
+                "duration": "Annual",
+                "oldPrice": "$1,700",
+                "price": "$850",
+                "discount": "50% Off",
+                "note": "No contracts. Cancel anytime.",
+                "button": "Buy Now",
+                "includedTitle": "What's Included:",
+                "features": {
+                    "feature1": "Richard Wyckoff's Comprehensive Course",
+                    "feature2": "Volume Distribution Analysis (VSA) Course",
+                    "feature3": "Daily US PTA Signal Report",
+                    "feature4": "Mastering the Richard Wyckoff Method - Practical Classes for Traders",
+                    "feature5": "Premium Indicators",
+                    "feature6": "Commentary and Market Analysis",
+                    "feature7": "Discord Trading Group 24/7",
+                    "feature8": "Wyckoff Indicators",
+                    "feature9": "Advanced Forex + Price Action Course",
+                    "feature10": "Binance for Beginners - Crypto Course",
+                    "feature11": "Access to the Community"
+                }
+            },
+            "lifetimeAccess": {
+                "tag": "Most Popular",
+                "title": "Lifetime Access",
+                "duration": "Lifetime",
+                "oldPrice": "$6,250",
+                "price": "$1,250",
+                "discount": "60% Off",
+                "note": "No contracts. Cancel anytime.",
+                "button": "Buy Now",
+                "includedTitle": "What's Included:",
+                "features": {
+                    "feature1": "Richard Wyckoff's Comprehensive Course",
+                    "feature2": "Volume Distribution Analysis (VSA) Course",
+                    "feature3": "Daily US PTA Signal Report",
+                    "feature4": "Mastering the Richard Wyckoff Method - Practical Classes for Traders",
+                    "feature5": "Premium Indicators",
+                    "feature6": "Commentary and Market Analysis",
+                    "feature7": "Discord Trading Group 24/7",
+                    "feature8": "Wyckoff Indicators",
+                    "feature9": "Advanced Forex + Price Action Course",
+                    "feature10": "Binance for Beginners - Crypto Course",
+                    "feature11": "Access to the Community"
+                },
+                "ptaReports": {
+                    "badge": "PTA Signal Reports",
+                    "title": "How Do PTA (Potential Trading Area) Signals Work?",
+                    "description": "PTA signals help traders identify important market zones using volume behavior, momentum analysis, and structured market movement interpretation.",
+                    "cards": {
+                        "buyZoneDetection": {
+                            "title": "PTA Buy Zone Detection",
+                            "desc": "Potential Trading Areas are identified when volume activity and market structure suggest stronger buyer participation and possible momentum continuation."
+                        },
+                        "liquidityAnalysis": {
+                            "title": "Volume & Liquidity Analysis",
+                            "desc": "The PTA workflow combines price action, volume pressure, and liquidity behavior to help traders better understand market direction and reactions."
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "wyckoffIndicators": {
+        "badge": "Wyckoff Indicators",
+        "title": "How Do Wyckoff Indicators Work?",
+        "description": "Wyckoff-based indicators help traders understand demand, supply, momentum shifts, and market participation directly through chart and volume analysis.",
+        "cards": {
+            "demandSupply": {
+                "title": "Demand & Supply Analysis",
+                "desc": "The indicator highlights potential demand and supply behavior to help traders understand market pressure and possible trend continuation or weakness."
+            },
+            "buyerSellerPressure": {
+                "title": "Buyer & Seller Pressure",
+                "desc": "Visual volume analysis helps identify areas where buyers or sellers may be taking control of the market."
+            },
+            "momentumShift": {
+                "title": "Momentum Shift Detection",
+                "desc": "Recognize possible momentum transitions and market reactions through structured volume interpretation."
+            },
+            "marketReading": {
+                "title": "Structured Market Reading",
+                "desc": "Designed to simplify chart analysis and help traders follow a more disciplined and organized trading workflow."
+            }
+        }
+    },
+    "faq": {
+        "badge": "FAQ's",
+        "title": "Frequently Asked Questions",
+        "description": "Everything you need to know about the platform, indicators, access, and trading workflow.",
+        "questions": {
+            "question1": {
+                "question": "What are volume indicators?",
+                "answer": "Volume indicators help traders analyze buying and selling activity in the market to better understand momentum, liquidity, and possible trend direction."
+            },
+            "question2": {
+                "question": "Is this platform beginner-friendly?",
+                "answer": "Yes, the platform includes structured educational resources, guided analysis, and trading courses suitable for both beginners and experienced traders."
+            },
+            "question3": {
+                "question": "Which markets can these indicators be used for?",
+                "answer": "The indicators and analysis can be applied to Forex, Crypto, Stocks, Futures, and Indices markets."
+            },
+            "question4": {
+                "question": "How does the platform work?",
+                "answer": "The platform combines volume-based indicators, PTA reports, market analysis, and educational resources to help traders improve market understanding and decision-making."
+            },
+            "question5": {
+                "question": "Is community access included?",
+                "answer": "Yes, selected plans include access to the private trading community for discussions, updates, and shared market insights."
+            },
+            "question6": {
+                "question": "Can I cancel my subscription anytime?",
+                "answer": "Yes, subscription plans can be canceled anytime without long-term contracts."
+            }
+        }
+    },
+    "blogs": {
+        "badge": "Our Blogs",
+        "title": "Learn More About Volume & Market Structure",
+        "description": "Educational resources and trading insights designed to help traders better understand market behavior.",
+        "cards": {
+            "blog1": {
+                "category": "Digital Marketing",
+                "date": "Jul 31, 2026",
+                "title": "Strategies for Boosting Online Engagement Today",
+                "button": "Learn More"
+            },
+            "blog2": {
+                "category": "Digital Marketing",
+                "date": "Oct 11, 2024",
+                "title": "User-Centric Product Design, A Complete Guide From Scratch",
+                "button": "Learn More"
+            },
+            "blog3": {
+                "category": "Digital Marketing",
+                "date": "Jul 7, 2024",
+                "title": "Top Design Trends Driving Business Success & Growth",
+                "button": "Learn More"
+            }
+        },
+        "allBlogsButton": "All Blogs"
+    },
+    "footer": {
+        "cta": {
+            "title": "Follow Smart Money. Trade With Structure.",
+            "description": "Professional volume indicators and structured market insights designed for smarter trading decisions.",
+            "button": "Get Access"
+        },
+        "company": {
+            "name": "VolumeDayTrader.com",
+            "consultationTitle": "Book a Call For Free Consultation",
+            "consultationDescription": "Professional volume indicators, PTA signal reports, market analysis, and structured trading education designed for smarter trading decisions.",
+            "socialTitle": "Our Social Handles"
+        },
+        "navigation": {
+            "home": "Home",
+            "indicators": "Indicators",
+            "ptaReports": "PTA Reports",
+            "pricing": "Pricing",
+            "tradingCommunity": "Trading Community",
+            "marketAnalysis": "Market Analysis"
+        },
+        "resources": {
+            "title": "Resources",
+            "blogs": "Blogs",
+            "tradingEducation": "Trading Education",
+            "faq": "FAQ",
+            "affiliateProgram": "Affiliate Program"
+        },
+        "contact": {
+            "title": "Contact",
+            "support": "Support",
+            "affiliateSupport": "Affiliate Support"
+        },
+        "riskDisclaimer": "Risk Disclaimer: Trading financial instruments carries a high level of risk and may not be suitable for all investors. Past performance is not indicative of future results. The content on VOLTRA.fi is for educational purposes only and does not constitute financial advice. Trade at your own risk."
+    }
+}

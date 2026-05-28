@@ -1,0 +1,390 @@
+{
+  "navbar": {
+    "features": "Funkcje",
+    "pricing": "Cennik",
+    "community": "Społeczność",
+    "howIndicatorsWork": "Jak działają nasze wskaźniki",
+    "blog": "Blog",
+    "contact": "Kontakt",
+    "signUp": "Zarejestruj się"
+  },
+  "hero": {
+    "newBadge": "Nowość",
+    "badge": "Kompleksowa platforma kursów tradingowych",
+    "leftTopTag": "Inteligentna analiza rynku",
+    "leftBottomTag": "Sygnały tradingowe w czasie rzeczywistym",
+    "rightTopTag": "Kursy tradingowe Premium",
+    "rightBottomTag": "Zaawansowane wskaźniki tradingowe",
+    "title": "Przestań zgadywać. Zacznij handlować pewnie.",
+    "description": "Poznaj analizę wolumenu opartą na metodologii Wyckoffa, uzyskaj wskaźniki premium, sygnały PTA, analizy rynku i edukację tradingową na jednej platformie.",
+    "primaryButton": "Uzyskaj dostęp",
+    "secondaryButton": "Jak to działa"
+  },
+  "services": {
+    "badge": "Nasze usługi",
+    "title": "Co otrzymasz, handlując z nami?",
+    "description": "Profesjonalne narzędzia tradingowe, analizy rynkowe i uporządkowana wiedza zaprojektowane z myślą o podejmowaniu mądrzejszych decyzji handlowych.",
+    "cards": {
+      "ptaSignals": {
+        "title": "Sygnały PTA",
+        "desc": "Otrzymuj uporządkowane raporty Potencjalnych Stref Tradingowych (PTA) wraz z rynkowymi analizami w czasie rzeczywistym i okazjami inwestycyjnymi."
+      },
+      "marketAnalysis": {
+        "title": "Analiza rynku",
+        "desc": "Codzienna analiza rynków Forex, Krypto, Akcji, Kontraktów Terminowych i Indeksów napędzana wolumenem oraz strukturą."
+      },
+      "premiumIndicators": {
+        "title": "Wskaźniki Premium",
+        "desc": "Profesjonalne wskaźniki wolumenowe oparte na metodologii Wyckoffa, stworzone do inteligentniejszej analizy wykresów i lepszego zrozumienia rynku."
+      },
+      "tradingCourses": {
+        "title": "Kursy tradingowe",
+        "desc": "Poznaj metodologię Wyckoffa, VSA, Price Action i uporządkowane koncepcje handlowe dzięki ukierunkowanej edukacji."
+      },
+      "tradingCommunity": {
+        "title": "Społeczność traderów",
+        "desc": "Dołącz do zaangażowanej społeczności traderów w celu prowadzenia dyskusji, wymiany spostrzeżeń, aktualizacji i wspólnej nauki."
+      },
+      "practicalSessions": {
+        "title": "Sesje praktyczne",
+        "desc": "Analizuj realne przykłady rynkowe i ulepszaj proces podejmowania decyzji poprzez praktyczne ćwiczenia tradingowe."
+      }
+    }
+  },
+  "trust": {
+    "badge": "Zaufanie",
+    "title": "Zaufanie traderów skupionych na inteligentniejszej analizie rynku",
+    "description": "Profesjonalne wskaźniki, raporty PTA, analizy rynku i edukacyjne narzędzia tradingowe pomagające traderom rozumieć zachowanie rynku z większą strukturą i pewnością siebie.",
+    "stats": {
+      "activeTraders": {
+        "value": "14,200+",
+        "title": "Aktywni traderzy",
+        "desc": "Rosnąca społeczność traderów skupiona na uporządkowanej analizie, edukacji rynkowej i strategiach opartych na wolumenie."
+      },
+      "userSatisfaction": {
+        "value": "82%",
+        "title": "Satysfakcja użytkowników",
+        "desc": "Zbudowana wokół uporządkowanej analizy rynku i zasobów edukacyjnych zaprojektowanych w celu poprawy przejrzystości i pewności tradingu."
+      },
+      "communityRating": {
+        "value": "4.7",
+        "title": "Ocena społeczności",
+        "desc": "Zaufane narzędzie traderów w zakresie profesjonalnych wskaźników, raportów PTA i procesów analizy rynkowej opartej na wolumenie."
+      },
+      "globalCommunity": {
+        "value": "14,200+",
+        "title": "Globalna społeczność traderów",
+        "desc": "Dostęp do edukacyjnych treści tradingowych, wskaźników i analiz rynkowych z dowolnego miejsca na świecie o każdej porze."
+      }
+    }
+  },
+  "signals": {
+    "badge": "Sygnały i wskaźniki",
+    "title": "Codzienne raporty PTA i wskaźniki wolumenowe Wyckoffa",
+    "description": "Zobacz, jak Volume Day Trader pomaga traderom identyfikować potencjalne strefy tradingowe, analizować wolumen i rozumieć ruchy cen za pomocą uporządkowanych raportów i profesjonalnych wskaźników.",
+    "cards": {
+      "ptaReports": {
+        "title": "Codzienne raporty sygnałów PTA",
+        "desc": "Otrzymuj uporządkowane raporty Potencjalnych Stref Tradingowych z analizą wolumenu, wglądem w momentum i obserwacjami rynku Forex, Krypto, Akcji i Indeksów w czasie rzeczywistym."
+      },
+      "wyckoffIndicators": {
+        "title": "Wskaźniki Wyckoff Wave",
+        "desc": "Profesjonalne wskaźniki oparte na wolumenie zaprojektowane, by pomagać traderom wyraźniej identyfikować popyt, podaż, płynność oraz zaangażowanie rynku."
+      },
+      "marketAnalysis": {
+        "title": "Analizy i wgląd w rynek",
+        "desc": "Codzienne zestawienia rynkowe obejmujące strukturę trendów, zmiany momentum i kluczowe strefy handlowe poparte analizą wolumenową."
+      },
+      "tradingEducation": {
+        "title": "Kursy tradingowe i edukacja",
+        "desc": "Poznaj metodologię Wyckoffa, VSA, strukturę rynku i zasady dyscypliny w tradingu dzięki praktycznym materiałom edukacyjnym i realnym przykładom rynkowym."
+      }
+    }
+  },
+  "indicators": {
+    "badge": "System wskaźników",
+    "title": "Wskaźniki wolumenowe Wyckoff Wave",
+    "description": "Profesjonalne wskaźniki wolumenowe pomagające traderom zrozumieć momentum, płynność, popyt, podaż i strukturę rynku z większą jasnością i pewnością.",
+    "cards": {
+      "waveIndicator": {
+        "title": "Wskaźnik wolumenowy Wyckoff Wave",
+        "desc": "Wskaźnik pomaga traderom identyfikować presję kupujących i sprzedających poprzez analizę skumulowanego wolumenu i zaangażowania bezpośrednio na wykresie. Wykrywaj siłę popytu i podaży. Rozumiej presję kupujących vs sprzedających. Identyfikuj zmiany momentum. Analizuj zachowanie rynku oparte na wolumenie."
+      }
+    }
+  },
+  "testimonials": {
+    "badge": "Opinie",
+    "title": "Zaufanie traderów na całym świecie",
+    "description": "Doświadczenia traderów korzystających z analizy wolumenowej i uporządkowanych strategii.",
+    "items": [
+      {
+        "quote": "Zanim zacząłem korzystać z tej platformy, mój trading opierał się na czystym zgadywaniu. Po opanowaniu wskaźników wolumenowych Wyckoffa i analizy struktur, zacząłem dostrzegać precyzyjne układy rynkowe w ciągu pierwszego tygodnia. Proces nauki był przejrzysty, prosty i zaskakująco dokładny.",
+        "author": "Alena Vetrovs"
+      },
+      {
+        "quote": "Zanim zacząłem korzystać z tej platformy, mój trading opierał się na czystym zgadywaniu. Po opanowaniu wskaźników wolumenowych Wyckoffa i analizy struktur, zacząłem dostrzegać precyzyjne układy rynkowe w ciągu pierwszego tygodnia. Proces nauki był przejrzysty, prosty i zaskakująco dokładny.",
+        "author": "Carla Levin"
+      },
+      {
+        "quote": "Zanim zacząłem korzystać z tej platformy, mój trading opierał się na czystym zgadywaniu. Po opanowaniu wskaźników wolumenowych Wyckoffa i analizy struktur, zacząłem dostrzegać precyzyjne układy rynkowe w ciągu pierwszego tygodnia. Proces nauki był przejrzysty, prosty i zaskakująco dokładny.",
+        "author": "Carter Franci"
+      },
+      {
+        "quote": "Zanim zacząłem korzystać z tej platformy, mój trading opierał się na czystym zgadywaniu. Po opanowaniu wskaźników wolumenowych Wyckoffa i analizy struktur, zacząłem dostrzegać precyzyjne układy rynkowe w ciągu pierwszego tygodnia. Proces nauki był przejrzysty, prosty i zaskakująco dokładny.",
+        "author": "Jacob Rosser"
+      },
+      {
+        "quote": "Zanim zacząłem korzystać z tej platformy, mój trading opierał się na czystym zgadywaniu. Po opanowaniu wskaźników wolumenowych Wyckoffa i analizy struktur, zacząłem dostrzegać precyzyjne układy rynkowe w ciągu pierwszego tygodnia. Proces nauki był przejrzysty, prosty i zaskakująco dokładny.",
+        "author": "Makenna Lipshutz"
+      },
+      {
+        "quote": "Zanim zacząłem korzystać z tej platformy, mój trading opierał się na czystym zgadywaniu. Po opanowaniu wskaźników wolumenowych Wyckoffa i analizy struktur, zacząłem dostrzegać precyzyjne układy rynkowe w ciągu pierwszego tygodnia. Proces nauki był przejrzysty, prosty i zaskakująco dokładny.",
+        "author": "Sophie Hines"
+      }
+    ]
+  },
+  "ourIndicators": {
+    "badge": "Nasze wskaźniki",
+    "title": "Wskaźniki Wyckoff Wave Volume stworzone dla lepszej analizy rynku",
+    "description": "Profesjonalne wskaźniki wolumenowe pomagające traderom zrozumieć popyt, podaż, momentum i strukturę rynku poprzez uporządkowaną analizę wykresów i zachowanie rynku w czasie rzeczywistym.",
+    "tabs": {
+      "volumeEdge": "Volume Edge",
+      "smartProfits": "Smart Profits",
+      "hiddenStrategy": "Ukryta strategia"
+    },
+    "content": {
+      "title": "Wskaźniki wolumenowe Wyckoff Wave dla inteligentnej analizy rynku",
+      "description": "Wskaźnik Wyckoff Wave Volume pomaga traderom analizować rzeczywistą presję kupujących i sprzedających poprzez wizualizację skumulowanego wolumenu bezpośrednio na wykresie.",
+      "points": {
+        "point1": "Zrozumienie siły popytu i podaży",
+        "point2": "Wykrywanie presji kupujących vs sprzedających",
+        "point3": "Wyraźniejsza analiza zmian momentum",
+        "point4": "Identyfikacja silniejszego zaangażowania rynkowego",
+        "point5": "Ulepszenie uporządkowanego podejmowania decyzji",
+        "point6": "Ograniczenie emocjonalnych zachowań w tradingu"
+      }
+    }
+  },
+  "pricing": {
+    "badge": "Cennik",
+    "title": "Wybierz swoje doświadczenie tradingowe",
+    "description": "Elastyczne opcje dostępu dostosowane do traderów na różnych etapach zaawansowania.",
+    "plans": {
+      "wyckoffIndicators": {
+        "tag": "Najlepsze wskaźniki",
+        "title": "Wskaźniki Wyckoff",
+        "duration": "Miesięcznie",
+        "price": "$67",
+        "note": "Brak umów. Anuluj w dowolnym momencie.",
+        "button": "Kup teraz",
+        "includedTitle": "Co zawiera pakiet:",
+        "features": {
+          "feature1": "Wskaźnik skumulowanego wolumenu: Wyckoff Wave Volume",
+          "feature2": "Wskaźnik skumulowanego wolumenu: Wyckoff Wave Chart",
+          "feature3": "Wskaźniki działające bezpośrednio na platformie",
+          "feature4": "Instrukcje instalacji i dopasowania wskaźnika do różnych materiałów wideo"
+        }
+      },
+      "monthlyAccess": {
+        "tag": "Płatność cykliczna",
+        "title": "Dostęp miesięczny",
+        "duration": "Miesięcznie",
+        "price": "$87",
+        "discount": "Zniżka 31.53%",
+        "note": "Brak umów. Anuluj w dowolnym momencie.",
+        "button": "Kup teraz",
+        "includedTitle": "Co zawiera pakiet:",
+        "features": {
+          "feature1": "Kompleksowy kurs Richarda Wyckoffa",
+          "feature2": "Kurs Analizy Rozkładu Wolumenu (VSA)",
+          "feature3": "Codzienny raport sygnałów US PTA",
+          "feature4": "Mastering the Richard Wyckoff Method - praktyczne lekcje dla traderów",
+          "feature5": "Wskaźniki Premium",
+          "feature6": "Komentarze i analizy rynku",
+          "feature7": "Dostęp do grupy tradingowej na Discordzie 24/7",
+          "feature8": "Wskaźniki Wyckoff",
+          "feature9": "Zaawansowany kurs Forex + Price Action",
+          "feature10": "Binance dla początkujących - kurs krypto",
+          "feature11": "Dostęp do społeczności"
+        }
+      },
+      "annualAccess": {
+        "tag": "Oferta ograniczona czasowo",
+        "title": "Dostęp roczny",
+        "duration": "Rocznie",
+        "oldPrice": "$1,700",
+        "price": "$850",
+        "discount": "Zniżka 50%",
+        "note": "Brak umów. Anuluj w dowolnym momencie.",
+        "button": "Kup teraz",
+        "includedTitle": "Co zawiera pakiet:",
+        "features": {
+          "feature1": "Kompleksowy kurs Richarda Wyckoffa",
+          "feature2": "Kurs Analizy Rozkładu Wolumenu (VSA)",
+          "feature3": "Codzienny raport sygnałów US PTA",
+          "feature4": "Mastering the Richard Wyckoff Method - praktyczne lekcje dla traderów",
+          "feature5": "Wskaźniki Premium",
+          "feature6": "Komentarze i analizy rynku",
+          "feature7": "Dostęp do grupy tradingowej na Discordzie 24/7",
+          "feature8": "Wskaźniki Wyckoff",
+          "feature9": "Zaawansowany kurs Forex + Price Action",
+          "feature10": "Binance dla początkujących - kurs krypto",
+          "feature11": "Dostęp do społeczności"
+        }
+      },
+      "lifetimeAccess": {
+        "tag": "Najpopularniejszy",
+        "title": "Dostęp dożywotni",
+        "duration": "Dożywotnio",
+        "oldPrice": "$6,250",
+        "price": "$1,250",
+        "discount": "Zniżka 60%",
+        "note": "Brak umów. Anuluj w dowolnym momencie.",
+        "button": "Kup teraz",
+        "includedTitle": "Co zawiera pakiet:",
+        "features": {
+          "feature1": "Kompleksowy kurs Richarda Wyckoffa",
+          "feature2": "Kurs Analizy Rozkładu Wolumenu (VSA)",
+          "feature3": "Codzienny raport sygnałów US PTA",
+          "feature4": "Mastering the Richard Wyckoff Method - praktyczne lekcje dla traderów",
+          "feature5": "Wskaźniki Premium",
+          "feature6": "Komentarze i analizy rynku",
+          "feature7": "Dostęp do grupy tradingowej na Discordzie 24/7",
+          "feature8": "Wskaźniki Wyckoff",
+          "feature9": "Zaawansowany kurs Forex + Price Action",
+          "feature10": "Binance dla początkujących - kurs krypto",
+          "feature11": "Dostęp do społeczności"
+        },
+        "ptaReports": {
+          "badge": "Raporty sygnałów PTA",
+          "title": "Jak działają sygnały PTA (Potential Trading Area)?",
+          "description": "Sygnały PTA pomagają traderom identyfikować ważne strefy rynkowe przy użyciu zachowania wolumenu, analizy momentum oraz uporządkowanej interpretacji ruchów cenowych.",
+          "cards": {
+            "buyZoneDetection": {
+              "title": "Wykrywanie stref zakupu PTA",
+              "desc": "Potencjalne strefy tradingowe są identyfikowane, gdy aktywność wolumenu i struktura rynku sugerują silniejsze zaangażowanie kupujących i możliwą kontynuację momentum."
+            },
+            "liquidityAnalysis": {
+              "title": "Analiza wolumenu i płynności",
+              "desc": "Proces pracy z PTA łączy działanie cen (price action), presję wolumenową oraz zachowanie płynności, aby pomóc traderom lepiej zrozumieć kierunek i reakcje rynku."
+            }
+          }
+        }
+      }
+    }
+  },
+  "wyckoffIndicators": {
+    "badge": "Wskaźniki Wyckoff",
+    "title": "Jak działają wskaźniki Wyckoff?",
+    "description": "Wskaźniki oparte na metodologii Wyckoffa pomagają traderom analizować popyt, podaż, momentum i aktywność rynku bezpośrednio za pomocą wykresów oraz analizy wolumenu.",
+    "cards": {
+      "demandSupply": {
+        "title": "Analiza popytu i podaży",
+        "desc": "Wskaźnik podkreśla potencjalne zachowania popytu i podaży, pomagając traderom zrozumieć presję rynkową oraz ewentualną kontynuację lub osłabienie trendu."
+      },
+      "buyerSellerPressure": {
+        "title": "Presja kupujących i sprzedających",
+        "desc": "Wizualna analiza wolumenu ułatwia identyfikację obszarów, w których kupujący lub sprzedający mogą przejmować kontrolę nad rynkiem."
+      },
+      "momentumShift": {
+        "title": "Wykrywanie zmian momentum",
+        "desc": "Rozpoznawaj możliwe przejścia momentum i reakcje rynkowe poprzez uporządkowaną interpretację wolumenu."
+      },
+      "marketReading": {
+        "title": "Ustrukturyzowane odczytywanie rynku",
+        "desc": "Zaprojektowane w celu uproszczenia analizy wykresów i wspierania traderów w realizowaniu bardziej zdyscyplinowanego i zorganizowanego planu działania."
+      }
+    }
+  },
+  "faq": {
+    "badge": "FAQ",
+    "title": "Najczęściej zadawane pytania",
+    "description": "Wszystko, co musisz wiedzieć o platformie, wskaźnikach, dostępie i procesie tradingowym.",
+    "questions": {
+      "question1": {
+        "question": "Czym są wskaźniki wolumenowe?",
+        "answer": "Wskaźniki wolumenowe pomagają traderom analizować aktywność kupna i sprzedaży na rynku, aby lepiej zrozumieć momentum, płynność oraz możliwy kierunek trendu."
+      },
+      "question2": {
+        "question": "Czy ta platforma jest przyjazna dla początkujących?",
+        "answer": "Tak, platforma zawiera uporządkowane zasoby edukacyjne, analizy z przewodnikiem oraz kursy tradingowe odpowiednie zarówno dla początkujących, jak i doświadczonych inwestorów."
+      },
+      "question3": {
+        "question": "Na jakich rynkach można stosować te wskaźniki?",
+        "answer": "Wskaźniki oraz analizy mogą być stosowane na rynkach Forex, Krypto, Akcji, Kontraktów Terminowych (Futures) oraz Indeksów."
+      },
+      "question4": {
+        "question": "Jak działa ta platforma?",
+        "answer": "Platforma łączy w sobie wskaźniki oparte na wolumenie, raporty PTA, analizy rynkowe oraz materiały szkoleniowe, wspierając traderów w lepszym rozumieniu mechaniki rynkowej i podejmowaniu decyzji."
+      },
+      "question5": {
+        "question": "Czy dostęp do społeczności jest wliczony w cenę?",
+        "answer": "Tak, wybrane pakiety zawierają dostęp do prywatnej społeczności traderów przeznaczonej do dyskusji, wymiany aktualności i dzielenia się spostrzeżeniami rynkowymi."
+      },
+      "question6": {
+        "question": "Czy mogę anulować subskrypcję w dowolnym momencie?",
+        "answer": "Tak, plany subskrypcyjne można anulować w dowolnym momencie bez konieczności zawierania długoterminowych umów."
+      }
+    }
+  },
+  "blogs": {
+    "badge": "Nasz blog",
+    "title": "Dowiedz się więcej o wolumenie i strukturze rynku",
+    "description": "Materiały edukacyjne i analizy tradingowe pomagające lepiej zrozumieć zachowanie rynku.",
+    "cards": {
+      "blog1": {
+        "category": "Trading",
+        "date": "31 lipca 2026",
+        "title": "Strategie zwiększania zaangażowania online w dzisiejszych czasach",
+        "button": "Dowiedz się więcej"
+      },
+      "blog2": {
+        "category": "Analiza rynku",
+        "date": "11 października 2024",
+        "title": "Projektowanie produktów zorientowane na użytkownika: kompletny przewodnik od podstaw",
+        "button": "Dowiedz się więcej"
+      },
+      "blog3": {
+        "category": "Edukacja tradingowa",
+        "date": "7 lipca 2024",
+        "title": "Najważniejsze trendy w projektowaniu napędzające sukces i rozwój firmy",
+        "button": "Dowiedz się więcej"
+      }
+    },
+    "allBlogsButton": "Wszystkie blogi"
+  },
+  "footer": {
+    "cta": {
+      "title": "Podążaj za Smart Money. Handluj w oparciu o strukturę rynku.",
+      "description": "Profesjonalne wskaźniki wolumenowe i uporządkowane analizy rynku stworzone dla lepszych decyzji tradingowych.",
+      "button": "Uzyskaj dostęp"
+    },
+    "company": {
+      "name": "VolumeDayTrader.com",
+      "consultationTitle": "Umów darmową konsultację telefoniczną",
+      "consultationDescription": "Profesjonalne wskaźniki wolumenowe, raporty sygnałów PTA, analizy rynku i uporządkowana edukacja tradingowa stworzona dla mądrzejszych decyzji handlowych.",
+      "socialTitle": "Nasze profile społecznościowe"
+    },
+    "navigation": {
+      "home": "Strona główna",
+      "indicators": "Wskaźniki",
+      "ptaReports": "Raporty PTA",
+      "pricing": "Cennik",
+      "tradingCommunity": "Społeczność traderów",
+      "marketAnalysis": "Analiza rynku"
+    },
+    "resources": {
+      "title": "Materiały",
+      "blogs": "Blogi",
+      "tradingEducation": "Edukacja tradingowa",
+      "faq": "FAQ",
+      "affiliateProgram": "Program partnerski"
+    },
+    "contact": {
+      "title": "Kontakt",
+      "support": "Wsparcie",
+      "affiliateSupport": "Wsparcie dla partnerów"
+    },
+    "riskDisclaimer": "Ostrzeżenie o ryzyku: Handel instrumentami finansowymi wiąże się z wysokim poziomem ryzyka i może nie być odpowiedni dla wszystkich inwestorów. Wyniki z przeszłości nie gwarantują przyszłych rezultatów. Treści na stronie VOLTRA.fi mają charakter wyłącznie edukacyjny i nie stanowią porady finansowej. Handlujesz na własne ryzyko."
+  }
+}

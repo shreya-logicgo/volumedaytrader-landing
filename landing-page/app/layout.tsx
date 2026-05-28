@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import I18nProvider from "@/components/providers/i18n-provider";
 import { Geist, Geist_Mono, Rethink_Sans } from "next/font/google";
 import "./globals.css";
 import Container from "@/components/layout/container/Container";
@@ -25,9 +26,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html
       lang="en"
@@ -36,7 +37,9 @@ export default function RootLayout({
       <body
         className={`min-h-full flex flex-col ${rethinkSans.className}`}
       >
+        <I18nProvider>
         <Container>{children}</Container>
+        </I18nProvider>
       </body>
     </html>
   );
