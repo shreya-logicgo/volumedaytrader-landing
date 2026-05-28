@@ -2,6 +2,7 @@
 import OurServices from "@/components/sections/our services/OurServices";
 import SignalsAndIndicators from "@/components/sections/Signals & Indicators/SignalsAndIndicators";
 import Trust from "@/components/sections/Trust/Trust";
+import Footer from "@/components/common/footer/Footer";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
@@ -16,6 +17,7 @@ export default function Hero() {
       <OurServices />
       <Trust />
       <SignalsAndIndicators />
+      <Footer />
     </div>
   );
 }
