@@ -1,5 +1,6 @@
 "use client";
 import OurServices from "@/components/sections/our services/OurServices";
+import SignalsAndIndicators from "@/components/sections/Signals & Indicators/SignalsAndIndicators";
 import Trust from "@/components/sections/Trust/Trust";
 import Footer from "@/components/common/footer/Footer";
 import Image from "next/image";
@@ -15,6 +16,7 @@ export default function Hero() {
     <div className="mt-20 ">
       <OurServices />
       <Trust />
+      <SignalsAndIndicators />
       <Footer />
     </div>
   );
