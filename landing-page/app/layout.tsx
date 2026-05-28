@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import I18nProvider from "@/components/providers/i18n-provider";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Rethink_Sans } from "next/font/google";
 import "./globals.css";
 import Container from "@/components/layout/container/Container";
 
