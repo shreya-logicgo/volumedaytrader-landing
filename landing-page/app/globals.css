@@ -1,16 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --font-rethink: "Rethink Sans", sans-serif;
+  --font-rethink: var(--font-rethink-sans), sans-serif;
 
-  --color-card-bg: #0d082b;
+  --color-card-bg: #0D082B;
   --color-card-border: #1d1938;
-  --color-secondary-text: #b7b7c9;
+  --color-secondary-text2: #767676;
+  --color-secondary-text: #A7ADBE;
+  
 }
 
 @layer base {
   body {
-    @apply bg-slate-950 text-white font-sans;
+    @apply bg-[#050024] ;
     font-family: var(--font-rethink);
   }
 
@@ -27,7 +29,7 @@
 
   /* Heading */
   .heading-text {
-    @apply text-[40px] font-bold leading-[40px] tracking-[1%] text-center;
+    @apply text-[40px] font-bold leading-[40px] tracking-[1%] text-center text-white;
   }
 
   /* Subheading */
@@ -42,12 +44,12 @@
 
   /* Card Description */
   .card-desc {
-    @apply text-lg font-normal leading-none tracking-normal text-secondary-text;
+    @apply text-lg font-normal leading-snug line-clamp-3 tracking-normal text-secondary-text;
   }
 
   /* Card UI */
   .card-ui {
-    @apply rounded-3xl border border-card-border bg-card-bg p-6 shadow-[0px_-4px_100px_21px_#18193333_inset];
+    @apply rounded-3xl border border-card-border bg-card-bg p-[30px] shadow-[0px_-4px_100px_21px_#18193333_inset];
   }
 
   /* Card Layout */
