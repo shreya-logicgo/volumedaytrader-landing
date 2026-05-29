@@ -17,30 +17,30 @@ const Badge = ({
   className = '',
   ...rest
 }: BadgeProps) => {
-  const baseClasses = 'inline-flex items-center justify-center rounded-full px-6 py-2.5 text-sm font-medium text-[#f4f4fe]'
+  const baseClasses = 'inline-flex items-center justify-center rounded-full px-6 py-3 text-xl font-medium text-white'
 
   return (
     <div
       className={`inline-flex items-center justify-center gap-3 absolute ${className}`.trim()}
-      {...rest}    
+      {...rest}
       style={
         backgroundImageSrc
-            ? {
-                backgroundImage: `url(${backgroundImageSrc})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                height: '268px',
-                width: '717px',
-              }
-            : undefined 
-      }  
+          ? {
+            backgroundImage: `url(${backgroundImageSrc})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            height: '268px',
+            width: '717px',
+          }
+          : undefined
+      }
     >
       {showArrows ? (
         <img
           src={leftArrowSrc}
           alt=""
           aria-hidden="true"
-          className="h-5 w-28 select-none object-contain"
+          className="h-6  select-none object-contain"
         />
       ) : null}
 
@@ -48,15 +48,13 @@ const Badge = ({
         className={baseClasses}
         style={
           {
-                background:
-                  'radial-gradient(110% 130% at 50% 0%, #1b1252 0%, #0d0635 55%, #080329 100%)',
-                border: '1px solid rgba(126, 87, 255, 0.45)',
-                boxShadow:
-                  '0 0 0 1px rgba(126,87,255,0.2) inset, 0 8px 20px rgba(2,0,30,0.45)',
-              }
+            background:
+              '#0D082B',
+            boxShadow: '0px 1.41px 3.18px 0px #FFFFFF80 inset',
+          }
         }
       >
-        <span className="whitespace-nowrap">{text}</span>
+        <span className="whitespace-nowrap ">{text}</span>
       </div>
 
       {showArrows ? (
@@ -64,7 +62,7 @@ const Badge = ({
           src={rightArrowSrc}
           alt=""
           aria-hidden="true"
-          className="h-5 w-28 select-none object-contain"
+          className="h-6  select-none object-contain"
         />
       ) : null}
     </div>

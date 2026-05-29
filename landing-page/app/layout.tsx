@@ -38,7 +38,9 @@ export default function RootLayout({
         className={`min-h-full flex flex-col ${rethinkSans.className}`}
       >
         <I18nProvider>
-        <Container>{children}</Container>
+        {/* <Container> */}
+          {children}
+          {/* </Container> */}
         </I18nProvider>
       </body>
     </html>
