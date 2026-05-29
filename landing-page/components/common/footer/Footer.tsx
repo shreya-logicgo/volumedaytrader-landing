@@ -15,10 +15,11 @@ import SubHeading from '@/components/ui/subheading/SubHeading'
 
 import logo from '@/assets/logo/logo.svg'
 import sections from '@/assets/images/gradients/footer-gradient.png'
+import Vector from "@/assets/icons/vector.svg";
 
 const Footer = () => {
     return (
-        <footer className="relative overflow-hidden pt-24 pb-10 container-spacing">
+        <footer className="relative overflow-hidden pt-20 pb-10 container-spacing">
             {/* Background */}
             <div className="absolute inset-0 bg-[#050024]" />
 
@@ -37,9 +38,10 @@ const Footer = () => {
 
                         <SubHeading className="leading-6 max-w-[650px] mx-auto" text="Professional volume indicators and structured market insights designed for smarter trading decisions." />
 
-                        <button className="mt-3 px-7 py-3 rounded-full bg-[#FF2E2E] shadow-[0_4px_14px_rgba(255,46,46,0.35)] text-white text-lg font-medium">
-                            Get Access ↗
-                        </button>
+                       <button className="mt-3 inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#FF2E2E] shadow-[0_4px_14px_rgba(255,46,46,0.35)] text-white text-lg font-medium">
+  Get Access
+  <Vector className="h-3 w-3 shrink-0" aria-hidden="true" />
+</button>
                     </div>
                 </div>
 

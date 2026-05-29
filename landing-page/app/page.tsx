@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 
 import LanguageSwitcher from "@/components/common/LanguageSwitcher";
 import Container from "@/components/layout/container/Container";
+
 import Testimonials from "@/components/sections/testimonials/Testimonials";
 import FAQ from "@/components/sections/faq/FAQ";
 import Wyckoff from "@/components/sections/wyckoff-indicators/Wyckoff";
@@ -24,9 +25,12 @@ export default function Hero() {
       {/* <div className="relative bg-amber-100 h-50 w-full"> */}
         
       {/* </div> */}
+  
       <Container>
         <OurServices />
+        <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-0" >
         <Trust />
+        </div>
         <SignalsAndIndicators />
 
       </Container>
@@ -38,15 +42,17 @@ export default function Hero() {
       <Container>
         <OurIndicators />
         <Pricing />
-        <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-0" >
+        {/* <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-0" > */}
         <PTA />
-        </div>
+        {/* </div> */}
         <Wyckoff />
         <FAQ />
         <Blogs />
       </Container>
+ 
 
       <Footer />
+      
     </div>
   );
 }

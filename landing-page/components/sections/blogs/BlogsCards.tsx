@@ -5,6 +5,7 @@ import Link from "next/link";
 import blog1 from "@/assets/images/blog/blog-1.png";
 import blog2 from "@/assets/images/blog/blog-2.png";
 import blog3 from "@/assets/images/blog/blog-3.png";
+import Arrow from "@/assets/icons/arrow.svg";
 
 type BlogCard = {
   key: "blog1" | "blog2" | "blog3";
@@ -83,7 +84,7 @@ const BlogsCards = () => {
               className="inline-flex items-center gap-2 text-[17px] font-medium text-secondary-text transition hover:text-white"
             >
               {blog.button}
-              <span aria-hidden="true">↗</span>
+              <Arrow className="h-3 w-3" aria-hidden="true" />
             </Link>
           </div>
         </article>

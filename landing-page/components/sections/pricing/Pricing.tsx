@@ -102,12 +102,13 @@ const plans: PricingPlan[] = [
 
 const Pricing = () => {
   return (
+    <div className="section-pb">
     <section className="relative z-10 mx-auto ">
-      <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
+      <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto ">
         <Badge text="Pricing" />
       </div>
 
-      <div className="relative z-10 mx-auto space-y-4 pt-24 text-center sm:pt-32 md:pt-40">
+      <div className="relative z-10 text-center section-header-stack">
         <Heading className="max-w-2xl mx-auto" text="Choose Your Trading Experience" />
         <SubHeading
           className="max-w-[780px] mx-auto"
@@ -186,6 +187,7 @@ const Pricing = () => {
         ))}
       </div>
     </section>
+    </div>
   )
 }
 
