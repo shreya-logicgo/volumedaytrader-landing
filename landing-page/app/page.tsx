@@ -22,7 +22,7 @@ export default function Hero() {
   return (
     <div className="mt-20  bg-amber-5">
       {/* <div className="relative bg-amber-100 h-50 w-full"> */}
-        
+
       {/* </div> */}
       <Container>
         <OurServices />
@@ -37,9 +37,13 @@ export default function Hero() {
       <Testimonials />
       <Container>
         <OurIndicators />
-        <Pricing />
+      </Container>
+
+      <Pricing />
+
+      <Container>
         <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-0" >
-        <PTA />
+          <PTA />
         </div>
         <Wyckoff />
         <FAQ />

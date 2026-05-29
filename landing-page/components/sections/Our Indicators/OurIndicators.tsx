@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Badge from '@/components/ui/badge/Badge'
 import Heading from '@/components/ui/heading/Heading'
 import SubHeading from '@/components/ui/subheading/SubHeading'
@@ -13,6 +13,8 @@ const highlights = [
 ]
 
 const OurIndicators = () => {
+  const [activeTab, setActiveTab] = useState('Volume Edge')
+
   return (
     <section className="relative z-10 mx-auto">
       <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
@@ -32,24 +34,40 @@ const OurIndicators = () => {
 
       <div className="mt-12 flex justify-center">
         <div className="inline-flex items-center rounded-xl border border-[#1D1938] bg-[#0D082B] p-1">
+
           <button
             type="button"
-            className="rounded-lg bg-[#FF2E2E] px-5 py-2 text-sm font-medium text-white"
+            onClick={() => setActiveTab('Volume Edge')}
+            className={`rounded-lg px-5 py-2 text-lg font-medium transition-all ${activeTab === 'Volume Edge'
+                ? 'bg-[#ED1F24] text-white'
+                : 'text-[#A7ADBE]'
+              }`}
           >
             Volume Edge
           </button>
+
           <button
             type="button"
-            className="rounded-lg px-5 py-2 text-sm font-medium text-[#A7ADBE]"
+            onClick={() => setActiveTab('Smart Profiles')}
+            className={`rounded-lg px-5 py-2 text-lg font-medium transition-all ${activeTab === 'Smart Profiles'
+                ? 'bg-[#ED1F24] text-white'
+                : 'text-[#A7ADBE]'
+              }`}
           >
             Smart Profiles
           </button>
+
           <button
             type="button"
-            className="rounded-lg px-5 py-2 text-sm font-medium text-[#A7ADBE]"
+            onClick={() => setActiveTab('Hidden Strategy')}
+            className={`rounded-lg px-5 py-2 text-lg font-medium transition-all ${activeTab === 'Hidden Strategy'
+                ? 'bg-[#ED1F24] text-white'
+                : 'text-[#A7ADBE]'
+              }`}
           >
             Hidden Strategy
           </button>
+
         </div>
       </div>
 
