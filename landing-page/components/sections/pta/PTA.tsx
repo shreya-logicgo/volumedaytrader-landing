@@ -56,7 +56,7 @@ const PTA = () => {
 
 
 </div>
-      {/* <SideGradients /> */}
+      <SideGradients /> 
 
 
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
