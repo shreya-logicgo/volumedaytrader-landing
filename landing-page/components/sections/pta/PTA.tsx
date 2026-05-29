@@ -2,11 +2,17 @@
 
 import { useEffect, useState } from 'react'
 import type { CarouselApi } from '@/components/ui/carousel'
+import { useTranslation } from 'react-i18next'
 
 import Badge from '@/components/ui/badge/Badge'
 import Heading from '@/components/ui/heading/Heading'
 import SubHeading from '@/components/ui/subheading/SubHeading'
 import PTACards from '@/components/sections/pta/PTACards'
+
+// import { ChevronLeft, ChevronRight } from 'lucide-react'
+
+import PtaGrad from '@/assets/images/gradients/pta-gradient.png'
+import Image from 'next/image'
 import SideGradients from '@/components/common/backgrounds/SideGradients'
 
 import { ChevronLeft, ChevronRight, Container } from 'lucide-react'
@@ -17,6 +23,7 @@ const navButtonClass =
 
 const PTA = () => {
   const [api, setApi] = useState<CarouselApi>()
+   const { t } = useTranslation('translation', { keyPrefix: 'ptaReports' })
   const [canScrollPrev, setCanScrollPrev] = useState(false)
   const [canScrollNext, setCanScrollNext] = useState(false)
 
@@ -54,18 +61,17 @@ const PTA = () => {
 
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
         <div className="relative mx-auto flex max-w-[717px] flex-col gap-2">
-          <Badge text="PTA Signal Reports" />
+          <Badge text={t('badge')} />
         </div>
 
         <div className="section-header-stack relative z-10 mx-auto">
           <Heading
             className="mx-auto max-w-[630px] text-balance"
-            text="How Do PTA (Potential Trading Area) Signals Work?"
+           text={t('title')}
           />
           <SubHeading
             className="mx-auto max-w-2xl text-pretty px-1"
-            text="PTA signals analyze volume behavior and market structure to highlight potential buy zones, liquidity areas, and momentum shifts for tactical trading decisions."
-          />
+ text={t('description')}          />
         </div>
       </div>
 

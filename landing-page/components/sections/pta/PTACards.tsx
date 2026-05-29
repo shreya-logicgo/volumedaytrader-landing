@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Chart from '@/assets/images/chart/chart2.png'
+import { useTranslation } from 'react-i18next'
 
 import {
   Carousel,
@@ -13,6 +14,7 @@ import {
 import { cn } from '@/lib/utils'
 
 interface PTACardItem {
+  key: 'buyZoneDetection' | 'liquidityAnalysis' | 'marketStructureMapping' | 'momentumConfirmation'
   title: string
   description: string
 }
@@ -25,21 +27,25 @@ interface PTACardsProps {
 
 const defaultItems: PTACardItem[] = [
   {
+    key: 'buyZoneDetection',
     title: 'PTA Buy Zone Detection',
     description:
       'Highlights probable buy zones by combining structured volume with recent price action to surface areas where buying pressure may resume.',
   },
   {
+    key: 'liquidityAnalysis',
     title: 'Volume & Liquidity Analysis',
     description:
       'Analyzes volume clusters and liquidity to indicate potential breakout or distribution regions and assess trade conviction.',
   },
   {
+    key: 'marketStructureMapping',
     title: 'Market Structure Mapping',
     description:
       'Tracks key support and resistance zones based on volume concentration and historical reactions.',
   },
   {
+    key: 'momentumConfirmation',
     title: 'Momentum Confirmation',
     description:
       'Identifies momentum shifts using volume expansion and directional strength.',
@@ -52,6 +58,7 @@ const PTACards = ({
   setApi,
 }: PTACardsProps) => {
   const apiRef = useRef<CarouselApi | undefined>(undefined)
+  const { t } = useTranslation('translation', { keyPrefix: 'ptaReports.cards' })
 
   const handleSetApi = useCallback(
     (api: CarouselApi) => {
@@ -99,10 +106,10 @@ const PTACards = ({
 
               <div className="flex flex-col gap-3 sm:gap-4">
                 <h3 className="card-heading text-left text-lg font-semibold text-white sm:text-xl">
-                  {item.title}
+                   {t(`${item.key}.title`)}
                 </h3>
                 <p className="card-desc text-left text-sm leading-relaxed text-[#A7ADBE] sm:text-base">
-                  {item.description}
+               {t(`${item.key}.desc`)}
                 </p>
               </div>
             </article>

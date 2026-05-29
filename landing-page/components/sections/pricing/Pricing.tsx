@@ -2,8 +2,10 @@ import React from 'react'
 import Badge from '@/components/ui/badge/Badge'
 import Heading from '@/components/ui/heading/Heading'
 import SubHeading from '@/components/ui/subheading/SubHeading'
+import { useTranslation } from 'react-i18next'
 
 interface PricingPlan {
+  key: 'wyckoffIndicators' | 'monthlyAccess' | 'annualAccess' | 'lifetimeAccess'
   tag: string
   svg?: string
   title: string
@@ -18,6 +20,7 @@ interface PricingPlan {
 
 const plans: PricingPlan[] = [
   {
+    key: 'wyckoffIndicators',
     tag: 'BEST INDICATORS',
     svg: '/assets/icons/star1.svg',
     title: 'WYCKOFF INDICATORS',
@@ -33,6 +36,7 @@ const plans: PricingPlan[] = [
     cta: 'Buy Now',
   },
   {
+    key: 'monthlyAccess',
     tag: 'RECURRING PAYMENT',
     svg: '/assets/icons/star2.svg',
     title: 'MONTHLY ACCESS',
@@ -52,6 +56,7 @@ const plans: PricingPlan[] = [
     cta: 'Buy Now',
   },
   {
+    key: 'annualAccess',
     tag: 'LIMITED TIME OFFER',
     svg: '/assets/icons/star3.svg',
     title: 'ANNUAL ACCESS',
@@ -75,6 +80,7 @@ const plans: PricingPlan[] = [
     cta: 'Buy Now',
   },
   {
+    key: 'lifetimeAccess',
     tag: 'MOST POPULAR',
     svg: '/assets/icons/star4.svg',
     title: 'LIFETIME ACCESS',
@@ -101,24 +107,23 @@ const plans: PricingPlan[] = [
 ]
 
 const Pricing = () => {
+  const { t } = useTranslation('translation', { keyPrefix: 'pricing' })
+
   return (
     <section className="relative max-w-[1480px] z-10 mx-auto section-pb px-4 sm:px-6 2xl:px-0 ">
       <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
-        <Badge text="Pricing" />
+        <Badge text={t('badge')} />
       </div>
 
       <div className="relative z-10 text-center section-header-stack">
-        <Heading className="max-w-2xl mx-auto" text="Choose Your Trading Experience" />
-        <SubHeading
-          className="max-w-[780px] mx-auto"
-          text="Flexible access options designed for traders at different stages."
-        />
+        <Heading className="max-w-2xl mx-auto" text={t('title')} />
+        <SubHeading className="max-w-[780px] mx-auto" text={t('description')} />
       </div>
 
       <div className="mt-10 grid grid-cols-1 gap-5 sm:mt-12 md:grid-cols-2 xl:grid-cols-4">
         {plans.map((plan) => (
           <article
-            key={plan.title}
+            key={plan.key}
             className={`group hover:cursor-pointer min-w-0 xl:max-h-fit overflow-hidden rounded-3xl p-0.5 transition-all duration-300 ${
                 'bg-pricing-header hover:bg-tab-active hover:shadow-[0_0_0_1px_rgba(255,46,46,0.2)_inset]'
               }`}
@@ -128,13 +133,13 @@ const Pricing = () => {
                'bg-pricing-header text-pricing-header group-hover:bg-service-accent group-hover:text-white'
               }`}
             >
-              {plan.tag}
+              {t(`plans.${plan.key}.tag`)}
             </div>
 
             <div className="p-5 bg-card-bg rounded-3xl xl:h-fit h-[730px] ">
               <h3 className="break-words flex items-center text-sm font-semibold uppercase tracking-wide text-white">
-                <span>{plan.svg && <img src={plan.svg} alt={plan.title} className="h-6 w-6 inline-block mr-2" />}</span>
-                {plan.title}
+                <span>{plan.svg && <img src={plan.svg} alt={t(`plans.${plan.key}.title`)} className="h-6 w-6 inline-block mr-2" />}</span>
+                {t(`plans.${plan.key}.title`)}
               </h3>
               <div className="mt-4 flex items-end gap-2">
                 {plan.oldPrice ? (
@@ -144,13 +149,13 @@ const Pricing = () => {
 
               <div className="mt-1 flex flex-wrap items-end gap-2">
                 <span className="text-4xl font-semibold leading-none text-white sm:text-[40px]">{plan.price}</span>
-                <span className="pb-1 text-base text-price-unit">{plan.priceUnit}</span>
+                <span className="pb-1 text-base text-price-unit">{t(`plans.${plan.key}.duration`)}</span>
                 {plan.discount ? (
-                  <span className="my-auto text-base font-medium text-white">{plan.discount}</span>
+                  <span className="my-auto text-base font-medium text-white">{t(`plans.${plan.key}.discount`)}</span>
                 ) : null}
               </div>
 
-              <p className="mt-3 text-base text-secondary-text">No contracts. Cancel anytime.</p>
+              <p className="mt-3 text-base text-secondary-text">{t(`plans.${plan.key}.note`)}</p>
 
               <button
                 type="button"
@@ -158,13 +163,13 @@ const Pricing = () => {
                  'border border-btn-border bg-signal-panel-bg text-white group-hover:bg-service-accent group-hover:border-transparent'
                 }`}
               >
-                {plan.cta}
+                {t(`plans.${plan.key}.button`)}
               </button>
 
-              <p className="mt-6 text-lg font-semibold text-white">What&apos;s included:</p>
+              <p className="mt-6 text-lg font-semibold text-white">{t(`plans.${plan.key}.includedTitle`)}</p>
               <ul className="mt-3 space-y-2">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2 text-lg leading-snug text-feature-text">
+                {plan.features.map((_, index) => (
+                  <li key={`${plan.key}-feature-${index}`} className="flex items-start gap-2 text-lg leading-snug text-feature-text">
                     <span className="mt-1 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-service-accent">
                       <svg
                         viewBox="0 0 24 24"
@@ -176,7 +181,7 @@ const Pricing = () => {
                         <path d="M5 13l4 4L19 7" />
                       </svg>
                     </span>
-                    <span className="min-w-0 break-words">{feature}</span>
+                    <span className="min-w-0 break-words">{t(`plans.${plan.key}.features.feature${index + 1}`)}</span>
                   </li>
                 ))}
               </ul>
@@ -185,7 +190,6 @@ const Pricing = () => {
         ))}
       </div>
     </section>
-    // </div>
   )
 }
 

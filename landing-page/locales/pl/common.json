@@ -101,15 +101,53 @@
       }
     }
   },
+  "ptaReports": {
+    "badge": "Raporty sygnałów PTA",
+    "title": "Jak działają sygnały PTA (Potencjalny Obszar Transakcyjny)?",
+    "description": "Sygnały PTA analizują zachowanie wolumenu i strukturę rynku, aby wskazać potencjalne strefy zakupu, obszary płynności i zmiany momentum dla taktycznych decyzji tradingowych.",
+    "cards": {
+      "buyZoneDetection": {
+        "title": "Wykrywanie stref zakupu PTA",
+        "desc": "Podkreśla prawdopodobne strefy zakupu, łącząc uporządkowany wolumen z ostatnim ruchem ceny, aby wskazać miejsca możliwego powrotu presji kupujących."
+      },
+      "liquidityAnalysis": {
+        "title": "Analiza wolumenu i płynności",
+        "desc": "Analizuje skupiska wolumenu i płynność, aby wskazać potencjalne obszary wybicia lub dystrybucji oraz ocenić siłę ruchu."
+      },
+      "marketStructureMapping": {
+        "title": "Mapowanie struktury rynku",
+        "desc": "Śledzi kluczowe strefy wsparcia i oporu na podstawie koncentracji wolumenu oraz historycznych reakcji."
+      },
+      "momentumConfirmation": {
+        "title": "Potwierdzenie momentum",
+        "desc": "Identyfikuje zmiany momentum przy użyciu ekspansji wolumenu i siły kierunkowej."
+      }
+    }
+  },
   "indicators": {
     "badge": "System wskaźników",
     "title": "Wskaźniki wolumenowe Wyckoff Wave",
     "description": "Profesjonalne wskaźniki wolumenowe pomagające traderom zrozumieć momentum, płynność, popyt, podaż i strukturę rynku z większą jasnością i pewnością.",
     "cards": {
       "waveIndicator": {
-        "title": "Wskaźnik wolumenowy Wyckoff Wave",
-        "desc": "Wskaźnik pomaga traderom identyfikować presję kupujących i sprzedających poprzez analizę skumulowanego wolumenu i zaangażowania bezpośrednio na wykresie. Wykrywaj siłę popytu i podaży. Rozumiej presję kupujących vs sprzedających. Identyfikuj zmiany momentum. Analizuj zachowanie rynku oparte na wolumenie."
-      }
+  "title": "Wskaźnik Wolumenu Fali Wyckoffa",
+  "desc": "Wskaźnik pomaga traderom identyfikować presję kupujących i sprzedających poprzez analizę skumulowanego wolumenu oraz aktywności rynku bezpośrednio na wykresie. Wykrywaj siłę popytu i podaży. Rozumiej presję kupujących i sprzedających. Identyfikuj zmiany momentum. Analizuj zachowanie rynku na podstawie wolumenu.",
+
+  "slide1": {
+    "point1": "Wykrywaj siłę popytu i podaży",
+    "point2": "Rozumiej presję kupujących i sprzedających",
+    "point3": "Identyfikuj zmiany momentum",
+    "point4": "Analizuj zachowanie rynku oparte na wolumenie"
+  },
+
+  "slide2": {
+    "subtitle": "Odczytuj punkty zwrotne rynku dzięki analizie struktury fal oraz wyróżnionym strefom dystrybucji i absorpcji.",
+    "point1": "Śledź lokalne szczyty i dołki reakcyjne",
+    "point2": "Wykrywaj obszary konsolidacji i dystrybucji",
+    "point3": "Identyfikuj strefy ryzyka wybicia w dół",
+    "point4": "Popraw precyzję wejść dzięki analizie struktury rynku"
+  }
+}
     }
   },
   "testimonials": {
@@ -148,8 +186,8 @@
     "title": "Wskaźniki Wyckoff Wave Volume stworzone dla lepszej analizy rynku",
     "description": "Profesjonalne wskaźniki wolumenowe pomagające traderom zrozumieć popyt, podaż, momentum i strukturę rynku poprzez uporządkowaną analizę wykresów i zachowanie rynku w czasie rzeczywistym.",
     "tabs": {
-      "volumeEdge": "Volume Edge",
-      "smartProfits": "Smart Profits",
+      "volumeEdge": "Przewaga Wolumenu",
+      "smartProfits": "Inteligentne Zyski",
       "hiddenStrategy": "Ukryta strategia"
     },
     "content": {
@@ -254,21 +292,6 @@
           "feature9": "Zaawansowany kurs Forex + Price Action",
           "feature10": "Binance dla początkujących - kurs krypto",
           "feature11": "Dostęp do społeczności"
-        },
-        "ptaReports": {
-          "badge": "Raporty sygnałów PTA",
-          "title": "Jak działają sygnały PTA (Potential Trading Area)?",
-          "description": "Sygnały PTA pomagają traderom identyfikować ważne strefy rynkowe przy użyciu zachowania wolumenu, analizy momentum oraz uporządkowanej interpretacji ruchów cenowych.",
-          "cards": {
-            "buyZoneDetection": {
-              "title": "Wykrywanie stref zakupu PTA",
-              "desc": "Potencjalne strefy tradingowe są identyfikowane, gdy aktywność wolumenu i struktura rynku sugerują silniejsze zaangażowanie kupujących i możliwą kontynuację momentum."
-            },
-            "liquidityAnalysis": {
-              "title": "Analiza wolumenu i płynności",
-              "desc": "Proces pracy z PTA łączy działanie cen (price action), presję wolumenową oraz zachowanie płynności, aby pomóc traderom lepiej zrozumieć kierunek i reakcje rynku."
-            }
-          }
         }
       }
     }
@@ -300,6 +323,9 @@
     "badge": "FAQ",
     "title": "Najczęściej zadawane pytania",
     "description": "Wszystko, co musisz wiedzieć o platformie, wskaźnikach, dostępie i procesie tradingowym.",
+    "searchPlaceholder": "Szukaj w FAQ",
+    "clearSearch": "Wyczyść wyszukiwanie",
+    "noResults": "Brak wyników dla \"{{searchTerm}}\"",
     "questions": {
       "question1": {
         "question": "Czym są wskaźniki wolumenowe?",
@@ -385,6 +411,7 @@
       "support": "Wsparcie",
       "affiliateSupport": "Wsparcie dla partnerów"
     },
-    "riskDisclaimer": "Ostrzeżenie o ryzyku: Handel instrumentami finansowymi wiąże się z wysokim poziomem ryzyka i może nie być odpowiedni dla wszystkich inwestorów. Wyniki z przeszłości nie gwarantują przyszłych rezultatów. Treści na stronie VOLTRA.fi mają charakter wyłącznie edukacyjny i nie stanowią porady finansowej. Handlujesz na własne ryzyko."
+    "riskDisclaimerLabel": "Ostrzeżenie o ryzyku:",
+    "riskDisclaimer": "Handel instrumentami finansowymi wiąże się z wysokim poziomem ryzyka i może nie być odpowiedni dla wszystkich inwestorów. Wyniki z przeszłości nie gwarantują przyszłych rezultatów. Treści na stronie VOLTRA.fi mają charakter wyłącznie edukacyjny i nie stanowią porady finansowej. Handlujesz na własne ryzyko."
   }
 }

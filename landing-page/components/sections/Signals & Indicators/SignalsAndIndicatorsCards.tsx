@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface SignalCardItem {
   title: string
@@ -14,27 +15,23 @@ interface SignalsAndIndicatorsCardsProps {
 
 const defaultItems: SignalCardItem[] = [
   {
-    title: 'Daily PTA Signal Reports',
-    description:
-      'Get structured Potential Trading Area reports with volume analysis, momentum insights, and real-time market observations across Forex, Crypto, Stocks, and Indices.',
+    title: 'cards.ptaReports.title',
+    description: 'cards.ptaReports.desc',
     linePath: 'M12 118 L68 116 L110 108 L150 74 L188 88 L228 76 L266 82 L310 64',
   },
   {
-    title: 'Wyckoff Wave Indicators',
-    description:
-      'Professional volume-based indicators designed to help traders identify demand, supply, liquidity behavior, and market participation more clearly.',
+    title: 'cards.wyckoffIndicators.title',
+    description: 'cards.wyckoffIndicators.desc',
     linePath: 'M12 102 L58 86 L110 92 L152 106 L206 66 L244 80 L272 108 L310 86',
   },
   {
-    title: 'Market Analysis & Insights',
-    description:
-      'Daily market breakdowns covering trend structure, momentum shifts, and important trading zones backed by volume-based analysis.',
+    title: 'cards.marketAnalysis.title',
+    description: 'cards.marketAnalysis.desc',
     linePath: 'M12 68 L46 108 L92 114 L138 98 L184 104 L232 92 L274 74 L310 78',
   },
   {
-    title: 'Trading Courses & Education',
-    description:
-      'Learn Wyckoff methodology, VSA, market structure, and disciplined trading concepts through practical educational resources and real market examples.',
+    title: 'cards.tradingEducation.title',
+    description: 'cards.tradingEducation.desc',
     linePath: 'M12 74 L58 98 L102 120 L148 96 L194 84 L240 114 L276 106 L310 80',
   },
 ]
@@ -98,6 +95,8 @@ const SignalsAndIndicatorsCards = ({
   items = defaultItems,
   className = '',
 }: SignalsAndIndicatorsCardsProps) => {
+  const { t } = useTranslation('translation', { keyPrefix: 'signals' })
+
   return (
     <div className={`grid grid-cols-1 gap-5 lg:grid-cols-2 ${className}`.trim()}>
       {items.map((item) => (
@@ -112,10 +111,10 @@ const SignalsAndIndicatorsCards = ({
 
           <div className="border-t  bg-signal-panel-bg p-5  rounded-[20px] flex flex-col gap-4">
             <h3 className="text-left  font-semibold leading-tight text-white card-heading">
-              {item.title}
+              {t(item.title)}
             </h3>
             <p className="card-desc mt-2 text-left  text-secondary-text">
-              {item.description}
+              {t(item.description)}
             </p>
           </div>
         </article>

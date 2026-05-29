@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import React, { useEffect, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface IndicatorSlide {
   title: string
@@ -19,14 +20,13 @@ interface IndicatorSystemCarousalProps {
 
 const defaultSlides: IndicatorSlide[] = [
   {
-    title: 'Wyckoff Wave Volume Indicator',
-    subtitle:
-      'The indicator helps traders identify buying and selling pressure by analyzing cumulative volume and market participation directly on the chart.',
+    title: 'cards.waveIndicator.title',
+    subtitle: 'cards.waveIndicator.desc',
     points: [
-      'Detect demand and supply strength',
-      'Understand buyer vs seller pressure',
-      'Identify momentum shifts',
-      'Analyze volume-based market behavior',
+      'cards.waveIndicator.slide1.point1',
+      'cards.waveIndicator.slide1.point2',
+      'cards.waveIndicator.slide1.point3',
+      'cards.waveIndicator.slide1.point4',
     ],
     linePath:
       'M8 98 L28 70 L46 82 L66 58 L82 64 L100 54 L118 62 L138 52 L156 80 L176 88 L194 72 L212 92 L232 86 L252 108',
@@ -34,14 +34,13 @@ const defaultSlides: IndicatorSlide[] = [
     imageAlt: 'Chart analysis preview',
   },
   {
-    title: 'Wyckoff Wave Volume Indicator',
-    subtitle:
-      'Read market turning points with structure-focused wave behavior and highlighted distribution or absorption zones.',
+    title: 'cards.waveIndicator.title',
+    subtitle: 'cards.waveIndicator.slide2.subtitle',
     points: [
-      'Track reaction highs and lows',
-      'Spot distribution range areas',
-      'Flag breakdown risk zones',
-      'Improve structured market timing',
+      'cards.waveIndicator.slide2.point1',
+      'cards.waveIndicator.slide2.point2',
+      'cards.waveIndicator.slide2.point3',
+      'cards.waveIndicator.slide2.point4',
     ],
     linePath:
       'M8 88 L26 66 L46 74 L66 70 L86 82 L104 62 L124 52 L144 68 L164 64 L184 90 L204 100 L224 92 L244 86 L252 74',
@@ -96,6 +95,7 @@ const IndicatorSystemCarousal = ({
   slides = defaultSlides,
   className = '',
 }: IndicatorSystemCarousalProps) => {
+  const { t } = useTranslation('translation', { keyPrefix: 'indicators' })
   const [activeIndex, setActiveIndex] = useState(0)
   const totalSlides = slides.length
 
@@ -150,14 +150,14 @@ const IndicatorSystemCarousal = ({
               {/* Text — below image on mobile, right column on desktop */}
               <div className="px-4 py-4 md:py-2 md:my-auto">
                 <h3 className="card-heading text-left font-semibold text-white line-clamp-2">
-                  {slide.title}
+                  {t(slide.title)}
                 </h3>
                 <p className="card-desc mt-3 text-secondary-text line-clamp-4">
-                  {slide.subtitle}
+                  {t(slide.subtitle)}
                 </p>
                 <ul className="card-desc mt-4 line-clamp-4">
                   {slide.points.map((point) => (
-                    <li key={point}>{point}</li>
+                    <li key={point}>{t(point)}</li>
                   ))}
                 </ul>
               </div>

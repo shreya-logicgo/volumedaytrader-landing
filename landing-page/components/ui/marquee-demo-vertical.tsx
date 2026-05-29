@@ -1,36 +1,23 @@
+"use client"
+
 import { cn } from "@/lib/utils"
 import { Marquee } from "@/components/ui/marquee";
+import { useTranslation } from 'react-i18next'
 
-const reviews = [
-  {
-    name: "Alena Vetrovs",
-    body: "Before using CVeeBee, I barely got any callbacks. After optimizing my keywords and rewriting my resume with the AI, I started receiving interview invitations within a week. The process was fast, simple, and surprisingly accurate.",
-  },
-  {
-    name: "Makenna Lipshutz",
-    body: "The AI resume optimization made my profile much clearer and role-focused. I started getting relevant interviews quickly, and the suggestions were practical and easy to apply.",
-  },
-  {
-    name: "Carla Levin",
-    body: "Before using CVeeBee, I barely got any callbacks. After optimizing my keywords and rewriting my resume with the AI, I started receiving interview invitations within a week. The process was fast, simple, and surprisingly accurate.",
-  },
-  {
-    name: "Carter Franci",
-    body: "The recommendations helped me align my resume with job descriptions better. My response rate improved significantly and I could apply with more confidence.",
-  },
-  {
-    name: "Jakob Rosser",
-    body: "Before using CVeeBee, I barely got any callbacks. After optimizing my keywords and rewriting my resume with the AI, I started receiving interview invitations within a week. The process was fast, simple, and surprisingly accurate.",
-  },
-  {
-    name: "Nina Solberg",
-    body: "It gave me structure and clarity for each application. I now get more interview responses and spend less time guessing what to improve.",
-  },
-]
+type Review = {
+  quote: string
+  author: string
+}
 
-const firstColumn = reviews.filter((_, index) => index % 3 === 0)
-const secondColumn = reviews.filter((_, index) => index % 3 === 1)
-const thirdColumn = reviews.filter((_, index) => index % 3 === 2)
+const defaultReviews: Review[] = []
+
+const splitColumns = (items: Review[]) => {
+  const firstColumn = items.filter((_, index) => index % 3 === 0)
+  const secondColumn = items.filter((_, index) => index % 3 === 1)
+  const thirdColumn = items.filter((_, index) => index % 3 === 2)
+
+  return { firstColumn, secondColumn, thirdColumn }
+}
 
 const ReviewCard = ({
   name,
@@ -66,24 +53,28 @@ const ReviewCard = ({
 }
 
 export function MarqueeDemoVertical() {
+  const { t } = useTranslation('translation', { keyPrefix: 'testimonials' })
+  const reviews = (t('items', { returnObjects: true }) as Review[]) ?? defaultReviews
+  const { firstColumn, secondColumn, thirdColumn } = splitColumns(reviews)
+
   return (
     <div className="relative mx-auto mt-20 flex h-[760px] w-full max-w-[1128px] items-center justify-center overflow-hidden">
       <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-3">
         <Marquee pauseOnHover vertical className="[--duration:36s] [--gap:1.25rem]">
           {firstColumn.map((review) => (
-            <ReviewCard key={`${review.name}-col1`} {...review} />
+            <ReviewCard key={`${review.author}-col1`} name={review.author} body={review.quote} />
           ))}
         </Marquee>
 
         <Marquee reverse pauseOnHover vertical className="[--duration:34s] [--gap:1.25rem]">
           {secondColumn.map((review) => (
-            <ReviewCard key={`${review.name}-col2`} {...review} />
+            <ReviewCard key={`${review.author}-col2`} name={review.author} body={review.quote} />
           ))}
         </Marquee>
 
         <Marquee pauseOnHover vertical className="[--duration:38s] [--gap:1.25rem]">
           {thirdColumn.map((review) => (
-            <ReviewCard key={`${review.name}-col3`} {...review} />
+            <ReviewCard key={`${review.author}-col3`} name={review.author} body={review.quote} />
           ))}
         </Marquee>
       </div>
