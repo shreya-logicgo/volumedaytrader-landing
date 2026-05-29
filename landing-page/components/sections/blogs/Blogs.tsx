@@ -3,7 +3,7 @@
 import Badge from "@/components/ui/badge/Badge";
 import Heading from "@/components/ui/heading/Heading";
 import SubHeading from "@/components/ui/subheading/SubHeading";
-import Vector from "@/assets/icons/vector.svg";
+import Vector from "@/assets/icons/Vector.svg";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
