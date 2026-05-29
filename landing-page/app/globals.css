@@ -7,6 +7,9 @@
   --color-card-border: #1d1938;
   --color-secondary-text2: #767676;
   --color-secondary-text: #A7ADBE;
+  --color-tertiary-text: #F0F1F4;
+
+  
   
 }
 
@@ -14,6 +17,7 @@
   body {
     @apply bg-[#050024] ;
     font-family: var(--font-rethink);
+    overflow-x: hidden;
   }
 
   html {
@@ -34,7 +38,7 @@
 
   /* Subheading */
   .subheading-text {
-    @apply text-lg font-normal leading-none tracking-normal text-center text-secondary-text;
+    @apply text-lg font-normal leading-6 tracking-normal text-center text-secondary-text;
   }
 
   /* Card Heading */
