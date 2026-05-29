@@ -49,9 +49,9 @@ export default function Hero() {
         <FAQ />
         <Blogs />
       </Container>
+      <Footer />
  
 
-      <Footer />
       
     </div>
   );

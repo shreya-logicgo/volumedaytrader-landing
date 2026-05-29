@@ -8,6 +8,7 @@
   --color-secondary-text2: #767676;
   --color-secondary-text: #A7ADBE;
   --color-tertiary-text: #F0F1F4;
+  --color-button-bg: #FF2E2E;
 
 
   --breakpoint-sm: 640px;
@@ -88,6 +89,14 @@
 @layer components {
   .section-header-stack {
     @apply mx-auto pt-50 space-y-4;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-7 py-3 rounded-full text-white text-lg font-medium;
+    background-color: var(--color-button-bg);
+    box-shadow: 0 4px 14px rgba(255, 46, 46, 0.35);
   }
 }
 

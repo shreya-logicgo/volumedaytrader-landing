@@ -13,24 +13,28 @@ import {
 import Heading from '@/components/ui/heading/Heading'
 import SubHeading from '@/components/ui/subheading/SubHeading'
 
-import logo from '@/assets/logo/logo.svg'
+import Logo from '@/assets/logo/logo.svg'
 import sections from '@/assets/images/gradients/footer-gradient.png'
 import Vector from "@/assets/icons/vector.svg";
+import FooterBackground from '@/components/common/backgrounds/FooterBackground'
+import Container from '@/components/layout/container/Container'
 
 const Footer = () => {
     return (
         <footer className="relative overflow-hidden pt-20 pb-10 container-spacing">
+            <FooterBackground />
             {/* Background */}
-            <div className="absolute inset-0 bg-[#050024]" />
+            <Container>
+            <div className="absolute inset-0 " />
 
-            <Image
+            {/* <Image
                 src={sections}
                 alt="footer gradient"
                 className="absolute bottom-0 left-0 w-full opacity-40 pointer-events-none select-none"
-            />
+            /> */}
 
 
-            <div className="relative z-10 max-w-7xl mx-auto">
+            <div className="relative z-10 mx-auto">
                 {/* CTA */}
                 <div className="max-w-[760px] mx-auto text-center">
                     <div className="space-y-5">
@@ -38,10 +42,10 @@ const Footer = () => {
 
                         <SubHeading className="leading-6 max-w-[650px] mx-auto" text="Professional volume indicators and structured market insights designed for smarter trading decisions." />
 
-                       <button className="mt-3 inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#FF2E2E] shadow-[0_4px_14px_rgba(255,46,46,0.35)] text-white text-lg font-medium">
-  Get Access
-  <Vector className="h-3 w-3 shrink-0" aria-hidden="true" />
-</button>
+                        <button className="btn-primary mt-3">
+                            Get Access
+                            <Vector className="h-3 w-3 shrink-0" aria-hidden="true" />
+                        </button>
                     </div>
                 </div>
 
@@ -50,11 +54,7 @@ const Footer = () => {
                     {/* Left */}
                     <div className="space-y-8">
                         <div className="space-y-5">
-                            <img
-                                src={typeof logo === 'string' ? logo : logo.src}
-                                alt="logo"
-                                className="w-[220px] h-auto"
-                            />
+                            <Logo className="w-[303px] h-auto" role="img" aria-label="VDLTRA logo" />
 
                             <div className="space-y-3">
                                 <h3 className="text-white text-xl font-semibold">
@@ -182,6 +182,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
+            </Container>
         </footer>
     )
 }
