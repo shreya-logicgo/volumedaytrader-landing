@@ -5,7 +5,7 @@ import Link from "next/link";
 import blog1 from "@/assets/images/blog/blog-1.png";
 import blog2 from "@/assets/images/blog/blog-2.png";
 import blog3 from "@/assets/images/blog/blog-3.png";
-import Arrow from "@/assets/icons/arrow.svg";
+import Arrow from "@/assets/icons/Arrow.svg";
 
 type BlogCard = {
   key: "blog1" | "blog2" | "blog3";
@@ -84,7 +84,19 @@ const BlogsCards = () => {
               className="inline-flex items-center gap-2 text-[17px] font-medium text-secondary-text transition hover:text-white"
             >
               {blog.button}
-              <Arrow className="h-3 w-3" aria-hidden="true" />
+              {/* <Arrow className="h-3 w-3" aria-hidden="true" /> */}
+              <svg
+        viewBox="0 0 24 24"
+        className="h-4 w-4 shrink-0"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden
+    >
+        <path d="M7 17L17 7M17 7H9M17 7V15" />
+    </svg>
             </Link>
           </div>
         </article>

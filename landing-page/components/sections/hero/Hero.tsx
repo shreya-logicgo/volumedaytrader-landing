@@ -3,21 +3,8 @@
 import Image from "next/image"
 import { useTranslation } from "react-i18next"
 import HeroChart from "./HeroChart"
+import Vector from "@/assets/icons/Vector.svg";
 
-const ArrowUpRight = () => (
-    <svg
-        viewBox="0 0 24 24"
-        className="h-4 w-4 shrink-0"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        aria-hidden
-    >
-        <path d="M7 17L17 7M17 7H9M17 7V15" />
-    </svg>
-)
 
 function HeroFeatureTag({ label, compact }: { label: string; compact?: boolean }) {
     return (
@@ -128,14 +115,15 @@ export default function Hero() {
                         className="btn-primary w-full justify-center px-5 py-2.5 text-sm sm:w-auto sm:px-6 sm:py-3 sm:text-base 2xl:inline-flex 2xl:px-7 2xl:text-lg"
                     >
                         {t("hero.primaryButton")}
-                        <ArrowUpRight />
+                         <Vector className="block h-3 w-3" aria-hidden="true" />
                     </button>
                     <button
                         type="button"
                         className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#2B2A56] bg-[#0D082B]/80 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:border-[#3d3c6e] sm:w-auto sm:px-6 sm:text-base 2xl:px-7 2xl:py-3 2xl:text-lg"
                     >
                         {t("hero.secondaryButton")}
-                        <ArrowUpRight />
+                        {/* <ArrowUpRight /> */}
+                        <Vector className="block h-3 w-3" aria-hidden="true" />
                     </button>
                 </div>
 
