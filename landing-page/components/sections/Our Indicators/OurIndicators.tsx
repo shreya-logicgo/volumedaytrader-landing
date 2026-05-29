@@ -2,34 +2,36 @@ import React, { useState } from 'react'
 import Badge from '@/components/ui/badge/Badge'
 import Heading from '@/components/ui/heading/Heading'
 import SubHeading from '@/components/ui/subheading/SubHeading'
+import { useTranslation } from 'react-i18next'
 
 const highlights = [
-  'Understand demand and supply strength',
-  'Detect buyer vs seller pressure',
-  'Analyze momentum shifts more clearly',
-  'Identify stronger market participation',
-  'Improve structured decision-making',
-  'Reduce emotional trading behavior',
+  'content.points.point1',
+  'content.points.point2',
+  'content.points.point3',
+  'content.points.point4',
+  'content.points.point5',
+  'content.points.point6',
 ]
 
 const OurIndicators = () => {
-  const [activeTab, setActiveTab] = useState('Volume Edge')
+  const { t } = useTranslation('translation', { keyPrefix: 'ourIndicators' })
+  const [activeTab, setActiveTab] = useState('volumeEdge')
 
   return (
     <div className="section-pb">
     <section className="relative z-10 mx-auto">
       <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
-        <Badge text="Our Indicators" />
+        <Badge text={t('badge')} />
       </div>
 
       <div className="relative z-10 mx-auto text-center section-header-stack">
         <Heading
           className="max-w-3xl mx-auto"
-          text="Wyckoff Wave Volume Indicators Built For Smarter Market Analysis"
+          text={t('title')}
         />
         <SubHeading
           className="max-w-[820px] mx-auto leading-snug"
-          text="Professional volume-based indicators designed to help traders understand demand, supply, momentum, and market structure through structured chart analysis and real-time market behavior."
+          text={t('description')}
         />
       </div>
 
@@ -38,35 +40,35 @@ const OurIndicators = () => {
 
           <button
             type="button"
-            onClick={() => setActiveTab('Volume Edge')}
-            className={`rounded-lg px-5 py-2 text-lg font-medium transition-all ${activeTab === 'Volume Edge'
+            onClick={() => setActiveTab('volumeEdge')}
+            className={`rounded-lg px-5 py-2 text-lg font-medium transition-all ${activeTab === 'volumeEdge'
                 ? 'bg-tab-active text-white'
                 : 'text-secondary-text'
               }`}
           >
-            Volume Edge
+            {t('tabs.volumeEdge')}
           </button>
 
           <button
             type="button"
-            onClick={() => setActiveTab('Smart Profiles')}
-            className={`rounded-lg px-5 py-2 text-lg font-medium transition-all ${activeTab === 'Smart Profiles'
+            onClick={() => setActiveTab('smartProfits')}
+            className={`rounded-lg px-5 py-2 text-lg font-medium transition-all ${activeTab === 'smartProfits'
                 ? 'bg-tab-active text-white'
                 : 'text-secondary-text'
               }`}
           >
-            Smart Profiles
+            {t('tabs.smartProfits')}
           </button>
 
           <button
             type="button"
-            onClick={() => setActiveTab('Hidden Strategy')}
-            className={`rounded-lg px-5 py-2 text-lg font-medium transition-all ${activeTab === 'Hidden Strategy'
+            onClick={() => setActiveTab('hiddenStrategy')}
+            className={`rounded-lg px-5 py-2 text-lg font-medium transition-all ${activeTab === 'hiddenStrategy'
                 ? 'bg-tab-active text-white'
                 : 'text-secondary-text'
               }`}
           >
-            Hidden Strategy
+            {t('tabs.hiddenStrategy')}
           </button>
 
         </div>
@@ -76,12 +78,10 @@ const OurIndicators = () => {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_460px] lg:items-center">
           <div>
             <h3 className="text-left text-[40px] font-semibold leading-[1.1] text-white max-w-[560px]">
-              Wyckoff Wave Volume Indicators For Smart Market Analysis
+              {t('content.title')}
             </h3>
             <p className="mt-4 max-w-[560px] text-left text-lg leading-relaxed text-secondary-text">
-              The Wyckoff Wave Volume Indicator helps traders analyze real buying
-              and selling pressure by visualizing cumulative volume directly on
-              the chart.
+              {t('content.description')}
             </p>
 
             <ul className="mt-6 space-y-3">
@@ -99,7 +99,7 @@ const OurIndicators = () => {
                     </svg>
                   </span>
                   <span className="text-lg leading-snug text-secondary-text">
-                    {item}
+                    {t(item)}
                   </span>
                 </li>
               ))}

@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 
 import LanguageSwitcher from "@/components/common/LanguageSwitcher";
 import Container from "@/components/layout/container/Container";
+import Navbar from '@/components/common/navbar'
 
 import Testimonials from "@/components/sections/testimonials/Testimonials";
 import FAQ from "@/components/sections/faq/FAQ";
@@ -29,6 +30,7 @@ export default function Page() {
       {/* </div> */}
   
       <Container>
+        <Navbar />
         <Hero/>
         <TrustedLogos/>
         <OurServices />

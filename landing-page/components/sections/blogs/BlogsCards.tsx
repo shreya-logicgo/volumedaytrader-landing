@@ -5,7 +5,8 @@ import Link from "next/link";
 import blog1 from "@/assets/images/blog/blog-1.png";
 import blog2 from "@/assets/images/blog/blog-2.png";
 import blog3 from "@/assets/images/blog/blog-3.png";
-import Arrow from "@/assets/icons/Arrow.svg";
+import Arrow from "@/assets/icons/arrow.svg";
+import { useTranslation } from "react-i18next";
 
 type BlogCard = {
   key: "blog1" | "blog2" | "blog3";
@@ -48,6 +49,8 @@ const BLOGS: BlogCard[] = [
 ];
 
 const BlogsCards = () => {
+  const { t } = useTranslation('translation', { keyPrefix: 'blogs.cards' });
+
   return (
     <div className="grid grid-cols-1 gap-6 pt-18 md:grid-cols-2 xl:grid-cols-3">
       {BLOGS.map((blog) => (
@@ -69,34 +72,22 @@ const BlogsCards = () => {
           <div className="space-y-4 p-5">
             <div className="flex items-center gap-2 text-base text-secondary-text font-medium">
               <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
-                {blog.category}
+                {t(`${blog.key}.category`)}
               </span>
               <span>•</span>
-              <span>{blog.date}</span>
+              <span>{t(`${blog.key}.date`)}</span>
             </div>
 
             <h3 className="text-lg font-semibold leading-snug text-white">
-              {blog.title}
+              {t(`${blog.key}.title`)}
             </h3>
 
             <Link
               href="#"
               className="inline-flex items-center gap-2 text-[17px] font-medium text-secondary-text transition hover:text-white"
             >
-              {blog.button}
-              {/* <Arrow className="h-3 w-3" aria-hidden="true" /> */}
-              <svg
-        viewBox="0 0 24 24"
-        className="h-4 w-4 shrink-0"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        aria-hidden
-    >
-        <path d="M7 17L17 7M17 7H9M17 7V15" />
-    </svg>
+              {t(`${blog.key}.button`)}
+              <Arrow className="h-3 w-3" aria-hidden="true" />
             </Link>
           </div>
         </article>
