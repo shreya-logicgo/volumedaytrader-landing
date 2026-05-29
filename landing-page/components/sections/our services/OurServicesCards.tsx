@@ -88,7 +88,7 @@ const OurServicesCards = () => {
           className="card-ui rounded-3xl "
         >
           <div className="flex h-full flex-col gap-15">
-            <div className="flex h-16 w-16 items-center justify-center rounded-xl bg-[#FF2E2E] shadow-[0_4px_14px_rgba(255,46,46,0.35)]">
+            <div className="flex h-16 w-16 items-center justify-center rounded-xl service-icon-accent">
               {renderIcon(service.icon)}
             </div>
 

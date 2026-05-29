@@ -3,14 +3,47 @@
 @theme {
   --font-rethink: var(--font-rethink-sans), sans-serif;
 
+  /* Core surfaces */
   --color-card-bg: #0D082B;
   --color-card-border: #1d1938;
+
+  /* Accent / signals */
+  --color-service-accent: #FF2E2E;
+  --shadow-service-accent: 0px 4px 14px rgba(255, 46, 46, 0.35);
+
+  /* Signal/chart panel */
+  --color-signal-chart-bg: #111035;
+  --color-signal-chart-border: #23204A;
+  --color-signal-grid-1: #2A2957;
+  --color-signal-grid-2: #24224D;
+  --color-signal-panel-bg: #151032;
+  --color-signal-accent-light: #ff4747;
+
+  /* Indicator-specific */
+  --color-indicator-grid-1: #25306A;
+  --color-indicator-grid-2: #1f2754;
+  --color-indicator-path: #ff3b45;
+  --shadow-control-inset: inset 0px 1.41px 3.18px 0px rgba(255,255,255,0.5);
+
+  /* Tabs / pricing / other */
+  --color-tab-active: #ED1F24;
+  --color-ourind-image-border: #27224b;
+  --color-ourind-image-bg: #121041;
+
+  --color-pricing-header-bg: #1D1938;
+  --color-pricing-header-text: #EFF3FF;
+  --color-price-unit: #D4D4D8;
+  --color-oldprice-rgba: rgba(177,171,233,0.33);
+  --color-btn-border: #2B2A56;
+  --color-feature-text: #C4C8D4;
+
+  /* Typography */
   --color-secondary-text2: #767676;
   --color-secondary-text: #A7ADBE;
   --color-tertiary-text: #F0F1F4;
   --color-button-bg: #FF2E2E;
 
-
+  /* Breakpoints (convenience) */
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
@@ -18,7 +51,6 @@
   --breakpoint-2xl: 1536px;
   --breakpoint-3xl: 1920px;
   --breakpoint-4xl: 2560px;
-
 
 }
 
@@ -63,8 +95,43 @@
 
   /* Card UI */
   .card-ui {
-    @apply rounded-3xl border border-card-border bg-card-bg p-[30px] shadow-[0px_-4px_100px_21px_#18193333_inset];
+    @apply rounded-3xl border p-[30px] shadow-[0px_-4px_100px_21px_#18193333_inset];
+    border-color: var(--color-card-border);
+    background-color: var(--color-card-bg);
   }
+
+  /* Utility mappings to variables (used across components) */
+  .bg-card-bg { background-color: var(--color-card-bg); }
+  .border-card-border { border-color: var(--color-card-border); }
+  .text-secondary-text { color: var(--color-secondary-text); }
+
+  .service-icon-accent {
+    background-color: var(--color-service-accent);
+    box-shadow: var(--shadow-service-accent);
+  }
+
+  .indicator-chart-panel {
+    background-color: var(--color-signal-chart-bg);
+    border-color: var(--color-card-border);
+  }
+
+  .control-button {
+    background-color: var(--color-signal-panel-bg);
+    box-shadow: var(--shadow-control-inset);
+    color: white;
+  }
+
+  .bg-service-accent { background-color: var(--color-service-accent) !important; }
+  .bg-tab-active { background-color: var(--color-tab-active) !important; }
+  .bg-ourind-image-bg { background-color: var(--color-ourind-image-bg); }
+  .border-ourind-image-border { border-color: var(--color-ourind-image-border); }
+
+  /* Pricing-specific utilities */
+  .bg-pricing-header { background-color: var(--color-pricing-header-bg); }
+  .text-pricing-header { color: var(--color-pricing-header-text); }
+  .text-price-unit { color: var(--color-price-unit); }
+  .border-btn-border { border-color: var(--color-btn-border); }
+  .text-feature-text { color: var(--color-feature-text); }
 
   /* Card Layout */
   .card-content {
