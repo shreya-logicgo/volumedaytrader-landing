@@ -6,7 +6,7 @@ import IndicatorSystemCarousal from './IndicatorSystemCarousal'
 
 const IndicatorSystem = () => {
   return (
-    <div className='relative max-w-[2400px] z-10 mx-auto px-0'>
+    <div className='relative max-w-[2400px] z-10 mx-auto px-0 section-pb'>
       <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
         <Badge text='Indicator System' />
       </div>

@@ -65,7 +65,7 @@ const ChartPanel = ({
 
   return (
     // Single wrapper: rounded border, clips content, 16:9 ratio, no extra nesting
-    <div className="relative w-full overflow-hidden rounded-xl border border-[#1D1938] bg-[#111035] aspect-video">
+    <div className="relative w-full overflow-hidden rounded-xl border indicator-chart-panel aspect-video">
       {imageSrc && !imageFailed ? (
         <Image
           src={imageSrc}
@@ -78,12 +78,12 @@ const ChartPanel = ({
       ) : (
         <svg viewBox="0 0 260 120" className="absolute inset-0 h-full w-full p-3">
           {[16, 36, 56, 76, 96, 116].map((y) => (
-            <line key={y} x1="0" y1={y} x2="260" y2={y} stroke="#25306A" strokeDasharray="4 4" opacity="0.55" />
+            <line key={y} x1="0" y1={y} x2="260" y2={y} stroke="var(--color-indicator-grid-1)" strokeDasharray="4 4" opacity="0.55" />
           ))}
           {[20, 52, 84, 116, 148, 180, 212, 244].map((x) => (
-            <line key={x} x1={x} y1="0" x2={x} y2="120" stroke="#1f2754" opacity="0.5" />
+            <line key={x} x1={x} y1="0" x2={x} y2="120" stroke="var(--color-indicator-grid-2)" opacity="0.5" />
           ))}
-          <path d={path} fill="none" stroke="#ff3b45" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+          <path d={path} fill="none" stroke="var(--color-indicator-path)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       )}
     </div>
@@ -133,7 +133,7 @@ const IndicatorSystemCarousal = ({
           {slides.map((slide, idx) => (
             <article
               key={`${slide.title}-${idx}`}
-              className="shrink-0 rounded-3xl border border-[#1D1938] bg-[#0D082B] p-3
+              className="shrink-0 rounded-3xl border border-card-border bg-card-bg p-3
                          flex flex-col
                          xl:grid xl:grid-cols-[1.1fr_1fr]"
               style={{ width: `${slideWidthPct}%` }}
@@ -152,7 +152,7 @@ const IndicatorSystemCarousal = ({
                 <h3 className="card-heading text-left font-semibold text-white line-clamp-2">
                   {slide.title}
                 </h3>
-                <p className="card-desc mt-3 text-[#A7ADBE] line-clamp-4">
+                <p className="card-desc mt-3 text-secondary-text line-clamp-4">
                   {slide.subtitle}
                 </p>
                 <ul className="card-desc mt-4 line-clamp-4">
@@ -168,11 +168,11 @@ const IndicatorSystemCarousal = ({
 
       {/* Navigation */}
       <div className="mt-6 flex w-full items-center justify-center gap-3">
-        <button
+          <button
           type="button"
           onClick={() => canGoPrev && setActiveIndex((prev) => prev - 1)}
           disabled={!canGoPrev}
-          className="flex h-16 w-16 items-center justify-center rounded-full text-3xl shadow-[inset_0px_1.41px_3.18px_0px_#FFFFFF80] bg-[#151032] text-white disabled:cursor-not-allowed disabled:opacity-40 transition-opacity"
+          className="flex h-16 w-16 items-center justify-center rounded-full text-3xl control-button text-white disabled:cursor-not-allowed disabled:opacity-40 transition-opacity"
           aria-label="Previous"
         >
           &#8249;
@@ -181,7 +181,7 @@ const IndicatorSystemCarousal = ({
           type="button"
           onClick={() => canGoNext && setActiveIndex((prev) => prev + 1)}
           disabled={!canGoNext}
-          className="flex h-16 w-16 items-center justify-center rounded-full text-3xl shadow-[inset_0px_1.41px_3.18px_0px_#FFFFFF80] bg-[#151032] text-white disabled:cursor-not-allowed disabled:opacity-40 transition-opacity"
+          className="flex h-16 w-16 items-center justify-center rounded-full text-3xl control-button text-white disabled:cursor-not-allowed disabled:opacity-40 transition-opacity"
           aria-label="Next"
         >
           &#8250;

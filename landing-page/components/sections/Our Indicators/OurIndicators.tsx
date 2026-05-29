@@ -16,12 +16,13 @@ const OurIndicators = () => {
   const [activeTab, setActiveTab] = useState('Volume Edge')
 
   return (
+    <div className="section-pb">
     <section className="relative z-10 mx-auto">
       <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
         <Badge text="Our Indicators" />
       </div>
 
-      <div className="relative z-10 mx-auto text-center space-y-4 pt-50">
+      <div className="relative z-10 mx-auto text-center section-header-stack">
         <Heading
           className="max-w-3xl mx-auto"
           text="Wyckoff Wave Volume Indicators Built For Smarter Market Analysis"
@@ -33,14 +34,14 @@ const OurIndicators = () => {
       </div>
 
       <div className="mt-12 flex justify-center">
-        <div className="inline-flex items-center rounded-xl border border-[#1D1938] bg-[#0D082B] p-1">
+        <div className="inline-flex items-center rounded-xl border border-card-border bg-card-bg p-1">
 
           <button
             type="button"
             onClick={() => setActiveTab('Volume Edge')}
             className={`rounded-lg px-5 py-2 text-lg font-medium transition-all ${activeTab === 'Volume Edge'
-                ? 'bg-[#ED1F24] text-white'
-                : 'text-[#A7ADBE]'
+                ? 'bg-tab-active text-white'
+                : 'text-secondary-text'
               }`}
           >
             Volume Edge
@@ -50,8 +51,8 @@ const OurIndicators = () => {
             type="button"
             onClick={() => setActiveTab('Smart Profiles')}
             className={`rounded-lg px-5 py-2 text-lg font-medium transition-all ${activeTab === 'Smart Profiles'
-                ? 'bg-[#ED1F24] text-white'
-                : 'text-[#A7ADBE]'
+                ? 'bg-tab-active text-white'
+                : 'text-secondary-text'
               }`}
           >
             Smart Profiles
@@ -61,8 +62,8 @@ const OurIndicators = () => {
             type="button"
             onClick={() => setActiveTab('Hidden Strategy')}
             className={`rounded-lg px-5 py-2 text-lg font-medium transition-all ${activeTab === 'Hidden Strategy'
-                ? 'bg-[#ED1F24] text-white'
-                : 'text-[#A7ADBE]'
+                ? 'bg-tab-active text-white'
+                : 'text-secondary-text'
               }`}
           >
             Hidden Strategy
@@ -71,13 +72,13 @@ const OurIndicators = () => {
         </div>
       </div>
 
-      <div className="mt-8 rounded-3xl border border-[#1D1938] bg-[#0D082B] p-6 md:p-8">
+      <div className="mt-8 rounded-3xl border border-card-border bg-card-bg p-6 md:p-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_460px] lg:items-center">
           <div>
             <h3 className="text-left text-[40px] font-semibold leading-[1.1] text-white max-w-[560px]">
               Wyckoff Wave Volume Indicators For Smart Market Analysis
             </h3>
-            <p className="mt-4 max-w-[560px] text-left text-lg leading-relaxed text-[#A7ADBE]">
+            <p className="mt-4 max-w-[560px] text-left text-lg leading-relaxed text-secondary-text">
               The Wyckoff Wave Volume Indicator helps traders analyze real buying
               and selling pressure by visualizing cumulative volume directly on
               the chart.
@@ -86,7 +87,7 @@ const OurIndicators = () => {
             <ul className="mt-6 space-y-3">
               {highlights.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-left">
-                  <span className="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#FF2E2E]">
+                  <span className="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-service-accent">
                     <svg
                       viewBox="0 0 24 24"
                       className="h-3 w-3 fill-none stroke-white"
@@ -97,7 +98,7 @@ const OurIndicators = () => {
                       <path d="M5 13l4 4L19 7" />
                     </svg>
                   </span>
-                  <span className="text-lg leading-snug text-[#A7ADBE]">
+                  <span className="text-lg leading-snug text-secondary-text">
                     {item}
                   </span>
                 </li>
@@ -105,7 +106,7 @@ const OurIndicators = () => {
             </ul>
           </div>
 
-          <div className="overflow-hidden rounded-3xl border border-[#27224b] bg-[#121041]">
+          <div className="overflow-hidden rounded-3xl border border-ourind-image-border bg-ourind-image-bg">
             <img
               src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80"
               alt="Two traders analyzing charts together"
@@ -115,6 +116,7 @@ const OurIndicators = () => {
         </div>
       </div>
     </section>
+    </div>
   )
 }
 

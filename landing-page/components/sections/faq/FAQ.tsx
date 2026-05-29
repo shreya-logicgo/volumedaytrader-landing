@@ -54,13 +54,13 @@ export default function FAQ() {
 	);
 
 	return (
-		<section className="py-10 md:py-10">
+		<section className="section-pb">
 			<div className="mx-auto max-w-4xl text-center">
 				<div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
 					<Badge text={badgeText} />
 				</div>
 
-				<div className="relative z-10 mx-auto space-y-4 pt-50">
+				<div className="relative z-10 mx-auto section-header-stack">
 					<Heading className="mx-auto max-w-3xl" text={title} />
 					<SubHeading className="mx-auto max-w-2xl" text={description} />
 				</div>
