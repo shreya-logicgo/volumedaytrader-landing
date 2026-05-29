@@ -5,7 +5,7 @@ import Link from "next/link";
 import blog1 from "@/assets/images/blog/blog-1.png";
 import blog2 from "@/assets/images/blog/blog-2.png";
 import blog3 from "@/assets/images/blog/blog-3.png";
-import Arrow from "@/assets/icons/arrow.svg";
+import Arrow from "@/assets/icons/Arrow.svg";
 import { useTranslation } from "react-i18next";
 
 type BlogCard = {
