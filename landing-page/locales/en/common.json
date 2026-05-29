@@ -101,6 +101,29 @@
             }
         }
     },
+    "ptaReports": {
+        "badge": "PTA Signal Reports",
+        "title": "How Do PTA (Potential Trading Area) Signals Work?",
+        "description": "PTA signals analyze volume behavior and market structure to highlight potential buy zones, liquidity areas, and momentum shifts for tactical trading decisions.",
+        "cards": {
+            "buyZoneDetection": {
+                "title": "PTA Buy Zone Detection",
+                "desc": "Highlights probable buy zones by combining structured volume with recent price action to surface areas where buying pressure may resume."
+            },
+            "liquidityAnalysis": {
+                "title": "Volume & Liquidity Analysis",
+                "desc": "Analyzes volume clusters and liquidity to indicate potential breakout or distribution regions and assess trade conviction."
+            },
+            "marketStructureMapping": {
+                "title": "Market Structure Mapping",
+                "desc": "Tracks key support and resistance zones based on volume concentration and historical reactions."
+            },
+            "momentumConfirmation": {
+                "title": "Momentum Confirmation",
+                "desc": "Identifies momentum shifts using volume expansion and directional strength."
+            }
+        }
+    },
     "indicators": {
         "badge": "Indicator System",
         "title": "Wyckoff Wave Volume Indicators",
@@ -108,7 +131,20 @@
         "cards": {
             "waveIndicator": {
                 "title": "Wyckoff Wave Volume Indicator",
-                "desc": "The indicator helps traders identify buying and selling pressure by analyzing cumulative volume and market participation directly on the chart. Detect demand and supply strength Understand buyer vs seller pressure Identify momentum shifts Analyze volume-based market behavior"
+                "desc": "The indicator helps traders identify buying and selling pressure by analyzing cumulative volume and market participation directly on the chart. Detect demand and supply strength Understand buyer vs seller pressure Identify momentum shifts Analyze volume-based market behavior",
+                "slide1": {
+                    "point1": "Detect demand and supply strength",
+                    "point2": "Understand buyer vs seller pressure",
+                    "point3": "Identify momentum shifts",
+                    "point4": "Analyze volume-based market behavior"
+                },
+                "slide2": {
+                    "subtitle": "Read market turning points with structure-focused wave behavior and highlighted distribution or absorption zones.",
+                    "point1": "Track reaction highs and lows",
+                    "point2": "Spot distribution range areas",
+                    "point3": "Flag breakdown risk zones",
+                    "point4": "Improve structured market timing"
+                }
             }
         }
     },
@@ -182,7 +218,7 @@
                     "feature1": "Cumulative Volume Indicator: Wyckoff Wave Volume",
                     "feature2": "Cumulative Volume Indicator: Wyckoff Wave Chart",
                     "feature3": "Indicators run on the platform",
-                    "feature4": "Instructions for installing and adjusting the indicator to different videos"
+                    "feature4": "Instructions for installing and adjusting the indicator to different values"
                 }
             },
             "monthlyAccess": {
@@ -254,21 +290,6 @@
                     "feature9": "Advanced Forex + Price Action Course",
                     "feature10": "Binance for Beginners - Crypto Course",
                     "feature11": "Access to the Community"
-                },
-                "ptaReports": {
-                    "badge": "PTA Signal Reports",
-                    "title": "How Do PTA (Potential Trading Area) Signals Work?",
-                    "description": "PTA signals help traders identify important market zones using volume behavior, momentum analysis, and structured market movement interpretation.",
-                    "cards": {
-                        "buyZoneDetection": {
-                            "title": "PTA Buy Zone Detection",
-                            "desc": "Potential Trading Areas are identified when volume activity and market structure suggest stronger buyer participation and possible momentum continuation."
-                        },
-                        "liquidityAnalysis": {
-                            "title": "Volume & Liquidity Analysis",
-                            "desc": "The PTA workflow combines price action, volume pressure, and liquidity behavior to help traders better understand market direction and reactions."
-                        }
-                    }
                 }
             }
         }
@@ -300,6 +321,9 @@
         "badge": "FAQ's",
         "title": "Frequently Asked Questions",
         "description": "Everything you need to know about the platform, indicators, access, and trading workflow.",
+        "searchPlaceholder": "Search FAQs",
+        "clearSearch": "Clear search",
+        "noResults": "No results found for \"{{searchTerm}}\"",
         "questions": {
             "question1": {
                 "question": "What are volume indicators?",
@@ -385,6 +409,7 @@
             "support": "Support",
             "affiliateSupport": "Affiliate Support"
         },
-        "riskDisclaimer": "Risk Disclaimer: Trading financial instruments carries a high level of risk and may not be suitable for all investors. Past performance is not indicative of future results. The content on VOLTRA.fi is for educational purposes only and does not constitute financial advice. Trade at your own risk."
+        "riskDisclaimerLabel": "Risk Disclaimer:",
+        "riskDisclaimer": "Trading financial instruments carries a high level of risk and may not be suitable for all investors. Past performance is not indicative of future results. The content on VOLTRA.fi is for educational purposes only and does not constitute financial advice. Trade at your own risk."
     }
 }

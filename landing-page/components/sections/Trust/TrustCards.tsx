@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface TrustCardItem {
   value: string
@@ -14,31 +15,29 @@ interface TrustCardsProps {
 const defaultItems: TrustCardItem[] = [
   {
     value: '14,200+',
-    title: 'Active Traders',
-    description:
-      'A growing trading community focused on structured analysis, market education, and volume-based trading strategies.',
+    title: 'stats.activeTraders.title',
+    description: 'stats.activeTraders.desc',
   },
   {
     value: '82%',
-    title: 'User Satisfaction',
-    description:
-      'Built around structured market analysis and educational resources designed to improve trading clarity and confidence.',
+    title: 'stats.userSatisfaction.title',
+    description: 'stats.userSatisfaction.desc',
   },
   {
     value: '4.7',
-    title: 'Community Rating',
-    description:
-      'Trusted by traders for professional indicators, PTA reports, and volume-based market analysis workflows.',
+    title: 'stats.communityRating.title',
+    description: 'stats.communityRating.desc',
   },
   {
     value: '14,200+',
-    title: 'Global Trading Community',
-    description:
-      'Access educational trading content, indicators, and market insights anytime from anywhere in the world.',
+    title: 'stats.globalCommunity.title',
+    description: 'stats.globalCommunity.desc',
   },
 ]
 
 const TrustCards = ({ items = defaultItems, className = '' }: TrustCardsProps) => {
+  const { t } = useTranslation('translation', { keyPrefix: 'trust' })
+
   return (
     <div
       className={`grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4 ${className}`.trim()}
@@ -55,10 +54,10 @@ const TrustCards = ({ items = defaultItems, className = '' }: TrustCardsProps) =
 
             <div className="space-y-4  ">
               <h3 className="card-heading text-left w-full  font-semibold leading-tight text-white">
-                {item.title}
+                {t(item.title)}
               </h3>
               <p className="card-desc line-clamp-4 text-left text-base max-w-[265px]">
-                {item.description}
+                {t(item.description)}
               </p>
             </div>
           </div>
