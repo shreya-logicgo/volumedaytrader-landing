@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Chart from '@/assets/images/chart/chart2.png'
 
@@ -10,6 +10,7 @@ import {
   CarouselItem,
   CarouselApi,
 } from '@/components/ui/carousel'
+import { cn } from '@/lib/utils'
 
 interface PTACardItem {
   title: string
@@ -50,35 +51,57 @@ const PTACards = ({
   className = '',
   setApi,
 }: PTACardsProps) => {
+  const apiRef = useRef<CarouselApi | undefined>(undefined)
+
+  const handleSetApi = useCallback(
+    (api: CarouselApi) => {
+      apiRef.current = api
+      setApi?.(api)
+    },
+    [setApi]
+  )
+
+  useEffect(() => {
+    const onResize = () => apiRef.current?.reInit()
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+
   return (
     <Carousel
       opts={{
         align: 'start',
+        loop: false,
+        slidesToScroll: 1,
+        containScroll: 'trimSnaps',
+        dragFree: false,
       }}
-      setApi={setApi}
-      className={className}
+      setApi={handleSetApi}
+      className={cn('w-full', className)}
     >
-      <CarouselContent>
+      <CarouselContent className="ml-0 2xl:-ml-4">
         {items.map((item) => (
           <CarouselItem
             key={item.title}
-            className="md:basis-1/2"
+            className="basis-full !pl-0 2xl:basis-1/2 2xl:!pl-4"
           >
-            <article className="overflow-hidden rounded-2xl flex flex-col gap-5 pt-6 px-6 pb-6 border border-[#1D1938] bg-[#0D082B] h-full">
-              <Image
-                src={Chart}
-                alt={item.title}
-                width={526}
-                height={324}
-                className="w-full h-[324px] object-cover rounded-[20px]"
-              />
+            <article className="flex h-full flex-col gap-4 overflow-hidden rounded-2xl border border-[#1D1938] bg-[#0D082B] p-4 sm:gap-5 sm:p-5 md:p-6">
+              <div className="relative aspect-[526/324] w-full overflow-hidden rounded-xl sm:rounded-[20px]">
+                <Image
+                  src={Chart}
+                  alt={item.title}
+                  fill
+                  sizes="(max-width: 1535px) min(100vw, 1165px), 560px"
+                  className="object-cover"
+                  priority={item.title === defaultItems[0].title}
+                />
+              </div>
 
-              <div className="flex flex-col gap-4">
-                <h3 className="card-heading text-left font-semibold text-white">
+              <div className="flex flex-col gap-3 sm:gap-4">
+                <h3 className="card-heading text-left text-lg font-semibold text-white sm:text-xl">
                   {item.title}
                 </h3>
-
-                <p className="card-desc text-left text-[#A7ADBE]">
+                <p className="card-desc text-left text-sm leading-relaxed text-[#A7ADBE] sm:text-base">
                   {item.description}
                 </p>
               </div>
