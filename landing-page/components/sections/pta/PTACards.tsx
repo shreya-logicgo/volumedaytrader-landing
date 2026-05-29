@@ -31,7 +31,7 @@ const PTACards = ({ items = defaultItems, className = '' }: PTACardsProps) => {
       {items.map((item) => (
         <article
           key={item.title}
-          className="overflow-hidden rounded-2xl flex flex-col gap-8 pt-6 px-6 pb-6 border border-[#1D1938] bg-[#0D082B]"
+          className="overflow-hidden rounded-2xl flex flex-col gap-5 pt-6 px-6 pb-6 border border-[#1D1938] bg-[#0D082B]"
         >
           <div>
             {/* Use next/image which accepts StaticImageData imports */}
@@ -45,11 +45,11 @@ const PTACards = ({ items = defaultItems, className = '' }: PTACardsProps) => {
             />
           </div>
 
-          <div className="rounded-[20px] border-t bg-[#151032] p-6 flex flex-col gap-4">
-            <h3 className="text-left font-semibold leading-tight text-white card-heading">
+          <div className="rounded-[20px]  flex flex-col gap-4">
+            <h3 className="text-left font-semibold leading-tight text-white card-heading mt-2">
               {item.title}
             </h3>
-            <p className="card-desc mt-2 text-left text-[#A7ADBE]">
+            <p className="card-desc text-left text-[#A7ADBE] ">
               {item.description}
             </p>
           </div>

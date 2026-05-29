@@ -17,7 +17,9 @@ export default function Hero() {
         <OurServices />
         <Trust />
         <SignalsAndIndicators />
+        <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-0" >
         <PTA />
+        </div>
         <Wyckoff />
         <FAQ />
         <Blogs />

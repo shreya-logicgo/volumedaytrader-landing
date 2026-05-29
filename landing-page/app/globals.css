@@ -17,6 +17,7 @@
   body {
     @apply bg-[#050024] ;
     font-family: var(--font-rethink);
+    overflow-x: hidden;
   }
 
   html {
@@ -37,7 +38,7 @@
 
   /* Subheading */
   .subheading-text {
-    @apply text-lg font-normal leading-none tracking-normal text-center text-secondary-text;
+    @apply text-lg font-normal leading-6 tracking-normal text-center text-secondary-text;
   }
 
   /* Card Heading */
