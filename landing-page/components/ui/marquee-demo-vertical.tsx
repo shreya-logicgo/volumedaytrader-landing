@@ -47,10 +47,12 @@ const ReviewCard = ({
         "relative w-full max-w-[340px] text-[18px] overflow-hidden rounded-2xl border border-[#1D1938] bg-[#0D082B] p-6 text-left shadow-[0px_-4px_70px_10px_#1819332B_inset]"
       )}
     >
-      <div className="mb-4 text-5xl font-bold leading-none text-[#ff2e2e]">❝</div>
+      <div className="mb-4  font-bold leading-none text-[#ff2e2e]">
+        <img src="/assets/icons/quote.svg" alt="quote" className="h-10 w-11 object-contain" />
+      </div>
 
       <blockquote className=" leading-[1.45] text-[#A7ADBE]">
-        {body}
+        "{body}"
       </blockquote>
 
       <div className="mt-5 flex items-center gap-3">
@@ -70,7 +72,7 @@ export function MarqueeDemoVertical() {
         <Marquee pauseOnHover vertical className="[--duration:36s] [--gap:1.25rem]">
           {firstColumn.map((review) => (
             <ReviewCard key={`${review.name}-col1`} {...review} />
-        ))}
+          ))}
         </Marquee>
 
         <Marquee reverse pauseOnHover vertical className="[--duration:34s] [--gap:1.25rem]">
@@ -85,7 +87,7 @@ export function MarqueeDemoVertical() {
           ))}
         </Marquee>
       </div>
-{/* 
+      {/* 
       <div className="pointer-events-none absolute inset-y-0 left-0 w-28 bg-gradient-to-r from-[#050024] to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-28 bg-gradient-to-l from-[#050024] to-transparent" /> */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#050024] to-transparent" />

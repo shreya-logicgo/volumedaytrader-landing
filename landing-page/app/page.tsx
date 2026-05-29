@@ -18,7 +18,10 @@ export default function Hero() {
   const { t } = useTranslation();
 
   return (
-    <div className="mt-20 ">
+    <div className="mt-20  bg-amber-5">
+      {/* <div className="relative bg-amber-100 h-50 w-full"> */}
+        
+      {/* </div> */}
       <Container>
         <OurServices />
         <Trust />

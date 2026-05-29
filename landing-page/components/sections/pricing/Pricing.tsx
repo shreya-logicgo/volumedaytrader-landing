@@ -5,6 +5,7 @@ import SubHeading from '@/components/ui/subheading/SubHeading'
 
 interface PricingPlan {
   tag: string
+  svg?: string
   title: string
   oldPrice?: string
   price: string
@@ -18,6 +19,7 @@ interface PricingPlan {
 const plans: PricingPlan[] = [
   {
     tag: 'BEST INDICATORS',
+    svg: '/assets/icons/star1.svg',
     title: 'WYCKOFF INDICATORS',
     price: '$67',
     priceUnit: '/Monthly',
@@ -32,6 +34,7 @@ const plans: PricingPlan[] = [
   },
   {
     tag: 'RECURRING PAYMENT',
+    svg: '/assets/icons/star2.svg',
     title: 'MONTHLY ACCESS',
     price: '$87',
     priceUnit: '/Monthly',
@@ -50,6 +53,7 @@ const plans: PricingPlan[] = [
   },
   {
     tag: 'LIMITED TIME OFFER',
+    svg: '/assets/icons/star3.svg',
     title: 'ANNUAL ACCESS',
     oldPrice: '$1,700',
     price: '$850',
@@ -72,6 +76,7 @@ const plans: PricingPlan[] = [
   },
   {
     tag: 'MOST POPULAR',
+    svg: '/assets/icons/star4.svg',
     title: 'LIFETIME ACCESS',
     oldPrice: '$6,250',
     price: '$1,250',
@@ -114,54 +119,53 @@ const Pricing = () => {
         {plans.map((plan) => (
           <article
             key={plan.title}
-            className={`min-w-0 overflow-hidden rounded-2xl border ${
-              plan.popular
-                ? 'border-[#ff2e2e] bg-[#0B082B] shadow-[0_0_0_1px_rgba(255,46,46,0.2)_inset]'
-                : 'border-[#1D1938] bg-[#0D082B]'
-            }`}
+            className={`min-w-0 xl:max-h-fit  overflow-hidden rounded-3xl p-0.5   ${plan.popular
+              ? 'bg-[#ED1F24]   shadow-[0_0_0_1px_rgba(255,46,46,0.2)_inset]'
+              : 'bg-[#1D1938] '
+              }`}
           >
             <div
-              className={`px-4 py-2 text-center text-xs font-semibold ${
-                plan.popular ? 'bg-[#ff2e2e] text-white' : 'bg-[#121041] text-[#cfd4ff]'
-              }`}
+              className={`px-4 py-2 text-center text-lg font-semibold ${plan.popular ? 'bg-[#ff2e2e] text-white' : 'bg-[#1D1938] text-[#EFF3FF]'
+                }`}
             >
               {plan.tag}
             </div>
 
-            <div className="p-5">
-              <h3 className="break-words text-sm font-semibold uppercase tracking-wide text-white">{plan.title}</h3>
-
+            <div className="p-5 bg-[#0D082B] rounded-3xl xl:h-fit h-[730px] ">
+              <h3 className="break-words flex  items-center text-sm font-semibold uppercase tracking-wide text-white">
+                <span>{plan.svg && <img src={plan.svg} alt={plan.title} className="h-6 w-6 inline-block mr-2" />}</span>
+                {plan.title}
+              </h3>
               <div className="mt-4 flex items-end gap-2">
                 {plan.oldPrice ? (
-                  <span className="text-xl text-[#7A7F99] line-through">{plan.oldPrice}</span>
+                  <span className="text-[32px] font-bold text-[rgba(177,171,233,0.33)] line-through">{plan.oldPrice}</span>
                 ) : null}
               </div>
 
               <div className="mt-1 flex flex-wrap items-end gap-2">
-                <span className="text-4xl font-semibold leading-none text-white sm:text-5xl">{plan.price}</span>
-                <span className="pb-1 text-base text-[#A7ADBE]">{plan.priceUnit}</span>
+                <span className="text-4xl font-semibold leading-none text-white sm:text-[40px]">{plan.price}</span>
+                <span className="pb-1 text-base text-[#D4D4D8]">{plan.priceUnit}</span>
                 {plan.discount ? (
-                  <span className="pb-1 text-xs font-semibold text-[#A7ADBE]">{plan.discount}</span>
+                  <span className="my-auto text-base  font-medium text-white">{plan.discount}</span>
                 ) : null}
               </div>
 
-              <p className="mt-3 text-sm text-[#7E839E]">No contracts. Cancel anytime.</p>
+              <p className="mt-3 text-base text-[#A7ADBE]">No contracts. Cancel anytime.</p>
 
               <button
                 type="button"
-                className={`mt-5 w-full rounded-full py-2.5 text-sm font-semibold ${
-                  plan.popular
-                    ? 'bg-[#ff2e2e] text-white'
-                    : 'border border-[#2B2A56] bg-[#151341] text-white'
-                }`}
+                className={`mt-5 w-full rounded-full py-2.5 text-lg font-medium shadow-[inset_0px_1px_3.18px_0px_#FFFFFF80]  ${plan.popular
+                  ? 'bg-[#ff2e2e] text-white'
+                  : 'border border-[#2B2A56] bg-[#151032] text-white'
+                  }`}
               >
                 {plan.cta}
               </button>
 
-              <p className="mt-6 text-sm font-semibold text-white">What&apos;s included:</p>
+              <p className="mt-6 text-lg font-semibold text-white">What&apos;s included:</p>
               <ul className="mt-3 space-y-2">
                 {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2 text-sm leading-relaxed text-[#A7ADBE]">
+                  <li key={feature} className="flex items-start gap-2 text-lg leading-snug text-[#C4C8D4]">
                     <span className="mt-1 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#FF2E2E]">
                       <svg
                         viewBox="0 0 24 24"

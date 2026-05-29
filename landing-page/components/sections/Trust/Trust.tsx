@@ -7,6 +7,13 @@ import TrustCards from './TrustCards'
 const Trust = () => {
     return (
         <div className=" font-bold  mt-20">
+            {/* <div className="relative">
+                <img
+                    src="/assets/images/side_shadow.png"
+                    alt="side shadow"
+                    className="absolute object-cover opacity-100 z-10"
+                />
+            </div> */}
             <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
                 <Badge text='Trust' />
             </div>
