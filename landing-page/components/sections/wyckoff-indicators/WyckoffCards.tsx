@@ -3,7 +3,7 @@ import Wyckoff1 from '@/assets/images/wyckoff/wyckoff-1.png'
 import Wyckoff2 from '@/assets/images/wyckoff/wyckoff-2.png'
 import Wyckoff3 from '@/assets/images/wyckoff/wyckoff-3.png'
 import Wyckoff4 from '@/assets/images/wyckoff/wyckoff-4.png'
-import { StaticImageData } from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 
 
 interface WyckoffCardItem {
@@ -55,8 +55,14 @@ const WyckoffCards = ({
           key={item.title}
           className="overflow-hidden rounded-2xl flex flex-col gap-10 pt-10 px-[14px] pb-[14px] border border-[#1D1938] bg-[#0D082B]"
         >
-          <div>
-            <img width={550} height={302} src="/assets/images/trade.png" alt={item.title} className="mx-auto rounded-[20px]" />
+           <div>
+            <Image
+              src={item.image}
+              alt={item.title}
+              width={550}
+              height={302}
+              className="mx-auto rounded-[20px] "
+            />
           </div>
 
           <div className="rounded-[20px] border-t bg-[#151032] p-5 flex flex-col gap-4">
