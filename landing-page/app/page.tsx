@@ -17,16 +17,20 @@ import Testimonials from "@/components/sections/testimonials/Testimonials";
 import FAQ from "@/components/sections/faq/FAQ";
 import Wyckoff from "@/components/sections/wyckoff-indicators/Wyckoff";
 import PTA from "@/components/sections/pta/PTA";
+import TrustedLogos from "@/components/sections/TrustedLogos/TrustedLogos";
+import Hero from "@/components/sections/hero/Hero";
 
 
-export default function Hero() {
+export default function Page() {
   return (
-    <div className="mt-20  bg-amber-5">
+    <div className="mt-20">
       {/* <div className="relative bg-amber-100 h-50 w-full"> */}
 
       {/* </div> */}
   
       <Container>
+        <Hero/>
+        <TrustedLogos/>
         <OurServices />
         <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-0" >
         <Trust />

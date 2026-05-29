@@ -1,43 +1,18 @@
-import React from 'react'
+import type { FC, SVGProps } from 'react'
+
 import ChartIcon from '@/assets/icons/chart.svg'
-import MarketAnalysisIcon from '@/assets/icons/market.svg'
+import MarketIcon from '@/assets/icons/market.svg'
 import GaugeIcon from '@/assets/icons/gauge.svg'
 import GradIcon from '@/assets/icons/grad.svg'
 import UsersGrpIcon from '@/assets/icons/users-grp.svg'
 import ChalkBoardIcon from '@/assets/icons/chalk-board.svg'
 
-
+type SvgIcon = FC<SVGProps<SVGElement>>
 
 interface ServiceCard {
   title: string
   description: string
-  icon: unknown
-}
-
-const renderIcon = (icon: unknown) => {
-  if (React.isValidElement(icon)) {
-    return icon
-  }
-
-  if (typeof icon === 'function') {
-    const IconComponent = icon as React.ComponentType
-
-    return <IconComponent />
-  }
-
-  if (typeof icon === 'string') {
-    return <img src={icon} alt="" aria-hidden="true" className="h-8 w-8" />
-  }
-
-  if (icon && typeof icon === 'object' && 'src' in icon) {
-    const { src } = icon as { src?: string }
-
-    if (src) {
-      return <img src={src} alt="" aria-hidden="true" className="h-8 w-8" />
-    }
-  }
-
-  return null
+  icon: SvgIcon
 }
 
 const services: ServiceCard[] = [
@@ -51,7 +26,7 @@ const services: ServiceCard[] = [
     title: 'Market Analysis',
     description:
       'Daily Forex, Crypto, Stocks, Futures, and Indices analysis powered by volume and structure.',
-    icon: MarketAnalysisIcon,
+    icon: MarketIcon,
   },
   {
     title: 'Premium Indicators',
@@ -82,27 +57,24 @@ const services: ServiceCard[] = [
 const OurServicesCards = () => {
   return (
     <div className="grid grid-cols-1 gap-6 pt-10 sm:grid-cols-2 lg:grid-cols-3">
-      {services.map((service) => (
-        <article
-          key={service.title}
-          className="card-ui rounded-3xl "
-        >
-          <div className="flex h-full flex-col gap-15">
-            <div className="flex h-16 w-16 items-center justify-center rounded-xl service-icon-accent">
-              {renderIcon(service.icon)}
-            </div>
+      {services.map((service) => {
+        const Icon = service.icon
 
-            <div className="flex flex-col gap-4 ">
-              <h3 className="text-left card-heading">
-                {service.title}
-              </h3>
-              <p className="text-left card-desc">
-                {service.description}
-              </p>
+        return (
+          <article key={service.title} className="card-ui rounded-3xl">
+            <div className="flex h-full flex-col gap-15">
+              <div className="flex h-16 w-16 items-center justify-center rounded-xl service-icon-accent">
+                <Icon className="h-8 w-8" aria-hidden />
+              </div>
+
+              <div className="flex flex-col gap-4">
+                <h3 className="card-heading text-left">{service.title}</h3>
+                <p className="card-desc text-left">{service.description}</p>
+              </div>
             </div>
-          </div>
-        </article>
-      ))}
+          </article>
+        )
+      })}
     </div>
   )
 }

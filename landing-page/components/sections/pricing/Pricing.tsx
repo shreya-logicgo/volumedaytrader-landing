@@ -102,7 +102,7 @@ const plans: PricingPlan[] = [
 
 const Pricing = () => {
   return (
-    <section className="relative max-w-[1480px] z-10 mx-auto px-0 section-pb">
+    <section className="relative max-w-[1480px] z-10 mx-auto section-pb px-4 sm:px-6 2xl:px-0 ">
       <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
         <Badge text="Pricing" />
       </div>
