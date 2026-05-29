@@ -41,12 +41,12 @@ const defaultItems: SignalCardItem[] = [
 
 const ChartPreview = ({ path }: { path: string }) => {
   return (
-    <div className="relative w-full overflow-hidden rounded-xl border border-[#23204A] bg-[#111035] p-2">
+    <div className="relative w-full overflow-hidden rounded-xl border border-signal-chart-border bg-signal-chart-bg p-2">
       <svg viewBox="0 0 324 140" className="h-[150px] w-full">
         <defs>
           <linearGradient id="signalLine" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#ff4747" />
-            <stop offset="100%" stopColor="#ff2e2e" />
+            <stop offset="0%" stopColor="var(--color-signal-accent-light)" />
+            <stop offset="100%" stopColor="var(--color-service-accent)" />
           </linearGradient>
         </defs>
 
@@ -57,7 +57,7 @@ const ChartPreview = ({ path }: { path: string }) => {
             y1={y}
             x2="324"
             y2={y}
-            stroke="#2A2957"
+            stroke="var(--color-signal-grid-1)"
             strokeDasharray="4 4"
             strokeWidth="1"
             opacity="0.55"
@@ -71,7 +71,7 @@ const ChartPreview = ({ path }: { path: string }) => {
             y1="0"
             x2={x}
             y2="140"
-            stroke="#24224D"
+            stroke="var(--color-signal-grid-2)"
             strokeWidth="1"
             opacity="0.4"
           />
@@ -87,7 +87,7 @@ const ChartPreview = ({ path }: { path: string }) => {
         />
       </svg>
 
-      <span className="absolute bottom-5 right-4 rounded-md bg-[#FF2E2E] px-2 py-1 text-[10px] font-semibold text-white">
+      <span className="absolute bottom-5 right-4 rounded-md bg-service-accent px-2 py-1 text-[10px] font-semibold text-white">
         PTA Signals
       </span>
     </div>
@@ -103,18 +103,18 @@ const SignalsAndIndicatorsCards = ({
       {items.map((item) => (
         <article
           key={item.title}
-          className="overflow-hidden rounded-2xl flex flex-col gap-10 pt-10 px-[14px] pb-[14px] border border-[#1D1938] bg-[#0D082B]"
+          className="overflow-hidden rounded-2xl flex flex-col gap-10 pt-10 px-[14px] pb-[14px] border border-card-border bg-card-bg"
         >
           <div className="">
             <img width={550} height={302} src="/assets/images/trade.png" alt={item.title} className=" mx-auto rounded-[20px]" />
             {/* <ChartPreview path={item.linePath} /> */}
           </div>
 
-          <div className="border-t  bg-[#151032] p-5  rounded-[20px] flex flex-col gap-4">
+          <div className="border-t  bg-signal-panel-bg p-5  rounded-[20px] flex flex-col gap-4">
             <h3 className="text-left  font-semibold leading-tight text-white card-heading">
               {item.title}
             </h3>
-            <p className="card-desc mt-2 text-left  text-[#A7ADBE]">
+            <p className="card-desc mt-2 text-left  text-secondary-text">
               {item.description}
             </p>
           </div>
