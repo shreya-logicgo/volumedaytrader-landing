@@ -14,12 +14,13 @@ const highlights = [
 
 const OurIndicators = () => {
   return (
+    <div className="section-pb">
     <section className="relative z-10 mx-auto">
       <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
         <Badge text="Our Indicators" />
       </div>
 
-      <div className="relative z-10 mx-auto text-center space-y-4 pt-50">
+      <div className="relative z-10 mx-auto text-center section-header-stack">
         <Heading
           className="max-w-3xl mx-auto"
           text="Wyckoff Wave Volume Indicators Built For Smarter Market Analysis"
@@ -97,6 +98,7 @@ const OurIndicators = () => {
         </div>
       </div>
     </section>
+    </div>
   )
 }
 

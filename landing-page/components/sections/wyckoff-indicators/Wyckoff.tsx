@@ -6,13 +6,13 @@ import WyckoffCards from '@/components/sections/wyckoff-indicators/WyckoffCards'
 
 const Wyckoff = () => {
     return (
-        <section className="py-20 md:py-28">
+        <section className="section-pb">
             <div className="mx-auto max-w-4xl text-center">
                 <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
                     <Badge text='Wyckoff Indicators' />
                 </div>
 
-                <div className="relative z-10 mx-auto space-y-4 pt-50">
+                <div className="relative z-10 mx-auto section-header-stack">
                     <Heading className='max-w-3xl mx-auto' text="How Do Wyckoff Indicators Work?" />
                     <SubHeading
                         className='max-w-2xl mx-auto'

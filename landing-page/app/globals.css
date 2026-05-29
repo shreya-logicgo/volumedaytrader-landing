@@ -9,13 +9,21 @@
   --color-secondary-text: #A7ADBE;
   --color-tertiary-text: #F0F1F4;
 
-  
-  
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  --breakpoint-3xl: 1920px;
+  --breakpoint-4xl: 2560px;
+
+
 }
 
 @layer base {
   body {
-    @apply bg-[#050024] ;
+    @apply bg-[#050024];
     font-family: var(--font-rethink);
     overflow-x: hidden;
   }
@@ -26,6 +34,7 @@
 }
 
 @layer components {
+
   /* Badge */
   .badge-text {
     @apply text-base font-medium leading-6 text-center;
@@ -71,11 +80,23 @@
   }
 }
 
+
+.section-pb {
+  @apply pb-10 md:pb-20 xl:pb-22 2xl:pb-24 3xl:pb-26;
+}
+
+@layer components {
+  .section-header-stack {
+    @apply mx-auto pt-50 space-y-4;
+  }
+}
+
 @layer utilities {
   @keyframes marquee {
     from {
       transform: translateX(0);
     }
+
     to {
       transform: translateX(calc(-100% - var(--gap)));
     }
@@ -85,6 +106,7 @@
     from {
       transform: translateY(0);
     }
+
     to {
       transform: translateY(calc(-100% - var(--gap)));
     }
