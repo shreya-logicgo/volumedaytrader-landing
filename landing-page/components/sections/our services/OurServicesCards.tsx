@@ -11,8 +11,8 @@ import { useTranslation } from 'react-i18next'
 type SvgIcon = FC<SVGProps<SVGElement>>
 
 interface ServiceCard {
-  title: string
-  description: string
+  titleKey: string
+  descriptionKey: string
   icon: SvgIcon
 }
 
@@ -23,9 +23,8 @@ const services: ServiceCard[] = [
     icon: ChartIcon,
   },
   {
-    title: 'Market Analysis',
-    description:
-      'Daily Forex, Crypto, Stocks, Futures, and Indices analysis powered by volume and structure.',
+    titleKey: 'cards.marketAnalysis.title',
+    descriptionKey: 'cards.marketAnalysis.desc',
     icon: MarketIcon,
   },
   {
@@ -59,15 +58,15 @@ const OurServicesCards = () => {
         const Icon = service.icon
 
         return (
-          <article key={service.title} className="card-ui rounded-3xl">
+          <article key={service.titleKey} className="card-ui rounded-3xl">
             <div className="flex h-full flex-col gap-15">
               <div className="flex h-16 w-16 items-center justify-center rounded-xl service-icon-accent">
                 <Icon className="h-8 w-8" aria-hidden />
               </div>
 
               <div className="flex flex-col gap-4">
-                <h3 className="card-heading text-left">{service.title}</h3>
-                <p className="card-desc text-left">{service.description}</p>
+                <h3 className="card-heading text-left">{t(service.titleKey)}</h3>
+                <p className="card-desc text-left">{t(service.descriptionKey)}</p>
               </div>
             </div>
           </article>

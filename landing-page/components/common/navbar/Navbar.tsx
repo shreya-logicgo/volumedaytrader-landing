@@ -96,7 +96,7 @@ export default function Navbar() {
           className={`pointer-events-auto relative flex min-h-[68px] w-full items-center justify-between gap-3 rounded-full border px-4 py-3 text-[15px] font-medium tracking-[-0.01em] backdrop-blur-2xl transition-all duration-300 md:min-h-[76px] md:px-4 md:pl-8 xl:text-[16px] 2xl:text-[17px] ${scrolled ? 'border-white/10 bg-[#151032]/90 shadow-[0_24px_80px_rgba(0,0,0,0.45)]' : 'border-card-border bg-[#151032]/70 shadow-[0_18px_60px_rgba(0,0,0,0.28)]'}`}
         >
           <Link href="/" aria-label="home" className="flex shrink-0 items-center justify-start">
-            <Logo className="block h-7 w-[210px] shrink-0 object-contain xl:w-[225px] 2xl:w-[240px] 2xl:h-10" role="img" aria-label="VDLTRA logo" />
+            <Logo className="block min-w-[280px] shrink-0 object-contain xl:w-[320px] 2xl:w-[320px] 2xl:h-13" role="img" aria-label="VDLTRA logo" />
           </Link>
 
           <ul className="hidden min-w-0 flex-1 items-center justify-center gap-4 text-secondary-text lg:flex xl:gap-6 2xl:gap-8">
@@ -104,7 +104,7 @@ export default function Navbar() {
               <li key={link.label}>
                 <Link
                   href={link.href}
-                  className="relative whitespace-nowrap rounded-full px-2 py-1 transition-colors duration-300 hover:text-white after:absolute after:bottom-0 after:left-1/2 after:h-px after:w-0 after:-translate-x-1/2 after:bg-white after:transition-all after:duration-300 hover:after:w-4/5"
+                  className="relative whitespace-nowrap rounded-full px-1 py-1 transition-colors duration-300 hover:text-white after:absolute after:bottom-0 after:left-1/2 after:h-px after:w-0 after:-translate-x-1/2 after:bg-white after:transition-all after:duration-300 hover:after:w-4/5"
                 >
                   {link.label}
                 </Link>

@@ -18,7 +18,6 @@ import SubHeading from '@/components/ui/subheading/SubHeading'
 import Logo from '@/assets/logo/logo.svg'
 import sections from '@/assets/images/gradients/footer-gradient.png'
 import Vector from "@/assets/icons/Vector.svg";
-import Vector from "@/assets/icons/vector.svg";
 import FooterBackground from '@/components/common/backgrounds/FooterBackground'
 import Container from '@/components/layout/container/Container'
 import { useTranslation } from 'react-i18next'

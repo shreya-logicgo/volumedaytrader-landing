@@ -9,7 +9,7 @@ const OurServices = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'services' })
 
   return (
-    <div className="section-pb">
+    <div className="section-pb section-pt">
       <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
 
         <Badge text={t('badge')} />
