@@ -167,6 +167,8 @@
   }
 }
 
+/* Navbar global styles removed — using component-level styles in Navbar.tsx */
+
 @layer utilities {
   @keyframes marquee {
     from {

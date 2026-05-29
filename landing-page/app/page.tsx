@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 
 import LanguageSwitcher from "@/components/common/LanguageSwitcher";
 import Container from "@/components/layout/container/Container";
+import Navbar from '@/components/common/navbar'
 
 import Testimonials from "@/components/sections/testimonials/Testimonials";
 import FAQ from "@/components/sections/faq/FAQ";
@@ -27,6 +28,7 @@ export default function Hero() {
       {/* </div> */}
   
       <Container>
+      <Navbar />
         <OurServices />
         <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-0" >
         <Trust />

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import type { CarouselApi } from '@/components/ui/carousel'
+import { useTranslation } from 'react-i18next'
 
 import Badge from '@/components/ui/badge/Badge'
 import Heading from '@/components/ui/heading/Heading'
@@ -10,46 +11,33 @@ import PTACards from '@/components/sections/pta/PTACards'
 
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
-import PtaGrad from '@/assets/images/gradients/pta-gradient.png'
-import Image from 'next/image'
 import SideGradients from '@/components/common/backgrounds/SideGradients'
 
 const PTA = () => {
   const [api, setApi] = useState<CarouselApi>()
+  const { t } = useTranslation('translation', { keyPrefix: 'ptaReports' })
 
   return (
     <section className="relative section-pb">
       <SideGradients />
       <div className="mx-auto max-w-4xl text-center">
         <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
-          <Badge text="PTA Signal Reports" />
+          <Badge text={t('badge')} />
         </div>
 
         <div className="relative z-10 mx-auto section-header-stack">
           <Heading
-            className="max-w-[630px] mx-auto"
-            text="How Do PTA (Potential Trading Area) Signals Work?"
+            className="max-w-[700px] mx-auto"
+            text={t('title')}
           />
           <SubHeading
             className="max-w-2xl mx-auto"
-            text="PTA signals analyze volume behavior and market structure to highlight potential buy zones, liquidity areas, and momentum shifts for tactical trading decisions."
+            text={t('description')}
           />
         </div>
       </div>
 
       <div className="relative mt-10">
-        {/* <Image
-          src={PtaGrad}
-          alt=""
-          className="absolute max-w-[852px] opacity-59 left-[-610px] top-1/2 -translate-y-1/2 rotate-180"
-        />
-
-        <Image
-          src={PtaGrad}
-          alt=""
-          className="absolute max-w-[852px] opacity-59 right-[-610px] top-1/2 -translate-y-1/2"
-        /> */}
-
         <div className="relative mt-10">
           {/* Previous */}
           <button

@@ -5,12 +5,13 @@ import GaugeIcon from '@/assets/icons/gauge.svg'
 import GradIcon from '@/assets/icons/grad.svg'
 import UsersGrpIcon from '@/assets/icons/users-grp.svg'
 import ChalkBoardIcon from '@/assets/icons/chalk-board.svg'
+import { useTranslation } from 'react-i18next'
 
 
 
 interface ServiceCard {
-  title: string
-  description: string
+  titleKey: string
+  descriptionKey: string
   icon: unknown
 }
 
@@ -42,49 +43,45 @@ const renderIcon = (icon: unknown) => {
 
 const services: ServiceCard[] = [
   {
-    title: 'PTA Signals',
-    description:
-      'Get structured Potential Trading Area reports with real-time market insights and trading opportunities.',
+    titleKey: 'cards.ptaSignals.title',
+    descriptionKey: 'cards.ptaSignals.desc',
     icon: ChartIcon,
   },
   {
-    title: 'Market Analysis',
-    description:
-      'Daily Forex, Crypto, Stocks, Futures, and Indices analysis powered by volume and structure.',
+    titleKey: 'cards.marketAnalysis.title',
+    descriptionKey: 'cards.marketAnalysis.desc',
     icon: MarketAnalysisIcon,
   },
   {
-    title: 'Premium Indicators',
-    description:
-      'Professional Wyckoff-based volume indicators built for smarter chart analysis and market understanding.',
+    titleKey: 'cards.premiumIndicators.title',
+    descriptionKey: 'cards.premiumIndicators.desc',
     icon: GaugeIcon,
   },
   {
-    title: 'Trading Courses',
-    description:
-      'Learn Wyckoff, VSA, Price Action, and structured trading concepts through guided education.',
+    titleKey: 'cards.tradingCourses.title',
+    descriptionKey: 'cards.tradingCourses.desc',
     icon: GradIcon,
   },
   {
-    title: 'Trading Community',
-    description:
-      'Join a focused trading community for discussions, insights, updates, and market learning.',
+    titleKey: 'cards.tradingCommunity.title',
+    descriptionKey: 'cards.tradingCommunity.desc',
     icon: UsersGrpIcon,
   },
   {
-    title: 'Practical Sessions',
-    description:
-      'Analyze real market examples and improve decision-making through practical trading exercises.',
+    titleKey: 'cards.practicalSessions.title',
+    descriptionKey: 'cards.practicalSessions.desc',
     icon: ChalkBoardIcon,
   },
 ]
 
 const OurServicesCards = () => {
+  const { t } = useTranslation('translation', { keyPrefix: 'services' })
+
   return (
     <div className="grid grid-cols-1 gap-6 pt-10 sm:grid-cols-2 lg:grid-cols-3">
       {services.map((service) => (
         <article
-          key={service.title}
+          key={service.titleKey}
           className="card-ui rounded-3xl "
         >
           <div className="flex h-full flex-col gap-15">
@@ -94,10 +91,10 @@ const OurServicesCards = () => {
 
             <div className="flex flex-col gap-4 ">
               <h3 className="text-left card-heading">
-                {service.title}
+                {t(service.titleKey)}
               </h3>
               <p className="text-left card-desc">
-                {service.description}
+                {t(service.descriptionKey)}
               </p>
             </div>
           </div>
