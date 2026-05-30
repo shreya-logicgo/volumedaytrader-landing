@@ -90,7 +90,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed left-0 top-5 z-50 w-full pointer-events-none md:top-7">
-      <div className="relative mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-8 pointer-events-none">
+      <div className="relative mx-auto w-full max-w-[1920px] px-4 sm:px-6 lg:px-8 pointer-events-none">
         <div
           aria-hidden="true"
           className="absolute -left-[220px] top-1/2 hidden h-[240px] w-[240px] -translate-y-1/2 rounded-full bg-[#ED1F24]/45 blur-[120px] sm:block"
@@ -104,7 +104,18 @@ export default function Navbar() {
           className={`pointer-events-auto relative flex min-h-[68px] w-full items-center justify-between gap-3 rounded-full border px-4 py-3 text-[15px] font-medium tracking-[-0.01em] backdrop-blur-2xl transition-all duration-300 md:min-h-[76px] md:px-4 md:pl-8 xl:text-[16px] 2xl:text-[17px] ${scrolled ? 'border-white/10 bg-[#151032]/90 shadow-[0_24px_80px_rgba(0,0,0,0.45)]' : 'border-card-border bg-[#151032]/70 shadow-[0_18px_60px_rgba(0,0,0,0.28)]'}`}
         >
           <Link href="/" aria-label="home" className="flex shrink-0 items-center justify-start">
-            <Logo className="block min-w-[280px] shrink-0 object-contain xl:w-[320px] 2xl:w-[320px] 2xl:h-13" role="img" aria-label="VDLTRA logo" />
+            <img
+              src="/assets/images/Union.svg"
+              alt="VDLTRA logo"
+              width={46}
+              height={46}
+              className="block h-10 w-10 shrink-0 object-contain sm:h-11 sm:w-11 nav:hidden"
+            />
+            <Logo
+              className="hidden min-w-[280px] shrink-0 object-contain nav:block xl:w-80 2xl:h-13"
+              role="img"
+              aria-label="VDLTRA logo"
+            />
           </Link>
 
           <ul className="hidden min-w-0 flex-1 items-center justify-center gap-4 text-secondary-text lg:flex xl:gap-6 2xl:gap-8">
@@ -184,21 +195,21 @@ export default function Navbar() {
             </Link>
           </div>
 
-        <button
-  type="button"
-  onClick={(e) => {
-    e.stopPropagation();
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
 
-    setMobileOpen((prev) => {
-      const next = !prev;
-      console.log('mobile menu:', next ? 'opened' : 'closed');
-      return next;
-    });
-  }}
-  className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 lg:hidden"
-  aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-  aria-expanded={mobileOpen}
->
+              setMobileOpen((prev) => {
+                const next = !prev;
+                console.log('mobile menu:', next ? 'opened' : 'closed');
+                return next;
+              });
+            }}
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 lg:hidden"
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
+          >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               {mobileOpen ? (
                 <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />

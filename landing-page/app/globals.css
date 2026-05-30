@@ -46,6 +46,7 @@
   /* Breakpoints (convenience) */
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
+  --breakpoint-nav: 1150px;
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
@@ -85,17 +86,19 @@
 
   /* Card Heading */
   .card-heading {
-    @apply text-[22px] font-semibold leading-none tracking-normal text-center text-white;
+    @apply text-lg font-semibold leading-none tracking-normal text-center text-white sm:text-base 2xl:text-2xl;
   }
 
   /* Card Description */
   .card-desc {
-    @apply text-lg font-normal leading-snug line-clamp-3 tracking-normal text-secondary-text;
+    @apply text-sm font-normal leading-snug line-clamp-3 tracking-normal text-secondary-text sm:text-sm 2xl:text-lg;
   }
+
+  
 
   /* Card UI */
   .card-ui {
-    @apply rounded-3xl border p-[30px] shadow-[0px_-4px_100px_21px_#18193333_inset];
+    @apply rounded-3xl border  p-4 sm:p-5 lg:p-6 xl:p-[30px] shadow-[0px_-4px_100px_21px_#18193333_inset] ;
     border-color: var(--color-card-border);
     background-color: var(--color-card-bg);
   }
@@ -157,6 +160,11 @@
   @apply pt-10 md:pt-20 xl:pt-22 2xl:pt-24 3xl:pt-26;
 }
 
+.content-pt {
+  @apply pt-10 md:pt-16 xl:pt-18 2xl:pt-20 3xl:pt-17;
+}
+
+
 @layer components {
   .section-header-stack {
     @apply mx-auto pt-50 space-y-4;
@@ -168,6 +176,10 @@
     @apply inline-flex items-center gap-2 px-7 py-3 rounded-full text-white text-lg font-medium;
     background-color: var(--color-button-bg);
     box-shadow: 0 4px 14px rgba(255, 46, 46, 0.35);
+  }
+
+  .hero-center-glow {
+    background: radial-gradient(ellipse at center, rgba(80, 40, 120, 0.18) 0%, transparent 70%);
   }
 }
 

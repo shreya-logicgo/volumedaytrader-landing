@@ -3,6 +3,7 @@ import I18nProvider from "@/components/providers/i18n-provider";
 import { Geist, Geist_Mono, Rethink_Sans } from "next/font/google";
 import "./globals.css";
 import Container from "@/components/layout/container/Container";
+import Footer from "@/components/common/footer/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,9 +39,10 @@ export default function RootLayout({
         className={`min-h-full flex flex-col ${rethinkSans.className}`}
       >
         <I18nProvider>
-        {/* <Container> */}
-          {children}
-          {/* </Container> */}
+          <Container>
+            {children}
+          </Container>
+               <Footer />
         </I18nProvider>
       </body>
     </html>

@@ -29,37 +29,37 @@ export default function Page() {
 
       {/* </div> */}
 
-      <Container>
+      {/* <Container> */}
         <Navbar />
         <Hero />
         <TrustedLogos />
         <OurServices />
-        <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-0" >
+        {/* <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-0" > */}
           <Trust />
-        </div>
+        {/* </div> */}
         <SignalsAndIndicators />
 
-      </Container>
+      {/* </Container> */}
 
       <IndicatorSystem />
 
 
       <Testimonials />
-      <Container>
+      {/* <Container> */}
         <OurIndicators />
-      </Container>
+      {/* </Container> */}
 
       <Pricing />
 
-      <Container>
+      {/* <Container> */}
         {/* <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-0" > */}
         <PTA />
         {/* </div> */}
         <Wyckoff />
         <FAQ />
         <Blogs />
-      </Container>
-      <Footer />
+      {/* </Container> */}
+      {/* <Footer /> */}
 
 
 

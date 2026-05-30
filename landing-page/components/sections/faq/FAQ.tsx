@@ -60,7 +60,7 @@ export default function FAQ() {
 				</div>
 			</div>
 
-			<div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-10">
+			<div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 content-pt">
 				<div id="faq" className="flex flex-col items-center gap-7 sm:gap-9 scroll-mt-18 sm:scroll-mt-18 md:scroll-mt-16 lg:scroll-mt-25">
 					<div className="w-full max-w-full sm:max-w-md relative group">
 						<div className="absolute inset-y-0 left-4 flex items-center pointer-events-none z-10">
