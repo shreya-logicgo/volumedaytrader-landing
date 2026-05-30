@@ -89,7 +89,7 @@ const PTA = () => {
             <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
           </button>
 
-          <div className="order-1 min-w-0 flex-1 overflow-hidden sm:order-2">
+          <div className="order-2 min-w-0 flex-1 overflow-hidden sm:order-2">
             <PTACards setApi={setApi} />
           </div>
 

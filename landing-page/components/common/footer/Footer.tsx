@@ -21,6 +21,7 @@ import Vector from "@/assets/icons/Vector.svg";
 import FooterBackground from '@/components/common/backgrounds/FooterBackground'
 import Container from '@/components/layout/container/Container'
 import { useTranslation } from 'react-i18next'
+import { Particles } from "@/components/ui/particles";
 
 const Footer = () => {
     const { t } = useTranslation('translation')
@@ -32,8 +33,17 @@ const Footer = () => {
             <Container>
                 <div className="relative z-10 mx-auto">
                 {/* CTA */}
-                    <div className="mx-auto max-w-[760px] text-center">
-                        <div className="space-y-5 px-2 sm:px-0">
+                    <div className="relative overflow-hidden py-16">
+  {/* Particles only here */}
+  <div className="absolute inset-0 pointer-events-none">
+    <Particles
+      quantity={120}
+      size={1}
+      color="#fff"
+      className="h-full w-full opacity-70"
+    />
+  </div>
+                        <div className="space-y-5 px-2 sm:px-0 relative z-10">
                         <Heading text={t('footer.cta.title')} />
 
                             <SubHeading className="mx-auto max-w-[650px] leading-6" text={t('footer.cta.description')} />
