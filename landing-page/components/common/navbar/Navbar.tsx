@@ -47,7 +47,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth >= 1024) {
+      if (window.innerWidth >= 1280) {
         setMobileOpen(false)
         setLangMenuOpen(false)
       }
@@ -88,6 +88,15 @@ export default function Navbar() {
         : 'Sign In'
       : signInLabel
 
+  const handleLogoClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (window.location.pathname !== '/') {
+      return
+    }
+
+    event.preventDefault()
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <header className="fixed left-0 top-5 z-50 w-full pointer-events-none md:top-7">
       <div className="relative mx-auto w-full max-w-[1920px] px-4 sm:px-6 lg:px-8 pointer-events-none">
@@ -103,22 +112,11 @@ export default function Navbar() {
         <nav
           className={`pointer-events-auto relative flex min-h-[68px] w-full items-center justify-between gap-3 rounded-full border px-4 py-3 text-[15px] font-medium tracking-[-0.01em] backdrop-blur-2xl transition-all duration-300 md:min-h-[76px] md:px-4 md:pl-8 xl:text-[16px] 2xl:text-[17px] ${scrolled ? 'border-white/10 bg-[#151032]/90 shadow-[0_24px_80px_rgba(0,0,0,0.45)]' : 'border-card-border bg-[#151032]/70 shadow-[0_18px_60px_rgba(0,0,0,0.28)]'}`}
         >
-          <Link href="/" aria-label="home" className="flex shrink-0 items-center justify-start">
-            <img
-              src="/assets/images/Union.svg"
-              alt="VDLTRA logo"
-              width={46}
-              height={46}
-              className="block h-10 w-10 shrink-0 object-contain sm:h-11 sm:w-11 nav:hidden"
-            />
-            <Logo
-              className="hidden min-w-[280px] shrink-0 object-contain nav:block xl:w-80 2xl:h-13"
-              role="img"
-              aria-label="VDLTRA logo"
-            />
+          <Link href="/" aria-label="home" onClick={handleLogoClick} className="flex shrink-0 items-center justify-start">
+            <Logo className="block min-w-[280px] shrink-0 object-contain xl:w-[320px] 2xl:w-[320px] 2xl:h-13" role="img" aria-label="VDLTRA logo" />
           </Link>
 
-          <ul className="hidden min-w-0 flex-1 items-center justify-center gap-4 text-secondary-text lg:flex xl:gap-6 2xl:gap-8">
+          <ul className="hidden min-w-0 flex-1 items-center justify-center gap-4 text-secondary-text xl:flex xl:gap-6 2xl:gap-8">
             {navLinks.map((link) => (
               <li key={link.label}>
                 <Link
@@ -131,7 +129,7 @@ export default function Navbar() {
             ))}
           </ul>
 
-          <div className="hidden shrink-0 items-center gap-3 lg:flex xl:gap-4">
+          <div className="hidden shrink-0 items-center gap-3 xl:flex xl:gap-4">
             <div
               ref={langRef}
               className="relative flex h-11 min-w-[96px] shrink-0 items-center justify-between rounded-full border border-white/5 bg-white/5 px-3 transition-colors duration-300 hover:bg-white/10"
@@ -197,16 +195,8 @@ export default function Navbar() {
 
           <button
             type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-
-              setMobileOpen((prev) => {
-                const next = !prev;
-                console.log('mobile menu:', next ? 'opened' : 'closed');
-                return next;
-              });
-            }}
-            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 lg:hidden"
+            onClick={() => setMobileOpen((prev) => !prev)}
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 xl:hidden"
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
           >
@@ -231,7 +221,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -10, scale: 0.98 }}
                 transition={{ duration: 0.2 }}
-                className="pointer-events-auto absolute left-4 right-4 top-full mt-3 overflow-hidden rounded-[28px] border border-card-border bg-[#151032]/96 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl lg:hidden"
+                className="pointer-events-auto absolute left-4 right-4 top-full mt-3 overflow-hidden rounded-[28px] border border-card-border bg-[#151032]/96 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl xl:hidden"
               >
                 <div className="flex flex-col p-5 sm:p-6">
                   <div className="grid gap-2 border-b border-white/5 pb-5">
@@ -255,13 +245,6 @@ export default function Navbar() {
                         onClick={() => setMobileOpen(false)}
                       >
                         {resolvedSignInLabel}
-                      </Link>
-                      <Link
-                        href="https://volumedaytrader.com/login/"
-                        className="w-full rounded-xl bg-white px-6 py-3 text-center font-bold text-black transition-all hover:bg-gray-200"
-                        onClick={() => setMobileOpen(false)}
-                      >
-                        {t('navbar.signUp')}
                       </Link>
                     </div>
 

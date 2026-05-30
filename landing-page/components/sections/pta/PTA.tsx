@@ -56,7 +56,7 @@ const PTA = () => {
 
 
 </div>
-      {/* <SideGradients />  */}
+      <SideGradients /> 
 
 
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
@@ -89,7 +89,7 @@ const PTA = () => {
             <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
           </button>
 
-          <div className="order-1 min-w-0 flex-1 overflow-hidden sm:order-2">
+          <div className="order-2 min-w-0 flex-1 overflow-hidden sm:order-2">
             <PTACards setApi={setApi} />
           </div>
 
