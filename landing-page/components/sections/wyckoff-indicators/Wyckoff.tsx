@@ -21,7 +21,7 @@ const Wyckoff = () => {
                 </div>
             </div>
 
-            <WyckoffCards className='mt-10' />
+            <WyckoffCards className='content-pt' />
         </section>
     )
 }

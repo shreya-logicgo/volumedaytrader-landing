@@ -26,7 +26,7 @@ function HeroFeatureTag({ label, compact }: { label: string; compact?: boolean }
                     }`}
             >
                 {label}
-            </span>
+            </span> 
         </div>
     )
 }
@@ -127,7 +127,7 @@ export default function Hero() {
                     </Link>
                     <Link
                         href="https://volumedaytrader.com/login/"
-                        className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#2B2A56] bg-[#0D082B]/80 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:border-[#3d3c6e] sm:w-auto sm:px-6 sm:text-base 2xl:px-7 2xl:py-3 2xl:text-lg"
+                        className="inline-flex w-full items-center justify-center shadow-control-inset gap-2 rounded-full border border-[#2B2A56] bg-[#0D082B]/80 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:border-[#3d3c6e] sm:w-auto sm:px-6 sm:text-base 2xl:px-7 2xl:py-3 2xl:text-lg"
                     >
                         {t("hero.secondaryButton")}
                         {/* <ArrowUpRight /> */}
@@ -136,7 +136,7 @@ export default function Hero() {
                 </div>
 
                 {/* Stacked tags below content until 2xl */}
-                <div className="mt-6 grid grid-cols-1 gap-2.5 min-[400px]:grid-cols-2 sm:gap-3 xl:hidden">
+                <div className="mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3 xl:hidden">
                     {floatingTags.map((tag) => (
                         <div key={tag.label} className="flex justify-center px-1">
                             <HeroFeatureTag label={tag.label} compact />

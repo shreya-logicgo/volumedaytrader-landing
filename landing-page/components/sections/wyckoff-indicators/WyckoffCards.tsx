@@ -73,7 +73,7 @@ const WyckoffCards = ({
             />
           </div>
 
-          <div className="rounded-[20px] border-t bg-[#151032] p-5 flex flex-col gap-4">
+          <div className="rounded-[20px] h-35 line-clamp-3 border-t bg-[#151032] p-5 flex flex-col gap-4">
             <h3 className="text-left font-semibold leading-tight card-heading">
               {t(`${item.key}.title`)}
             </h3>
