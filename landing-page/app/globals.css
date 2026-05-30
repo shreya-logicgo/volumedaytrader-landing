@@ -106,7 +106,7 @@
   .text-secondary-text { color: var(--color-secondary-text); }
 
   .service-icon-accent {
-    background-color: var(--color-service-accent);
+    background-color: var(--color-tab-active);
     box-shadow: var(--shadow-service-accent);
   }
 
@@ -166,7 +166,7 @@
 @layer components {
   .btn-primary {
     @apply inline-flex items-center gap-2 px-7 py-3 rounded-full text-white text-lg font-medium;
-    background-color: var(--color-button-bg);
+    background-color: var(--color-tab-active);
     box-shadow: 0 4px 14px rgba(255, 46, 46, 0.35);
   }
 }

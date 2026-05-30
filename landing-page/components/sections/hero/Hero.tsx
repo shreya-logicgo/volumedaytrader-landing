@@ -114,7 +114,7 @@ export default function Hero() {
                 <div className="mx-auto mt-5 flex w-full max-w-md flex-col items-stretch justify-center gap-3 sm:mt-6 sm:max-w-lg sm:flex-row sm:items-center sm:justify-center sm:gap-4 2xl:mt-8 2xl:max-w-none">
                     <Link
                         href="https://volumedaytrader.com/login/"
-                        className="btn-primary w-full justify-center px-5 py-2.5 text-sm sm:w-auto sm:px-6 sm:py-3 sm:text-base 2xl:inline-flex 2xl:px-7 2xl:text-lg"
+                         className="btn-primary font-medium w-full justify-center px-5 py-2.5 text-sm sm:w-auto sm:px-6 sm:py-3 sm:text-base 2xl:inline-flex 2xl:px-7 2xl:text-lg"
                     >
                         {t("hero.primaryButton")}
                          <Vector className="block h-3 w-3" aria-hidden="true" />
