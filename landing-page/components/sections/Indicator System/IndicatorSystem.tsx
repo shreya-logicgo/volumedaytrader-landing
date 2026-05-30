@@ -9,7 +9,7 @@ const IndicatorSystem = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'indicators' })
 
   return (
-    <div className='relative max-w-[2400px] z-10 mx-auto px-0 section-pb'>
+    <div id="how-indicators-work" className='relative max-w-[2400px] z-10 mx-auto px-0 section-pb'>
       <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
         <Badge text={t('badge')} />
       </div>

@@ -5,15 +5,7 @@ import Link from 'next/link'
 import { AnimatePresence, motion } from 'framer-motion'
 import Logo from '../../../assets/logo/logo.svg'
 import { useLanguage } from '@/hooks/use-language'
-
-const links = [
-  { label: 'Features', href: '/#features' },
-  { label: 'Pricing', href: '/#pricing' },
-  { label: 'Community', href: '/#community' },
-  { label: 'How Indicators Work', href: '/#how-indicators-work' },
-  { label: 'Blog', href: '/blogs' },
-  { label: 'Contact', href: '/#contact' },
-]
+import { useTranslation } from 'react-i18next'
 
 const languages = [
   { code: 'en', label: 'EN', flag: 'https://flagcdn.com/us.svg' },
@@ -27,7 +19,16 @@ export default function Navbar() {
   const langRef = useRef<HTMLDivElement>(null)
   const mobileRef = useRef<HTMLDivElement>(null)
   const ticking = useRef(false)
+  const { t } = useTranslation('translation')
   const { currentLanguage, changeLanguage } = useLanguage()
+  const navLinks = [
+    { label: t('navbar.features'), href: '/#features' },
+    { label: t('navbar.pricing'), href: '/#pricing' },
+    { label: t('navbar.community'), href: '/#community' },
+    { label: t('navbar.howIndicatorsWork'), href: '/#how-indicators-work' },
+    { label: t('navbar.blog'), href: '/#blogs' },
+    { label: t('navbar.contact'), href: '/#contact' },
+  ]
 
   useEffect(() => {
     const onPointerDown = (event: MouseEvent) => {
@@ -79,6 +80,13 @@ export default function Navbar() {
   }, [])
 
   const selectedLanguage = languages.find((language) => language.code === currentLanguage) ?? languages[0]
+  const signInLabel = t('navbar.signIn')
+  const resolvedSignInLabel =
+    signInLabel === 'navbar.signIn'
+      ? selectedLanguage.code === 'pl'
+        ? 'Zaloguj się'
+        : 'Sign In'
+      : signInLabel
 
   return (
     <header className="fixed left-0 top-5 z-50 w-full pointer-events-none md:top-7">
@@ -100,7 +108,7 @@ export default function Navbar() {
           </Link>
 
           <ul className="hidden min-w-0 flex-1 items-center justify-center gap-4 text-secondary-text lg:flex xl:gap-6 2xl:gap-8">
-            {links.map((link) => (
+            {navLinks.map((link) => (
               <li key={link.label}>
                 <Link
                   href={link.href}
@@ -166,23 +174,31 @@ export default function Navbar() {
             </div>
 
             <Link
-              href="/auth/signin"
-              className="inline-flex h-11 shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-full bg-tab-active px-4 text-[14px] font-semibold text-white shadow-[inset_0px_1.41px_3.18px_0px_rgba(255,255,255,0.5)] transition-colors duration-300 hover:bg-[#f52b31] xl:px-5 xl:text-[15px]"
+              href="https://volumedaytrader.com/login/"
+              className="inline-flex h-11 shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-full bg-tab-active px-4 text-[14px] font-medium text-white shadow-[inset_0px_1.41px_3.18px_0px_rgba(255,255,255,0.5)] transition-colors duration-300 hover:bg-[#f52b31] xl:px-5 xl:text-[15px]"
             >
-              <span>Sign In</span>
+              <span>{resolvedSignInLabel}</span>
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                 <path d="M2.25 9.75L9.75 2.25M5.25 2.25H9.75V6.75" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
           </div>
 
-          <button
-            type="button"
-            onClick={() => setMobileOpen((value) => !value)}
-            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 lg:hidden"
-            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={mobileOpen}
-          >
+        <button
+  type="button"
+  onClick={(e) => {
+    e.stopPropagation();
+
+    setMobileOpen((prev) => {
+      const next = !prev;
+      console.log('mobile menu:', next ? 'opened' : 'closed');
+      return next;
+    });
+  }}
+  className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 lg:hidden"
+  aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+  aria-expanded={mobileOpen}
+>
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               {mobileOpen ? (
                 <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
@@ -208,7 +224,7 @@ export default function Navbar() {
               >
                 <div className="flex flex-col p-5 sm:p-6">
                   <div className="grid gap-2 border-b border-white/5 pb-5">
-                    {links.map((link) => (
+                    {navLinks.map((link) => (
                       <Link
                         key={link.label}
                         href={link.href}
@@ -223,18 +239,18 @@ export default function Navbar() {
                   <div className="mt-5 flex flex-col gap-5">
                     <div className="flex flex-col gap-3 sm:flex-row">
                       <Link
-                        href="/auth/signin"
+                        href="https://volumedaytrader.com/login/"
                         className="w-full rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-center font-medium text-white transition-all hover:bg-white/10"
                         onClick={() => setMobileOpen(false)}
                       >
-                        Sign In
+                        {resolvedSignInLabel}
                       </Link>
                       <Link
-                        href="/auth/signup"
+                        href="https://volumedaytrader.com/login/"
                         className="w-full rounded-xl bg-white px-6 py-3 text-center font-bold text-black transition-all hover:bg-gray-200"
                         onClick={() => setMobileOpen(false)}
                       >
-                        {selectedLanguage.code === 'pl' ? 'Zarejestruj się' : 'Sign Up'}
+                        {t('navbar.signUp')}
                       </Link>
                     </div>
 

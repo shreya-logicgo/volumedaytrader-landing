@@ -26,7 +26,7 @@ const Footer = () => {
     const { t } = useTranslation('translation')
 
     return (
-        <footer className="relative overflow-hidden pt-20 pb-10 container-spacing">
+        <footer id="contact" className="relative overflow-hidden pt-20 pb-10 container-spacing">
             <FooterBackground />
             {/* Background */}
             <Container>
@@ -38,10 +38,10 @@ const Footer = () => {
 
                             <SubHeading className="mx-auto max-w-[650px] leading-6" text={t('footer.cta.description')} />
 
-                        <button className="btn-primary mt-3">
+                        <Link href="https://volumedaytrader.com/login/" className="btn-primary mt-3">
                             {t('footer.cta.button')}
                             <Vector className="h-3 w-3 shrink-0" aria-hidden="true" />
-                        </button>
+                        </Link>
                     </div>
                 </div>
 
