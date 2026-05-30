@@ -122,7 +122,7 @@ const IndicatorSystemCarousal = ({
   const canGoNext = activeIndex < totalSlides - 1
 
   return (
-    <div className={`relative mt-10 w-full mx-auto ${className}`.trim()}>
+    <div className={`relative content-pt w-full mx-auto ${className}`.trim()}>
 
       {/* Clipping viewport */}
       <div className="w-full overflow-hidden">

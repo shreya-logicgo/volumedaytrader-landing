@@ -99,7 +99,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed left-0 top-5 z-50 w-full pointer-events-none md:top-7">
-      <div className="relative mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-8 pointer-events-none">
+      <div className="relative mx-auto w-full max-w-[1920px] px-4 sm:px-6 lg:px-8 pointer-events-none">
         <div
           aria-hidden="true"
           className="absolute -left-[220px] top-1/2 hidden h-[240px] w-[240px] -translate-y-1/2 rounded-full bg-[#ED1F24]/45 blur-[120px] sm:block"

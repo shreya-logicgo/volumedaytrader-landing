@@ -52,13 +52,13 @@ const BlogsCards = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'blogs.cards' });
 
   return (
-    <div className="grid grid-cols-1 gap-6 pt-18 md:grid-cols-2 xl:grid-cols-3">
+    <div className="grid grid-cols-1 gap-6 content-pt md:grid-cols-2 xl:grid-cols-3">
       {BLOGS.map((blog) => (
         <article
           key={blog.key}
           className="group overflow-hidden rounded-[28px] border border-white/10 bg-[#120a33] shadow-[0_20px_80px_rgba(0,0,0,0.25)]"
         >
-          <div className="relative aspect-[4/3] overflow-hidden">
+          <div className="relative aspect-[4/3] overflow-hidden ">
             <Image
               src={blog.image}
               alt={blog.title}
@@ -71,7 +71,7 @@ const BlogsCards = () => {
 
           <div className="space-y-4 p-5">
             <div className="flex items-center gap-2 text-base text-secondary-text font-medium">
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
+              <span className="rounded-full border border-white/10 bg-[#151032] shadow-control-inset px-3 py-1">
                 {t(`${blog.key}.category`)}
               </span>
               <span>•</span>

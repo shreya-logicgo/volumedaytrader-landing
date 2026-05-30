@@ -59,6 +59,7 @@ export function MarqueeDemoVertical() {
 
   return (
     <div className="relative mx-auto mt-20 flex h-[760px] w-full max-w-[1128px] items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 rounded-3xl bg-[#0E0F21]/25 z-2" />
       <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-3">
         <Marquee pauseOnHover vertical className="[--duration:36s] [--gap:1.25rem]">
           {firstColumn.map((review) => (

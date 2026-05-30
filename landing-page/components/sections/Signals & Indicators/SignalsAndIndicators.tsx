@@ -17,7 +17,7 @@ const SignalsAndIndicators = () => {
                 <Heading className='max-w-xl mx-auto' text={t('title')} />
                 <SubHeading className='max-w-[780px] mx-auto' text={t('description')} />
             </div>
-            <SignalsAndIndicatorsCards className='mt-10' />
+            <SignalsAndIndicatorsCards className='content-pt' />
 
         </div>
     )
