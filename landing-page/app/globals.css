@@ -106,7 +106,7 @@
   .text-secondary-text { color: var(--color-secondary-text); }
 
   .service-icon-accent {
-    background-color: var(--color-service-accent);
+    background-color: var(--color-tab-active);
     box-shadow: var(--shadow-service-accent);
   }
 
@@ -150,7 +150,7 @@
 
 
 .section-pb {
-  @apply pb-10 md:pb-20 xl:pb-22 2xl:pb-24 3xl:pb-26;
+  @apply pb-5 md:pb-10 xl:pb-11 2xl:pb-12 3xl:pb-13;
 }
 
 .section-pt {
@@ -159,14 +159,14 @@
 
 @layer components {
   .section-header-stack {
-    @apply mx-auto pt-50 space-y-4;
+    @apply mx-auto  space-y-4;
   }
 }
 
 @layer components {
   .btn-primary {
     @apply inline-flex items-center gap-2 px-7 py-3 rounded-full text-white text-lg font-medium;
-    background-color: var(--color-button-bg);
+    background-color: var(--color-tab-active);
     box-shadow: 0 4px 14px rgba(255, 46, 46, 0.35);
   }
 }

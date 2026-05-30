@@ -13,7 +13,7 @@ const IndicatorSystem = () => {
       <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
         <Badge text={t('badge')} />
       </div>
-      <div className="relative z-10 mx-auto text-center space-y-4 pt-50 ">
+      <div className="relative z-10 mx-auto text-center section-header-stack ">
         <Heading className=' mx-auto' text={t('title')} />
         <SubHeading className='max-w-[780px] mx-auto leading-snug' text={t('description')} />
       </div>

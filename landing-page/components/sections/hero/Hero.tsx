@@ -5,6 +5,7 @@ import Image from "next/image"
 import { useTranslation } from "react-i18next"
 import HeroChart from "./HeroChart"
 import Vector from "@/assets/icons/Vector.svg";
+import { Particles } from "@/components/ui/particles";
 
 
 function HeroFeatureTag({ label, compact }: { label: string; compact?: boolean }) {
@@ -58,9 +59,9 @@ export default function Hero() {
     ]
 
     return (
-        <section className="relative left-1/2 w-screen max-w-[1720px] -translate-x-1/2 overflow-x-clip  pt-6  sm:pt-8 md:pt-12  lg:pt-16">
+        <section className="relative left-1/2 w-screen max-w-[1720px] -translate-x-1/2 overflow-x-clip  pt-8  sm:pt-12 md:pt-16  lg:pt-20 2xl:pt-28">
             {/* Starry background */}
-            <div
+            {/* <div
                 className="pointer-events-none absolute inset-0 opacity-50"
                 style={{
                     backgroundImage:
@@ -68,13 +69,18 @@ export default function Hero() {
                     backgroundSize: "42px 42px",
                 }}
                 aria-hidden
-            />
+            /> */}
 
             {/* Center subtle glow */}
             <div
                 className="pointer-events-none absolute left-1/2 top-[38%] z-0 h-[220px] w-[min(900px,92vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(80,40,120,0.18)_0%,transparent_70%)] sm:h-[280px] lg:h-[320px]"
                 aria-hidden
             />
+
+            {/* Particles background (client-only canvas) */}
+            <div className="pointer-events-none absolute inset-0 z-[5] -translate-y-30 md:-translate-y-35 lg:-translate-y-40  ">
+                <Particles quantity={90} size={0.9} color="#ffffff" className="opacity-70" />
+            </div>
 
 
                 <div className="pointer-events-none absolute inset-0 z-10 hidden xl:block ">
@@ -114,7 +120,7 @@ export default function Hero() {
                 <div className="mx-auto mt-5 flex w-full max-w-md flex-col items-stretch justify-center gap-3 sm:mt-6 sm:max-w-lg sm:flex-row sm:items-center sm:justify-center sm:gap-4 2xl:mt-8 2xl:max-w-none">
                     <Link
                         href="https://volumedaytrader.com/login/"
-                        className="btn-primary w-full justify-center px-5 py-2.5 text-sm sm:w-auto sm:px-6 sm:py-3 sm:text-base 2xl:inline-flex 2xl:px-7 2xl:text-lg"
+                         className="btn-primary font-medium w-full justify-center px-5 py-2.5 text-sm sm:w-auto sm:px-6 sm:py-3 sm:text-base 2xl:inline-flex 2xl:px-7 2xl:text-lg"
                     >
                         {t("hero.primaryButton")}
                          <Vector className="block h-3 w-3" aria-hidden="true" />
