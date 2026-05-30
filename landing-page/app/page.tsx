@@ -28,14 +28,14 @@ export default function Page() {
       {/* <div className="relative bg-amber-100 h-50 w-full"> */}
 
       {/* </div> */}
-  
+
       <Container>
         <Navbar />
-        <Hero/>
-        <TrustedLogos/>
+        <Hero />
+        <TrustedLogos />
         <OurServices />
         <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-0" >
-        <Trust />
+          <Trust />
         </div>
         <SignalsAndIndicators />
 
@@ -53,16 +53,16 @@ export default function Page() {
 
       <Container>
         {/* <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-0" > */}
-          <PTA />
+        <PTA />
         {/* </div> */}
         <Wyckoff />
         <FAQ />
         <Blogs />
       </Container>
       <Footer />
- 
 
-      
+
+
     </div>
   );
 }
