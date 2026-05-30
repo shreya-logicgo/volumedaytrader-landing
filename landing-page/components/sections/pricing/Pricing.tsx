@@ -110,7 +110,7 @@ const Pricing = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'pricing' })
 
   return (
-    <section className="relative max-w-[1480px] z-10 mx-auto section-pb px-4 sm:px-6 2xl:px-0 ">
+    <section id="pricing" className="relative max-w-[1480px] z-10 mx-auto section-pb px-4 sm:px-6 2xl:px-0 ">
       <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
         <Badge text={t('badge')} />
       </div>
