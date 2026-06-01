@@ -77,17 +77,17 @@
 
   /* Heading */
   .heading-text {
-    @apply text-[40px] font-bold leading-[40px] tracking-[1%] text-center text-white;
+    @apply text-[28px] font-bold leading-[32px] tracking-[1%] text-center text-white sm:text-[34px] sm:leading-[38px] md:text-[40px] md:leading-[40px];
   }
 
   /* Subheading */
   .subheading-text {
-    @apply text-lg font-normal leading-6 tracking-normal text-center text-secondary-text;
+    @apply text-base font-normal leading-6 tracking-normal text-center text-secondary-text sm:text-lg;
   }
 
   /* Card Heading */
   .card-heading {
-    @apply text-lg font-semibold leading-none tracking-normal text-center text-white sm:text-base xl:text-xl  2xl:text-2xl;
+    @apply text-lg font-semibold leading-tight tracking-normal text-center text-white sm:text-xl lg:text-[22px] 2xl:text-2xl;
   }
 
   /* Card Description */

@@ -3,27 +3,45 @@
 import { useEffect, useState } from 'react'
 import type { CarouselApi } from '@/components/ui/carousel'
 import { useTranslation } from 'react-i18next'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 import Badge from '@/components/ui/badge/Badge'
+import { cn } from '@/lib/utils'
 import Heading from '@/components/ui/heading/Heading'
 import SubHeading from '@/components/ui/subheading/SubHeading'
 import PTACards from '@/components/sections/pta/PTACards'
-
-// import { ChevronLeft, ChevronRight } from 'lucide-react'
-
-import PtaGrad from '@/assets/images/gradients/pta-gradient.png'
-import Image from 'next/image'
 import SideGradients from '@/components/common/backgrounds/SideGradients'
 
-import { ChevronLeft, ChevronRight, Container } from 'lucide-react'
-import { cn } from '@/lib/utils'
-
 const navButtonClass =
-  'z-30 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#2A2450] bg-[#161032] text-white transition-opacity hover:bg-[#1e1640] disabled:cursor-not-allowed disabled:opacity-35 sm:h-12 sm:w-12 2xl:h-14 2xl:w-14'
+  'flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#2A2450] bg-[#161032] text-white transition-opacity hover:bg-[#1e1640] disabled:cursor-not-allowed disabled:opacity-35 sm:h-12 sm:w-12 2xl:h-14 2xl:w-14'
+
+type NavButtonProps = {
+  direction: 'prev' | 'next'
+  disabled: boolean
+  onClick: () => void
+  className?: string
+}
+
+function NavButton({ direction, disabled, onClick, className }: NavButtonProps) {
+  const Icon = direction === 'prev' ? ChevronLeft : ChevronRight
+  const label = direction === 'prev' ? 'Previous slide' : 'Next slide'
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      aria-label={label}
+      className={cn(navButtonClass, className)}
+    >
+      <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
+    </button>
+  )
+}
 
 const PTA = () => {
   const [api, setApi] = useState<CarouselApi>()
-   const { t } = useTranslation('translation', { keyPrefix: 'ptaReports' })
+  const { t } = useTranslation('translation', { keyPrefix: 'ptaReports' })
   const [canScrollPrev, setCanScrollPrev] = useState(false)
   const [canScrollNext, setCanScrollNext] = useState(false)
 
@@ -46,62 +64,61 @@ const PTA = () => {
   }, [api])
 
   return (
-    <section id="pta" className="section-pb relative overflow-x-visible">
+    <section id="pta" className="section-pb relative">
+      <SideGradients />
 
-
-
-<div className="relative max-w-200">
-
-
-
-
-</div>
-      <SideGradients /> 
-
-
-      <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
-        <div className="relative mx-auto flex max-w-[717px] flex-col gap-2">
+      <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6">
+        <div className="relative mx-auto flex w-full max-w-[717px] flex-col gap-2 overflow-hidden">
           <Badge text={t('badge')} />
         </div>
 
-        <div className="section-header-stack relative z-10 mx-auto">
+        <div className="section-header-stack relative mx-auto">
           <Heading
             className="mx-auto max-w-[630px] text-balance"
-           text={t('title')}
+            text={t('title')}
           />
           <SubHeading
             className="mx-auto max-w-2xl text-pretty px-1"
- text={t('description')}          />
+            text={t('description')}
+          />
         </div>
       </div>
 
-      <div className="relative mx-auto  w-full max-w-[1165px] px-4 content-pt sm:px-6 lg:px-8">
-        {/* Mobile / small tablet: full-width carousel, controls below */}
-        {/* sm+: controls flanking carousel */}
-        <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-4 2xl:gap-6">
-          <button
-            type="button"
-            onClick={() => api?.scrollPrev()}
+      {/* Carousel block only — does not clip section gradients */}
+      <div className="relative z-10 mx-auto w-full max-w-[1165px] px-4 content-pt sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-5 xl:flex-row xl:items-center xl:gap-4 2xl:gap-6">
+          {/* Large screens: arrows flank the carousel */}
+          <NavButton
+            direction="prev"
             disabled={!canScrollPrev}
-            aria-label="Previous slide"
-            className={cn(navButtonClass, 'order-2 mx-auto sm:order-1 sm:mx-0')}
-          >
-            <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
-          </button>
+            onClick={() => api?.scrollPrev()}
+            className="hidden shrink-0 xl:flex"
+          />
 
-          <div className="order-2 min-w-0 flex-1 overflow-hidden sm:order-2">
+          <div className="min-w-0 flex-1 overflow-hidden">
             <PTACards setApi={setApi} />
           </div>
 
-          <button
-            type="button"
-            onClick={() => api?.scrollNext()}
+          <NavButton
+            direction="next"
             disabled={!canScrollNext}
-            aria-label="Next slide"
-            className={cn(navButtonClass, 'order-3 mx-auto sm:order-3 sm:mx-0 cursor-pointer')}
-          >
-            <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
-          </button>
+            onClick={() => api?.scrollNext()}
+            className="hidden shrink-0 xl:flex"
+          />
+
+          {/* Laptop, tablet, mobile: arrows below carousel */}
+          <div className="flex items-center justify-center gap-4 xl:hidden">
+            <NavButton
+              direction="prev"
+              disabled={!canScrollPrev}
+              onClick={() => api?.scrollPrev()}
+            />
+            <NavButton
+              direction="next"
+              disabled={!canScrollNext}
+              onClick={() => api?.scrollNext()}
+            />
+          </div>
         </div>
       </div>
     </section>
