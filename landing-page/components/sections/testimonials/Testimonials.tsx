@@ -11,7 +11,7 @@ const Testimonials = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'testimonials' })
 
   return (
-    <div className="section-pb">
+    <div className="section-pb ">
     <div className='relative z-10 mx-auto text-center space-y-4  '>
       <div>
         <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">

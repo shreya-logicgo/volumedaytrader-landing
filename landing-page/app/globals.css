@@ -4,6 +4,7 @@
   --font-rethink: var(--font-rethink-sans), sans-serif;
 
   /* Core surfaces */
+  --color-page-bg: #050024;
   --color-card-bg: #0D082B;
   --color-card-border: #1d1938;
 
@@ -57,7 +58,7 @@
 
 @layer base {
   body {
-    @apply bg-[#050024];
+    @apply bg-page-bg;
     font-family: var(--font-rethink);
     overflow-x: hidden;
   }
@@ -180,6 +181,32 @@
 
   .hero-center-glow {
     background: radial-gradient(ellipse at center, rgba(80, 40, 120, 0.18) 0%, transparent 70%);
+  }
+
+  /* Indicator curve — soft edge blend into page background */
+  .curve-gradient-image {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.35) 14%,
+    black 30%,
+    black 68%,
+    rgba(0, 0, 0, 0.4) 84%,
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.35) 14%,
+    black 30%,
+    black 68%,
+    rgba(0, 0, 0, 0.4) 84%,
+    transparent 100%
+  );
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
   }
 }
 

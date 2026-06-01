@@ -2,10 +2,20 @@
 
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 import Logo from '../../../assets/logo/logo.svg'
 import { useLanguage } from '@/hooks/use-language'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next';
+
+const links = [
+  { label: 'Features', href: '/#features' },
+  { label: 'Pricing', href: '/#pricing' },
+  { label: 'Community', href: '/#community' },
+  { label: 'How Indicators Work', href: '/how-indicators-work' },
+  { label: 'Blog', href: '/blogs' },
+  { label: 'Contact', href: '/contact' },
+]
 
 const languages = [
   { code: 'en', label: 'EN', flag: 'https://flagcdn.com/us.svg' },
@@ -13,6 +23,7 @@ const languages = [
 ]
 
 export default function Navbar() {
+  const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [langMenuOpen, setLangMenuOpen] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -116,17 +127,28 @@ export default function Navbar() {
             <Logo className="block min-w-[280px] shrink-0 object-contain xl:w-[320px] 2xl:w-[320px] 2xl:h-13" role="img" aria-label="VDLTRA logo cursor-pointer" />
           </Link>
 
-          <ul className="hidden min-w-0 flex-1 items-center justify-center gap-4 text-secondary-text xl:flex xl:gap-6 2xl:gap-8">
-            {navLinks.map((link) => (
-              <li key={link.label}>
-                <Link
-                  href={link.href}
-                  className="relative whitespace-nowrap rounded-full px-1 py-1 transition-colors duration-300 hover:text-white after:absolute after:bottom-0 after:left-1/2 after:h-px after:w-0 after:-translate-x-1/2 after:bg-white after:transition-all after:duration-300 hover:after:w-4/5"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+          <ul className="hidden min-w-0 flex-1 items-center justify-center gap-4 text-secondary-text lg:flex xl:gap-6 2xl:gap-8">
+            {links.map((link) => {
+              const isActive =
+                link.href === '/blogs'
+                  ? pathname === '/blogs' || pathname.startsWith('/blogs/')
+                  : link.href === '/how-indicators-work'
+                    ? pathname === '/how-indicators-work'
+                    : link.href === '/contact'
+                      ? pathname === '/contact'
+                      : pathname === link.href
+
+              return (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className={`relative whitespace-nowrap rounded-full px-1 py-1 transition-colors duration-300 after:absolute after:bottom-0 after:left-1/2 after:h-px after:-translate-x-1/2 after:bg-white after:transition-all after:duration-300 hover:text-white hover:after:w-4/5 ${isActive ? 'text-white after:w-4/5' : 'text-secondary-text after:w-0'}`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              )
+            })}
           </ul>
 
           <div className="hidden shrink-0 items-center gap-3 xl:flex xl:gap-4">
@@ -225,16 +247,27 @@ export default function Navbar() {
               >
                 <div className="flex flex-col p-5 sm:p-6">
                   <div className="grid gap-2 border-b border-white/5 pb-5">
-                    {navLinks.map((link) => (
-                      <Link
-                        key={link.label}
-                        href={link.href}
-                        className="rounded-2xl px-3 py-3 text-base font-medium text-secondary-text transition-colors hover:bg-white/5 hover:text-white sm:text-lg"
-                        onClick={() => setMobileOpen(false)}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
+                    {links.map((link) => {
+                      const isActive =
+                        link.href === '/blogs'
+                          ? pathname === '/blogs' || pathname.startsWith('/blogs/')
+                          : link.href === '/how-indicators-work'
+                            ? pathname === '/how-indicators-work'
+                            : link.href === '/contact'
+                              ? pathname === '/contact'
+                              : pathname === link.href
+
+                      return (
+                        <Link
+                          key={link.label}
+                          href={link.href}
+                          className={`rounded-2xl px-3 py-3 text-base font-medium transition-colors hover:bg-white/5 sm:text-lg ${isActive ? 'bg-white/5 text-white' : 'text-secondary-text hover:text-white'}`}
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          {link.label}
+                        </Link>
+                      )
+                    })}
                   </div>
 
                   <div className="mt-5 flex flex-col gap-5">
