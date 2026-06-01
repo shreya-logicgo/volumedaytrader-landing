@@ -115,16 +115,16 @@ export default function ContactForm() {
           onChange={updateField("email")}
           type="email"
         />
-  <FormField
-  id="phone"
-  label={t("phone")}
-  placeholder={t("phonePlaceholder")}
-  value={fields.phone}
-  onChange={(value) => {
-    updateField("phone")(value.replace(/\D/g, ""));
-  }}
-  type="tel"
-/>
+        <FormField
+          id="phone"
+          label={t("phone")}
+          placeholder={t("phonePlaceholder")}
+          value={fields.phone}
+          onChange={(value) => {
+            updateField("phone")(value.replace(/\D/g, ""));
+          }}
+          type="tel"
+        />
       </div>
 
       <FormField
@@ -135,14 +135,16 @@ export default function ContactForm() {
         onChange={updateField("message")}
         multiline
       />
+{/* <div className="flex justify-center pt-1"> */}
 
       <button
         type="submit"
-        className="inline-flex w-fit items-center gap-1.5 rounded-full shadow-control-inset bg-[#ED1F24] px-6 py-3.5 text-lg font-medium text-white shadow-[0_4px_14px_rgba(237,31,36,0.35)] transition-opacity hover:opacity-90"
-      >
+        className="inline-flex font-medium w-fit items-center justify-center gap-1.5 rounded-full shadow-control-inset bg-[#ED1F24] px-6 py-3.5 text-lg font-medium text-white shadow-[0_4px_14px_rgba(237,31,36,0.35)] transition-opacity hover:opacity-90"
+        >
         {t("submit")}
-        <Vector className="block h-5 w-5" aria-hidden="true" />
+        <Vector className="block h-5 w-5 p-1 font-medium" aria-hidden="true" />
       </button>
+        {/* </div> */}
     </form>
   );
 }
