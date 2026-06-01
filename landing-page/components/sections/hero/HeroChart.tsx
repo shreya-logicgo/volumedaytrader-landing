@@ -9,7 +9,10 @@ export default function HeroChart() {
     <section className="relative z-20 mx-auto mt-8 w-full px-3 sm:mt-10 sm:px-4 md:mt-12 md:px-6 lg:mt-10 lg:px-4">
       {/* Media card — desktop padding/sizing preserved at lg */}
       <div className="relative z-10 mx-auto max-w-[1200px] rounded-2xl border bg-[#FFFFFF0D] p-3 sm:rounded-3xl sm:p-4 lg:p-5">
-        <div className="relative mx-auto aspect-video w-full overflow-hidden rounded-2xl sm:rounded-3xl">
+        <div
+          className="relative mx-auto aspect-video w-full overflow-hidden rounded-2xl sm:rounded-3xl"
+          style={{ position: "relative" }}
+        >
           <Image
             src="/assets/images/video_thumbnail.jpg"
             alt="Trading platform preview"
