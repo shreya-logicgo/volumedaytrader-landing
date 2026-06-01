@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import Badge from '@/components/ui/badge/Badge'
 import Heading from '@/components/ui/heading/Heading'
 import SubHeading from '@/components/ui/subheading/SubHeading'
 import { useTranslation } from 'react-i18next'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 interface PricingPlan {
   key: 'wyckoffIndicators' | 'monthlyAccess' | 'annualAccess' | 'lifetimeAccess'
@@ -106,8 +110,87 @@ const plans: PricingPlan[] = [
   },
 ]
 
+/** Bottom-corner start offsets — outer cards travel farther, all merge at grid position */
+function getCardRiseConfig(index: number, total: number) {
+  const half = total / 2
+  const isLeftSide = index < half
+  const depth = isLeftSide ? index : index - half
+  const spread = 48 + depth * 36
+  const lift = 88 + depth * 22
+
+  if (isLeftSide) {
+    return {
+      x: -spread,
+      y: lift,
+      transformOrigin: 'left bottom',
+    }
+  }
+
+  return {
+    x: spread,
+    y: lift,
+    transformOrigin: 'right bottom',
+  }
+}
+
+/** Single continuous rise + fade — slower so cards feel like one choreographed flow */
+const RISE_DURATION = 2.6
+const RISE_EASE = 'power2.inOut'
+
+function prefersReducedMotion() {
+  if (typeof window === 'undefined') return false
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches
+}
+
 const Pricing = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'pricing' })
+  const cardRefs = useRef<(HTMLElement | null)[]>([])
+
+  useEffect(() => {
+    const cards = cardRefs.current.filter(Boolean) as HTMLElement[]
+    if (cards.length !== 4) return
+
+    const section = cards[0].closest('[id="pricing"]')
+    if (!section) return
+
+    if (prefersReducedMotion()) {
+      gsap.set(cards, { opacity: 1, x: 0, y: 0, clearProps: 'transform' })
+      return
+    }
+
+    cards.forEach((card, i) => {
+      const cfg = getCardRiseConfig(i, cards.length)
+      gsap.set(card, {
+        opacity: 0,
+        x: cfg.x,
+        y: cfg.y,
+        transformOrigin: cfg.transformOrigin,
+        force3D: true,
+      })
+    })
+
+    const tl = gsap.timeline({ paused: true })
+
+    tl.to(cards, {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      duration: RISE_DURATION,
+      ease: RISE_EASE,
+    })
+
+    const scrollTrigger = ScrollTrigger.create({
+      trigger: section,
+      start: 'top 80%',
+      once: true,
+      onEnter: () => tl.play(),
+    })
+
+    return () => {
+      tl.kill()
+      scrollTrigger.kill()
+    }
+  }, [])
 
   return (
     <section id="pricing" className="scroll-anchor-offset relative z-10 mx-auto section-pb">
@@ -120,23 +203,24 @@ const Pricing = () => {
         <SubHeading className="max-w-[780px] mx-auto" text={t('description')} />
       </div>
 
-      <div className="content-pt grid grid-cols-1 gap-5  md:grid-cols-2 xl:grid-cols-4">
-        {plans.map((plan) => (
+      <div className="content-pt grid grid-cols-1 gap-5 overflow-x-clip md:grid-cols-2 xl:grid-cols-4">
+        {plans.map((plan, index) => (
           <article
             key={plan.key}
-            className={`group hover:cursor-pointer min-w-0 xl:max-h-fit overflow-hidden rounded-3xl p-0.5 transition-all duration-300 ${
-                'bg-pricing-header hover:bg-tab-active hover:shadow-[0_0_0_1px_rgba(255,46,46,0.2)_inset]'
-              }`}
+            ref={(el) => { cardRefs.current[index] = el }}
+            className={`pricing-card-rise group hover:cursor-pointer min-w-0 will-change-transform xl:max-h-fit overflow-hidden rounded-3xl p-0.5 transition-all duration-300 ${
+              'bg-pricing-header hover:bg-tab-active hover:shadow-[0_0_0_1px_rgba(255,46,46,0.2)_inset]'
+            }`}
           >
             <div
               className={`px-4 py-2 text-center 2xl:text-lg font-semibold transition-all duration-300 ${
-               'bg-pricing-header text-pricing-header group-hover:bg-service-accent group-hover:text-white'
+                'bg-pricing-header text-pricing-header group-hover:bg-service-accent group-hover:text-white'
               }`}
             >
               {t(`plans.${plan.key}.tag`)}
             </div>
 
-            <div className="p-5 bg-card-bg rounded-3xl xl:h-fit h-[730px] ">
+            <div className="p-5 bg-card-bg rounded-3xl xl:h-fit h-[730px]">
               <h3 className="break-words flex items-center text-md 2xl:text-lg font-semibold uppercase tracking-wide text-white">
                 <span>{plan.svg && <img src={plan.svg} alt={t(`plans.${plan.key}.title`)} className="h-6 w-6 inline-block mr-2" />}</span>
                 {t(`plans.${plan.key}.title`)}
@@ -148,7 +232,7 @@ const Pricing = () => {
               </div>
 
               <div className="mt-1 flex flex-wrap items-end gap-2">
-                <span className="text-3xl font-semibold leading-none text-white sm:text-[40px] ">{plan.price}</span>
+                <span className="text-3xl font-semibold leading-none text-white sm:text-[40px]">{plan.price}</span>
                 <span className="pb-1 text-base text-price-unit">/{t(`plans.${plan.key}.duration`)}</span>
                 {plan.discount ? (
                   <span className="my-auto text-base font-medium text-white bg-[#151032] px-3 py-2 my-auto rounded-3xl">{t(`plans.${plan.key}.discount`)}</span>
@@ -160,7 +244,7 @@ const Pricing = () => {
               <button
                 type="button"
                 className={`mt-5 hover:cursor-pointer w-full rounded-full py-2.5 md:text-lg font-medium shadow-[inset_0px_1px_3.18px_0px_#FFFFFF80] transition-all duration-300 ${
-                 'border border-btn-border bg-signal-panel-bg text-white group-hover:bg-service-accent group-hover:border-transparent'
+                  'border border-btn-border bg-signal-panel-bg text-white group-hover:bg-service-accent group-hover:border-transparent'
                 }`}
               >
                 {t(`plans.${plan.key}.button`)}
