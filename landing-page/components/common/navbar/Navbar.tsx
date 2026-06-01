@@ -13,7 +13,7 @@ const links = [
   { label: 'Community', href: '/#community' },
   { label: 'How Indicators Work', href: '/how-indicators-work' },
   { label: 'Blog', href: '/blogs' },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 const languages = [
@@ -108,7 +108,9 @@ export default function Navbar() {
                   ? pathname === '/blogs' || pathname.startsWith('/blogs/')
                   : link.href === '/how-indicators-work'
                     ? pathname === '/how-indicators-work'
-                    : pathname === link.href
+                    : link.href === '/contact'
+                      ? pathname === '/contact'
+                      : pathname === link.href
 
               return (
                 <li key={link.label}>
@@ -225,7 +227,9 @@ export default function Navbar() {
                           ? pathname === '/blogs' || pathname.startsWith('/blogs/')
                           : link.href === '/how-indicators-work'
                             ? pathname === '/how-indicators-work'
-                            : pathname === link.href
+                            : link.href === '/contact'
+                              ? pathname === '/contact'
+                              : pathname === link.href
 
                       return (
                         <Link

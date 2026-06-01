@@ -461,6 +461,24 @@
             }
         }
     },
+    "contactPage": {
+        "badge": "Contact Us",
+        "title": "Get in Touch With Us",
+        "description": "Reach out to us for inquiries, collaborations, or to discuss your project needs.",
+        "form": {
+            "firstName": "First Name",
+            "firstNamePlaceholder": "Enter your first name",
+            "lastName": "Last Name",
+            "lastNamePlaceholder": "Enter your last name",
+            "email": "Email Address",
+            "emailPlaceholder": "Enter your email address",
+            "phone": "Phone Number",
+            "phonePlaceholder": "Your phone number",
+            "message": "Message",
+            "messagePlaceholder": "Write your message here...",
+            "submit": "Submit"
+        }
+    },
     "howIndicatorsWork": {
         "badge": "How Indicators Work",
         "title": "What Will You Get When You Trade with Us?",

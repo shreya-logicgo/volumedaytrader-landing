@@ -463,6 +463,24 @@
       }
     }
   },
+  "contactPage": {
+    "badge": "Kontakt",
+    "title": "Skontaktuj się z nami",
+    "description": "Napisz do nas w sprawie zapytań, współpracy lub omówienia potrzeb Twojego projektu.",
+    "form": {
+      "firstName": "Imię",
+      "firstNamePlaceholder": "Wpisz swoje imię",
+      "lastName": "Nazwisko",
+      "lastNamePlaceholder": "Wpisz swoje nazwisko",
+      "email": "Adres e-mail",
+      "emailPlaceholder": "Wpisz swój adres e-mail",
+      "phone": "Numer telefonu",
+      "phonePlaceholder": "Twój numer telefonu",
+      "message": "Wiadomość",
+      "messagePlaceholder": "Napisz swoją wiadomość...",
+      "submit": "Wyślij"
+    }
+  },
   "howIndicatorsWork": {
     "badge": "Jak działają wskaźniki",
     "title": "Co zyskasz, handlując z nami?",
