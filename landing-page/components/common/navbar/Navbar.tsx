@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 import Logo from '../../../assets/logo/logo.svg'
 import { useLanguage } from '@/hooks/use-language'
+import { useTranslation } from 'react-i18next';
 
 const links = [
   { label: 'Features', href: '/#features' },
