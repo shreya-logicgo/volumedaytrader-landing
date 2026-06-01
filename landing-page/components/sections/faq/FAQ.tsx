@@ -37,7 +37,7 @@ export default function FAQ() {
   });
 
   return (
-    <section id="faq" className="section-pb scroll-mt-18 sm:scroll-mt-18 md:scroll-mt-16 lg:scroll-mt-25">
+    <section id="faq" className="scroll-anchor-offset section-pb">
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
         <div className="badge-wrap flex flex-col gap-2">
           <Badge text={t("faq.badge")} />
@@ -52,7 +52,7 @@ export default function FAQ() {
         </div>
       </div>
 
-      <div className="content-pt mx-auto flex max-w-4xl flex-col items-center gap-6 px-4 sm:gap-7 sm:px-6 lg:gap-8 lg:px-8">
+      <div className="content-pt mx-auto flex max-w-4xl flex-col items-center gap-6 ">
         <div className="group relative w-full max-w-md">
           <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center sm:left-4">
             <Search className="h-4 w-4 text-[#999999] transition-colors group-focus-within:text-white sm:h-5 sm:w-5" />

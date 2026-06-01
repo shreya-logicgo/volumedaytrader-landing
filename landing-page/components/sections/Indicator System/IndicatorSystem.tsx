@@ -12,7 +12,7 @@ const IndicatorSystem = () => {
   return (
     <div
       id="how-indicators-work"
-      className="relative z-10 mx-auto max-w-screen-2xl overflow-visible px-0 section-pb"
+      className="scroll-anchor-offset relative z-10 mx-auto max-w-screen-2xl overflow-visible px-0 section-pb"
     >
       <div className="relative z-20">
         <div className="badge-wrap flex flex-col gap-2">

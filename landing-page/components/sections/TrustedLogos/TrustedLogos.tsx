@@ -210,29 +210,19 @@ export default function TrustedLogos() {
         Integrated with top exchanges
       </p>
 
-      <div className="relative group">
-        {/* BACKGROUND LAYER */}
-        <div className="flex items-center h-10 sm:h-12 md:h-16 lg:h-20 overflow-hidden opacity-30">
-          <LogoTrack className="brightness-100 grayscale" />
+      <div className="relative mt-4 sm:mt-5">
+        <div className="flex h-10 items-center overflow-hidden sm:h-12 md:h-16 lg:h-20">
+          <LogoTrack />
         </div>
 
-        {/* FOREGROUND SPOTLIGHT */}
         <div
-          className="absolute inset-0 flex items-center h-10 sm:h-12 md:h-16 lg:h-20 overflow-hidden z-20 pointer-events-none"
-          style={{
-            WebkitMaskImage:
-              "radial-gradient(circle at 50% 50%, white 0%, transparent 40%)",
-            maskImage:
-              "radial-gradient(circle at 50% 50%, white 0%, transparent 40%)",
-          }}
-        >
-          <LogoTrack className="brightness-200" />
-        </div>
-
-        {/* EDGE FADES */}
-        <div className="absolute left-0 top-0 h-full z-30 pointer-events-none w-24 sm:w-48 bg-gradient-to-r from-[#010B24] to-transparent" />
-
-        <div className="absolute right-0 top-0 h-full z-30 pointer-events-none w-24 sm:w-48 bg-gradient-to-l from-[#010B24] to-transparent" />
+          className="pointer-events-none absolute left-0 top-0 z-10 h-full w-16 bg-gradient-to-r from-page-bg to-transparent sm:w-32 md:w-40"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute right-0 top-0 z-10 h-full w-16 bg-gradient-to-l from-page-bg to-transparent sm:w-32 md:w-40"
+          aria-hidden
+        />
       </div>
     </section>
   );

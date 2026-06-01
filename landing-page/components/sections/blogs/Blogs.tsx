@@ -13,7 +13,7 @@ const Blogs = () => {
   const { t } = useTranslation("translation", { keyPrefix: "blogs" });
 
   return (
-    <section id="blogs" className="section-pb">
+    <section id="blogs" className="scroll-anchor-offset section-pb">
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
         <div className="badge-wrap flex flex-col gap-2">
           <Badge text={t("badge")} />

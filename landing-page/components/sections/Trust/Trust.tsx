@@ -7,7 +7,7 @@ import TrustBackground from '@/components/common/backgrounds/TrustBackground'
 
 const Trust = () => {
     return (
-        <section id="community" className="relative font-bold section-pb">
+        <section id="community" className="scroll-anchor-offset relative font-bold section-pb">
             <TrustBackground />
             {/* <div className="relative">
                 <img
