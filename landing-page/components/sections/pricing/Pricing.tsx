@@ -181,7 +181,7 @@ const Pricing = () => {
                         <path d="M5 13l4 4L19 7" />
                       </svg>
                     </span>
-                    <span className="min-w-0 break-words 2xl:text-lg md:text-base text-xs">{t(`plans.${plan.key}.features.feature${index + 1}`)}</span>
+                    <span className="min-w-0 break-words 2xl:text-lg md:text-base text-sm">{t(`plans.${plan.key}.features.feature${index + 1}`)}</span>
                   </li>
                 ))}
               </ul>
