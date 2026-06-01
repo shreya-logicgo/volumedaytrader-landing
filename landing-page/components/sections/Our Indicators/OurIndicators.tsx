@@ -75,7 +75,7 @@ const OurIndicators = () => {
         </div>
 
         <div className="mt-8 rounded-3xl border border-card-border bg-card-bg p-6 md:p-8">
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_460px] lg:items-center">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_500px] lg:items-center">
             <div>
               <h3 className="text-left 2xl:text-[40px] text-3xl font-semibold leading-[1.1] text-white max-w-[560px]">
                 {t('content.title')}
@@ -110,7 +110,7 @@ const OurIndicators = () => {
               <img
                 src="assets/images/ourindicators.png"
                 alt="Two traders analyzing charts together"
-                className="h-[400px] w-[500px] object-cover "
+                className=" object-cover "
               />
             </div>
           </div>
