@@ -28,7 +28,7 @@ const Blogs = () => {
       <BlogsCards />
 
       <div className="mt-12 flex justify-center">
-        <button className="flex items-center gap-2 rounded-full border border-white/10 bg-[#151032] shadow-control-inset px-6 py-3 text-lg font-medium text-white/80 transition hover:bg-white/10 hover:text-white">
+        <button className="flex items-center gap-2 rounded-full border border-white/10 bg-[#151032] shadow-control-inset px-6 py-3 text-lg font-medium text-white/80 transition hover:bg-white/10 hover:text-white cursor-pointer">
           <span>{t('allBlogsButton')}</span>
 
           <span className="flex h-4 w-4 shrink-0 items-center justify-center">

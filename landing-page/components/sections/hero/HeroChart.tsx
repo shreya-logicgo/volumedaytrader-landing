@@ -24,7 +24,7 @@ export default function HeroChart() {
           <div className="absolute inset-0 flex items-center justify-center px-4">
             <button
               type="button"
-              className="inline-flex h-11 items-center gap-2 rounded-full bg-white/95 pl-1.5 pr-4 shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-transform hover:scale-[1.02] sm:h-12 sm:gap-3 sm:pl-2 sm:pr-5 lg:h-14 lg:pr-6"
+              className="inline-flex h-11 items-center gap-2 rounded-full bg-white/95 pl-1.5 pr-4 shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-transform hover:scale-[1.02] sm:h-12 sm:gap-3 sm:pl-2 sm:pr-5 lg:h-14 lg:pr-6 cursor-pointer"
               aria-label="Watch demo"
             >
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-[#ED1F24] to-[#ff4d52] sm:h-9 sm:w-9 lg:h-10 lg:w-10">

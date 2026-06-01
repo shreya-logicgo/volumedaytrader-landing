@@ -107,18 +107,18 @@ const Footer = () => {
                         </h3>
 
                         {[
-                            t('footer.navigation.indicators'),
-                            t('footer.navigation.ptaReports'),
-                            t('footer.navigation.pricing'),
-                            t('footer.navigation.tradingCommunity'),
-                            t('footer.navigation.marketAnalysis'),
+                            { label: t('footer.navigation.indicators'), href: '/#signals' },
+                            { label: t('footer.navigation.ptaReports'), href: '/#pta' },
+                            { label: t('footer.navigation.pricing'), href: '/#pricing' },
+                            { label: t('footer.navigation.tradingCommunity'), href: '/#community' },
+                            { label: t('footer.navigation.marketAnalysis'), href: '/#how-indicators-work' },
                         ].map((item, idx) => (
                             <Link
                                 key={idx}
-                                href="/"
+                                href={item.href}
                                 className="text-sm text-secondary-text transition-colors duration-300 hover:text-white sm:text-base lg:text-lg"
                             >
-                                {item}
+                                {item.label}
                             </Link>
                         ))}
                     </div>
@@ -130,17 +130,17 @@ const Footer = () => {
                         </h3>
 
                         {[
-                            t('footer.resources.blogs'),
-                            t('footer.resources.tradingEducation'),
-                            t('footer.resources.faq'),
-                            t('footer.resources.affiliateProgram'),
+                            { label: t('footer.resources.blogs'), href: '/#blogs' },
+                            { label: t('footer.resources.tradingEducation'), href: '/#our-indicators' },
+                            { label: t('footer.resources.faq'), href: '/#faq' },
+                            { label: t('footer.resources.affiliateProgram'), href: '/#' },
                         ].map((item, idx) => (
                             <Link
                                 key={idx}
-                                href="/"
+                                href={item.href}
                                 className="text-sm text-secondary-text transition-colors duration-300 hover:text-white sm:text-base lg:text-lg"
                             >
-                                {item}
+                                {item.label}
                             </Link>
                         ))}
                     </div>
@@ -152,15 +152,15 @@ const Footer = () => {
                         </h3>
 
                         {[
-                            t('footer.contact.support'),
-                            t('footer.contact.affiliateSupport'),
+                            { label: t('footer.contact.support'), href: '/#contact' },
+                            { label: t('footer.contact.affiliateSupport'), href: '/#' },
                         ].map((item, idx) => (
                             <Link
                                 key={idx}
-                                href="/"
+                                href={item.href}
                                 className="text-sm text-secondary-text transition-colors duration-300 hover:text-white sm:text-base lg:text-lg"
                             >
-                                {item}
+                                {item.label}
                             </Link>
                         ))}
                     </div>

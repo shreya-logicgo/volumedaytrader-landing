@@ -9,7 +9,7 @@ const SignalsAndIndicators = () => {
     const { t } = useTranslation('translation', { keyPrefix: 'signals' })
 
     return (
-        <div className="section-pb">
+        <section id="signals" className="section-pb">
             <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
                 <Badge text={t('badge')} />
             </div>
@@ -19,7 +19,7 @@ const SignalsAndIndicators = () => {
             </div>
             <SignalsAndIndicatorsCards className='content-pt' />
 
-        </div>
+        </section>
     )
 }
 

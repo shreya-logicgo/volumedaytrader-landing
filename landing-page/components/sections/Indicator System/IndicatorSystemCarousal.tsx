@@ -172,7 +172,7 @@ const IndicatorSystemCarousal = ({
           type="button"
           onClick={() => canGoPrev && setActiveIndex((prev) => prev - 1)}
           disabled={!canGoPrev}
-          className="flex h-16 w-16 items-center justify-center rounded-full text-3xl control-button text-white disabled:cursor-not-allowed disabled:opacity-40 transition-opacity"
+          className="flex h-16 w-16 items-center justify-center rounded-full text-3xl control-button text-white disabled:cursor-not-allowed disabled:opacity-40 transition-opacity cursor-pointer"
           aria-label="Previous"
         >
           &#8249;
@@ -181,7 +181,7 @@ const IndicatorSystemCarousal = ({
           type="button"
           onClick={() => canGoNext && setActiveIndex((prev) => prev + 1)}
           disabled={!canGoNext}
-          className="flex h-16 w-16 items-center justify-center rounded-full text-3xl control-button text-white disabled:cursor-not-allowed disabled:opacity-40 transition-opacity"
+          className="flex h-16 w-16 items-center justify-center rounded-full text-3xl control-button text-white disabled:cursor-not-allowed disabled:opacity-40 transition-opacity cursor-pointer"
           aria-label="Next"
         >
           &#8250;

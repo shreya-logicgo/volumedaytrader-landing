@@ -45,23 +45,23 @@ const TrustCards = ({ items = defaultItems, className = '' }: TrustCardsProps) =
       {items.map((item) => (
         <article
           key={item.title}
-          className="card-ui  rounded-2xl p-8  text-left"
+          className="card-ui  rounded-2xl p-5  text-left"
         >
-          <div className="flex h-full gap-6 flex-col 2xl:justify-between justify-around ">
-            <div className="space-y-2 flex flex-col items-start">
-              <p className="text-3xl sm:text-4xl 2xl:text-5xl font-normal text-white">
-                {item.value}
-              </p>
-            </div>
-            <h3 className="card-heading  !mb-0 text-left w-full  font-semibold leading-tight text-white">
-              {t(item.title)}
-            </h3>
-            <div className="space-y-4  ">
-              <p className="card-desc text-[#A7ADBE] line-clamp-4 text-left 2xl:text-base max-w-[265px]">
-                {t(item.description)}
-              </p>
-            </div>
-          </div>
+          <div className="flex h-full flex-col">
+  <p className="text-3xl sm:text-4xl 2xl:text-5xl font-normal text-white">
+    {item.value}
+  </p>
+
+  <div className="mt-13">
+    <h3 className="card-heading !mb-0 text-left font-semibold leading-tight text-white">
+      {t(item.title)}
+    </h3>
+
+    <p className="card-desc pt-3 text-left text-secondary-text line-clamp-4 ">
+      {t(item.description)}
+    </p>
+  </div>
+</div>
         </article>
       ))}
     </div>

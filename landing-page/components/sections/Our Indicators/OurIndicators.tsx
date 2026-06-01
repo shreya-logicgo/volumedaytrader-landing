@@ -19,7 +19,7 @@ const OurIndicators = () => {
 
   return (
     <div className="section-pb">
-      <section className="relative z-10 mx-auto">
+      <section id="our-indicators" className="relative z-10 mx-auto">
         <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
           <Badge text={t('badge')} />
         </div>

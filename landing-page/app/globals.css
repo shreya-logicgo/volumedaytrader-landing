@@ -86,12 +86,12 @@
 
   /* Card Heading */
   .card-heading {
-    @apply text-lg font-semibold leading-none tracking-normal text-center text-white sm:text-base 2xl:text-2xl;
+    @apply text-lg font-semibold leading-none tracking-normal text-center text-white sm:text-base xl:text-xl  2xl:text-2xl;
   }
 
   /* Card Description */
   .card-desc {
-    @apply text-sm font-normal leading-snug line-clamp-3 tracking-normal text-secondary-text sm:text-sm 2xl:text-lg;
+    @apply text-sm font-normal leading-snug line-clamp-3 tracking-normal text-secondary-text sm:text-sm lg:text-base 2xl:text-lg;
   }
 
   

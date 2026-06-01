@@ -26,7 +26,7 @@ function HeroFeatureTag({ label, compact }: { label: string; compact?: boolean }
                     }`}
             >
                 {label}
-            </span> 
+            </span>
         </div>
     )
 }
@@ -83,14 +83,14 @@ export default function Hero() {
             </div>
 
 
-                <div className="pointer-events-none absolute inset-0 z-10 hidden xl:block ">
-                    {floatingTags.map((tag) => (
-                        <div key={tag.label} className={`absolute max-w-[min(240px,22vw)] ${tag.className}`}>
-                            <HeroFeatureTag label={tag.label} />
-                        </div>
-                    ))}
-                </div>
-            
+            <div className="pointer-events-none absolute inset-0 z-10 hidden xl:block ">
+                {floatingTags.map((tag) => (
+                    <div key={tag.label} className={`absolute max-w-[min(240px,22vw)] scale-90 ${tag.className}`}>
+                        <HeroFeatureTag label={tag.label} />
+                    </div>
+                ))}
+            </div>
+
 
             <div className="relative  z-30 mx-auto w-full max-w-[872px] px-4 text-center sm:px-6">
                 {/* Top pill badge */}
@@ -104,15 +104,11 @@ export default function Hero() {
                 </div>
 
                 {/* Heading scales down on small screens; full size only at 2xl */}
-                <h1 className="mx-auto mt-4 max-w-[872px] text-[clamp(1.375rem,5vw+0.65rem,3.75rem)] font-bold leading-[1.12] tracking-tight text-white sm:mt-6 md:mt-8 2xl:mt-8 2xl:leading-[1.2]">
-                    {titleParts.map((line) => (
-                        <span key={line} className="block">
-                            {line}
-                        </span>
-                    ))}
+                <h1 className="mx-auto mt-4 max-w-[652px] text-[clamp(1.375rem,5vw+0.65rem,3.75rem)]  lg:text-[47px] font-bold leading-[1.2] tracking-normal text-white sm:mt-6 md:mt-8 2xl:mt-8 2xl:leading-[1.2]">
+                    {titleParts.join(' ')}
                 </h1>
 
-                <p className="mx-auto mt-3 max-w-[640px] px-1 text-[clamp(0.8125rem,1.6vw+0.45rem,1.25rem)] leading-relaxed text-secondary-text sm:mt-4 md:mt-5 2xl:mt-5 2xl:leading-snug">
+                <p className="mx-auto mt-3 max-w-[640px] px-1 text-[clamp(0.8125rem,1.6vw+0.45rem,1.25rem)] lg:text-[18px] leading-relaxed text-secondary-text sm:mt-4 md:mt-5 2xl:mt-5 2xl:leading-snug">
                     {t("hero.description")}
                 </p>
 
@@ -120,14 +116,14 @@ export default function Hero() {
                 <div className="mx-auto mt-5 flex w-full max-w-md flex-col items-stretch justify-center gap-3 sm:mt-6 sm:max-w-lg sm:flex-row sm:items-center sm:justify-center sm:gap-4 2xl:mt-8 2xl:max-w-none">
                     <Link
                         href="https://volumedaytrader.com/login/"
-                         className="btn-primary font-medium w-full justify-center px-5 py-2.5 text-sm sm:w-auto sm:px-6 sm:py-3 sm:text-base 2xl:inline-flex 2xl:px-7 2xl:text-lg"
+                        className="btn-primary font-medium w-full justify-center px-5 py-2.5 text-sm sm:w-auto sm:px-6 sm:py-3 sm:text-base 2xl:inline-flex 2xl:px-7 2xl:text-lg shadow-control-inset cursor-pointer"
                     >
                         {t("hero.primaryButton")}
-                         <Vector className="block h-3 w-3" aria-hidden="true" />
+                        <Vector className="block h-3 w-3" aria-hidden="true" />
                     </Link>
                     <Link
                         href="https://volumedaytrader.com/login/"
-                        className="inline-flex w-full items-center justify-center shadow-control-inset gap-2 rounded-full border border-[#2B2A56] bg-[#0D082B]/80 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:border-[#3d3c6e] sm:w-auto sm:px-6 sm:text-base 2xl:px-7 2xl:py-3 2xl:text-lg"
+                        className="inline-flex w-full items-center justify-center shadow-control-inset gap-2 rounded-full border border-[#2B2A56] bg-[#0D082B]/80 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:border-[#3d3c6e] sm:w-auto sm:px-6 sm:text-base 2xl:px-7 2xl:py-3 2xl:text-lg cursor-pointer"
                     >
                         {t("hero.secondaryButton")}
                         {/* <ArrowUpRight /> */}

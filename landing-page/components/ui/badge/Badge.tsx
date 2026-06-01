@@ -30,7 +30,7 @@ const Badge = ({
             backgroundImage: `url(${backgroundImageSrc})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            height: '268px',
+            height: '168px',
             width: '717px',
           }
           : undefined
