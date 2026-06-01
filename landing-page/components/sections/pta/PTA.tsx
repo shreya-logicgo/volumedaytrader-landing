@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import type { CarouselApi } from '@/components/ui/carousel'
 import { useTranslation } from 'react-i18next'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-
 import Badge from '@/components/ui/badge/Badge'
 import { cn } from '@/lib/utils'
 import Heading from '@/components/ui/heading/Heading'
@@ -13,7 +12,7 @@ import PTACards from '@/components/sections/pta/PTACards'
 import SideGradients from '@/components/common/backgrounds/SideGradients'
 
 const navButtonClass =
-  'flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#2A2450] bg-[#161032] text-white transition-opacity hover:bg-[#1e1640] disabled:cursor-not-allowed disabled:opacity-35 sm:h-12 sm:w-12 2xl:h-14 2xl:w-14'
+  'flex h-11 w-11 shrink-0 items-center justify-center rounded-full shadow-control-inset border border-[#2A2450] bg-[#161032] text-white transition-opacity hover:bg-[#1e1640] disabled:cursor-not-allowed disabled:opacity-35 sm:h-12 sm:w-12 2xl:h-14 2xl:w-14'
 
 type NavButtonProps = {
   direction: 'prev' | 'next'
@@ -86,28 +85,12 @@ const PTA = () => {
 
       {/* Carousel block only — does not clip section gradients */}
       <div className="relative z-10 mx-auto w-full max-w-[1165px] px-4 content-pt sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-5 xl:flex-row xl:items-center xl:gap-4 2xl:gap-6">
-          {/* Large screens: arrows flank the carousel */}
-          <NavButton
-            direction="prev"
-            disabled={!canScrollPrev}
-            onClick={() => api?.scrollPrev()}
-            className="hidden shrink-0 xl:flex"
-          />
-
-          <div className="min-w-0 flex-1 overflow-hidden">
+        <div className="flex flex-col gap-5">
+          <div className="min-w-0 overflow-hidden">
             <PTACards setApi={setApi} />
           </div>
 
-          <NavButton
-            direction="next"
-            disabled={!canScrollNext}
-            onClick={() => api?.scrollNext()}
-            className="hidden shrink-0 xl:flex"
-          />
-
-          {/* Laptop, tablet, mobile: arrows below carousel */}
-          <div className="flex items-center justify-center gap-4 xl:hidden">
+          <div className="relative z-10 flex items-center justify-center gap-4">
             <NavButton
               direction="prev"
               disabled={!canScrollPrev}

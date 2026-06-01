@@ -55,7 +55,7 @@ const OurIndicators = () => {
                   'w-full cursor-pointer rounded-lg px-3 py-2 text-center text-sm font-medium transition-all',
                   'sm:w-auto sm:px-4 sm:py-2 sm:text-sm md:px-5 md:text-base',
                   activeTab === tab.id
-                    ? 'bg-tab-active text-white'
+                    ? 'bg-tab-active text-white shadow-control-inset'
                     : 'text-secondary-text hover:text-white'
                 )}
               >
