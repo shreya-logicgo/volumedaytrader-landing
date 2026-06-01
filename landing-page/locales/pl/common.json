@@ -441,7 +441,27 @@
         "button": "Dowiedz się więcej"
       }
     },
-    "allBlogsButton": "Wszystkie blogi"
+    "allBlogsButton": "Wszystkie blogi",
+    "detail": {
+      "backToBlogs": "Powrót do blogów",
+      "similarBlogs": "Podobne blogi",
+      "allBlogs": "Wszystkie blogi",
+      "notFoundTitle": "Nie znaleziono wpisu",
+      "notFoundDescription": "Szukany wpis na blogu nie istnieje.",
+      "posts": {
+        "post1": {
+          "author": "Jakob Lipshutz",
+          "date": "15 maja 2025",
+          "excerpt": "Poznaj skuteczne strategie zwiększania zaangażowania online, budowania silniejszych relacji z odbiorcami i lojalnej społeczności wokół marki.",
+          "section1Title": "Kluczowe strategie zwiększania zaangażowania:",
+          "section1Body": "- Wykorzystuj Stories i Reels w mediach społecznościowych: Krótkie formaty na Instagramie i TikToku przyciągają uwagę i zachęcają do interakcji.\n- Prowadź ankiety i sesje Q&A: Angażuj odbiorców, angażując ich w decyzje lub odpowiadając na pytania na żywo.\n- Zachęcaj do treści tworzonych przez użytkowników: Motywuj społeczność do dzielenia się doświadczeniami z marką.\n- Personalizuj treści: Wykorzystuj dane, aby tworzyć doświadczenia dopasowane do preferencji odbiorców.\n- Twórz wartościowe, udostępnialne treści: Dostarczaj edukację, rozrywkę lub inspirację, które odbiorcy chcą przekazywać dalej.",
+          "section2Title": "Siła zaangażowania online:",
+          "section2Body": "W cyfrowym świecie zaangażowanie online jest kluczowe dla relacji, świadomości marki i lojalności. Zaangażowani odbiorcy częściej ufają marce, reagują na treści i stają się ambasadorami. Priorytetyzując engagement, firmy zyskują wgląd w potrzeby odbiorców i wspierają konwersje oraz wzrost.",
+          "section3Title": "Podsumowanie:",
+          "section3Body": "Zwiększanie zaangażowania online jest niezbędne dla długoterminowego sukcesu. Dzięki interaktywnym treściom, trendom w social media i personalizacji możesz budować silniejsze relacje i widoczność marki. Pamiętaj, że engagement to dialog — słuchaj społeczności, dostarczaj wartość i twórz okazje do sensownych interakcji."
+        }
+      }
+    }
   },
   "footer": {
     "cta": {

@@ -22,7 +22,7 @@ const BlogsCards = () => {
               date={t(`page.posts.${postKey}.date`)}
               title={t(`page.posts.${postKey}.title`)}
               buttonLabel={t(`page.posts.${postKey}.button`)}
-              href="/blogs"
+              href={`/blogs/${postKey}`}
             />
           </div>
         );

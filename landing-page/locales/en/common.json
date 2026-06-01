@@ -439,7 +439,27 @@
                 "button": "Learn More"
             }
         },
-        "allBlogsButton": "All Blogs"
+        "allBlogsButton": "All Blogs",
+        "detail": {
+            "backToBlogs": "Back to Blogs",
+            "similarBlogs": "Similar Blogs",
+            "allBlogs": "All Blogs",
+            "notFoundTitle": "Blog not found",
+            "notFoundDescription": "The blog post you are looking for does not exist.",
+            "posts": {
+                "post1": {
+                    "author": "Jakob Lipshutz",
+                    "date": "May 15, 2025",
+                    "excerpt": "Learn effective strategies to increase online engagement, foster stronger connections with your audience, and build a more loyal community for your brand.",
+                    "section1Title": "Key Strategies for Boosting Engagement:",
+                    "section1Body": "- Leverage Social Media Stories and Reels: Use short-form content on platforms like Instagram and TikTok to capture attention, entertain, and encourage interaction.\n- Host Interactive Polls and Q&A Sessions: Engage your audience by actively involving them in decision-making processes or addressing their questions in real-time.\n- Encourage User-Generated Content: Motivate your community to share their experiences with your brand, and showcase their content on your social channels to build authenticity.\n- Personalize Content for Your Audience: Use data and insights to create personalized experiences that resonate with your followers' preferences and behaviors.\n- Create Shareable and Valuable Content: Focus on delivering content that adds value to your audience's lives—whether it's educational, entertaining, or inspiring—and encourages them to share it with others.",
+                    "section2Title": "Understanding the Power of Online Engagement:",
+                    "section2Body": "In today's digital world, online engagement is critical for building relationships, driving brand awareness, and fostering loyalty. Engaged audiences are more likely to trust your brand, interact with your content, and become advocates. By prioritizing engagement, businesses can tap into valuable insights about their audience's needs and preferences, and ultimately, boost conversions and growth.",
+                    "section3Title": "Conclusion:",
+                    "section3Body": "Boosting online engagement is essential for long-term success in today's digital landscape. By utilizing interactive content, leveraging social media trends, and personalizing your approach, you can foster stronger connections with your audience and increase brand visibility. Remember that engagement is a two-way street—actively listen to your community, provide value, and create opportunities for meaningful interactions to keep them coming back."
+                }
+            }
+        }
     },
     "footer": {
         "cta": {

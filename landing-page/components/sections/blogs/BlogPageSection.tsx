@@ -88,8 +88,9 @@ export default function BlogPageSection() {
                   category={t(`page.posts.${post.key}.category`)}
                   date={t(`page.posts.${post.key}.date`)}
                   title={t(`page.posts.${post.key}.title`)}
-                  buttonLabel={t(`page.posts.${post.key}.button`)}
-                />
+                buttonLabel={t(`page.posts.${post.key}.button`)}
+                href={`/blogs/${post.key}`}
+              />
               </div>
             ))}
           </div>
