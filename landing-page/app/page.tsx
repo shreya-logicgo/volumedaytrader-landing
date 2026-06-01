@@ -22,6 +22,7 @@ import TrustedLogos from "@/components/sections/TrustedLogos/TrustedLogos";
 import Hero from "@/components/sections/hero/Hero";
 import { useEffect } from "react";
 import { scrollToSectionId } from "@/lib/scroll";
+import BlogCard from "@/components/sections/blogs/Blogcardw";
 
 export default function Page() {
   useEffect(() => {
@@ -51,6 +52,7 @@ export default function Page() {
       <OurServices />
       {/* <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-0" > */}
       <Trust />
+      {/* <BlogCard href={"https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=612x612&w=0&k=20&c=A63koPKaCyIwQWOTFBRWXj_PwCrR4cEoOw2S9Q7yVl8="} imageSrc={"https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=612x612&w=0&k=20&c=A63koPKaCyIwQWOTFBRWXj_PwCrR4cEoOw2S9Q7yVl8="} date={"1-1-80"} readTime={""} title={"Manav is a Don"}/> */}
       {/* </div> */}
       <SignalsAndIndicators />
 

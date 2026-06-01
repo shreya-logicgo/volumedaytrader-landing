@@ -6,8 +6,9 @@ import { useTranslation } from 'react-i18next'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Badge from '@/components/ui/badge/Badge'
 import { cn } from '@/lib/utils'
-import Heading from '@/components/ui/heading/Heading'
-import SubHeading from '@/components/ui/subheading/SubHeading'
+import SectionTitleWrap from '@/components/ui/heading/Sectiontitlewrap'
+// import Heading from '@/components/ui/heading/Heading'
+// import SubHeading from '@/components/ui/subheading/SubHeading'
 import PTACards from '@/components/sections/pta/PTACards'
 import SideGradients from '@/components/common/backgrounds/SideGradients'
 
@@ -71,7 +72,7 @@ const PTA = () => {
           <Badge text={t('badge')} />
         </div>
 
-        <div className="section-header-stack relative mx-auto">
+        {/* <div className="section-header-stack relative mx-auto">
           <Heading
             className="mx-auto max-w-[630px] text-balance"
             text={t('title')}
@@ -80,7 +81,8 @@ const PTA = () => {
             className="mx-auto max-w-2xl text-pretty px-1"
             text={t('description')}
           />
-        </div>
+        </div> */}
+        <SectionTitleWrap heading={t('title')} subheading={t('description')} />
       </div>
 
       {/* Carousel block only — does not clip section gradients */}

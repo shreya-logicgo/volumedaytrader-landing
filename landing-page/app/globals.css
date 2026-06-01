@@ -178,6 +178,114 @@
     background-color: var(--color-card-bg);
   }
 
+  /* Our Services — Growra-style hover fill + icon roll */
+  .service-card {
+    --service-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --service-fill-duration: 0.9s;
+    --service-content-duration: 0.75s;
+    --service-icon-roll-duration: 1.05s;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .service-card__fill {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    background-color: var(--color-tab-active);
+    transform: scaleY(0);
+    transform-origin: bottom center;
+    backface-visibility: hidden;
+    transition: transform var(--service-fill-duration) var(--service-ease);
+    pointer-events: none;
+  }
+
+  .service-card:hover .service-card__fill,
+  .service-card:focus-within .service-card__fill {
+    transform: scaleY(1);
+  }
+
+  .service-card__content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .service-card .card-heading,
+  .service-card .card-desc {
+    transition: color var(--service-content-duration) var(--service-ease) 0.12s;
+  }
+
+  .service-card:hover .card-heading,
+  .service-card:hover .card-desc,
+  .service-card:focus-within .card-heading,
+  .service-card:focus-within .card-desc {
+    color: #fff;
+  }
+
+  .service-card .service-icon-box {
+    transition:
+      background-color var(--service-content-duration) var(--service-ease) 0.15s,
+      box-shadow var(--service-content-duration) var(--service-ease) 0.15s;
+  }
+
+  .service-card:hover .service-icon-box,
+  .service-card:focus-within .service-icon-box {
+    animation: service-icon-roll var(--service-icon-roll-duration) var(--service-ease) forwards;
+    background-color: #fff !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  }
+
+  @keyframes service-icon-roll {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .service-card .service-card-icon {
+    color: #fff;
+    transition: color var(--service-content-duration) var(--service-ease) 0.18s;
+  }
+
+  .service-card:hover .service-card-icon,
+  .service-card:focus-within .service-card-icon {
+    color: #ed1f24;
+  }
+
+  .service-card .service-card-icon svg path {
+    fill: currentColor;
+    transition: fill var(--service-content-duration) var(--service-ease) 0.18s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .service-card__fill,
+    .service-card .service-icon-box,
+    .service-card .card-heading,
+    .service-card .card-desc,
+    .service-card .service-card-icon,
+    .service-card .service-card-icon svg path {
+      transition-duration: 0.01ms;
+    }
+
+    .service-card:hover .service-card__fill,
+    .service-card:focus-within .service-card__fill {
+      transform: scaleY(1);
+    }
+
+    .service-card__fill {
+      transform: scaleY(0);
+    }
+
+    .service-card:hover .service-icon-box,
+    .service-card:focus-within .service-icon-box {
+      animation: none;
+    }
+  }
+
   /* Utility mappings to variables (used across components) */
   .bg-card-bg { background-color: var(--color-card-bg); }
   .border-card-border { border-color: var(--color-card-border); }
@@ -271,6 +379,49 @@
 @layer components {
   .section-header-stack {
     @apply mx-auto  space-y-4;
+  }
+
+  /* SectionTitleWrap — Growra-style title block */
+  .section-title-wrap {
+    @apply mx-auto mb-[70px] flex max-w-[555px] flex-col items-center gap-[18px] text-center;
+  }
+
+  .section-title-wrap__heading {
+    @apply m-0 w-full pb-[3px] text-center font-normal leading-[1.15] tracking-[-1.56px] text-white;
+    font-size: 52px;
+    perspective: 1px;
+  }
+
+  .section-title-wrap__mask {
+    position: relative;
+    display: block;
+    overflow: clip;
+  }
+
+  .section-title-wrap__line-inner {
+    display: block;
+    transform-origin: 50% 100%;
+    will-change: transform, opacity;
+  }
+
+  .section-title-wrap__subheading {
+    @apply m-0 max-w-[480px] text-center text-[18px] font-normal leading-relaxed tracking-normal text-[#989898];
+    perspective: 1px;
+  }
+
+  .signal-card__media-mask {
+    position: relative;
+    overflow: clip;
+  }
+
+  .signal-card__panel-mask {
+    position: relative;
+    overflow: clip;
+  }
+
+  .signal-card__media,
+  .signal-card__panel {
+    will-change: transform, opacity;
   }
 }
 

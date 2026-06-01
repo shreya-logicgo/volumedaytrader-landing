@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import Badge from '@/components/ui/badge/Badge'
-import Heading from '@/components/ui/heading/Heading'
-import SubHeading from '@/components/ui/subheading/SubHeading'
+import SectionTitleWrap from '@/components/ui/heading/Sectiontitlewrap'
+// import Heading from '@/components/ui/heading/Heading'
+// import SubHeading from '@/components/ui/subheading/SubHeading'
 import { useTranslation } from 'react-i18next'
 import { cn } from '@/lib/utils'
 
@@ -31,13 +32,14 @@ const OurIndicators = () => {
           <Badge text={t('badge')} />
         </div>
 
-        <div className="section-header-stack relative z-10 mx-auto text-center">
+        {/* <div className="section-header-stack relative z-10 mx-auto text-center">
           <Heading className="mx-auto max-w-3xl px-1 sm:px-0" text={t('title')} />
           <SubHeading
             className="mx-auto max-w-[820px] px-2 leading-snug sm:px-0"
             text={t('description')}
           />
-        </div>
+        </div> */}
+        <SectionTitleWrap heading={t('title')} subheading={t('description')} />
 
         <div className="content-pt flex justify-center px-4 sm:px-6">
           <div

@@ -58,8 +58,12 @@ const OurServicesCards = () => {
         const Icon = service.icon
 
         return (
-          <article key={service.titleKey} className="card-ui min-w-0 w-full overflow-visible">
-            <div className="flex h-full min-w-0 flex-col gap-4 sm:gap-5 lg:gap-6">
+          <article
+            key={service.titleKey}
+            className="service-card card-ui min-w-0 w-full cursor-pointer"
+          >
+            <span className="service-card__fill" aria-hidden="true" />
+            <div className="service-card__content flex h-full min-w-0 flex-col gap-4 sm:gap-5 lg:gap-6">
               <div className="service-icon-accent service-icon-box">
                 <Icon className="service-card-icon" aria-hidden />
               </div>
