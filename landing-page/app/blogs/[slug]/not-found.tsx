@@ -13,7 +13,7 @@ export default function BlogNotFound() {
   return (
     <div className="relative mt-20 min-h-screen overflow-x-hidden">
       <BlogPageBackground />
-      <Container>
+      {/* <Container> */}
         <Navbar />
         <div className="mx-auto flex max-w-[960px] flex-col items-center gap-6 py-24 text-center">
           <h1 className="text-4xl font-bold text-white">{t("notFoundTitle")}</h1>
@@ -25,8 +25,8 @@ export default function BlogNotFound() {
             {t("backToBlogs")}
           </Link>
         </div>
-      </Container>
-      <Footer />
+      {/* </Container> */}
+      {/* <Footer /> */}
     </div>
   );
 }

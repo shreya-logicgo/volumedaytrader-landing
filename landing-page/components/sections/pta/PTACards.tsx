@@ -86,12 +86,12 @@ const PTACards = ({
       setApi={handleSetApi}
       className={cn('w-full', className)}
     >
-      <CarouselContent className="ml-0 2xl:-ml-4">
-        {items.map((item) => (
+      <CarouselContent className="-ml-4 sm:-ml-5">
+        {items.map((item, index) => (
           <CarouselItem
-  key={item.title}
-  className="basis-full md:basis-1/2 !pl-0 md:!pl-4"
->
+            key={item.key}
+            className="basis-full pl-4 sm:pl-5 md:basis-1/2"
+          >
             <article className="flex h-full flex-col gap-4 overflow-hidden rounded-2xl border border-[#1D1938] bg-[#0D082B] p-4 sm:gap-5 sm:p-5 md:p-6">
               <div
                 className="relative aspect-[526/324] w-full overflow-hidden rounded-xl sm:rounded-[20px]"
@@ -103,7 +103,7 @@ const PTACards = ({
                   fill
                   sizes="(max-width: 1535px) min(100vw, 1165px), 560px"
                   className="object-cover"
-                  priority={item.title === defaultItems[0].title}
+                  priority={index === 0}
                 />
               </div>
 

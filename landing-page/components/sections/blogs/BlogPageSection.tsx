@@ -30,7 +30,7 @@ export default function BlogPageSection() {
   }, [searchTerm, t]);
 
   return (
-    <div className="mx-auto flex w-full max-w-[1360px] flex-col items-center">
+    <div className="mx-auto flex w-full max-w-[1360px] justify-center flex-col items-center">
       <div className="mx-auto w-full max-w-4xl text-center">
         <div className="relative mx-auto flex max-w-[717px] flex-col gap-2">
           <Badge text={t("page.badge")} />
@@ -80,7 +80,7 @@ export default function BlogPageSection() {
 
       <div className="w-full pt-20">
         {filteredPosts.length > 0 ? (
-          <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-[repeat(3,440px)] xl:justify-between">
+          <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3 xl:justify-between">
             {filteredPosts.map((post) => (
               <div key={post.key}>
                 <BlogCard

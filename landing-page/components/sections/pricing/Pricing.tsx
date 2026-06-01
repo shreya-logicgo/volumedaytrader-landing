@@ -111,7 +111,7 @@ const Pricing = () => {
 
   return (
     <section id="pricing" className="relative  z-10 mx-auto section-pb ">
-      <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
+      <div className="relative mx-auto flex w-full max-w-[717px] flex-col gap-2 overflow-hidden">
         <Badge text={t('badge')} />
       </div>
 
@@ -143,12 +143,12 @@ const Pricing = () => {
               </h3>
               <div className="mt-4 flex items-end gap-2">
                 {plan.oldPrice ? (
-                  <span className="text-[32px] font-bold text-[var(--color-oldprice-rgba)] line-through">{plan.oldPrice}</span>
+                  <span className="md:text-[32px] text-xl font-bold text-[var(--color-oldprice-rgba)] line-through">{plan.oldPrice}</span>
                 ) : null}
               </div>
 
               <div className="mt-1 flex flex-wrap items-end gap-2">
-                <span className="text-4xl font-semibold leading-none text-white sm:text-[40px]">{plan.price}</span>
+                <span className="text-3xl font-semibold leading-none text-white sm:text-[40px] ">{plan.price}</span>
                 <span className="pb-1 text-base text-price-unit">/{t(`plans.${plan.key}.duration`)}</span>
                 {plan.discount ? (
                   <span className="my-auto text-base font-medium text-white bg-[#151032] px-3 py-2 my-auto rounded-3xl">{t(`plans.${plan.key}.discount`)}</span>
@@ -159,7 +159,7 @@ const Pricing = () => {
 
               <button
                 type="button"
-                className={`mt-5 hover:cursor-pointer w-full rounded-full py-2.5 text-lg font-medium shadow-[inset_0px_1px_3.18px_0px_#FFFFFF80] transition-all duration-300 ${
+                className={`mt-5 hover:cursor-pointer w-full rounded-full py-2.5 md:text-lg font-medium shadow-[inset_0px_1px_3.18px_0px_#FFFFFF80] transition-all duration-300 ${
                  'border border-btn-border bg-signal-panel-bg text-white group-hover:bg-service-accent group-hover:border-transparent'
                 }`}
               >
@@ -181,7 +181,7 @@ const Pricing = () => {
                         <path d="M5 13l4 4L19 7" />
                       </svg>
                     </span>
-                    <span className="min-w-0 break-words 2xl:text-lg text-base">{t(`plans.${plan.key}.features.feature${index + 1}`)}</span>
+                    <span className="min-w-0 break-words 2xl:text-lg md:text-base text-sm">{t(`plans.${plan.key}.features.feature${index + 1}`)}</span>
                   </li>
                 ))}
               </ul>
