@@ -67,7 +67,7 @@ const PTA = () => {
       <SideGradients />
 
       <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 ">
-        <div className="relative mx-auto flex w-full max-w-[717px] flex-col gap-2 overflow-hidden">
+        <div className="badge-wrap relative mx-auto flex w-full max-w-[717px] flex-col gap-2 overflow-hidden">
           <Badge text={t('badge')} />
         </div>
 

@@ -11,7 +11,7 @@ const OurServices = () => {
   return (
     <section id="features" className="scroll-anchor-offset section-pb section-pt overflow-x-clip">
       <div className="relative z-20 mx-auto w-full max-w-screen-2xl ">
-        <div className="relative mx-auto flex max-w-3xl flex-col gap-2">
+        <div className="badge-wrap relative mx-auto flex max-w-3xl flex-col gap-2">
           <Badge text={t('badge')} />
         </div>
 

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import Vector from "@/assets/icons/Vector.svg";
+import Heading from "@/components/ui/heading/Heading";
 import BlogCard from "./BlogCard";
 import type { BlogPost } from "./blogPosts";
 
@@ -16,9 +17,12 @@ export default function SimilarBlogs({ posts }: SimilarBlogsProps) {
   return (
     <section className="flex flex-col gap-8 border-t border-[#1D1E38] pt-10 md:gap-10 md:pt-12">
       <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <h2 className="text-[40px] font-bold leading-10 tracking-[0.01em] text-white">
-          {t("detail.similarBlogs")}
-        </h2>
+        <Heading
+          as="h2"
+          variant="page-content"
+          align="left"
+          text={t("detail.similarBlogs")}
+        />
 
         <Link
           href="/blogs"

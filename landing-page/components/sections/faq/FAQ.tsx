@@ -39,7 +39,7 @@ export default function FAQ() {
   return (
     <section id="faq" className="scroll-anchor-offset section-pb">
       <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
-        <div className="relative mx-auto flex w-full max-w-[717px] flex-col gap-2 overflow-hidden">
+        <div className="badge-wrap flex flex-col gap-2">
           <Badge text={t("faq.badge")} />
         </div>
 

@@ -12,7 +12,7 @@ const Testimonials = () => {
   return (
     <section className="section-pb relative z-10 mx-auto">
       <div className="px-4 text-center sm:px-6">
-        <div className="relative mx-auto flex w-full max-w-[717px] flex-col gap-2 overflow-hidden">
+        <div className="badge-wrap flex flex-col gap-2">
           <Badge text={t('badge')} />
         </div>
 
