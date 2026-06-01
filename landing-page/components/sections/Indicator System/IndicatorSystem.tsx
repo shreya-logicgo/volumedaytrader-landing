@@ -37,5 +37,4 @@ const IndicatorSystem = () => {
     </div>
   )
 }
-
 export default IndicatorSystem

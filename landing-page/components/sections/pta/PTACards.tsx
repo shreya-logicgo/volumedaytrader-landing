@@ -89,9 +89,9 @@ const PTACards = ({
       <CarouselContent className="ml-0 2xl:-ml-4">
         {items.map((item) => (
           <CarouselItem
-            key={item.title}
-            className="basis-full !pl-0 2xl:basis-1/2 2xl:!pl-4"
-          >
+  key={item.title}
+  className="basis-full md:basis-1/2 !pl-0 md:!pl-4"
+>
             <article className="flex h-full flex-col gap-4 overflow-hidden rounded-2xl border border-[#1D1938] bg-[#0D082B] p-4 sm:gap-5 sm:p-5 md:p-6">
               <div
                 className="relative aspect-[526/324] w-full overflow-hidden rounded-xl sm:rounded-[20px]"

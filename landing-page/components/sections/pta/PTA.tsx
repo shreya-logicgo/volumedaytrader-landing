@@ -46,7 +46,7 @@ const PTA = () => {
   }, [api])
 
   return (
-    <section className="section-pb relative overflow-x-visible">
+    <section id="pta" className="section-pb relative overflow-x-visible">
 
 
 
@@ -98,7 +98,7 @@ const PTA = () => {
             onClick={() => api?.scrollNext()}
             disabled={!canScrollNext}
             aria-label="Next slide"
-            className={cn(navButtonClass, 'order-3 mx-auto sm:order-3 sm:mx-0')}
+            className={cn(navButtonClass, 'order-3 mx-auto sm:order-3 sm:mx-0 cursor-pointer')}
           >
             <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
           </button>

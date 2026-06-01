@@ -137,7 +137,7 @@ const Pricing = () => {
             </div>
 
             <div className="p-5 bg-card-bg rounded-3xl xl:h-fit h-[730px] ">
-              <h3 className="break-words flex items-center text-xs 2xl:text-sm font-semibold uppercase tracking-wide text-white">
+              <h3 className="break-words flex items-center text-md 2xl:text-lg font-semibold uppercase tracking-wide text-white">
                 <span>{plan.svg && <img src={plan.svg} alt={t(`plans.${plan.key}.title`)} className="h-6 w-6 inline-block mr-2" />}</span>
                 {t(`plans.${plan.key}.title`)}
               </h3>

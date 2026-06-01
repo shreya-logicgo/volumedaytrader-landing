@@ -26,7 +26,7 @@ export default function BlogsPage() {
         <Container>
           <FAQ />
         </Container>
-        <Footer />
+
       </div>
     </div>
   );
