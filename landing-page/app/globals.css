@@ -281,6 +281,34 @@
     box-shadow: 0 4px 14px rgba(255, 46, 46, 0.35);
   }
 
+  /* Vector arrow slide on parent hover (icon only, no circle bg) */
+  .vector-arrow {
+    @apply relative grid place-items-center overflow-hidden;
+  }
+
+  .vector-arrow__svg {
+    @apply block h-full w-full transition-none;
+  }
+
+  .vector-arrow__svg--copy {
+    @apply absolute inset-0;
+    transform: translate(-150%, 150%);
+  }
+
+  a:hover .vector-arrow__svg:first-of-type,
+  button:hover .vector-arrow__svg:first-of-type,
+  .group:hover .vector-arrow__svg:first-of-type {
+    transform: translate(150%, -150%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  a:hover .vector-arrow__svg--copy,
+  button:hover .vector-arrow__svg--copy,
+  .group:hover .vector-arrow__svg--copy {
+    transform: translate(0);
+    transition: transform 0.3s ease-in-out 0.1s;
+  }
+
   .hero-center-glow {
     background: radial-gradient(ellipse at center, rgba(80, 40, 120, 0.18) 0%, transparent 70%);
   }

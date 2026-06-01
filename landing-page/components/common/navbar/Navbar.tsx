@@ -9,6 +9,7 @@ import Logo from '../../../assets/logo/logo.svg'
 import { useLanguage } from '@/hooks/use-language'
 import { useTranslation } from 'react-i18next'
 import { scrollToSectionId } from '@/lib/scroll'
+import VectorArrow from '@/components/ui/vector-arrow/VectorArrow'
 
 const links = [
   { label: 'Features', href: '/#features' },
@@ -250,9 +251,7 @@ export default function Navbar() {
               className="inline-flex h-11 shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-full bg-tab-active px-4 text-[14px] font-medium text-white shadow-[inset_0px_1.41px_3.18px_0px_rgba(255,255,255,0.5)] transition-colors duration-300 hover:bg-[#f52b31] xl:px-5 xl:text-[15px]"
             >
               <span>{resolvedSignInLabel}</span>
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                <path d="M2.25 9.75L9.75 2.25M5.25 2.25H9.75V6.75" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <VectorArrow className="h-3 w-3" />
             </Link>
           </div>
 
@@ -315,10 +314,11 @@ export default function Navbar() {
                     <div className="flex flex-col gap-3 sm:flex-row">
                       <Link
                         href="https://volumedaytrader.com/login/"
-                        className="w-full rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-center font-medium text-white transition-all hover:bg-white/10"
+                        className="inline-flex w-full items-center justify-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-6 py-3 font-medium text-white transition-all hover:bg-white/10"
                         onClick={() => setMobileOpen(false)}
                       >
-                        {resolvedSignInLabel}
+                        <span>{resolvedSignInLabel}</span>
+                        <VectorArrow className="h-3 w-3" />
                       </Link>
                     </div>
 

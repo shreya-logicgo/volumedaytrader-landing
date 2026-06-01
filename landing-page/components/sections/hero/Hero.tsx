@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from "next/image"
 import { useTranslation } from "react-i18next"
 import HeroChart from "./HeroChart"
-import Vector from "@/assets/icons/Vector.svg";
+import VectorArrow from "@/components/ui/vector-arrow/VectorArrow";
 import { Particles } from "@/components/ui/particles";
 
 
@@ -119,15 +119,14 @@ export default function Hero() {
                         className="btn-primary font-medium w-full justify-center px-5 py-2.5 text-sm sm:w-auto sm:px-6 sm:py-3 sm:text-base 2xl:inline-flex 2xl:px-7 2xl:text-lg shadow-control-inset cursor-pointer"
                     >
                         {t("hero.primaryButton")}
-                        <Vector className="block h-3 w-3" aria-hidden="true" />
+                        <VectorArrow className="h-3 w-3" />
                     </Link>
                     <Link
                         href="https://volumedaytrader.com/login/"
                         className="inline-flex w-full items-center justify-center shadow-control-inset gap-2 rounded-full border border-[#2B2A56] bg-[#0D082B]/80 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:border-[#3d3c6e] sm:w-auto sm:px-6 sm:text-base 2xl:px-7 2xl:py-3 2xl:text-lg cursor-pointer"
                     >
                         {t("hero.secondaryButton")}
-                        {/* <ArrowUpRight /> */}
-                        <Vector className="block h-3 w-3" aria-hidden="true" />
+                        <VectorArrow className="h-3 w-3" />
                     </Link>
                 </div>
 

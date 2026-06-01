@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
-import Vector from "@/assets/icons/Vector.svg";
+import VectorArrow from "@/components/ui/vector-arrow/VectorArrow";
 
 type FormFields = {
   firstName: string;
@@ -142,7 +142,7 @@ export default function ContactForm() {
         className="inline-flex font-medium w-fit items-center justify-center gap-1.5 rounded-full shadow-control-inset bg-[#ED1F24] px-6 py-3.5 text-lg font-medium text-white shadow-[0_4px_14px_rgba(237,31,36,0.35)] transition-opacity hover:opacity-90"
         >
         {t("submit")}
-        <Vector className="block h-5 w-5 p-1 font-medium" aria-hidden="true" />
+        <VectorArrow className="h-5 w-5" />
       </button>
         {/* </div> */}
     </form>
