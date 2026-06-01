@@ -122,7 +122,7 @@ const IndicatorSystemCarousal = ({
   const canGoNext = activeIndex < totalSlides - 1
 
   return (
-    <div className={`relative mt-10 w-full mx-auto ${className}`.trim()}>
+    <div className={`relative content-pt w-full mx-auto ${className}`.trim()}>
 
       {/* Clipping viewport */}
       <div className="w-full overflow-hidden">
@@ -172,7 +172,7 @@ const IndicatorSystemCarousal = ({
           type="button"
           onClick={() => canGoPrev && setActiveIndex((prev) => prev - 1)}
           disabled={!canGoPrev}
-          className="flex h-16 w-16 items-center justify-center rounded-full text-3xl control-button text-white disabled:cursor-not-allowed disabled:opacity-40 transition-opacity"
+          className="flex h-16 w-16 items-center justify-center rounded-full text-3xl control-button text-white disabled:cursor-not-allowed disabled:opacity-40 transition-opacity cursor-pointer"
           aria-label="Previous"
         >
           &#8249;
@@ -181,7 +181,7 @@ const IndicatorSystemCarousal = ({
           type="button"
           onClick={() => canGoNext && setActiveIndex((prev) => prev + 1)}
           disabled={!canGoNext}
-          className="flex h-16 w-16 items-center justify-center rounded-full text-3xl control-button text-white disabled:cursor-not-allowed disabled:opacity-40 transition-opacity"
+          className="flex h-16 w-16 items-center justify-center rounded-full text-3xl control-button text-white disabled:cursor-not-allowed disabled:opacity-40 transition-opacity cursor-pointer"
           aria-label="Next"
         >
           &#8250;

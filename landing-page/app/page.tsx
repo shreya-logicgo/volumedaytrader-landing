@@ -28,41 +28,41 @@ export default function Page() {
       {/* <div className="relative bg-amber-100 h-50 w-full"> */}
 
       {/* </div> */}
-  
-      <Container>
+
+      {/* <Container> */}
         <Navbar />
-        <Hero/>
-        <TrustedLogos/>
+        <Hero />
+        <TrustedLogos />
         <OurServices />
-        <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-0" >
-        <Trust />
-        </div>
+        {/* <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-0" > */}
+          <Trust />
+        {/* </div> */}
         <SignalsAndIndicators />
 
-      </Container>
+      {/* </Container> */}
 
       <IndicatorSystem />
 
 
       <Testimonials />
-      <Container>
+      {/* <Container> */}
         <OurIndicators />
-      </Container>
+      {/* </Container> */}
 
       <Pricing />
 
-      <Container>
+      {/* <Container> */}
         {/* <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-0" > */}
-          <PTA />
+        <PTA />
         {/* </div> */}
         <Wyckoff />
         <FAQ />
         <Blogs />
-      </Container>
-      <Footer />
- 
+      {/* </Container> */}
+      {/* <Footer /> */}
 
-      
+
+
     </div>
   );
 }

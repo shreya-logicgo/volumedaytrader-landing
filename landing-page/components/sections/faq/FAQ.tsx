@@ -48,7 +48,7 @@ export default function FAQ() {
 	);
 
 	return (
-			<section className="section-pb">
+		<section className="section-pb">
 			<div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
 				<div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
 					<Badge text={t('faq.badge')} />
@@ -60,7 +60,7 @@ export default function FAQ() {
 				</div>
 			</div>
 
-			<div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-10">
+			<div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 content-pt">
 				<div id="faq" className="flex flex-col items-center gap-7 sm:gap-9 scroll-mt-18 sm:scroll-mt-18 md:scroll-mt-16 lg:scroll-mt-25">
 					<div className="w-full max-w-full sm:max-w-md relative group">
 						<div className="absolute inset-y-0 left-4 flex items-center pointer-events-none z-10">
@@ -72,13 +72,30 @@ export default function FAQ() {
 							placeholder={t('faq.searchPlaceholder')}
 							value={searchTerm}
 							onChange={(e) => setSearchTerm(e.target.value)}
-							className="w-full bg-white/5 border border-white/5 rounded-full py-3.5 sm:py-3 pl-11 sm:pl-12 pr-11 sm:pr-12 text-sm sm:text-base lg:text-lg placeholder:text-[#999999] focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all duration-300 backdrop-blur-md"
+							className="
+									w-full
+									bg-white/5
+									border border-white/5
+									rounded-full
+									py-2 sm:py-2
+									pl-11 sm:pl-12
+									pr-11 sm:pr-12
+									text-sm sm:text-base lg:text-lg
+									text-white
+									caret-white
+									placeholder:text-[#A7ADBE]
+									focus:outline-none
+									focus:border-white/20
+									focus:bg-white/10
+									transition-all duration-300
+									backdrop-blur-md
+								"
 						/>
 
 						{searchTerm && (
 							<button
 								onClick={() => setSearchTerm("")}
-								className="absolute cursor-pointer inset-y-0 right-4 flex items-center text-[#C7CCD2] hover:text-white transition-colors z-10"
+								className="absolute cursor-pointer inset-y-0 right-4 flex items-center text-white hover:text-white transition-colors z-10"
 								aria-label={t('faq.clearSearch')}
 							>
 								<X className="w-3.5 h-3.5 sm:w-4 sm:h-4" />

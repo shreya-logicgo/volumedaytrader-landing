@@ -9,7 +9,7 @@ const SignalsAndIndicators = () => {
     const { t } = useTranslation('translation', { keyPrefix: 'signals' })
 
     return (
-        <div className="section-pb">
+        <section id="signals" className="section-pb">
             <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
                 <Badge text={t('badge')} />
             </div>
@@ -17,9 +17,9 @@ const SignalsAndIndicators = () => {
                 <Heading className='max-w-xl mx-auto' text={t('title')} />
                 <SubHeading className='max-w-[780px] mx-auto' text={t('description')} />
             </div>
-            <SignalsAndIndicatorsCards className='mt-10' />
+            <SignalsAndIndicatorsCards className='content-pt' />
 
-        </div>
+        </section>
     )
 }
 

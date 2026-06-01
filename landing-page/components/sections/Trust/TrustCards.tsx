@@ -40,27 +40,28 @@ const TrustCards = ({ items = defaultItems, className = '' }: TrustCardsProps) =
 
   return (
     <div
-      className={`grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4 ${className}`.trim()}
+      className={`grid grid-cols-1 gap-8  sm:grid-cols-2 xl:grid-cols-4  mx-auto ${className}`.trim()}
     >
       {items.map((item) => (
         <article
           key={item.title}
-          className="card-ui min-h-[285px]  rounded-2xl p-6 text-left"
+          className="card-ui  rounded-2xl p-5  text-left"
         >
-          <div className="flex h-full flex-col justify-between ">
-            <p className="text-[42px] font-normal  text-white">
-              {item.value}
-            </p>
+          <div className="flex h-full flex-col">
+  <p className="text-3xl sm:text-4xl 2xl:text-5xl font-normal text-white">
+    {item.value}
+  </p>
 
-            <div className="space-y-4  ">
-              <h3 className="card-heading text-left w-full  font-semibold leading-tight text-white">
-                {t(item.title)}
-              </h3>
-              <p className="card-desc line-clamp-4 text-left text-base max-w-[265px]">
-                {t(item.description)}
-              </p>
-            </div>
-          </div>
+  <div className="mt-13">
+    <h3 className="card-heading !mb-0 text-left font-semibold leading-tight text-white">
+      {t(item.title)}
+    </h3>
+
+    <p className="card-desc pt-3 text-left text-secondary-text line-clamp-4 ">
+      {t(item.description)}
+    </p>
+  </div>
+</div>
         </article>
       ))}
     </div>

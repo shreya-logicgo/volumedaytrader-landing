@@ -1,4 +1,5 @@
 import React from 'react'
+import { Particles } from '@/components/ui/particles'
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
   text?: string
@@ -21,7 +22,7 @@ const Badge = ({
 
   return (
     <div
-      className={`inline-flex items-center justify-center gap-3 absolute ${className}`.trim()}
+      className={`inline-flex items-center justify-center gap-3 absolute relative overflow-hidden ${className}`.trim()}
       {...rest}
       style={
         backgroundImageSrc
@@ -29,23 +30,27 @@ const Badge = ({
             backgroundImage: `url(${backgroundImageSrc})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            height: '268px',
+            height: '168px',
             width: '717px',
           }
           : undefined
       }
     >
+      {/* Particles background inside badge */}
+      <div className="pointer-events-none absolute inset-0 z-[1] w-full h-full">
+        <Particles quantity={40} size={0.5} color="#ffffff" className="opacity-60" />
+      </div>
       {showArrows ? (
         <img
           src={leftArrowSrc}
           alt=""
           aria-hidden="true"
-          className="h-6  select-none object-contain"
+          className="h-6 select-none object-contain relative z-10"
         />
       ) : null}
 
       <div
-        className={baseClasses}
+        className={`${baseClasses} relative z-10`}
         style={
           {
             background:
@@ -62,7 +67,7 @@ const Badge = ({
           src={rightArrowSrc}
           alt=""
           aria-hidden="true"
-          className="h-6  select-none object-contain"
+          className="h-6 select-none object-contain relative z-10"
         />
       ) : null}
     </div>
