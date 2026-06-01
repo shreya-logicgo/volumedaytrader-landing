@@ -3,6 +3,8 @@
 import Image from 'next/image'
 import React, { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 interface IndicatorSlide {
   title: string
@@ -170,24 +172,32 @@ const IndicatorSystemCarousal = ({
       </div>
 
       {/* Navigation */}
-      <div className="mt-6  relative flex w-full items-center justify-center gap-3">
-          <button
+      <div className="relative mt-4 flex w-full items-center justify-center gap-3 sm:mt-6 sm:gap-4">
+        <button
           type="button"
           onClick={() => canGoPrev && setActiveIndex((prev) => prev - 1)}
           disabled={!canGoPrev}
-          className="flex h-16 w-16 items-center justify-center rounded-full text-3xl control-button text-white disabled:cursor-not-allowed disabled:opacity-40 transition-opacity cursor-pointer"
-          aria-label="Previous"
+          aria-label="Previous slide"
+          className={cn(
+            'control-button flex shrink-0 cursor-pointer items-center justify-center rounded-full text-white transition-opacity',
+            'h-10 w-10 disabled:cursor-not-allowed disabled:opacity-40',
+            'sm:h-11 sm:w-11 md:h-12 md:w-12 lg:h-14 lg:w-14 xl:h-16 xl:w-16'
+          )}
         >
-          &#8249;
+          <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5 md:h-5 md:w-5 lg:h-6 lg:w-6 xl:h-7 xl:w-7" />
         </button>
         <button
           type="button"
           onClick={() => canGoNext && setActiveIndex((prev) => prev + 1)}
           disabled={!canGoNext}
-          className="flex h-16 w-16 items-center justify-center rounded-full text-3xl control-button text-white disabled:cursor-not-allowed disabled:opacity-40 transition-opacity cursor-pointer"
-          aria-label="Next"
+          aria-label="Next slide"
+          className={cn(
+            'control-button flex shrink-0 cursor-pointer items-center justify-center rounded-full text-white transition-opacity',
+            'h-10 w-10 disabled:cursor-not-allowed disabled:opacity-40',
+            'sm:h-11 sm:w-11 md:h-12 md:w-12 lg:h-14 lg:w-14 xl:h-16 xl:w-16'
+          )}
         >
-          &#8250;
+          <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 md:h-5 md:w-5 lg:h-6 lg:w-6 xl:h-7 xl:w-7" />
         </button>
       </div>
       </div>

@@ -15,16 +15,15 @@ const BlogsCards = () => {
         const post = BLOG_POSTS[index];
 
         return (
-          <div key={postKey}>
-            <BlogCard
-              image={post.image}
-              category={t(`page.posts.${postKey}.category`)}
-              date={t(`page.posts.${postKey}.date`)}
-              title={t(`page.posts.${postKey}.title`)}
-              buttonLabel={t(`page.posts.${postKey}.button`)}
-              href={`/blogs/${postKey}`}
-            />
-          </div>
+          <BlogCard
+            key={postKey}
+            image={post.image}
+            category={t(`page.posts.${postKey}.category`)}
+            date={t(`page.posts.${postKey}.date`)}
+            title={t(`page.posts.${postKey}.title`)}
+            buttonLabel={t(`page.posts.${postKey}.button`)}
+            href={`/blogs/${postKey}`}
+          />
         );
       })}
     </div>

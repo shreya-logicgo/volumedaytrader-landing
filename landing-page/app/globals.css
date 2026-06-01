@@ -95,7 +95,7 @@
 }
   /* Card Heading */
   .card-heading {
-    @apply text-lg font-semibold leading-none tracking-normal text-center text-white sm:text-base xl:text-xl  2xl:text-2xl;
+    @apply text-lg font-semibold leading-tight tracking-normal text-center text-white sm:text-xl lg:text-[22px] 2xl:text-2xl;
   }
 
   /* Card Description */
