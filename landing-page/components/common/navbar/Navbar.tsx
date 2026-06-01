@@ -2,6 +2,7 @@
 
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 import Logo from '../../../assets/logo/logo.svg'
@@ -124,10 +125,21 @@ export default function Navbar() {
           className={`pointer-events-auto relative flex min-h-[68px]  w-full items-center justify-between gap-3 rounded-full border px-4 py-2 text-[15px] font-medium tracking-[-0.01em] backdrop-blur-2xl transition-all duration-300 md:min-h-[76px] md:px-4 md:pl-8 xl:text-[15px] 2xl:text-[18px] ${scrolled ? 'border-white/10 bg-[#151032]/90 shadow-[0_24px_80px_rgba(0,0,0,0.45)]' : 'border-card-border bg-[#151032]/70 shadow-[0_18px_60px_rgba(0,0,0,0.28)]'}`}
         >
           <Link href="/" aria-label="home" onClick={handleLogoClick} className="flex shrink-0 items-center justify-start cursor-pointer">
-            <Logo className="block min-w-[280px] shrink-0 object-contain xl:w-[320px] 2xl:w-[320px] 2xl:h-13" role="img" aria-label="VDLTRA logo cursor-pointer" />
+            <Image
+              src="/assets/images/Union.svg"
+              alt="VDLTRA logo"
+              width={46}
+              height={46}
+              className="block h-10 w-10 shrink-0 object-contain sm:h-11 sm:w-11 xl:hidden"
+            />
+            <Logo
+              className="hidden min-w-72 shrink-0 object-contain xl:block xl:w-80 2xl:h-13"
+              role="img"
+              aria-label="VDLTRA logo"
+            />
           </Link>
 
-          <ul className="hidden min-w-0 flex-1 items-center justify-center gap-4 text-secondary-text lg:flex xl:gap-6 2xl:gap-8">
+          <ul className="hidden min-w-0 flex-1 items-center justify-center gap-4 text-secondary-text xl:flex xl:gap-6 2xl:gap-8">
             {links.map((link) => {
               const isActive =
                 link.href === '/blogs'
