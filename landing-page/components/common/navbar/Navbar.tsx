@@ -109,25 +109,34 @@ export default function Navbar() {
   }
 
   return (
-    <header className="fixed left-0 top-5 z-50 w-full pointer-events-none md:top-7">
-      <div className="relative mx-auto w-full max-w-[1920px] px-4 sm:px-6 lg:px-8 pointer-events-none">
+    <header className="pointer-events-none fixed left-0 top-5 z-50 w-full overflow-x-clip md:top-7">
+      <div className="pointer-events-none relative mx-auto w-full max-w-[1920px] overflow-hidden px-3 sm:px-6 lg:px-8">
         <div
           aria-hidden="true"
-          className="absolute -left-[220px] top-1/2 hidden h-[240px] w-[240px] -translate-y-1/2 rounded-full bg-[#ED1F24]/45 blur-[120px] sm:block"
+          className="absolute -left-[220px] top-1/2 hidden h-[240px] w-[240px] -translate-y-1/2 rounded-full bg-[#ED1F24]/45 blur-[120px] md:block"
         />
         <div
           aria-hidden="true"
-          className="absolute -right-[220px] top-1/2 hidden h-[240px] w-[240px] -translate-y-1/2 rounded-full bg-[#ED1F24]/45 blur-[120px] sm:block"
+          className="absolute -right-[220px] top-1/2 hidden h-[240px] w-[240px] -translate-y-1/2 rounded-full bg-[#ED1F24]/45 blur-[120px] md:block"
         />
 
         <nav
-          className={`pointer-events-auto relative flex min-h-[68px]  w-full items-center justify-between gap-3 rounded-full border px-4 py-2 text-[15px] font-medium tracking-[-0.01em] backdrop-blur-2xl transition-all duration-300 md:min-h-[76px] md:px-4 md:pl-8 xl:text-[15px] 2xl:text-[18px] ${scrolled ? 'border-white/10 bg-[#151032]/90 shadow-[0_24px_80px_rgba(0,0,0,0.45)]' : 'border-card-border bg-[#151032]/70 shadow-[0_18px_60px_rgba(0,0,0,0.28)]'}`}
+          className={`pointer-events-auto relative flex min-h-[60px] w-full min-w-0 items-center justify-between gap-2 overflow-hidden rounded-full border px-3 py-2 text-[15px] font-medium tracking-[-0.01em] backdrop-blur-2xl transition-all duration-300 sm:min-h-[68px] sm:gap-3 sm:px-4 md:min-h-[76px] xl:pl-8 xl:text-[15px] 2xl:text-[18px] ${scrolled ? 'border-white/10 bg-[#151032]/90 shadow-[0_24px_80px_rgba(0,0,0,0.45)]' : 'border-card-border bg-[#151032]/70 shadow-[0_18px_60px_rgba(0,0,0,0.28)]'}`}
         >
-          <Link href="/" aria-label="home" onClick={handleLogoClick} className="flex shrink-0 items-center justify-start cursor-pointer">
-            <Logo className="block min-w-[280px] shrink-0 object-contain xl:w-[320px] 2xl:w-[320px] 2xl:h-13" role="img" aria-label="VDLTRA logo cursor-pointer" />
+          <Link
+            href="/"
+            aria-label="home"
+            onClick={handleLogoClick}
+            className="flex min-w-0 max-w-[calc(100%-3.25rem)] shrink items-center justify-start"
+          >
+            <Logo
+              className="block h-7 w-auto max-w-full object-contain object-left sm:h-8 md:h-9 lg:h-10 xl:h-11 xl:w-[300px] 2xl:h-12 2xl:w-[320px]"
+              role="img"
+              aria-label="VolumeDayTrader logo"
+            />
           </Link>
 
-          <ul className="hidden min-w-0 flex-1 items-center justify-center gap-4 text-secondary-text lg:flex xl:gap-6 2xl:gap-8">
+          <ul className="hidden min-w-0 flex-1 items-center justify-center gap-4 text-secondary-text xl:flex xl:gap-6 2xl:gap-8">
             {links.map((link) => {
               const isActive =
                 link.href === '/blogs'
@@ -243,7 +252,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -10, scale: 0.98 }}
                 transition={{ duration: 0.2 }}
-                className="pointer-events-auto absolute left-4 right-4 top-full mt-3 overflow-hidden rounded-[28px] border border-card-border bg-[#151032]/96 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl xl:hidden"
+                className="pointer-events-auto absolute inset-x-0 top-full mt-3 overflow-hidden rounded-[28px] border border-card-border bg-[#151032]/96 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl xl:hidden"
               >
                 <div className="flex flex-col p-5 sm:p-6">
                   <div className="grid gap-2 border-b border-white/5 pb-5">
