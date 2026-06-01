@@ -53,18 +53,21 @@ const OurServicesCards = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'services' })
 
   return (
-    <div className="grid grid-cols-1 gap-6 pt-10 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="mx-auto grid w-full grid-cols-1 gap-4  sm:grid-cols-2 sm:gap-5  lg:grid-cols-3 lg:gap-5 xl:gap-6 2xl:max-w-screen-2xl content-pt">
       {services.map((service) => {
         const Icon = service.icon
 
         return (
-          <article key={service.titleKey} className="card-ui rounded-3xl">
-            <div className="flex h-full flex-col gap-15">
-              <div className="flex h-16 w-16 items-center justify-center rounded-xl service-icon-accent">
-                <Icon className="h-8 w-8" aria-hidden />
+          <article
+            key={service.titleKey}
+            className="card-ui rounded-2xl p-5 sm:rounded-3xl sm:p-6 lg:p-6 xl:p-7 2xl:p-8"
+          >
+            <div className="flex h-full flex-col gap-6 sm:gap-8 lg:gap-10 xl:gap-12 2xl:gap-15">
+              <div className="service-icon-accent flex h-12 w-12 items-center justify-center rounded-lg sm:h-14 sm:w-14 sm:rounded-xl xl:h-16 xl:w-16">
+                <Icon className="h-6 w-6 sm:h-7 sm:w-7 xl:h-8 xl:w-8" aria-hidden />
               </div>
 
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-2 sm:gap-3 lg:gap-4">
                 <h3 className="card-heading text-left">{t(service.titleKey)}</h3>
                 <p className="card-desc text-left">{t(service.descriptionKey)}</p>
               </div>

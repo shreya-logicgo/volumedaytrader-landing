@@ -7,7 +7,7 @@ import TrustBackground from '@/components/common/backgrounds/TrustBackground'
 
 const Trust = () => {
     return (
-        <section className="relative font-bold section-pb">
+        <section id="community" className="relative font-bold section-pb">
             <TrustBackground />
             {/* <div className="relative">
                 <img
@@ -23,8 +23,8 @@ const Trust = () => {
                 <Heading className='max-w-[600px] mx-auto ' text="Trusted By Traders Focused On Smarter Market Analysis" />
                 <SubHeading className='max-w-[770px] mx-auto' text="Professional indicators, PTA reports, market insights, and educational trading tools designed to help traders understand market behavior with more structure and confidence." />
             </div>
-            <div className="relative mt-10">
-                <TrustCards className='mt-10 ' />
+            <div className="relative content-pt">
+                <TrustCards  />
             </div>
         </section>
 

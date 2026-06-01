@@ -64,7 +64,10 @@ const ChartPanel = ({
 
   return (
     // Single wrapper: rounded border, clips content, 16:9 ratio, no extra nesting
-    <div className="relative w-full overflow-hidden rounded-xl border indicator-chart-panel aspect-video">
+    <div
+      className="relative w-full overflow-hidden rounded-xl border indicator-chart-panel aspect-video"
+      style={{ position: "relative" }}
+    >
       {imageSrc && !imageFailed ? (
         <Image
           src={imageSrc}
@@ -122,10 +125,10 @@ const IndicatorSystemCarousal = ({
   const canGoNext = activeIndex < totalSlides - 1
 
   return (
-    <div className={`relative mt-10 w-full mx-auto ${className}`.trim()}>
-
+    <div className={`relative content-pt w-full mx-auto overflow-visible ${className}`.trim()}>
+      <div className="relative z-10">
       {/* Clipping viewport */}
-      <div className="w-full overflow-hidden">
+      <div className="w-full overflow-visible">
         <div
           className="flex gap-6 transition-transform duration-500 ease-out"
           style={trackStyle}
@@ -167,12 +170,12 @@ const IndicatorSystemCarousal = ({
       </div>
 
       {/* Navigation */}
-      <div className="mt-6 flex w-full items-center justify-center gap-3">
+      <div className="mt-6  relative flex w-full items-center justify-center gap-3">
           <button
           type="button"
           onClick={() => canGoPrev && setActiveIndex((prev) => prev - 1)}
           disabled={!canGoPrev}
-          className="flex h-16 w-16 items-center justify-center rounded-full text-3xl control-button text-white disabled:cursor-not-allowed disabled:opacity-40 transition-opacity"
+          className="flex h-16 w-16 items-center justify-center rounded-full text-3xl control-button text-white disabled:cursor-not-allowed disabled:opacity-40 transition-opacity cursor-pointer"
           aria-label="Previous"
         >
           &#8249;
@@ -181,11 +184,12 @@ const IndicatorSystemCarousal = ({
           type="button"
           onClick={() => canGoNext && setActiveIndex((prev) => prev + 1)}
           disabled={!canGoNext}
-          className="flex h-16 w-16 items-center justify-center rounded-full text-3xl control-button text-white disabled:cursor-not-allowed disabled:opacity-40 transition-opacity"
+          className="flex h-16 w-16 items-center justify-center rounded-full text-3xl control-button text-white disabled:cursor-not-allowed disabled:opacity-40 transition-opacity cursor-pointer"
           aria-label="Next"
         >
           &#8250;
         </button>
+      </div>
       </div>
 
     </div>

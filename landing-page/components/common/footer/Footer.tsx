@@ -21,43 +21,55 @@ import Vector from "@/assets/icons/Vector.svg";
 import FooterBackground from '@/components/common/backgrounds/FooterBackground'
 import Container from '@/components/layout/container/Container'
 import { useTranslation } from 'react-i18next'
+import { Particles } from "@/components/ui/particles";
 
 const Footer = () => {
     const { t } = useTranslation('translation')
 
     return (
-        <footer className="relative overflow-hidden pt-20 pb-10 container-spacing">
+        <footer id="contact" className="relative overflow-hidden  pb-10 container-spacing">
             <FooterBackground />
             {/* Background */}
-            <Container>
-                <div className="relative z-10 mx-auto">
+            {/* <Container> */}
+            <div className="relative z-10 mx-auto">
                 {/* CTA */}
-                    <div className="mx-auto max-w-[760px] text-center">
-                        <div className="space-y-5 px-2 sm:px-0">
+                <div className="relative overflow-hidden py-16">
+                    {/* Particles only here */}
+                    <div className="absolute inset-0 pointer-events-none">
+                        <Particles
+                            quantity={120}
+                            size={1}
+                            color="#fff"
+                            className="h-full w-full opacity-70"
+                        />
+                    </div>
+                    <div className="space-y-5 px-2 sm:px-0 relative z-10">
                         <Heading text={t('footer.cta.title')} />
 
-                            <SubHeading className="mx-auto max-w-[650px] leading-6" text={t('footer.cta.description')} />
+                        <SubHeading className="mx-auto max-w-[650px] leading-6" text={t('footer.cta.description')} />
+                        <div className="flex justify-center">
 
-                        <button className="btn-primary mt-3">
-                            {t('footer.cta.button')}
-                            <Vector className="h-3 w-3 shrink-0" aria-hidden="true" />
-                        </button>
+                            <Link href="https://volumedaytrader.com/login/" className="btn-primary  shadow-control-inset mt-3">
+                                {t('footer.cta.button')}
+                                <Vector className="h-3 w-3 shrink-0" aria-hidden="true" />
+                            </Link>
+                        </div>
                     </div>
                 </div>
 
                 {/* Footer Grid */}
-                    <div className="grid grid-cols-1 gap-y-10 gap-x-8 pt-16 sm:pt-20 md:grid-cols-2 lg:grid-cols-[3fr_1fr_1fr_1fr] lg:gap-x-12 xl:pt-24">
+                <div className="grid grid-cols-1 gap-y-10 gap-x-8 pt-16 sm:pt-20 md:grid-cols-2 lg:grid-cols-[3fr_1fr_1fr_1fr] lg:gap-x-12 xl:pt-24">
                     {/* Left */}
-                        <div className="space-y-8 md:col-span-2 lg:col-span-1">
+                    <div className="space-y-8 md:col-span-2 lg:col-span-1">
                         <div className="space-y-5">
-                                <Logo className="h-auto w-[240px] max-w-full sm:w-[280px] lg:w-[303px]" role="img" aria-label="VDLTRA logo" />
+                            <Logo className="h-auto w-[240px] max-w-full sm:w-[280px] lg:w-[303px]" role="img" aria-label="VDLTRA logo" />
 
                             <div className="space-y-3">
-                                    <h3 className="text-lg font-semibold text-white sm:text-xl">
+                                <h3 className="text-lg font-semibold text-white sm:text-xl">
                                     {t('footer.company.consultationTitle')}
                                 </h3>
 
-                                    <p className="max-w-[450px] text-sm leading-6 text-secondary-text sm:text-base sm:leading-6">
+                                <p className="max-w-[450px] text-sm leading-6 text-secondary-text sm:text-base sm:leading-6">
                                     {t('footer.company.consultationDescription')}
                                 </p>
                             </div>
@@ -65,11 +77,11 @@ const Footer = () => {
 
                         {/* Socials */}
                         <div className="space-y-4">
-                                <p className="text-base font-medium text-white sm:text-lg">
+                            <p className="text-base font-medium text-white sm:text-lg">
                                 {t('footer.company.socialTitle')}
                             </p>
 
-                                <div className="flex flex-wrap items-center gap-3">
+                            <div className="flex flex-wrap items-center gap-3">
                                 {[
                                     FaYoutube,
                                     FaDiscord,
@@ -95,18 +107,18 @@ const Footer = () => {
                         </h3>
 
                         {[
-                            t('footer.navigation.indicators'),
-                            t('footer.navigation.ptaReports'),
-                            t('footer.navigation.pricing'),
-                            t('footer.navigation.tradingCommunity'),
-                            t('footer.navigation.marketAnalysis'),
+                            { label: t('footer.navigation.indicators'), href: '/#signals' },
+                            { label: t('footer.navigation.ptaReports'), href: '/#pta' },
+                            { label: t('footer.navigation.pricing'), href: '/#pricing' },
+                            { label: t('footer.navigation.tradingCommunity'), href: '/#community' },
+                            { label: t('footer.navigation.marketAnalysis'), href: '/#how-indicators-work' },
                         ].map((item, idx) => (
                             <Link
                                 key={idx}
-                                href="/"
+                                href={item.href}
                                 className="text-sm text-secondary-text transition-colors duration-300 hover:text-white sm:text-base lg:text-lg"
                             >
-                                {item}
+                                {item.label}
                             </Link>
                         ))}
                     </div>
@@ -118,17 +130,17 @@ const Footer = () => {
                         </h3>
 
                         {[
-                            t('footer.resources.blogs'),
-                            t('footer.resources.tradingEducation'),
-                            t('footer.resources.faq'),
-                            t('footer.resources.affiliateProgram'),
+                            { label: t('footer.resources.blogs'), href: '/#blogs' },
+                            { label: t('footer.resources.tradingEducation'), href: '/#our-indicators' },
+                            { label: t('footer.resources.faq'), href: '/#faq' },
+                            { label: t('footer.resources.affiliateProgram'), href: '/#' },
                         ].map((item, idx) => (
                             <Link
                                 key={idx}
-                                href="/"
+                                href={item.href}
                                 className="text-sm text-secondary-text transition-colors duration-300 hover:text-white sm:text-base lg:text-lg"
                             >
-                                {item}
+                                {item.label}
                             </Link>
                         ))}
                     </div>
@@ -140,15 +152,15 @@ const Footer = () => {
                         </h3>
 
                         {[
-                            t('footer.contact.support'),
-                            t('footer.contact.affiliateSupport'),
+                            { label: t('footer.contact.support'), href: '/#contact' },
+                            { label: t('footer.contact.affiliateSupport'), href: '/#' },
                         ].map((item, idx) => (
                             <Link
                                 key={idx}
-                                href="/"
+                                href={item.href}
                                 className="text-sm text-secondary-text transition-colors duration-300 hover:text-white sm:text-base lg:text-lg"
                             >
-                                {item}
+                                {item.label}
                             </Link>
                         ))}
                     </div>
@@ -164,14 +176,14 @@ const Footer = () => {
                         />
                         <p className="text-sm leading-6 text-secondary-text sm:text-base sm:leading-6">
                             <span className="font-medium text-secondary-text">
-                                {t('footer.riskDisclaimerLabel')} 
+                                {t('footer.riskDisclaimerLabel')}
                             </span>{' '}
                             {t('footer.riskDisclaimer')}
                         </p>
                     </div>
                 </div>
             </div>
-            </Container>
+            {/* </Container> */}
         </footer>
     )
 }

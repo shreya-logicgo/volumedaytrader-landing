@@ -6,7 +6,7 @@
     "howIndicatorsWork": "Jak działają nasze wskaźniki",
     "blog": "Blog",
     "contact": "Kontakt",
-    "signUp": "Zarejestruj się"
+    "signIn": "Zaloguj się"
   },
   "hero": {
     "newBadge": "Nowość",
@@ -357,6 +357,70 @@
     "badge": "Nasz blog",
     "title": "Dowiedz się więcej o wolumenie i strukturze rynku",
     "description": "Materiały edukacyjne i analizy tradingowe pomagające lepiej zrozumieć zachowanie rynku.",
+    "page": {
+      "badge": "Nasz blog",
+      "title": "Aktualności, spostrzeżenia i więcej",
+      "description": "Zanurz się w naszym blogu po eksperckie spostrzeżenia, wskazówki i trendy branżowe, które rozwiną Twoją ścieżkę zarządzania projektami.",
+      "searchPlaceholder": "Szukaj na blogu",
+      "clearSearch": "Wyczyść wyszukiwanie",
+      "noResults": "Nie znaleziono wpisów dla \"{{searchTerm}}\"",
+      "posts": {
+        "post1": {
+          "category": "Marketing cyfrowy",
+          "date": "31 lipca 2026",
+          "title": "Strategie zwiększania zaangażowania online w dzisiejszych czasach",
+          "button": "Dowiedz się więcej"
+        },
+        "post2": {
+          "category": "Marketing cyfrowy",
+          "date": "11 października 2024",
+          "title": "Projektowanie produktów zorientowane na użytkownika: kompletny przewodnik od podstaw",
+          "button": "Dowiedz się więcej"
+        },
+        "post3": {
+          "category": "Marketing cyfrowy",
+          "date": "7 lipca 2024",
+          "title": "Najważniejsze trendy w projektowaniu napędzające sukces i rozwój firmy",
+          "button": "Dowiedz się więcej"
+        },
+        "post4": {
+          "category": "Marketing cyfrowy",
+          "date": "31 lipca 2026",
+          "title": "Tworzenie tożsamości marki, która się wyróżnia",
+          "button": "Dowiedz się więcej"
+        },
+        "post5": {
+          "category": "Marketing cyfrowy",
+          "date": "11 października 2024",
+          "title": "Siła opowiadania historii i elementów wizualnych w brandingu",
+          "button": "Dowiedz się więcej"
+        },
+        "post6": {
+          "category": "Marketing cyfrowy",
+          "date": "7 lipca 2024",
+          "title": "Innowacyjne techniki projektowania stron dla nowoczesnych marek",
+          "button": "Dowiedz się więcej"
+        },
+        "post7": {
+          "category": "Marketing cyfrowy",
+          "date": "31 lipca 2026",
+          "title": "Strategie zwiększania zaangażowania online w dzisiejszych czasach",
+          "button": "Dowiedz się więcej"
+        },
+        "post8": {
+          "category": "Marketing cyfrowy",
+          "date": "11 października 2024",
+          "title": "Projektowanie produktów zorientowane na użytkownika: kompletny przewodnik od podstaw",
+          "button": "Dowiedz się więcej"
+        },
+        "post9": {
+          "category": "Marketing cyfrowy",
+          "date": "7 lipca 2024",
+          "title": "Najważniejsze trendy w projektowaniu napędzające sukces i rozwój firmy",
+          "button": "Dowiedz się więcej"
+        }
+      }
+    },
     "cards": {
       "blog1": {
         "category": "Trading",
@@ -377,7 +441,93 @@
         "button": "Dowiedz się więcej"
       }
     },
-    "allBlogsButton": "Wszystkie blogi"
+    "allBlogsButton": "Wszystkie blogi",
+    "detail": {
+      "backToBlogs": "Powrót do blogów",
+      "similarBlogs": "Podobne blogi",
+      "allBlogs": "Wszystkie blogi",
+      "notFoundTitle": "Nie znaleziono wpisu",
+      "notFoundDescription": "Szukany wpis na blogu nie istnieje.",
+      "posts": {
+        "post1": {
+          "author": "Jakob Lipshutz",
+          "date": "15 maja 2025",
+          "excerpt": "Poznaj skuteczne strategie zwiększania zaangażowania online, budowania silniejszych relacji z odbiorcami i lojalnej społeczności wokół marki.",
+          "section1Title": "Kluczowe strategie zwiększania zaangażowania:",
+          "section1Body": "- Wykorzystuj Stories i Reels w mediach społecznościowych: Krótkie formaty na Instagramie i TikToku przyciągają uwagę i zachęcają do interakcji.\n- Prowadź ankiety i sesje Q&A: Angażuj odbiorców, angażując ich w decyzje lub odpowiadając na pytania na żywo.\n- Zachęcaj do treści tworzonych przez użytkowników: Motywuj społeczność do dzielenia się doświadczeniami z marką.\n- Personalizuj treści: Wykorzystuj dane, aby tworzyć doświadczenia dopasowane do preferencji odbiorców.\n- Twórz wartościowe, udostępnialne treści: Dostarczaj edukację, rozrywkę lub inspirację, które odbiorcy chcą przekazywać dalej.",
+          "section2Title": "Siła zaangażowania online:",
+          "section2Body": "W cyfrowym świecie zaangażowanie online jest kluczowe dla relacji, świadomości marki i lojalności. Zaangażowani odbiorcy częściej ufają marce, reagują na treści i stają się ambasadorami. Priorytetyzując engagement, firmy zyskują wgląd w potrzeby odbiorców i wspierają konwersje oraz wzrost.",
+          "section3Title": "Podsumowanie:",
+          "section3Body": "Zwiększanie zaangażowania online jest niezbędne dla długoterminowego sukcesu. Dzięki interaktywnym treściom, trendom w social media i personalizacji możesz budować silniejsze relacje i widoczność marki. Pamiętaj, że engagement to dialog — słuchaj społeczności, dostarczaj wartość i twórz okazje do sensownych interakcji."
+        }
+      }
+    }
+  },
+  "contactPage": {
+    "badge": "Kontakt",
+    "title": "Skontaktuj się z nami",
+    "description": "Napisz do nas w sprawie zapytań, współpracy lub omówienia potrzeb Twojego projektu.",
+    "form": {
+      "firstName": "Imię",
+      "firstNamePlaceholder": "Wpisz swoje imię",
+      "lastName": "Nazwisko",
+      "lastNamePlaceholder": "Wpisz swoje nazwisko",
+      "email": "Adres e-mail",
+      "emailPlaceholder": "Wpisz swój adres e-mail",
+      "phone": "Numer telefonu",
+      "phonePlaceholder": "Twój numer telefonu",
+      "message": "Wiadomość",
+      "messagePlaceholder": "Napisz swoją wiadomość...",
+      "submit": "Wyślij"
+    }
+  },
+  "howIndicatorsWork": {
+    "badge": "Jak działają wskaźniki",
+    "title": "Co zyskasz, handlując z nami?",
+    "description": "Dołącz do programu partnerskiego i zarabiaj prowizje, polecając traderów platformie.",
+    "sections": {
+      "platform": {
+        "title": "Wyckoff Wave Volume dla TradingView i MT4/MT5",
+        "body": "Wyckoff Wave Volume to narzędzie do identyfikacji punktów zwrotnych na wszystkich rynkach. Na rynku gra pieniądz, a nie setupy. Obserwacja wolumenu pozwala określić, po której stronie są profesjonaliści (Smart Money), i handlować zgodnie z ich kierunkiem."
+      },
+      "beginning": {
+        "title": "Zacznijmy od początku!",
+        "body": "Wykresy Wyckoff Wave stworzone przez Richarda Wyckoffa były przełomem w analizie technicznej. Analiza wolumenu była integralną częścią jego metody inwestowania.\n\nTen system opiera się na wolumenie rysowanym na falach – Wave Volume – (podaż/popyt), który działa na wszystkich rynkach: forex, krypto, futures i akcjach."
+      },
+      "whatIs": {
+        "title": "Czym jest Wyckoff Wave Volume i jak działa?",
+        "body": "To suma wymienionych (sprzedanych/kupionych) akcji lub kontraktów na danej fali (w dół lub w górę) w danym czasie."
+      },
+      "eurusd": {
+        "alt": "Przykład wykresu EUR/USD z Wyckoff Wave Volume",
+        "body": "Na wykresie EUR/USD widzimy klasyczną akumulację ze wszystkimi cechami zmiany kierunku rynku. Po dołku pojawia się duża fala wolumenu 330 – wejście kupujących.\n\nW kolejnej fazie sprzedający tracą siłę (49, 27, 23), co sygnalizuje brak podaży, a po fałszywym wybiciu rynek wychodzi z konsolidacji z siłą kupujących."
+      },
+      "gbpusd": {
+        "alt": "Przykład wykresu GBP/USD z Wyckoff Wave Volume",
+        "body": "Na GBP/USD widzimy typową dystrybucję po dużych wzrostach. Fala 46 to największa fala spadkowa, potem dwa szczyty przy bardzo słabym popycie – 9 i 10.\n\nWysoki wolumen na falach spadkowych oznacza przejęcie kontroli przez sprzedających."
+      },
+      "sp500": {
+        "alt": "Przykład wykresu S&P 500 z Wyckoff Wave Volume",
+        "body": "Na S&P500 widzimy proces akumulacji. Fale wolumenu pokazują spadek siły sprzedaży 354, 53, 48, a kupujący przejmują kontrolę (474, 235, 308)."
+      },
+      "dac": {
+        "alt": "Wykres akcji Danaos Corporation"
+      },
+      "wwcv": {
+        "title": "Wyckoff Wave Cumulative Volume [WWCV]",
+        "body": "Świetnie sprawdza się także na rynku akcji w dowolnym interwale. Przykład akumulacji w akcjach Danaos Corporation [DAC] pokazuje silny spadek – 174, a potem konsolidację i wybicie zakresu przy najwyższym wolumenie – 263."
+      },
+      "dacSession": {
+        "alt": "Sesyjny wykres Danaos Corporation"
+      },
+      "bitcoin": {
+        "alt": "Przykład wykresu Bitcoin",
+        "body": "Wolumen na falach jest precyzyjniejszy niż standardowy wolumen i lepiej pokazuje punkty zwrotne. Po szczycie ok. 68 tys. USD nastąpiła silna dystrybucja widoczna na falach wolumenu – 203 i 196.\n\nPo przebiciu wsparcia cena wróciła do zakresu przy bardzo małym wolumenie, co potwierdziło brak podaży i kontynuację spadków."
+      },
+      "dq": {
+        "body": "Na wykresie akcji Daq New Energy Corp [DQ] widać akumulację w trendzie bocznym, gdzie duża podaż jest absorbowana przez dużych graczy. Ostatnie minimum przy 40,89 USD zostało wchłonięte przez kupujących, po czym rynek wybija zakres w górę."
+      }
+    }
   },
   "footer": {
     "cta": {

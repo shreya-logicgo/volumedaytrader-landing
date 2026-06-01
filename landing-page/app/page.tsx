@@ -20,49 +20,59 @@ import Wyckoff from "@/components/sections/wyckoff-indicators/Wyckoff";
 import PTA from "@/components/sections/pta/PTA";
 import TrustedLogos from "@/components/sections/TrustedLogos/TrustedLogos";
 import Hero from "@/components/sections/hero/Hero";
-
-
 export default function Page() {
   return (
     <div className="mt-20">
       {/* <div className="relative bg-amber-100 h-50 w-full"> */}
 
       {/* </div> */}
+
+      {/* <Container> */}
+      <Navbar />
+      <Hero />
+      <TrustedLogos />
+      <OurServices />
+      {/* <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-0" > */}
+      <Trust />
+      {/* </div> */}
+      <SignalsAndIndicators />
+
+      {/* </Container> */}
+
+
+      <div className="relative overflow-visible bg-page-bg">
+        
+        <IndicatorSystem />
   
-      <Container>
-        <Navbar />
-        <Hero/>
-        <TrustedLogos/>
-        <OurServices />
-        <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-0" >
-        <Trust />
+        {/* Bottom fade into testimonials — hides any remaining curve seam */}
+        <div
+          aria-hidden
+          className="pointer-events-none  absolute inset-x-0 bottom-0 z-20 h-32 bg-gradient-to-t from-page-bg via-page-bg/90 to-transparent sm:h-40 lg:h-48"
+        />
+        <div className="relative z-10">
+          <Testimonials />
         </div>
-        <SignalsAndIndicators />
-
-      </Container>
-
-      <IndicatorSystem />
+      </div>
 
 
-      <Testimonials />
-      <Container>
-        <OurIndicators />
-      </Container>
+      {/* <Container> */}
+      <OurIndicators />
+      {/* </Container> */}
 
       <Pricing />
 
-      <Container>
-        {/* <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-0" > */}
-          <PTA />
-        {/* </div> */}
-        <Wyckoff />
-        <FAQ />
-        <Blogs />
-      </Container>
-      <Footer />
- 
+      {/* <Container> */}
+      {/* <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-0" > */}
+      <PTA />
+      {/* </div> */}
+      <Wyckoff />
+      <FAQ />
+      <Blogs />
+      {/* </Container> */}
+      {/* <Footer /> */}
 
-      
+
+
     </div>
   );
 }
