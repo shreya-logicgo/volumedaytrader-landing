@@ -75,7 +75,7 @@ const PTA = () => {
         </div>
       </div>
 
-      <div className="relative mx-auto mt-8 w-full max-w-[1165px] px-4 sm:mt-10 sm:px-6 lg:px-8">
+      <div className="relative mx-auto  w-full max-w-[1165px] px-4 content-pt sm:px-6 lg:px-8">
         {/* Mobile / small tablet: full-width carousel, controls below */}
         {/* sm+: controls flanking carousel */}
         <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-4 2xl:gap-6">
@@ -89,7 +89,7 @@ const PTA = () => {
             <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
           </button>
 
-          <div className="order-1 min-w-0 flex-1 overflow-hidden sm:order-2">
+          <div className="order-2 min-w-0 flex-1 overflow-hidden sm:order-2">
             <PTACards setApi={setApi} />
           </div>
 

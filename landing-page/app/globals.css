@@ -4,6 +4,7 @@
   --font-rethink: var(--font-rethink-sans), sans-serif;
 
   /* Core surfaces */
+  --color-page-bg: #050024;
   --color-card-bg: #0D082B;
   --color-card-border: #1d1938;
 
@@ -46,6 +47,7 @@
   /* Breakpoints (convenience) */
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
+  --breakpoint-nav: 1150px;
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
@@ -56,7 +58,7 @@
 
 @layer base {
   body {
-    @apply bg-[#050024];
+    @apply bg-page-bg;
     font-family: var(--font-rethink);
     overflow-x: hidden;
   }
@@ -85,17 +87,19 @@
 
   /* Card Heading */
   .card-heading {
-    @apply text-[22px] font-semibold leading-none tracking-normal text-center text-white;
+    @apply text-lg font-semibold leading-none tracking-normal text-center text-white sm:text-base 2xl:text-2xl;
   }
 
   /* Card Description */
   .card-desc {
-    @apply text-lg font-normal leading-snug line-clamp-3 tracking-normal text-secondary-text;
+    @apply text-sm font-normal leading-snug line-clamp-3 tracking-normal text-secondary-text sm:text-sm 2xl:text-lg;
   }
+
+  
 
   /* Card UI */
   .card-ui {
-    @apply rounded-3xl border p-[30px] shadow-[0px_-4px_100px_21px_#18193333_inset];
+    @apply rounded-3xl border  p-4 sm:p-5 lg:p-6 xl:p-[30px] shadow-[0px_-4px_100px_21px_#18193333_inset] ;
     border-color: var(--color-card-border);
     background-color: var(--color-card-bg);
   }
@@ -106,7 +110,7 @@
   .text-secondary-text { color: var(--color-secondary-text); }
 
   .service-icon-accent {
-    background-color: var(--color-service-accent);
+    background-color: var(--color-tab-active);
     box-shadow: var(--shadow-service-accent);
   }
 
@@ -150,24 +154,59 @@
 
 
 .section-pb {
-  @apply pb-10 md:pb-20 xl:pb-22 2xl:pb-24 3xl:pb-26;
+  @apply pb-5 md:pb-10 xl:pb-11 2xl:pb-12 3xl:pb-13;
 }
 
 .section-pt {
   @apply pt-10 md:pt-20 xl:pt-22 2xl:pt-24 3xl:pt-26;
 }
 
+.content-pt {
+  @apply pt-10 md:pt-16 xl:pt-18 2xl:pt-20 3xl:pt-17;
+}
+
+
 @layer components {
   .section-header-stack {
-    @apply mx-auto pt-50 space-y-4;
+    @apply mx-auto  space-y-4;
   }
 }
 
 @layer components {
   .btn-primary {
     @apply inline-flex items-center gap-2 px-7 py-3 rounded-full text-white text-lg font-medium;
-    background-color: var(--color-button-bg);
+    background-color: var(--color-tab-active);
     box-shadow: 0 4px 14px rgba(255, 46, 46, 0.35);
+  }
+
+  .hero-center-glow {
+    background: radial-gradient(ellipse at center, rgba(80, 40, 120, 0.18) 0%, transparent 70%);
+  }
+
+  /* Indicator curve — soft edge blend into page background */
+  .curve-gradient-image {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.35) 14%,
+    black 30%,
+    black 68%,
+    rgba(0, 0, 0, 0.4) 84%,
+    transparent 100%
+  );
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.35) 14%,
+    black 30%,
+    black 68%,
+    rgba(0, 0, 0, 0.4) 84%,
+    transparent 100%
+  );
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
   }
 }
 

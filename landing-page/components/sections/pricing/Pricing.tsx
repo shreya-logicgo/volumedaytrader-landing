@@ -110,7 +110,7 @@ const Pricing = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'pricing' })
 
   return (
-    <section className="relative max-w-[1480px] z-10 mx-auto section-pb px-4 sm:px-6 2xl:px-0 ">
+    <section id="pricing" className="relative  z-10 mx-auto section-pb ">
       <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
         <Badge text={t('badge')} />
       </div>
@@ -120,7 +120,7 @@ const Pricing = () => {
         <SubHeading className="max-w-[780px] mx-auto" text={t('description')} />
       </div>
 
-      <div className="mt-10 grid grid-cols-1 gap-5 sm:mt-12 md:grid-cols-2 xl:grid-cols-4">
+      <div className="content-pt grid grid-cols-1 gap-5  md:grid-cols-2 xl:grid-cols-4">
         {plans.map((plan) => (
           <article
             key={plan.key}
@@ -129,7 +129,7 @@ const Pricing = () => {
               }`}
           >
             <div
-              className={`px-4 py-2 text-center text-lg font-semibold transition-all duration-300 ${
+              className={`px-4 py-2 text-center 2xl:text-lg font-semibold transition-all duration-300 ${
                'bg-pricing-header text-pricing-header group-hover:bg-service-accent group-hover:text-white'
               }`}
             >
@@ -137,7 +137,7 @@ const Pricing = () => {
             </div>
 
             <div className="p-5 bg-card-bg rounded-3xl xl:h-fit h-[730px] ">
-              <h3 className="break-words flex items-center text-sm font-semibold uppercase tracking-wide text-white">
+              <h3 className="break-words flex items-center text-xs 2xl:text-sm font-semibold uppercase tracking-wide text-white">
                 <span>{plan.svg && <img src={plan.svg} alt={t(`plans.${plan.key}.title`)} className="h-6 w-6 inline-block mr-2" />}</span>
                 {t(`plans.${plan.key}.title`)}
               </h3>
@@ -149,9 +149,9 @@ const Pricing = () => {
 
               <div className="mt-1 flex flex-wrap items-end gap-2">
                 <span className="text-4xl font-semibold leading-none text-white sm:text-[40px]">{plan.price}</span>
-                <span className="pb-1 text-base text-price-unit">{t(`plans.${plan.key}.duration`)}</span>
+                <span className="pb-1 text-base text-price-unit">/{t(`plans.${plan.key}.duration`)}</span>
                 {plan.discount ? (
-                  <span className="my-auto text-base font-medium text-white">{t(`plans.${plan.key}.discount`)}</span>
+                  <span className="my-auto text-base font-medium text-white bg-[#151032] px-3 py-2 my-auto rounded-3xl">{t(`plans.${plan.key}.discount`)}</span>
                 ) : null}
               </div>
 
@@ -181,7 +181,7 @@ const Pricing = () => {
                         <path d="M5 13l4 4L19 7" />
                       </svg>
                     </span>
-                    <span className="min-w-0 break-words">{t(`plans.${plan.key}.features.feature${index + 1}`)}</span>
+                    <span className="min-w-0 break-words 2xl:text-lg text-base">{t(`plans.${plan.key}.features.feature${index + 1}`)}</span>
                   </li>
                 ))}
               </ul>

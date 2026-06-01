@@ -125,10 +125,10 @@ const IndicatorSystemCarousal = ({
   const canGoNext = activeIndex < totalSlides - 1
 
   return (
-    <div className={`relative mt-10 w-full mx-auto ${className}`.trim()}>
-
+    <div className={`relative content-pt w-full mx-auto overflow-visible ${className}`.trim()}>
+      <div className="relative z-10">
       {/* Clipping viewport */}
-      <div className="w-full overflow-hidden">
+      <div className="w-full overflow-visible">
         <div
           className="flex gap-6 transition-transform duration-500 ease-out"
           style={trackStyle}
@@ -170,7 +170,7 @@ const IndicatorSystemCarousal = ({
       </div>
 
       {/* Navigation */}
-      <div className="mt-6 flex w-full items-center justify-center gap-3">
+      <div className="mt-6  relative flex w-full items-center justify-center gap-3">
           <button
           type="button"
           onClick={() => canGoPrev && setActiveIndex((prev) => prev - 1)}
@@ -189,6 +189,7 @@ const IndicatorSystemCarousal = ({
         >
           &#8250;
         </button>
+      </div>
       </div>
 
     </div>

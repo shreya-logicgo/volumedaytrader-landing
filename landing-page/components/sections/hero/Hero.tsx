@@ -1,9 +1,11 @@
 "use client"
 
+import Link from 'next/link'
 import Image from "next/image"
 import { useTranslation } from "react-i18next"
 import HeroChart from "./HeroChart"
 import Vector from "@/assets/icons/Vector.svg";
+import { Particles } from "@/components/ui/particles";
 
 
 function HeroFeatureTag({ label, compact }: { label: string; compact?: boolean }) {
@@ -24,7 +26,7 @@ function HeroFeatureTag({ label, compact }: { label: string; compact?: boolean }
                     }`}
             >
                 {label}
-            </span>
+            </span> 
         </div>
     )
 }
@@ -40,26 +42,26 @@ export default function Hero() {
     const floatingTags = [
         {
             label: t("hero.leftTopTag"),
-            className: "left-[1%] top-[14%] 2xl:left-[8%]",
+            className: "left-[3%] top-[14%] 2xl:left-[8%]",
         },
         {
             label: t("hero.leftBottomTag"),
-            className: "left-0 top-[28%] 2xl:left-[12%]",
+            className: "left-[6%] top-[28%] 2xl:left-[12%]",
         },
         {
             label: t("hero.rightTopTag"),
-            className: "right-[1%] top-[14%] 2xl:right-[8%]",
+            className: "right-[3%] top-[14%] 2xl:right-[8%]",
         },
         {
             label: t("hero.rightBottomTag"),
-            className: "right-0 top-[28%] 2xl:right-[12%]",
+            className: "right-[6%] top-[28%] 2xl:right-[12%]",
         },
     ]
 
     return (
-        <section className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 overflow-x-clip  pt-6  sm:pt-8 md:pt-12  lg:pt-16">
+        <section className="relative left-1/2 w-screen max-w-[1720px] -translate-x-1/2 overflow-x-clip  pt-8  sm:pt-12 md:pt-16  lg:pt-20 2xl:pt-28">
             {/* Starry background */}
-            <div
+            {/* <div
                 className="pointer-events-none absolute inset-0 opacity-50"
                 style={{
                     backgroundImage:
@@ -67,7 +69,7 @@ export default function Hero() {
                     backgroundSize: "42px 42px",
                 }}
                 aria-hidden
-            />
+            /> */}
 
             {/* Center subtle glow */}
             <div
@@ -75,16 +77,22 @@ export default function Hero() {
                 aria-hidden
             />
 
-            {/* Side floating tags — only on very wide screens (no overlap) */}
-            <div className="pointer-events-none absolute inset-0 z-10 hidden 2xl:block">
-                {floatingTags.map((tag) => (
-                    <div key={tag.label} className={`absolute max-w-[min(240px,22vw)] ${tag.className}`}>
-                        <HeroFeatureTag label={tag.label} />
-                    </div>
-                ))}
+            {/* Particles background (client-only canvas) */}
+            <div className="pointer-events-none absolute inset-0 z-[5] -translate-y-30 md:-translate-y-35 lg:-translate-y-40  ">
+                <Particles quantity={90} size={0.9} color="#ffffff" className="opacity-70" />
             </div>
 
-            <div className="relative z-30 mx-auto w-full max-w-[872px] px-4 text-center sm:px-6">
+
+                <div className="pointer-events-none absolute inset-0 z-10 hidden xl:block ">
+                    {floatingTags.map((tag) => (
+                        <div key={tag.label} className={`absolute max-w-[min(240px,22vw)] ${tag.className}`}>
+                            <HeroFeatureTag label={tag.label} />
+                        </div>
+                    ))}
+                </div>
+            
+
+            <div className="relative  z-30 mx-auto w-full max-w-[872px] px-4 text-center sm:px-6">
                 {/* Top pill badge */}
                 <div className="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-[#1D1938] bg-[#151032] px-2 py-1.5 backdrop-blur-sm sm:gap-2 2xl:gap-3 2xl:px-3 2xl:py-2">
                     <span className="rounded-2xl bg-[#1D1938] px-2 py-0.5 text-[10px] font-normal tracking-wide text-white shadow-control-inset sm:px-2.5 sm:py-1 sm:text-sm 2xl:text-lg">
@@ -110,25 +118,25 @@ export default function Hero() {
 
                 {/* CTAs */}
                 <div className="mx-auto mt-5 flex w-full max-w-md flex-col items-stretch justify-center gap-3 sm:mt-6 sm:max-w-lg sm:flex-row sm:items-center sm:justify-center sm:gap-4 2xl:mt-8 2xl:max-w-none">
-                    <button
-                        type="button"
-                        className="btn-primary w-full justify-center px-5 py-2.5 text-sm sm:w-auto sm:px-6 sm:py-3 sm:text-base 2xl:inline-flex 2xl:px-7 2xl:text-lg"
+                    <Link
+                        href="https://volumedaytrader.com/login/"
+                         className="btn-primary font-medium w-full justify-center px-5 py-2.5 text-sm sm:w-auto sm:px-6 sm:py-3 sm:text-base 2xl:inline-flex 2xl:px-7 2xl:text-lg"
                     >
                         {t("hero.primaryButton")}
                          <Vector className="block h-3 w-3" aria-hidden="true" />
-                    </button>
-                    <button
-                        type="button"
-                        className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#2B2A56] bg-[#0D082B]/80 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:border-[#3d3c6e] sm:w-auto sm:px-6 sm:text-base 2xl:px-7 2xl:py-3 2xl:text-lg"
+                    </Link>
+                    <Link
+                        href="https://volumedaytrader.com/login/"
+                        className="inline-flex w-full items-center justify-center shadow-control-inset gap-2 rounded-full border border-[#2B2A56] bg-[#0D082B]/80 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:border-[#3d3c6e] sm:w-auto sm:px-6 sm:text-base 2xl:px-7 2xl:py-3 2xl:text-lg"
                     >
                         {t("hero.secondaryButton")}
                         {/* <ArrowUpRight /> */}
                         <Vector className="block h-3 w-3" aria-hidden="true" />
-                    </button>
+                    </Link>
                 </div>
 
                 {/* Stacked tags below content until 2xl */}
-                <div className="mt-6 grid grid-cols-1 gap-2.5 min-[400px]:grid-cols-2 sm:gap-3 2xl:hidden">
+                <div className="mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3 xl:hidden">
                     {floatingTags.map((tag) => (
                         <div key={tag.label} className="flex justify-center px-1">
                             <HeroFeatureTag label={tag.label} compact />
