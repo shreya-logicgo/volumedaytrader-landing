@@ -111,7 +111,7 @@ const Pricing = () => {
 
   return (
     <section id="pricing" className="relative  z-10 mx-auto section-pb ">
-      <div className="relative mx-auto flex w-full max-w-[717px] flex-col gap-2 overflow-hidden">
+      <div className="badge-wrap flex flex-col gap-2">
         <Badge text={t('badge')} />
       </div>
 

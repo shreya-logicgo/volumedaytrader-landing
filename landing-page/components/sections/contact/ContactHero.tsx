@@ -12,7 +12,7 @@ export default function ContactHero() {
 
   return (
     <div className="mx-auto w-full max-w-4xl text-center">
-      <div className="relative mx-auto flex max-w-[717px] flex-col gap-2">
+      <div className="badge-wrap flex flex-col gap-2">
         <Badge text={t("badge")} />
       </div>
 

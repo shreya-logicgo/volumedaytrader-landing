@@ -2,14 +2,13 @@
 
 import Image, { type StaticImageData } from "next/image";
 import { useTranslation } from "react-i18next";
+import Heading from "@/components/ui/heading/Heading";
+import SubHeading from "@/components/ui/subheading/SubHeading";
 import { HOW_INDICATORS_BLOCKS } from "./howIndicatorsContent";
 
 function ContentImage({ src, alt }: { src: StaticImageData; alt: string }) {
   return (
-    <div
-      className="relative h-[min(542px,60vw)] w-full overflow-hidden rounded-[20px]"
-      style={{ position: "relative" }}
-    >
+    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl sm:rounded-3xl">
       <Image
         src={src}
         alt={alt}
@@ -29,21 +28,15 @@ function HeadingBody({
   body: string;
 }) {
   return (
-    <div className="flex flex-col gap-10">
-      <h2 className="text-[40px] font-bold leading-[54px] text-white">{title}</h2>
-      <p className="whitespace-pre-line text-lg leading-6 text-secondary-text">
-        {body}
-      </p>
+    <div className="page-content-block">
+      <Heading as="h2" variant="page-content" align="left" text={title} />
+      <SubHeading variant="page-content" align="left" text={body} />
     </div>
   );
 }
 
 function BodyParagraph({ body }: { body: string }) {
-  return (
-    <p className="whitespace-pre-line text-lg leading-6 text-secondary-text">
-      {body}
-    </p>
-  );
+  return <SubHeading variant="page-content" align="left" text={body} />;
 }
 
 export default function HowIndicatorsWorkContent() {
@@ -52,7 +45,7 @@ export default function HowIndicatorsWorkContent() {
   });
 
   return (
-    <div className="mx-auto flex w-full max-w-[920px] flex-col gap-[60px]">
+    <div className="page-content-stack mx-auto w-full max-w-[920px]">
       {HOW_INDICATORS_BLOCKS.map((block, index) => {
         if (block.type === "headingBody") {
           return (

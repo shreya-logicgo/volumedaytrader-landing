@@ -9,9 +9,9 @@ const OurServices = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'services' })
 
   return (
-    <section className="section-pb section-pt overflow-x-clip">
+    <section className="section-pb section-pt overflow-x-clip overflow-y-visible">
       <div className="relative z-20 mx-auto w-full max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-        <div className="relative mx-auto flex max-w-3xl flex-col gap-2">
+        <div className="badge-wrap flex flex-col gap-2">
           <Badge text={t('badge')} />
         </div>
 

@@ -15,7 +15,7 @@ const IndicatorSystem = () => {
       className="relative z-10 mx-auto max-w-screen-2xl overflow-visible px-0 section-pb"
     >
       <div className="relative z-20">
-        <div className="relative mx-auto flex w-full max-w-3xl flex-col gap-2 overflow-hidden">
+        <div className="badge-wrap flex flex-col gap-2">
           <Badge text={t('badge')} />
         </div>
         <div className="section-header-stack relative z-10 mx-auto text-center">
