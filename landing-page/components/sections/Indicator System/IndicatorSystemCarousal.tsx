@@ -64,7 +64,10 @@ const ChartPanel = ({
 
   return (
     // Single wrapper: rounded border, clips content, 16:9 ratio, no extra nesting
-    <div className="relative w-full overflow-hidden rounded-xl border indicator-chart-panel aspect-video">
+    <div
+      className="relative w-full overflow-hidden rounded-xl border indicator-chart-panel aspect-video"
+      style={{ position: "relative" }}
+    >
       {imageSrc && !imageFailed ? (
         <Image
           src={imageSrc}

@@ -355,6 +355,70 @@
         "badge": "Our Blogs",
         "title": "Learn More About Volume & Market Structure",
         "description": "Educational resources and trading insights designed to help traders better understand market behavior.",
+        "page": {
+            "badge": "Our Blogs",
+            "title": "News, insights and more",
+            "description": "Dive into our blog for expert insights, tips, and industry trends to elevate your project management journey.",
+            "searchPlaceholder": "Search for Blogs",
+            "clearSearch": "Clear search",
+            "noResults": "No blogs found for \"{{searchTerm}}\"",
+            "posts": {
+                "post1": {
+                    "category": "Digital Marketing",
+                    "date": "Jul 31, 2026",
+                    "title": "Strategies for Boosting Online Engagement Today",
+                    "button": "Learn More"
+                },
+                "post2": {
+                    "category": "Digital Marketing",
+                    "date": "Oct 11, 2024",
+                    "title": "User-Centric Product Design, A Complete Guide From Scratch",
+                    "button": "Learn More"
+                },
+                "post3": {
+                    "category": "Digital Marketing",
+                    "date": "Jul 7, 2024",
+                    "title": "Top Design Trends Driving Business Success & Growth",
+                    "button": "Learn More"
+                },
+                "post4": {
+                    "category": "Digital Marketing",
+                    "date": "Jul 31, 2026",
+                    "title": "Creating a Brand Identity That Stands Out",
+                    "button": "Learn More"
+                },
+                "post5": {
+                    "category": "Digital Marketing",
+                    "date": "Oct 11, 2024",
+                    "title": "The Power of Storytelling and Visual Elements in Branding",
+                    "button": "Learn More"
+                },
+                "post6": {
+                    "category": "Digital Marketing",
+                    "date": "Jul 7, 2024",
+                    "title": "Innovative Web Design Techniques for Modern Brands",
+                    "button": "Learn More"
+                },
+                "post7": {
+                    "category": "Digital Marketing",
+                    "date": "Jul 31, 2026",
+                    "title": "Strategies for Boosting Online Engagement Today",
+                    "button": "Learn More"
+                },
+                "post8": {
+                    "category": "Digital Marketing",
+                    "date": "Oct 11, 2024",
+                    "title": "User-Centric Product Design, A Complete Guide From Scratch",
+                    "button": "Learn More"
+                },
+                "post9": {
+                    "category": "Digital Marketing",
+                    "date": "Jul 7, 2024",
+                    "title": "Top Design Trends Driving Business Success & Growth",
+                    "button": "Learn More"
+                }
+            }
+        },
         "cards": {
             "blog1": {
                 "category": "Digital Marketing",
