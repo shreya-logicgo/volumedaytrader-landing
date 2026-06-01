@@ -28,10 +28,10 @@ const Blogs = () => {
 
       <BlogsCards />
 
-      <div className="mt-12 flex justify-center">
+      <div className="mt-12 flex justify-center ">
         <Link
           href="/blogs"
-          className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-lg font-medium text-white/80 transition hover:bg-white/10 hover:text-white"
+          className="flex items-center gap-2 shadow-control-inset  rounded-full border border-white/10 bg-white/5 px-6 py-3 text-lg font-medium text-white/80 transition hover:bg-white/10 hover:text-white"
         >
           <span>{t("allBlogsButton")}</span>
 

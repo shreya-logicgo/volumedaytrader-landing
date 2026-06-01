@@ -42,7 +42,7 @@ const OurIndicators = () => {
               type="button"
               onClick={() => setActiveTab('volumeEdge')}
               className={`rounded-lg px-5 py-2 text-lg font-medium transition-all cursor-pointer ${activeTab === 'volumeEdge'
-                  ? 'bg-red-600 text-white'
+                  ? 'bg-red-600 text-white shadow-control-inset'
                   : 'text-secondary-text'
                 }`}
             >
@@ -53,7 +53,7 @@ const OurIndicators = () => {
               type="button"
               onClick={() => setActiveTab('smartProfits')}
               className={`rounded-lg px-5 py-2 text-lg font-medium transition-all cursor-pointer ${activeTab === 'smartProfits'
-                  ? 'bg-red-600 text-white'
+                  ? 'bg-red-600 text-white shadow-control-inset'
                   : 'text-secondary-text'
                 }`}
             >
@@ -63,8 +63,8 @@ const OurIndicators = () => {
             <button
               type="button"
               onClick={() => setActiveTab('hiddenStrategy')}
-              className={`rounded-lg px-5 py-2 text-lg font-medium transition-all cursor-pointer ${activeTab === 'hiddenStrategy'
-                  ? 'bg-red-600 text-white'
+              className={`rounded-lg  px-5 py-2 text-lg font-medium transition-all cursor-pointer ${activeTab === 'hiddenStrategy'
+                  ? 'bg-red-600 text-white shadow-control-inset'
                   : 'text-secondary-text'
                 }`}
             >
