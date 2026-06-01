@@ -9,20 +9,20 @@ const OurServices = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'services' })
 
   return (
-    <div className="section-pb section-pt">
-      <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
+    <section className="section-pb section-pt overflow-x-clip">
+      <div className="relative z-20 mx-auto w-full max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+        <div className="relative mx-auto flex max-w-3xl flex-col gap-2">
+          <Badge text={t('badge')} />
+        </div>
 
-        <Badge text={t('badge')} />
+        <div className="section-header-stack relative z-10 mx-auto max-w-2xl text-center">
+          <Heading text={t('title')} />
+          <SubHeading text={t('description')} />
+        </div>
+
+        <OurServicesCards />
       </div>
-      <div className="relative max-w-[630px] z-10 mx-auto text-center section-header-stack">
-        <Heading text={t('title')} />
-        <SubHeading text={t('description')} />
-      </div>
-
-      <OurServicesCards />
-    </div>
-
-
+    </section>
   )
 }
 
