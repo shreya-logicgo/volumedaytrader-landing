@@ -17,18 +17,18 @@ export default function HowIndicatorsWorkPage() {
       </Container>
 
       <section className="relative z-10">
-        <Container>
+        {/* <Container> */}
           <HowIndicatorsWorkHero />
-        </Container>
+        {/* </Container> */}
 
-        <Container>
+        {/* <Container> */}
           <div className="mx-auto mt-20 w-full max-w-[920px] pb-24 md:pb-32">
             <HowIndicatorsWorkContent />
           </div>
-        </Container>
+        {/* </Container> */}
       </section>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

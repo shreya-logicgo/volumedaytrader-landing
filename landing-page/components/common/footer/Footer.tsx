@@ -27,11 +27,10 @@ const Footer = () => {
     const { t } = useTranslation('translation')
 
     return (
-        <footer id="contact" className="relative overflow-hidden  pb-10 container-spacing">
+        <footer id="contact" className="relative overflow-x-clip pb-10">
             <FooterBackground />
-            {/* Background */}
-            {/* <Container> */}
-            <div className="relative z-10 mx-auto">
+            <Container>
+            <div className="relative z-10 mx-auto w-full min-w-0">
                 {/* CTA */}
                 <div className="relative overflow-hidden py-16">
                     {/* Particles only here */}
@@ -58,18 +57,24 @@ const Footer = () => {
                 </div>
 
                 {/* Footer Grid */}
-                <div className="grid grid-cols-1 gap-y-10 gap-x-8 pt-16 sm:pt-20 md:grid-cols-2 lg:grid-cols-[3fr_1fr_1fr_1fr] lg:gap-x-12 xl:pt-24">
+                <div className="grid min-w-0 grid-cols-1 gap-y-10 gap-x-8 pt-16 sm:pt-20 md:grid-cols-2 lg:grid-cols-[3fr_1fr_1fr_1fr] lg:gap-x-12 xl:pt-24">
                     {/* Left */}
-                    <div className="space-y-8 md:col-span-2 lg:col-span-1">
+                    <div className="min-w-0 space-y-8 md:col-span-2 lg:col-span-1">
                         <div className="space-y-5">
-                            <Logo className="h-auto w-[240px] max-w-full sm:w-[280px] lg:w-[303px]" role="img" aria-label="VDLTRA logo" />
+                            <Link href="/" className="footer-logo block w-full min-w-0 max-w-full" aria-label="home">
+                                <Logo
+                                    className="footer-logo h-auto w-full max-w-full object-contain object-left"
+                                    role="img"
+                                    aria-label="VDLTRA logo"
+                                />
+                            </Link>
 
                             <div className="space-y-3">
                                 <h3 className="text-lg font-semibold text-white sm:text-xl">
                                     {t('footer.company.consultationTitle')}
                                 </h3>
 
-                                <p className="max-w-[450px] text-sm leading-6 text-secondary-text sm:text-base sm:leading-6">
+                                <p className="max-w-full text-sm leading-6 text-secondary-text sm:max-w-md sm:text-base sm:leading-6 lg:max-w-lg">
                                     {t('footer.company.consultationDescription')}
                                 </p>
                             </div>
@@ -175,7 +180,7 @@ const Footer = () => {
                             className="mt-1 h-5 w-5 shrink-0"
                         />
                         <p className="text-sm leading-6 text-secondary-text sm:text-base sm:leading-6">
-                            <span className="font-medium text-secondary-text">
+                            <span className="font-medium sm:text-base text-xs text-secondary-text">
                                 {t('footer.riskDisclaimerLabel')}
                             </span>{' '}
                             {t('footer.riskDisclaimer')}
@@ -183,7 +188,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            {/* </Container> */}
+            </Container>
         </footer>
     )
 }

@@ -42,7 +42,7 @@ export default function RootLayout({
           <Container>
             {children}
           </Container>
-               <Footer />
+          <Footer />
         </I18nProvider>
       </body>
     </html>

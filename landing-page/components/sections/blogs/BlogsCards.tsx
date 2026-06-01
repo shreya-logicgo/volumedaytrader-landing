@@ -10,7 +10,7 @@ const BlogsCards = () => {
   const { t } = useTranslation("translation", { keyPrefix: "blogs" });
 
   return (
-    <div className="content-pt mx-auto grid w-full max-w-[1400px] grid-cols-1 gap-4 px-4 sm:grid-cols-2 sm:gap-5 sm:px-6 md:gap-6 lg:px-8 xl:grid-cols-3">
+    <div className="grid grid-cols-1 gap-5 pt-18 sm:grid-cols-2 xl:grid-cols-3 xl:justify-between">
       {HOME_BLOG_KEYS.map((postKey, index) => {
         const post = BLOG_POSTS[index];
 

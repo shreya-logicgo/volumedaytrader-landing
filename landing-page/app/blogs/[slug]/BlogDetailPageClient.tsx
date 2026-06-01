@@ -29,18 +29,18 @@ export default function BlogDetailPageClient({ post }: BlogDetailPageClientProps
       </Container>
 
       <section className="relative z-10">
-        <Container>
+        {/* <Container> */}
           <BlogDetailView post={post} />
-        </Container>
+        {/* </Container> */}
 
-        <Container>
+        {/* <Container> */}
           <div className="mx-auto mt-12 w-full max-w-[1360px] md:mt-16">
             <SimilarBlogs posts={similarPosts} />
           </div>
-        </Container>
+        {/* </Container> */}
       </section>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
