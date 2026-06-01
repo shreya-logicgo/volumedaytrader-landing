@@ -9,7 +9,7 @@ const SignalsAndIndicators = () => {
     const { t } = useTranslation('translation', { keyPrefix: 'signals' })
 
     return (
-        <section id="signals" className="section-pb">
+        <section id="signals" className="scroll-anchor-offset section-pb">
             <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
                 <Badge text={t('badge')} />
             </div>

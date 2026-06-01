@@ -54,6 +54,10 @@
   --breakpoint-3xl: 1920px;
   --breakpoint-4xl: 2560px;
 
+  /* Fixed navbar — hash / anchor scroll offset */
+  --scroll-anchor-offset: 7.5rem;
+  --scroll-anchor-offset-md: 8.5rem;
+
 }
 
 @layer base {
@@ -65,6 +69,25 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: var(--scroll-anchor-offset);
+  }
+
+  @media (min-width: 768px) {
+    html {
+      scroll-padding-top: var(--scroll-anchor-offset-md);
+    }
+  }
+}
+
+@layer components {
+  .scroll-anchor-offset {
+    scroll-margin-top: var(--scroll-anchor-offset);
+  }
+
+  @media (min-width: 768px) {
+    .scroll-anchor-offset {
+      scroll-margin-top: var(--scroll-anchor-offset-md);
+    }
   }
 }
 

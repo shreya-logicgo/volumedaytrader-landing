@@ -90,7 +90,7 @@ const PTACards = ({
         {items.map((item, index) => (
           <CarouselItem
             key={item.key}
-            className="basis-full pl-4 sm:pl-5 md:basis-1/2"
+            className="basis-full pl-4 sm:pl-5 md:basis-1/2 hover:cursor-pointer"
           >
             <article className="flex h-full flex-col gap-4 overflow-hidden rounded-2xl border border-[#1D1938] bg-[#0D082B] p-4 sm:gap-5 sm:p-5 md:p-6">
               <div
