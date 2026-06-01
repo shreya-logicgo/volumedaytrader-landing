@@ -12,7 +12,7 @@ import PTACards from '@/components/sections/pta/PTACards'
 import SideGradients from '@/components/common/backgrounds/SideGradients'
 
 const navButtonClass =
-  'flex h-11 w-11 shrink-0 items-center justify-center rounded-full shadow-control-inset border border-[#2A2450] bg-[#161032] text-white transition-opacity hover:bg-[#1e1640] disabled:cursor-not-allowed disabled:opacity-35 sm:h-12 sm:w-12 2xl:h-14 2xl:w-14'
+  'flex h-11 w-11 shrink-0 items-center hover:cursor-pointer justify-center rounded-full shadow-control-inset border border-[#2A2450] bg-[#161032] text-white transition-opacity hover:bg-[#1e1640] disabled:cursor-not-allowed disabled:opacity-35 sm:h-12 sm:w-12 2xl:h-14 2xl:w-14'
 
 type NavButtonProps = {
   direction: 'prev' | 'next'
@@ -66,8 +66,8 @@ const PTA = () => {
     <section id="pta" className="section-pb relative">
       <SideGradients />
 
-      <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6">
-        <div className="relative mx-auto flex w-full max-w-[717px] flex-col gap-2 overflow-hidden">
+      <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 ">
+        <div className="badge-wrap relative mx-auto flex w-full max-w-[717px] flex-col gap-2 overflow-hidden">
           <Badge text={t('badge')} />
         </div>
 

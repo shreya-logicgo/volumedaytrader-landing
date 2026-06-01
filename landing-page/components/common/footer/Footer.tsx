@@ -27,7 +27,7 @@ const Footer = () => {
     const { t } = useTranslation('translation')
 
     return (
-        <footer id="contact" className="relative overflow-x-clip pb-10">
+        <footer id="contact" className="scroll-anchor-offset relative overflow-x-clip pb-10">
             <FooterBackground />
             <Container>
             <div className="relative z-10 mx-auto w-full min-w-0">

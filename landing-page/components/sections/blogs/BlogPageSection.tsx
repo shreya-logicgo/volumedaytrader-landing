@@ -32,17 +32,21 @@ export default function BlogPageSection() {
   return (
     <div className="mx-auto flex w-full max-w-[1360px] justify-center flex-col items-center">
       <div className="mx-auto w-full max-w-4xl text-center">
-        <div className="relative mx-auto flex max-w-[717px] flex-col gap-2">
+        <div className="badge-wrap flex flex-col gap-2">
           <Badge text={t("page.badge")} />
         </div>
 
         <div className="relative z-10 mx-auto section-header-stack">
           <Heading
             as="h1"
+            variant="page-hero"
+            align="center"
             className="mx-auto max-w-3xl px-1 sm:px-0"
             text={t("page.title")}
           />
           <SubHeading
+            variant="page-hero"
+            align="center"
             className="mx-auto max-w-[530px] px-2 sm:px-0"
             text={t("page.description")}
           />

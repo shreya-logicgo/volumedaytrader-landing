@@ -7,7 +7,7 @@ import TrustBackground from '@/components/common/backgrounds/TrustBackground'
 
 const Trust = () => {
     return (
-        <section id="community" className="relative font-bold section-pb">
+        <section id="community" className="scroll-anchor-offset relative font-bold section-pb">
             <TrustBackground />
             {/* <div className="relative">
                 <img
@@ -16,7 +16,7 @@ const Trust = () => {
                     className="absolute object-cover opacity-100 z-10"
                 />
             </div> */}
-            <div className="relative max-w-[717px] flex flex-col gap-2 mx-auto">
+            <div className="badge-wrap flex flex-col gap-2">
                 <Badge text='Trust' />
             </div>
             <div className="relative max-w-3xl z-10 mx-auto text-center section-header-stack">

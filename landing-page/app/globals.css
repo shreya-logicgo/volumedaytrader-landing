@@ -54,6 +54,10 @@
   --breakpoint-3xl: 1920px;
   --breakpoint-4xl: 2560px;
 
+  /* Fixed navbar — hash / anchor scroll offset */
+  --scroll-anchor-offset: 7.5rem;
+  --scroll-anchor-offset-md: 8.5rem;
+
 }
 
 @layer base {
@@ -65,6 +69,25 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: var(--scroll-anchor-offset);
+  }
+
+  @media (min-width: 768px) {
+    html {
+      scroll-padding-top: var(--scroll-anchor-offset-md);
+    }
+  }
+}
+
+@layer components {
+  .scroll-anchor-offset {
+    scroll-margin-top: var(--scroll-anchor-offset);
+  }
+
+  @media (min-width: 768px) {
+    .scroll-anchor-offset {
+      scroll-margin-top: var(--scroll-anchor-offset-md);
+    }
   }
 }
 
@@ -103,7 +126,50 @@
     @apply text-sm font-normal leading-snug line-clamp-3 tracking-normal text-secondary-text sm:text-sm lg:text-base 2xl:text-lg;
   }
 
-  
+  /* Badge arc background wrapper — full 717×268 graphic, no clipping */
+  .badge-wrap {
+    @apply relative mx-auto w-full min-w-0 max-w-[717px] overflow-visible;
+  }
+
+  /*
+   * Inner pages (blog detail, how-indicators-work)
+   * Mirrors landing scale: heading-text, subheading-text, card-heading, card-desc
+   */
+  .page-hero-heading {
+    @apply text-2xl font-bold leading-tight tracking-normal text-white md:text-4xl xl:text-5xl;
+  }
+
+  .page-hero-subheading {
+    @apply text-base font-normal leading-6 tracking-normal text-secondary-text md:text-base lg:text-lg;
+  }
+
+  .page-content-heading {
+    @apply text-lg font-semibold leading-tight tracking-normal text-white sm:text-xl lg:text-[22px] 2xl:text-2xl;
+  }
+
+  .page-content-desc {
+    @apply text-sm font-normal leading-snug tracking-normal text-secondary-text sm:text-sm lg:text-base 2xl:text-lg;
+  }
+
+  .page-content-list {
+    @apply list-disc space-y-2 pl-5 marker:text-secondary-text sm:space-y-3;
+  }
+
+  .page-content-list li {
+    @apply pl-1 text-left text-sm font-normal leading-snug tracking-normal text-secondary-text sm:text-sm lg:text-base 2xl:text-lg;
+  }
+
+  .page-hero-stack {
+    @apply flex flex-col gap-3 sm:gap-4;
+  }
+
+  .page-content-block {
+    @apply flex flex-col gap-3 sm:gap-4;
+  }
+
+  .page-content-stack {
+    @apply flex flex-col gap-10 sm:gap-12 md:gap-14 lg:gap-16;
+  }
 
   /* Card UI */
   .card-ui {
