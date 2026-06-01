@@ -7,7 +7,8 @@ import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 import Logo from '../../../assets/logo/logo.svg'
 import { useLanguage } from '@/hooks/use-language'
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next'
+import { scrollToSectionId } from '@/lib/scroll'
 
 const links = [
   { label: 'Features', href: '/#features' },
@@ -109,6 +110,26 @@ export default function Navbar() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  const handleNavLinkClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    const hashIndex = href.indexOf('#')
+    if (hashIndex === -1) return
+
+    const path = href.slice(0, hashIndex) || '/'
+    const sectionId = href.slice(hashIndex + 1)
+    if (!sectionId) return
+
+    const onHome = pathname === '/' || pathname === ''
+    if (!onHome || (path !== '/' && path !== '')) return
+
+    event.preventDefault()
+    scrollToSectionId(sectionId)
+    window.history.pushState(null, '', `/#${sectionId}`)
+    setMobileOpen(false)
+  }
+
   return (
     <header className="fixed left-0 top-5 z-50 w-full pointer-events-none md:top-7">
       <div className="relative mx-auto w-full max-w-[1920px] px-4 sm:px-6 lg:px-8 pointer-events-none">
@@ -154,6 +175,7 @@ export default function Navbar() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
+                    onClick={(event) => handleNavLinkClick(event, link.href)}
                     className={`relative whitespace-nowrap rounded-full px-1 py-1 transition-colors duration-300 after:absolute after:bottom-0 after:left-1/2 after:h-px after:-translate-x-1/2 after:bg-white after:transition-all after:duration-300 hover:text-white hover:after:w-4/5 ${isActive ? 'text-white after:w-4/5' : 'text-secondary-text after:w-0'}`}
                   >
                     {link.label}
@@ -166,24 +188,31 @@ export default function Navbar() {
           <div className="hidden shrink-0 items-center gap-3 xl:flex xl:gap-4">
             <div
               ref={langRef}
-              className="relative flex h-11 min-w-[96px] shrink-0 items-center justify-between rounded-full border border-white/5 bg-white/5 px-3 transition-colors duration-300 hover:bg-white/10 cursor-pointer"
+              className="relative flex h-11 min-w-[96px] shrink-0 items-center justify-center rounded-full border border-white/5 bg-white/5 px-3 transition-colors duration-300 hover:bg-white/10"
             >
               <button
                 type="button"
                 onClick={() => setLangMenuOpen((value) => !value)}
-                className="flex w-full items-center justify-between gap-2 whitespace-nowrap text-[14px] font-medium text-white xl:text-[15px]"
+                className="relative flex w-full cursor-pointer items-center justify-center gap-2 whitespace-nowrap pr-5 text-[14px] font-medium text-white xl:pr-6 xl:text-[15px]"
                 aria-label="Select language"
+                aria-expanded={langMenuOpen}
               >
-                <span className="flex items-center gap-2">
+                <span className="flex items-center justify-center gap-2">
                   <img
                     src={selectedLanguage.flag}
                     alt={`${selectedLanguage.code} flag`}
-                    className="block h-3.5 w-5 rounded-[2px] object-cover"
+                    className="block h-3.5 w-5 shrink-0 rounded-[2px] object-cover"
                   />
                   <span>{selectedLanguage.label}</span>
                 </span>
 
-                <svg className={`h-3 w-3 transition-transform duration-200 ${langMenuOpen ? 'rotate-180' : ''}`} viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <svg
+                  className={`absolute right-0 h-3 w-3 shrink-0 transition-transform duration-200 ${langMenuOpen ? 'rotate-180' : ''}`}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  aria-hidden
+                >
                   <path d="M6 9l6 6 6-6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
@@ -195,20 +224,20 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 8, scale: 0.96 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute right-0 top-full mt-2 flex min-w-[120px] flex-col overflow-hidden rounded-2xl border border-[#1D1938] bg-[#0A1129]/95 shadow-2xl backdrop-blur-xl"
+                    className="absolute left-1/2 top-full z-50 mt-2 flex w-full min-w-[96px] -translate-x-1/2 flex-col overflow-hidden rounded-2xl border border-[#1D1938] bg-[#0A1129]/95 shadow-2xl backdrop-blur-xl"
                   >
                     {languages.map((lang) => (
                       <button
                         key={lang.code}
                         type="button"
-                        className="flex items-center gap-3 px-4 py-3 text-left text-white/90 transition-colors hover:bg-white/10"
+                        className="flex w-full cursor-pointer items-center justify-center gap-2 px-4 py-3 text-white/90 transition-colors hover:bg-white/10"
                         onClick={() => {
                           changeLanguage(lang.code as 'en' | 'pl')
                           setLangMenuOpen(false)
                         }}
                       >
-                        <img src={lang.flag} alt={lang.code} className="h-3.5 w-5 rounded-[2px] object-cover" />
-                        <span className="text-[15px] font-medium leading-6">{lang.label}</span>
+                        <img src={lang.flag} alt={lang.code} className="h-3.5 w-5 shrink-0 rounded-[2px] object-cover" />
+                        <span className="text-[15px] font-medium leading-none">{lang.label}</span>
                       </button>
                     ))}
                   </motion.div>
@@ -274,7 +303,7 @@ export default function Navbar() {
                           key={link.label}
                           href={link.href}
                           className={`rounded-2xl px-3 py-3 text-base font-medium transition-colors hover:bg-white/5 sm:text-lg ${isActive ? 'bg-white/5 text-white' : 'text-secondary-text hover:text-white'}`}
-                          onClick={() => setMobileOpen(false)}
+                          onClick={(event) => handleNavLinkClick(event, link.href)}
                         >
                           {link.label}
                         </Link>
@@ -298,13 +327,13 @@ export default function Navbar() {
                         <button
                           key={lang.code}
                           type="button"
-                          className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${selectedLanguage.code === lang.code ? 'bg-white/10 text-white' : 'text-white/70 hover:bg-white/5 hover:text-white'}`}
+                          className={`flex items-center  gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${selectedLanguage.code === lang.code ? 'bg-white/10 text-white' : 'text-white/70 hover:bg-white/5 hover:text-white hover:cursor-pointer '}`}
                           onClick={() => {
                             changeLanguage(lang.code as 'en' | 'pl')
                             setMobileOpen(false)
                           }}
                         >
-                          <img src={lang.flag} alt={lang.code} className="h-3.5 w-5 rounded-[2px] object-cover" />
+                          <img src={lang.flag} alt={lang.code} className="h-3.5 w-5 shrink-0 rounded-[2px] object-cover" />
                           {lang.label}
                         </button>
                       ))}

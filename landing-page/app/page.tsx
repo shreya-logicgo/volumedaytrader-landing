@@ -20,7 +20,24 @@ import Wyckoff from "@/components/sections/wyckoff-indicators/Wyckoff";
 import PTA from "@/components/sections/pta/PTA";
 import TrustedLogos from "@/components/sections/TrustedLogos/TrustedLogos";
 import Hero from "@/components/sections/hero/Hero";
+import { useEffect } from "react";
+import { scrollToSectionId } from "@/lib/scroll";
+
 export default function Page() {
+  useEffect(() => {
+    const scrollToHash = () => {
+      const sectionId = window.location.hash.replace(/^#/, "")
+      if (!sectionId) return
+      requestAnimationFrame(() => {
+        scrollToSectionId(sectionId)
+      })
+    }
+
+    scrollToHash()
+    window.addEventListener("hashchange", scrollToHash)
+    return () => window.removeEventListener("hashchange", scrollToHash)
+  }, [])
+
   return (
     <div className="mt-20">
       {/* <div className="relative bg-amber-100 h-50 w-full"> */}

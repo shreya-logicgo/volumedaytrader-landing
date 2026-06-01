@@ -26,7 +26,7 @@ const OurIndicators = () => {
 
   return (
     <div className="section-pb">
-      <section id="our-indicators" className="relative z-10 mx-auto">
+      <section id="our-indicators" className="scroll-anchor-offset relative z-10 mx-auto">
         <div className="relative mx-auto flex w-full max-w-[717px] flex-col gap-2 overflow-hidden">
           <Badge text={t('badge')} />
         </div>
