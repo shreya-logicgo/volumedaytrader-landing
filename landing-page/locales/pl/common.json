@@ -463,6 +463,54 @@
       }
     }
   },
+  "howIndicatorsWork": {
+    "badge": "Jak działają wskaźniki",
+    "title": "Co zyskasz, handlując z nami?",
+    "description": "Dołącz do programu partnerskiego i zarabiaj prowizje, polecając traderów platformie.",
+    "sections": {
+      "platform": {
+        "title": "Wyckoff Wave Volume dla TradingView i MT4/MT5",
+        "body": "Wyckoff Wave Volume to narzędzie do identyfikacji punktów zwrotnych na wszystkich rynkach. Na rynku gra pieniądz, a nie setupy. Obserwacja wolumenu pozwala określić, po której stronie są profesjonaliści (Smart Money), i handlować zgodnie z ich kierunkiem."
+      },
+      "beginning": {
+        "title": "Zacznijmy od początku!",
+        "body": "Wykresy Wyckoff Wave stworzone przez Richarda Wyckoffa były przełomem w analizie technicznej. Analiza wolumenu była integralną częścią jego metody inwestowania.\n\nTen system opiera się na wolumenie rysowanym na falach – Wave Volume – (podaż/popyt), który działa na wszystkich rynkach: forex, krypto, futures i akcjach."
+      },
+      "whatIs": {
+        "title": "Czym jest Wyckoff Wave Volume i jak działa?",
+        "body": "To suma wymienionych (sprzedanych/kupionych) akcji lub kontraktów na danej fali (w dół lub w górę) w danym czasie."
+      },
+      "eurusd": {
+        "alt": "Przykład wykresu EUR/USD z Wyckoff Wave Volume",
+        "body": "Na wykresie EUR/USD widzimy klasyczną akumulację ze wszystkimi cechami zmiany kierunku rynku. Po dołku pojawia się duża fala wolumenu 330 – wejście kupujących.\n\nW kolejnej fazie sprzedający tracą siłę (49, 27, 23), co sygnalizuje brak podaży, a po fałszywym wybiciu rynek wychodzi z konsolidacji z siłą kupujących."
+      },
+      "gbpusd": {
+        "alt": "Przykład wykresu GBP/USD z Wyckoff Wave Volume",
+        "body": "Na GBP/USD widzimy typową dystrybucję po dużych wzrostach. Fala 46 to największa fala spadkowa, potem dwa szczyty przy bardzo słabym popycie – 9 i 10.\n\nWysoki wolumen na falach spadkowych oznacza przejęcie kontroli przez sprzedających."
+      },
+      "sp500": {
+        "alt": "Przykład wykresu S&P 500 z Wyckoff Wave Volume",
+        "body": "Na S&P500 widzimy proces akumulacji. Fale wolumenu pokazują spadek siły sprzedaży 354, 53, 48, a kupujący przejmują kontrolę (474, 235, 308)."
+      },
+      "dac": {
+        "alt": "Wykres akcji Danaos Corporation"
+      },
+      "wwcv": {
+        "title": "Wyckoff Wave Cumulative Volume [WWCV]",
+        "body": "Świetnie sprawdza się także na rynku akcji w dowolnym interwale. Przykład akumulacji w akcjach Danaos Corporation [DAC] pokazuje silny spadek – 174, a potem konsolidację i wybicie zakresu przy najwyższym wolumenie – 263."
+      },
+      "dacSession": {
+        "alt": "Sesyjny wykres Danaos Corporation"
+      },
+      "bitcoin": {
+        "alt": "Przykład wykresu Bitcoin",
+        "body": "Wolumen na falach jest precyzyjniejszy niż standardowy wolumen i lepiej pokazuje punkty zwrotne. Po szczycie ok. 68 tys. USD nastąpiła silna dystrybucja widoczna na falach wolumenu – 203 i 196.\n\nPo przebiciu wsparcia cena wróciła do zakresu przy bardzo małym wolumenie, co potwierdziło brak podaży i kontynuację spadków."
+      },
+      "dq": {
+        "body": "Na wykresie akcji Daq New Energy Corp [DQ] widać akumulację w trendzie bocznym, gdzie duża podaż jest absorbowana przez dużych graczy. Ostatnie minimum przy 40,89 USD zostało wchłonięte przez kupujących, po czym rynek wybija zakres w górę."
+      }
+    }
+  },
   "footer": {
     "cta": {
       "title": "Podążaj za Smart Money. Handluj w oparciu o strukturę rynku.",

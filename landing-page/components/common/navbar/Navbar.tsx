@@ -11,7 +11,7 @@ const links = [
   { label: 'Features', href: '/#features' },
   { label: 'Pricing', href: '/#pricing' },
   { label: 'Community', href: '/#community' },
-  { label: 'How Indicators Work', href: '/#how-indicators-work' },
+  { label: 'How Indicators Work', href: '/how-indicators-work' },
   { label: 'Blog', href: '/blogs' },
   { label: 'Contact', href: '/#contact' },
 ]
@@ -106,7 +106,9 @@ export default function Navbar() {
               const isActive =
                 link.href === '/blogs'
                   ? pathname === '/blogs' || pathname.startsWith('/blogs/')
-                  : pathname === link.href
+                  : link.href === '/how-indicators-work'
+                    ? pathname === '/how-indicators-work'
+                    : pathname === link.href
 
               return (
                 <li key={link.label}>
@@ -221,7 +223,9 @@ export default function Navbar() {
                       const isActive =
                         link.href === '/blogs'
                           ? pathname === '/blogs' || pathname.startsWith('/blogs/')
-                          : pathname === link.href
+                          : link.href === '/how-indicators-work'
+                            ? pathname === '/how-indicators-work'
+                            : pathname === link.href
 
                       return (
                         <Link
