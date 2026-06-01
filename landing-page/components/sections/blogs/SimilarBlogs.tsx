@@ -29,7 +29,7 @@ export default function SimilarBlogs({ posts }: SimilarBlogsProps) {
         </Link>
       </div>
 
-      <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-[repeat(3,440px)] xl:justify-between">
+      <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3 xl:justify-between">
         {posts.map((post) => (
           <div key={post.key}>
             <BlogCard

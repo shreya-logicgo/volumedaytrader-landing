@@ -51,7 +51,7 @@ export default function BlogCard({
             </span>
           </div>
 
-          <h3 className="text-xl font-semibold leading-snug text-white">{title}</h3>
+          <h3 className="text-xl font-semibold line-clamp-2 leading-snug text-white">{title}</h3>
         </div>
 
         <Link

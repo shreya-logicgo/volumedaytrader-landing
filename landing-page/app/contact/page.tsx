@@ -18,22 +18,22 @@ export default function ContactPage() {
       </Container>
 
       <section className="relative z-10">
-        <Container>
+        {/* <Container> */}
           <ContactHero />
-        </Container>
+        {/* </Container> */}
 
-        <Container>
+        {/* <Container> */}
           <div className="mx-auto mt-16 w-full max-w-[1000px] md:mt-20">
             <ContactForm />
           </div>
-        </Container>
+        {/* </Container> */}
       </section>
 
       <div className="relative z-10 mt-24 md:mt-28">
-        <Container>
+        {/* <Container> */}
           <FAQ/>
-        </Container>
-        <Footer />
+        {/* </Container> */}
+        {/* <Footer /> */}
       </div>
     </div>
   );

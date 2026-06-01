@@ -12,21 +12,21 @@ export default function BlogsPage() {
     <div className="relative mt-20 min-h-screen overflow-x-hidden">
       <BlogPageBackground />
 
-      <Container>
+      {/* <Container> */}
         <Navbar />
-      </Container>
+      {/* </Container> */}
 
       <section className="relative z-10 pt-8 md:pt-12 lg:pt-16">
-        <Container>
+        {/* <Container> */}
           <BlogPageSection />
-        </Container>
+        {/* </Container> */}
       </section>
 
       <div className="relative z-10">
-        <Container>
+        {/* <Container> */}
           <FAQ />
-        </Container>
-
+        {/* </Container> */}
+        {/* <Footer /> */}
       </div>
     </div>
   );
