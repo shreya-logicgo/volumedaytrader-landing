@@ -59,7 +59,7 @@ export default function Hero() {
     ]
 
     return (
-        <section className="relative left-1/2 w-screen max-w-[1720px] -translate-x-1/2 overflow-x-clip  pt-8  sm:pt-12 md:pt-16  lg:pt-20 2xl:pt-28">
+        <section className="relative overflow-x-clip pt-8 sm:pt-12 md:pt-16 lg:pt-20 2xl:pt-28">
             {/* Starry background */}
             {/* <div
                 className="pointer-events-none absolute inset-0 opacity-50"
@@ -84,9 +84,14 @@ export default function Hero() {
 
 
             <div className="pointer-events-none absolute inset-0 z-10 hidden xl:block ">
-                {floatingTags.map((tag) => (
-                    <div key={tag.label} className={`absolute max-w-[min(240px,22vw)] scale-90 ${tag.className}`}>
-                        <HeroFeatureTag label={tag.label} />
+                {floatingTags.map((tag, index) => (
+                    <div
+                        key={tag.label}
+                        className={`absolute max-w-[min(240px,22vw)] scale-90 ${tag.className}`}
+                    >
+                        <div className="hero-tag-bounce" style={{ animationDelay: `${index * 180}ms` }}>
+                            <HeroFeatureTag label={tag.label} />
+                        </div>
                     </div>
                 ))}
             </div>
@@ -132,8 +137,12 @@ export default function Hero() {
 
                 {/* Stacked tags below content until 2xl */}
                 <div className="mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3 xl:hidden">
-                    {floatingTags.map((tag) => (
-                        <div key={tag.label} className="flex justify-center px-1">
+                    {floatingTags.map((tag, index) => (
+                        <div
+                            key={tag.label}
+                            className="hero-tag-bounce flex justify-center px-1"
+                            style={{ animationDelay: `${index * 180}ms` }}
+                        >
                             <HeroFeatureTag label={tag.label} compact />
                         </div>
                     ))}
