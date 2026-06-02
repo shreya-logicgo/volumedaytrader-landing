@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 import ErrorLogo from "@/assets/icons/error.png"
 
 import {
@@ -17,14 +18,35 @@ import SubHeading from '@/components/ui/subheading/SubHeading'
 
 import Logo from '@/assets/logo/logo.svg'
 import sections from '@/assets/images/gradients/footer-gradient.png'
-import Vector from "@/assets/icons/Vector.svg";
+import VectorArrow from "@/components/ui/vector-arrow/VectorArrow";
 import FooterBackground from '@/components/common/backgrounds/FooterBackground'
 import Container from '@/components/layout/container/Container'
 import { useTranslation } from 'react-i18next'
 import { Particles } from "@/components/ui/particles";
+import { scrollToSectionId } from '@/lib/scroll'
 
 const Footer = () => {
     const { t } = useTranslation('translation')
+    const pathname = usePathname()
+
+    const handleFooterLinkClick = (
+        event: React.MouseEvent<HTMLAnchorElement>,
+        href: string
+    ) => {
+        const hashIndex = href.indexOf('#')
+        if (hashIndex === -1) return
+
+        const path = href.slice(0, hashIndex) || '/'
+        const sectionId = href.slice(hashIndex + 1)
+        if (!sectionId) return
+
+        const onHome = pathname === '/' || pathname === ''
+        if (!onHome || (path !== '/' && path !== '')) return
+
+        event.preventDefault()
+        scrollToSectionId(sectionId)
+        window.history.pushState(null, '', `/#${sectionId}`)
+    }
 
     return (
         <footer id="contact" className="scroll-anchor-offset relative overflow-x-clip pb-10">
@@ -50,7 +72,7 @@ const Footer = () => {
 
                             <Link href="https://volumedaytrader.com/login/" className="btn-primary  shadow-control-inset mt-3">
                                 {t('footer.cta.button')}
-                                <Vector className="h-3 w-3 shrink-0" aria-hidden="true" />
+                                <VectorArrow className="h-3 w-3" />
                             </Link>
                         </div>
                     </div>
@@ -61,7 +83,7 @@ const Footer = () => {
                     {/* Left */}
                     <div className="min-w-0 space-y-8 md:col-span-2 lg:col-span-1">
                         <div className="space-y-5">
-                            <Link href="/" className="footer-logo block w-full min-w-0 max-w-full" aria-label="home">
+                            <Link href="/" className="footer-logo block w-full min-w-0 max-w-[280px] sm:max-w-[320px] lg:max-w-[360px]" aria-label="home">
                                 <Logo
                                     className="footer-logo h-auto w-full max-w-full object-contain object-left"
                                     role="img"
@@ -115,13 +137,14 @@ const Footer = () => {
                             { label: t('footer.navigation.indicators'), href: '/#signals' },
                             { label: t('footer.navigation.ptaReports'), href: '/#pta' },
                             { label: t('footer.navigation.pricing'), href: '/#pricing' },
-                            { label: t('footer.navigation.tradingCommunity'), href: '/#community' },
+                            { label: t('footer.navigation.tradingCommunity'), href: '/#testimonials' },
                             { label: t('footer.navigation.marketAnalysis'), href: '/#how-indicators-work' },
                         ].map((item, idx) => (
                             <Link
                                 key={idx}
                                 href={item.href}
                                 className="text-sm text-secondary-text transition-colors duration-300 hover:text-white sm:text-base lg:text-lg"
+                                onClick={(event) => handleFooterLinkClick(event, item.href)}
                             >
                                 {item.label}
                             </Link>
@@ -138,12 +161,13 @@ const Footer = () => {
                             { label: t('footer.resources.blogs'), href: '/#blogs' },
                             { label: t('footer.resources.tradingEducation'), href: '/#our-indicators' },
                             { label: t('footer.resources.faq'), href: '/#faq' },
-                            { label: t('footer.resources.affiliateProgram'), href: '/#' },
+                            // { label: t('footer.resources.affiliateProgram'), href: '/#' },
                         ].map((item, idx) => (
                             <Link
                                 key={idx}
                                 href={item.href}
                                 className="text-sm text-secondary-text transition-colors duration-300 hover:text-white sm:text-base lg:text-lg"
+                                onClick={(event) => handleFooterLinkClick(event, item.href)}
                             >
                                 {item.label}
                             </Link>
@@ -157,13 +181,14 @@ const Footer = () => {
                         </h3>
 
                         {[
-                            { label: t('footer.contact.support'), href: '/#contact' },
-                            { label: t('footer.contact.affiliateSupport'), href: '/#' },
+                            { label: t('footer.contact.support'), href: '/contact' },
+                            { label: t('footer.contact.affiliateSupport'), href: '/contact' },
                         ].map((item, idx) => (
                             <Link
                                 key={idx}
                                 href={item.href}
                                 className="text-sm text-secondary-text transition-colors duration-300 hover:text-white sm:text-base lg:text-lg"
+                                onClick={(event) => handleFooterLinkClick(event, item.href)}
                             >
                                 {item.label}
                             </Link>

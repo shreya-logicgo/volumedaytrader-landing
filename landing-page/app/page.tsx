@@ -22,6 +22,7 @@ import TrustedLogos from "@/components/sections/TrustedLogos/TrustedLogos";
 import Hero from "@/components/sections/hero/Hero";
 import { useEffect } from "react";
 import { scrollToSectionId } from "@/lib/scroll";
+import BlogCard from "@/components/sections/blogs/Blogcardw";
 
 export default function Page() {
   useEffect(() => {
@@ -39,7 +40,7 @@ export default function Page() {
   }, [])
 
   return (
-    <div className="mt-20">
+    <div className="relative mt-20">
       {/* <div className="relative bg-amber-100 h-50 w-full"> */}
 
       {/* </div> */}
@@ -49,18 +50,16 @@ export default function Page() {
       <Hero />
       <TrustedLogos />
       <OurServices />
-      {/* <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-0" > */}
       <Trust />
-      {/* </div> */}
       <SignalsAndIndicators />
 
       {/* </Container> */}
 
 
       <div className="relative overflow-visible bg-page-bg">
-        
+
         <IndicatorSystem />
-  
+
         {/* Bottom fade into testimonials — hides any remaining curve seam */}
         <div
           aria-hidden

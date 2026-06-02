@@ -4,8 +4,7 @@ import { useMemo, useState } from "react";
 import { Search, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Badge from "@/components/ui/badge/Badge";
-import Heading from "@/components/ui/heading/Heading";
-import SubHeading from "@/components/ui/subheading/SubHeading";
+import SectionTitleWrap from "@/components/ui/heading/Sectiontitlewrap";
 import BlogCard from "./BlogCard";
 import { BLOG_POSTS } from "./blogPosts";
 
@@ -36,21 +35,10 @@ export default function BlogPageSection() {
           <Badge text={t("page.badge")} />
         </div>
 
-        <div className="relative z-10 mx-auto section-header-stack">
-          <Heading
-            as="h1"
-            variant="page-hero"
-            align="center"
-            className="mx-auto max-w-3xl px-1 sm:px-0"
-            text={t("page.title")}
-          />
-          <SubHeading
-            variant="page-hero"
-            align="center"
-            className="mx-auto max-w-[530px] px-2 sm:px-0"
-            text={t("page.description")}
-          />
-        </div>
+        <SectionTitleWrap
+          heading={t("page.title")}
+          subheading={t("page.description")}
+        />
       </div>
 
       <div className="mx-auto w-full max-w-4xl px-4 pt-10 sm:px-6 lg:px-8">

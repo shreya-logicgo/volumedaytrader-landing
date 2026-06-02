@@ -10,7 +10,7 @@ import FAQ from "@/components/sections/faq/FAQ";
 
 export default function ContactPage() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden pt-28 md:pt-32 lg:pt-36">
+    <div className="relative min-h-screen overflow-x-hidden pt-24 sm:pt-28 md:pt-32 lg:pt-36">
       <BlogPageBackground />
 
       <Container>
@@ -23,7 +23,7 @@ export default function ContactPage() {
         {/* </Container> */}
 
         {/* <Container> */}
-          <div className="mx-auto mt-16 w-full max-w-[1000px] md:mt-20">
+          <div className="mx-auto mt-10 w-full max-w-[1000px] sm:mt-16 sm:px-6 md:mt-20">
             <ContactForm />
           </div>
         {/* </Container> */}
