@@ -1,6 +1,7 @@
 import Badge from '@/components/ui/badge/Badge'
-import Heading from '@/components/ui/heading/Heading'
-import SubHeading from '@/components/ui/subheading/SubHeading'
+import SectionTitleWrap from '@/components/ui/heading/Sectiontitlewrap'
+// import Heading from '@/components/ui/heading/Heading'
+// import SubHeading from '@/components/ui/subheading/SubHeading'
 import { useTranslation } from 'react-i18next'
 import React from 'react'
 import OurServicesCards from './OurServicesCards'
@@ -15,10 +16,11 @@ const OurServices = () => {
           <Badge text={t('badge')} />
         </div>
 
-        <div className="section-header-stack relative z-10 mx-auto max-w-2xl text-center">
+        {/* <div className="section-header-stack relative z-10 mx-auto max-w-2xl text-center">
           <Heading text={t('title')} />
           <SubHeading text={t('description')} />
-        </div>
+        </div> */}
+        <SectionTitleWrap heading={t('title')} subheading={t('description')} />
 
         <OurServicesCards />
       </div>

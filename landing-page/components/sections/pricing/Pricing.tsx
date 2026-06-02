@@ -2,8 +2,9 @@
 
 import React, { useLayoutEffect, useRef } from 'react'
 import Badge from '@/components/ui/badge/Badge'
-import Heading from '@/components/ui/heading/Heading'
-import SubHeading from '@/components/ui/subheading/SubHeading'
+import SectionTitleWrap from '@/components/ui/heading/Sectiontitlewrap'
+// import Heading from '@/components/ui/heading/Heading'
+// import SubHeading from '@/components/ui/subheading/SubHeading'
 import { useTranslation } from 'react-i18next'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -248,10 +249,15 @@ const Pricing = () => {
         <Badge text={t('badge')} />
       </div>
 
-      <div className="relative z-10 text-center section-header-stack">
+      {/* <div className="relative z-10 text-center section-header-stack">
         <Heading className="max-w-2xl mx-auto" text={t('title')} />
         <SubHeading className="max-w-[780px] mx-auto" text={t('description')} />
-      </div>
+      </div> */}
+      <SectionTitleWrap
+        heading={t('title')}
+        subheading={t('description')}
+        headingSingleLine
+      />
 
       <div
         ref={gridRef}

@@ -3,8 +3,9 @@
 import { useState } from "react";
 import { Search, X } from "lucide-react";
 import Badge from "@/components/ui/badge/Badge";
-import Heading from "@/components/ui/heading/Heading";
-import SubHeading from "@/components/ui/subheading/SubHeading";
+import SectionTitleWrap from "@/components/ui/heading/Sectiontitlewrap";
+// import Heading from "@/components/ui/heading/Heading";
+// import SubHeading from "@/components/ui/subheading/SubHeading";
 import FAQItem from "@/components/sections/faq/FAQItem";
 import { useTranslation } from "react-i18next";
 
@@ -43,13 +44,17 @@ export default function FAQ() {
           <Badge text={t("faq.badge")} />
         </div>
 
-        <div className="section-header-stack relative z-10 mx-auto">
+        {/* <div className="section-header-stack relative z-10 mx-auto">
           <Heading className="mx-auto max-w-3xl px-1 sm:px-0" text={t("faq.title")} />
           <SubHeading
             className="mx-auto max-w-2xl px-2 sm:px-0"
             text={t("faq.description")}
           />
-        </div>
+        </div> */}
+        <SectionTitleWrap
+          heading={t("faq.title")}
+          subheading={t("faq.description")}
+        />
       </div>
 
       <div className="content-pt mx-auto flex max-w-4xl flex-col items-center gap-6 ">

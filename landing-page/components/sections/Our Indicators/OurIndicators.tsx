@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { cn } from '@/lib/utils'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import SectionTitleWrap from '@/components/ui/heading/Sectiontitlewrap'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -168,6 +169,8 @@ const OurIndicators = () => {
         <div className="badge-wrap relative mx-auto flex w-full max-w-[717px] flex-col gap-2 overflow-hidden">
           <Badge text={t('badge')} />
         </div>
+
+        <SectionTitleWrap heading={t('title')} subheading={t('description')} />
 
         <div className="content-pt flex justify-center px-4 sm:px-6">
           <div
