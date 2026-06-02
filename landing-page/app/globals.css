@@ -845,9 +845,21 @@
   }
 }
 
+.horn-glow-pulse {
+  animation: hornGlowPulse 3s ease-in-out infinite;
+  will-change: opacity, filter;
+}
+
+.horn-halo-pulse {
+  animation: hornHaloPulse 4.8s ease-in-out infinite;
+  will-change: opacity, filter;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .horn,
-  .horn::after {
+  .horn::after,
+  .horn-glow-pulse,
+  .horn-halo-pulse {
     animation: none;
   }
 }
