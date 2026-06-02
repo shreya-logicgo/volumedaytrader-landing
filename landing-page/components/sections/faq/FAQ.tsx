@@ -59,8 +59,8 @@ export default function FAQ() {
 
       <div className="content-pt mx-auto flex max-w-4xl flex-col items-center gap-6 ">
         <div className="group relative w-full max-w-md">
-          <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center sm:left-4">
-            <Search className="h-4 w-4 text-[#999999] transition-colors group-focus-within:text-white sm:h-5 sm:w-5" />
+          <div className="pointer-events-none absolute inset-y-0 left-3 z-10 flex items-center sm:left-4">
+            <Search className="h-4 w-4 text-[#B8BDC9] transition-colors group-focus-within:text-white sm:h-5 sm:w-5" />
           </div>
 
           <input

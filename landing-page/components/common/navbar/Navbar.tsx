@@ -34,6 +34,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const langRef = useRef<HTMLDivElement>(null)
   const mobileRef = useRef<HTMLDivElement>(null)
+  const mobileToggleRef = useRef<HTMLButtonElement>(null)
   const ticking = useRef(false)
   const { t } = useTranslation('translation')
   const { currentLanguage, changeLanguage } = useLanguage()
@@ -58,6 +59,10 @@ export default function Navbar() {
 
   useEffect(() => {
     const onPointerDown = (event: MouseEvent) => {
+      if (mobileToggleRef.current && mobileToggleRef.current.contains(event.target as Node)) {
+        return
+      }
+
       if (langRef.current && !langRef.current.contains(event.target as Node)) {
         setLangMenuOpen(false)
       }
@@ -87,7 +92,14 @@ export default function Navbar() {
 
     syncCompactDesktop()
     mediaQuery.addEventListener('change', syncCompactDesktop)
+    syncCompactDesktop()
+    mediaQuery.addEventListener('change', syncCompactDesktop)
     window.addEventListener('resize', onResize)
+
+    return () => {
+      mediaQuery.removeEventListener('change', syncCompactDesktop)
+      window.removeEventListener('resize', onResize)
+    }
 
     return () => {
       mediaQuery.removeEventListener('change', syncCompactDesktop)
@@ -152,14 +164,7 @@ export default function Navbar() {
   return (
     <header className="fixed left-0 top-5 z-50 w-full pointer-events-none md:top-7">
       <div className="relative mx-auto w-full max-w-[1920px] px-4 sm:px-6 lg:px-8 pointer-events-none">
-        <div
-          aria-hidden="true"
-          className="absolute -left-[220px] top-1/2 hidden h-[240px] w-[240px] -translate-y-1/2 rounded-full bg-[#ED1F24]/45 blur-[120px] sm:block"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute -right-[220px] top-1/2 hidden h-[240px] w-[240px] -translate-y-1/2 rounded-full bg-[#ED1F24]/45 blur-[120px] sm:block"
-        />
+       
 
         <nav
           className={`pointer-events-auto relative mx-auto flex min-h-[68px] items-center gap-3 rounded-full border px-4 py-2 text-[15px] font-medium tracking-[-0.01em] backdrop-blur-2xl will-change-[width,box-shadow,background-color,border-color,transform] transition-[width,box-shadow,background-color,border-color,transform] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] md:min-h-[76px] md:px-4 md:pl-8 xl:text-[15px] 2xl:text-[18px] ${
@@ -313,6 +318,7 @@ export default function Navbar() {
           </div>
 
           <button
+            ref={mobileToggleRef}
             type="button"
             onClick={() => setMobileOpen((prev) => !prev)}
             className="ml-auto inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 xl:hidden"

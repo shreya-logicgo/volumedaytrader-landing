@@ -127,8 +127,8 @@ function getCardRiseFrom(index: number) {
   const depth = isLeft ? index : index - 2
   return {
     autoAlpha: 0,
-    x: isLeft ? -(40 + depth * 28) : 40 + depth * 28,
-    y: 64 + depth * 16,
+    x: isLeft ? -(96 + depth * 56) : 96 + depth * 56,
+    y: 128 + depth * 32,
     scale: 0.96,
     transformOrigin: '50% 100%',
   }
