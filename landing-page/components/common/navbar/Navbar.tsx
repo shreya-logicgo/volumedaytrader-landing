@@ -10,6 +10,7 @@ import { useLanguage } from '@/hooks/use-language'
 import { useTranslation } from 'react-i18next'
 import { scrollToSectionId } from '@/lib/scroll'
 import VectorArrow from '@/components/ui/vector-arrow/VectorArrow'
+import NavLink from './Navlink'
 
 const NAV_LINKS = [
   { id: 'features', labelKey: 'navbar.features', href: '/#features' },
@@ -77,6 +78,12 @@ export default function Navbar() {
       setCompactDesktop(mediaQuery.matches)
     }
 
+    const mediaQuery = window.matchMedia('(min-width: 1280px) and (max-width: 1500px)')
+
+    const syncCompactDesktop = () => {
+      setCompactDesktop(mediaQuery.matches)
+    }
+
     const onResize = () => {
       if (window.innerWidth >= 1280) {
         setMobileOpen(false)
@@ -86,7 +93,14 @@ export default function Navbar() {
 
     syncCompactDesktop()
     mediaQuery.addEventListener('change', syncCompactDesktop)
+    syncCompactDesktop()
+    mediaQuery.addEventListener('change', syncCompactDesktop)
     window.addEventListener('resize', onResize)
+
+    return () => {
+      mediaQuery.removeEventListener('change', syncCompactDesktop)
+      window.removeEventListener('resize', onResize)
+    }
 
     return () => {
       mediaQuery.removeEventListener('change', syncCompactDesktop)
@@ -194,7 +208,7 @@ export default function Navbar() {
                       alt="VDLTRA logo"
                       width={46}
                       height={46}
-                      className="h-full w-full shrink-0 object-contain"
+                      className="h-11 w-11 shrink-0 object-contain"
                     />
                   </motion.span>
                 ) : (
@@ -217,25 +231,25 @@ export default function Navbar() {
             </span>
           </Link>
 
-          <ul className="hidden min-w-0 flex-1 items-center justify-center gap-4 text-secondary-text xl:flex xl:gap-6 2xl:gap-8">
+          <ul className="hidden min-w-0 flex-1 items-center justify-center gap-3 px-2 text-secondary-text xl:flex xl:gap-4 2xl:gap-6">
             {navLinks.map((link) => {
               const isActive = isNavLinkActive(link)
 
               return (
                 <li key={link.id}>
-                  <Link
+                  <NavLink
                     href={link.href}
+                    label={link.label}
+                    active={isActive}
                     onClick={(event) => handleNavLinkClick(event, link.href)}
-                    className={`relative max-w-[8.5rem] rounded-full px-1 py-1 text-center leading-tight transition-colors duration-300 after:absolute after:bottom-0 after:left-1/2 after:h-px after:-translate-x-1/2 after:bg-white after:transition-all after:duration-300 hover:text-white hover:after:w-4/5 ${compactDesktop ? 'xl:max-w-[7.75rem] xl:px-0.5' : '2xl:max-w-none 2xl:whitespace-nowrap'} ${isActive ? 'text-white after:w-4/5' : 'text-secondary-text after:w-0'}`}
-                  >
-                    {link.label}
-                  </Link>
+                    className={`relative max-w-[8.25rem] rounded-full px-1 py-1 text-center leading-tight transition-colors duration-300 ${compactDesktop ? 'xl:max-w-[7.25rem] xl:px-0.5' : '2xl:max-w-none 2xl:whitespace-nowrap'}`}
+                  />
                 </li>
               )
             })}
           </ul>
 
-          <div className="hidden h-11 shrink-0 items-center gap-3 xl:flex xl:gap-4">
+          <div className="hidden h-11 shrink-0 items-center justify-end gap-3 xl:flex xl:w-[224px] xl:gap-4 2xl:w-[240px]">
             <div
               ref={langRef}
               className={`relative flex h-11 shrink-0 items-center justify-center rounded-full border border-white/5 bg-white/5 transition-colors duration-300 hover:bg-white/10 ${compactDesktop ? 'min-w-[88px] px-2.5' : 'min-w-[96px] px-3'}`}
@@ -335,19 +349,23 @@ export default function Navbar() {
                 className="pointer-events-auto absolute left-4 right-4 top-full mt-3 overflow-hidden rounded-[28px] border border-card-border bg-[#151032]/96 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl xl:hidden"
               >
                 <div className="flex flex-col p-5 sm:p-6">
-                  <div className="grid gap-2 border-b border-white/5 pb-5">
+                  <div className="grid gap-4 border-b border-white/5 pb-5">
                     {navLinks.map((link) => {
                       const isActive = isNavLinkActive(link)
 
                       return (
-                        <Link
+                        <NavLink
                           key={link.id}
                           href={link.href}
-                          className={`rounded-2xl px-3 py-3 text-base font-medium transition-colors hover:bg-white/5 sm:text-lg ${isActive ? 'bg-white/5 text-white' : 'text-secondary-text hover:text-white'}`}
-                          onClick={(event) => handleNavLinkClick(event, link.href)}
+                          label={link.label}
+                          active={isActive}
+                          className={`w-full rounded-2xl px-3 py-3 text-left text-base font-medium transition-colors  sm:text-lg ${isActive ? 'bg-white/5' : ''}`}
+                          onClick={(event) => {
+                            handleNavLinkClick(event, link.href)
+                            setMobileOpen(false)
+                          }}
                         >
-                          {link.label}
-                        </Link>
+                        </NavLink>
                       )
                     })}
                   </div>

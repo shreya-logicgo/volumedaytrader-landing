@@ -52,6 +52,7 @@ const TrustCards = ({ items = defaultItems, className = '' }: TrustCardsProps) =
           <div className="flex h-full flex-col">
             <CountUpValue
               value={item.value}
+              durationMs={3200}
               className="text-3xl font-normal text-white sm:text-4xl 2xl:text-5xl"
             />
 
