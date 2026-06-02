@@ -24,6 +24,11 @@ const rethinkSans = Rethink_Sans({
 export const metadata: Metadata = {
   title: "Volume Trader",
   description: "Trading Platform",
+  icons: {
+    icon: [{ url: "/assets/images/Union.svg", type: "image/svg+xml" }],
+    shortcut: [{ url: "/assets/images/Union.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/assets/images/Union.svg", type: "image/svg+xml" }],
+  },
 };
 
 export default function RootLayout({
