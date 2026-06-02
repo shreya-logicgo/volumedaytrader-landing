@@ -34,6 +34,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const langRef = useRef<HTMLDivElement>(null)
   const mobileRef = useRef<HTMLDivElement>(null)
+  const mobileToggleRef = useRef<HTMLButtonElement>(null)
   const ticking = useRef(false)
   const { t } = useTranslation('translation')
   const { currentLanguage, changeLanguage } = useLanguage()
@@ -58,6 +59,10 @@ export default function Navbar() {
 
   useEffect(() => {
     const onPointerDown = (event: MouseEvent) => {
+      if (mobileToggleRef.current && mobileToggleRef.current.contains(event.target as Node)) {
+        return
+      }
+
       if (langRef.current && !langRef.current.contains(event.target as Node)) {
         setLangMenuOpen(false)
       }
@@ -72,12 +77,6 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(min-width: 1280px) and (max-width: 1500px)')
-
-    const syncCompactDesktop = () => {
-      setCompactDesktop(mediaQuery.matches)
-    }
-
     const mediaQuery = window.matchMedia('(min-width: 1280px) and (max-width: 1500px)')
 
     const syncCompactDesktop = () => {
@@ -319,6 +318,7 @@ export default function Navbar() {
           </div>
 
           <button
+            ref={mobileToggleRef}
             type="button"
             onClick={() => setMobileOpen((prev) => !prev)}
             className="ml-auto inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 xl:hidden"

@@ -64,8 +64,8 @@
   --breakpoint-4xl: 2560px;
 
   /* Fixed navbar — hash / anchor scroll offset */
-  --scroll-anchor-offset: 7.5rem;
-  --scroll-anchor-offset-md: 8.5rem;
+  --scroll-anchor-offset: 6rem;
+  --scroll-anchor-offset-md: 7rem;
 
 }
 

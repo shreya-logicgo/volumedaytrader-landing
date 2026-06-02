@@ -11,7 +11,7 @@ const Testimonials = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'testimonials' })
 
   return (
-    <section className="section-pb relative z-10 mx-auto">
+    <section id='testimonials' className="section-pb relative z-10 mx-auto">
       <div className="px-4 text-center sm:px-6">
         <div className="badge-wrap flex flex-col gap-2">
           <Badge text={t('badge')} />
