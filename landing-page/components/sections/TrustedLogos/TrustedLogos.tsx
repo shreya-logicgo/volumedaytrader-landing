@@ -204,7 +204,7 @@ export default function TrustedLogos() {
   );
 
   return (
-    <section className="w-full bg-transparent  relative overflow-hidden">
+    <section className="w-full bg-transparent mt-8 relative overflow-hidden">
       <p className="text-center text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] tracking-[0.05em] uppercase text-white/80 font-hoves px-4">
         {/* {t("hero.integration")} */}
         Integrated with top exchanges
