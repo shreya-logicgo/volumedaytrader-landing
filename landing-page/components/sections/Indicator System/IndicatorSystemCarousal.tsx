@@ -65,9 +65,9 @@ const ChartPanel = ({
   const [imageFailed, setImageFailed] = useState(false)
 
   return (
-    // Single wrapper: rounded border, clips content, 16:9 ratio, no extra nesting
+    // Larger media area on desktop so image/content columns align better.
     <div
-      className="relative w-full overflow-hidden rounded-xl border indicator-chart-panel aspect-video"
+      className="relative w-full overflow-hidden rounded-xl border indicator-chart-panel aspect-video min-h-[190px] sm:min-h-[210px] xl:h-full xl:min-h-[300px] xl:aspect-auto"
       style={{ position: "relative" }}
     >
       {imageSrc && !imageFailed ? (
@@ -140,11 +140,11 @@ const IndicatorSystemCarousal = ({
               key={`${slide.title}-${idx}`}
               className="shrink-0 rounded-3xl border border-card-border bg-card-bg p-3
                          flex flex-col
-                         xl:grid xl:grid-cols-[1.1fr_1fr]"
+                         xl:grid xl:min-h-[360px] xl:grid-cols-[1.25fr_1fr] xl:items-stretch"
               style={{ width: `${slideWidthPct}%` }}
             >
               {/* Image — always on top on mobile, left on desktop */}
-              <div className="p-2">
+              <div className="p-2 xl:h-full xl:pr-2">
                 <ChartPanel
                   path={slide.linePath}
                   imageSrc={slide.imageSrc}
@@ -153,14 +153,14 @@ const IndicatorSystemCarousal = ({
               </div>
 
               {/* Text — below image on mobile, right column on desktop */}
-              <div className="px-4 py-4 md:py-2 md:my-auto">
-                <h3 className="card-heading text-left font-semibold text-white line-clamp-2">
+              <div className="px-4 py-4 md:py-2 xl:flex xl:h-full xl:flex-col xl:justify-center xl:pl-2">
+                <h3 className="card-heading text-left font-semibold text-white">
                   {t(slide.title)}
                 </h3>
-                <p className="card-desc mt-3 text-secondary-text line-clamp-4">
+                <p className="card-desc mt-3 text-secondary-text xl:line-clamp-5">
                   {t(slide.subtitle)}
                 </p>
-                <ul className="card-desc mt-4 line-clamp-4">
+                <ul className="card-desc mt-4 xl:line-clamp-5 line-clamp-4">
                   {slide.points.map((point) => (
                     <li key={point}>{t(point)}</li>
                   ))}
