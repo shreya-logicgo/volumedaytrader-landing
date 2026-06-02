@@ -4,6 +4,7 @@ import { Geist, Geist_Mono, Rethink_Sans } from "next/font/google";
 import "./globals.css";
 import Container from "@/components/layout/container/Container";
 import Footer from "@/components/common/footer/Footer";
+import SiteHorns from "@/components/common/backgrounds/SiteHorns";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,6 +24,11 @@ const rethinkSans = Rethink_Sans({
 export const metadata: Metadata = {
   title: "Volume Trader",
   description: "Trading Platform",
+  icons: {
+    icon: [{ url: "/assets/images/Union.svg", type: "image/svg+xml" }],
+    shortcut: [{ url: "/assets/images/Union.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/assets/images/Union.svg", type: "image/svg+xml" }],
+  },
 };
 
 export default function RootLayout({
@@ -39,12 +45,7 @@ export default function RootLayout({
         className={`min-h-full flex flex-col ${rethinkSans.className}`}
       >
         <I18nProvider>
-          <div className="site-horns-layer" aria-hidden>
-            <div className="horns-container">
-              <div className="horn horn-left" />
-              <div className="horn horn-right" />
-            </div>
-          </div>
+          <SiteHorns />
           <Container>
             {children}
           </Container>
