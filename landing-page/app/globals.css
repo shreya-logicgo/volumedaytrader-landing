@@ -64,8 +64,8 @@
   --breakpoint-4xl: 2560px;
 
   /* Fixed navbar — hash / anchor scroll offset */
-  --scroll-anchor-offset: 7.5rem;
-  --scroll-anchor-offset-md: 8.5rem;
+  --scroll-anchor-offset: 6rem;
+  --scroll-anchor-offset-md: 7rem;
 
 }
 
@@ -854,9 +854,21 @@
   }
 }
 
+.horn-glow-pulse {
+  animation: hornGlowPulse 3s ease-in-out infinite;
+  will-change: opacity, filter;
+}
+
+.horn-halo-pulse {
+  animation: hornHaloPulse 4.8s ease-in-out infinite;
+  will-change: opacity, filter;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .horn,
-  .horn::after {
+  .horn::after,
+  .horn-glow-pulse,
+  .horn-halo-pulse {
     animation: none;
   }
 }
