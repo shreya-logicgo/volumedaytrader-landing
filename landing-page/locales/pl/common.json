@@ -12,7 +12,7 @@
     "newBadge": "Nowość",
     "badge": "Kompleksowa platforma kursów tradingowych",
     "leftTopTag": "Inteligentna analiza rynku",
-    "leftBottomTag": "Sygnały tradingowe w czasie rzeczywistym",
+    "leftBottomTag": "Sygnały na Żywo",
     "rightTopTag": "Kursy tradingowe Premium",
     "rightBottomTag": "Zaawansowane wskaźniki tradingowe",
     "title": "Przestań zgadywać. Zacznij handlować pewnie.",
@@ -190,16 +190,43 @@
       "smartProfits": "Inteligentne Zyski",
       "hiddenStrategy": "Ukryta strategia"
     },
-    "content": {
-      "title": "Wskaźniki wolumenowe Wyckoff Wave dla inteligentnej analizy rynku",
-      "description": "Wskaźnik Wyckoff Wave Volume pomaga traderom analizować rzeczywistą presję kupujących i sprzedających poprzez wizualizację skumulowanego wolumenu bezpośrednio na wykresie.",
-      "points": {
-        "point1": "Zrozumienie siły popytu i podaży",
-        "point2": "Wykrywanie presji kupujących vs sprzedających",
-        "point3": "Wyraźniejsza analiza zmian momentum",
-        "point4": "Identyfikacja silniejszego zaangażowania rynkowego",
-        "point5": "Ulepszenie uporządkowanego podejmowania decyzji",
-        "point6": "Ograniczenie emocjonalnych zachowań w tradingu"
+    "imageAlt": "Dwóch traderów analizujących wykresy",
+    "contentByTab": {
+      "volumeEdge": {
+        "title": "Wskaźniki wolumenowe Wyckoff Wave dla inteligentnej analizy rynku",
+        "description": "Wskaźnik Wyckoff Wave Volume pomaga traderom analizować rzeczywistą presję kupujących i sprzedających poprzez wizualizację skumulowanego wolumenu bezpośrednio na wykresie.",
+        "points": {
+          "point1": "Zrozumienie siły popytu i podaży",
+          "point2": "Wykrywanie presji kupujących vs sprzedających",
+          "point3": "Wyraźniejsza analiza zmian momentum",
+          "point4": "Identyfikacja silniejszego zaangażowania rynkowego",
+          "point5": "Ulepszenie uporządkowanego podejmowania decyzji",
+          "point6": "Ograniczenie emocjonalnych zachowań w tradingu"
+        }
+      },
+      "smartProfits": {
+        "title": "Inteligentniejsze wejścia i wyjścia z potwierdzeniem wolumenu",
+        "description": "Inteligentne Zyski łączy logikę wolumenu Wyckoffa z wyraźnymi strefami sygnałów, aby łatwiej wychwytywać setupy o wysokim prawdopodobieństwie, zarządzać ryzykiem i realizować ruchy z większą pewnością.",
+        "points": {
+          "point1": "Wskazywanie obszarów, w których przejmują kontrolę kupujący lub sprzedający",
+          "point2": "Potwierdzanie wybicia i odwróceń zachowaniem wolumenu",
+          "point3": "Planowanie wejść z wyraźniejszą strukturą na wykresie",
+          "point4": "Określanie logicznych poziomów stop loss i celu",
+          "point5": "Filtrowanie słabych setupów zanim kapitał jest zagrożony",
+          "point6": "Budowa powtarzalnego procesu dla konsekwentnej egzekucji"
+        }
+      },
+      "hiddenStrategy": {
+        "title": "Ujawnij aktywność instytucji ukrytą na wykresie",
+        "description": "Ukryta strategia pokazuje akumulację, dystrybucję i testy podaży, które często poprzedzają duże ruchy — abyś mógł działać zgodnie z smart money zamiast reagować z opóźnieniem.",
+        "points": {
+          "point1": "Wychwytywanie cichej akumulacji przed rozszerzeniem ceny",
+          "point2": "Rozpoznawanie dystrybucji i osłabienia popytu",
+          "point3": "Odczyt testów podaży i sygnałów braku podaży",
+          "point4": "Wcześniejsze przewidywanie kontynuacji lub odwrócenia trendu",
+          "point5": "Mniej fałszywych sygnałów w warunkach bocznych",
+          "point6": "Trading z kontekstem profesjonalnych przepływów wolumenu"
+        }
       }
     }
   },

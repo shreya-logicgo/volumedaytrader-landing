@@ -1,6 +1,7 @@
 import Badge from '@/components/ui/badge/Badge'
-import Heading from '@/components/ui/heading/Heading'
-import SubHeading from '@/components/ui/subheading/SubHeading'
+import SectionTitleWrap from '@/components/ui/heading/Sectiontitlewrap'
+// import Heading from '@/components/ui/heading/Heading'
+// import SubHeading from '@/components/ui/subheading/SubHeading'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import IndicatorSystemCarousal from './IndicatorSystemCarousal'
@@ -18,21 +19,23 @@ const IndicatorSystem = () => {
         <div className="badge-wrap flex flex-col gap-2">
           <Badge text={t('badge')} />
         </div>
-        <div className="section-header-stack relative z-10 mx-auto text-center">
+        {/* <div className="section-header-stack relative z-10 mx-auto text-center">
           <Heading className="mx-auto" text={t('title')} />
           <SubHeading className="mx-auto max-w-3xl leading-snug" text={t('description')} />
-        </div>
+        </div> */}
+        <SectionTitleWrap
+          heading={t('title')}
+          subheading={t('description')}
+          headingSingleLine
+        />
       </div>
 
-
       <div className="relative">
-        {/* Curve sits behind carousel, fades into page bg */}
         <CurveGradient className="xl:-top-10 md:top-15" />
         <div className="relative z-10">
           <IndicatorSystemCarousal />
         </div>
       </div>
-
     </div>
   )
 }

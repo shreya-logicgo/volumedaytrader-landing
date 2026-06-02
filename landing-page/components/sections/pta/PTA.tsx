@@ -6,8 +6,9 @@ import { useTranslation } from 'react-i18next'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Badge from '@/components/ui/badge/Badge'
 import { cn } from '@/lib/utils'
-import Heading from '@/components/ui/heading/Heading'
-import SubHeading from '@/components/ui/subheading/SubHeading'
+import SectionTitleWrap from '@/components/ui/heading/Sectiontitlewrap'
+// import Heading from '@/components/ui/heading/Heading'
+// import SubHeading from '@/components/ui/subheading/SubHeading'
 import PTACards from '@/components/sections/pta/PTACards'
 import SideGradients from '@/components/common/backgrounds/SideGradients'
 
@@ -71,7 +72,7 @@ const PTA = () => {
           <Badge text={t('badge')} />
         </div>
 
-        <div className="section-header-stack relative mx-auto">
+        {/* <div className="section-header-stack relative mx-auto">
           <Heading
             className="mx-auto max-w-[630px] text-balance"
             text={t('title')}
@@ -80,17 +81,32 @@ const PTA = () => {
             className="mx-auto max-w-2xl text-pretty px-1"
             text={t('description')}
           />
-        </div>
+        </div> */}
+        <SectionTitleWrap heading={t('title')} subheading={t('description')} />
       </div>
 
       {/* Carousel block only — does not clip section gradients */}
       <div className="relative z-10 mx-auto w-full max-w-[1165px] px-4 content-pt sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-5">
-          <div className="min-w-0 overflow-hidden">
+        <div className="flex flex-col items-stretch gap-5 lg:flex-row lg:items-center lg:gap-4 xl:gap-6">
+          <NavButton
+            direction="prev"
+            disabled={!canScrollPrev}
+            onClick={() => api?.scrollPrev()}
+            className="hidden shrink-0 lg:flex"
+          />
+
+          <div className="min-w-0 flex-1 overflow-hidden">
             <PTACards setApi={setApi} />
           </div>
 
-          <div className="relative z-10 flex items-center justify-center gap-4">
+          <NavButton
+            direction="next"
+            disabled={!canScrollNext}
+            onClick={() => api?.scrollNext()}
+            className="hidden shrink-0 lg:flex"
+          />
+
+          <div className="flex items-center justify-center gap-4 lg:hidden">
             <NavButton
               direction="prev"
               disabled={!canScrollPrev}

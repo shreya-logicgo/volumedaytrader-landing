@@ -1,13 +1,15 @@
 "use client";
 
 import Badge from "@/components/ui/badge/Badge";
-import Heading from "@/components/ui/heading/Heading";
-import SubHeading from "@/components/ui/subheading/SubHeading";
+import SectionTitleWrap from "@/components/ui/heading/Sectiontitlewrap";
+// import Heading from "@/components/ui/heading/Heading";
+// import SubHeading from "@/components/ui/subheading/SubHeading";
 import Vector from "@/assets/icons/Vector.svg";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
 import BlogsCards from "./BlogsCards";
+import VectorArrow from "@/components/ui/vector-arrow/VectorArrow";
 
 const Blogs = () => {
   const { t } = useTranslation("translation", { keyPrefix: "blogs" });
@@ -19,13 +21,14 @@ const Blogs = () => {
           <Badge text={t("badge")} />
         </div>
 
-        <div className="section-header-stack relative z-10 mx-auto">
+        {/* <div className="section-header-stack relative z-10 mx-auto">
           <Heading className="mx-auto max-w-3xl px-1 sm:px-0" text={t("title")} />
           <SubHeading
             className="mx-auto max-w-2xl px-2 sm:px-0"
             text={t("description")}
           />
-        </div>
+        </div> */}
+        <SectionTitleWrap heading={t("title")} subheading={t("description")} />
       </div>
 
       <BlogsCards />
@@ -37,7 +40,7 @@ const Blogs = () => {
         >
           <span>{t("allBlogsButton")}</span>
           <span className="flex h-4 w-4 shrink-0 items-center justify-center">
-            <Vector className="block h-3 w-3" aria-hidden="true" />
+            <VectorArrow className="h-3 w-3" />
           </span>
         </Link>
       </div>
