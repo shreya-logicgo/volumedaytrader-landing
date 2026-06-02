@@ -11,7 +11,7 @@ const Wyckoff = () => {
 
   return (
     <section className="section-pb">
-      <div className="mx-auto max-w-4xl text-center">
+      <div className="mx-auto max-w-4xl  text-center">
         <div className="badge-wrap flex flex-col gap-2">
           <Badge text={t('badge')} />
         </div>

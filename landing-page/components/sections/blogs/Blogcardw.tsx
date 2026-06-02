@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import { useRef, useState } from "react";
 
 interface BlogCardProps {
   href: string;
@@ -14,62 +14,75 @@ interface BlogCardProps {
 
 export default function BlogCard({
   href,
-  imageSrc="https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=612x612&w=0&k=20&c=A63koPKaCyIwQWOTFBRWXj_PwCrR4cEoOw2S9Q7yVl8=",
+  imageSrc,
   imageAlt = "",
   date,
   readTime,
   title,
 }: BlogCardProps) {
+  const [hovered, setHovered] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
   return (
-    <div
-      className="flex flex-col gap-6"
-      style={{
-        opacity: 1,
-        transform:
-          "translate3d(0px,0px,0px) scale3d(1,1,1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg,0deg)",
-        transformStyle: "preserve-3d",
-      }}
-    >
+    <div className="flex flex-col gap-6 items-start">
+
       {/* ── Image block ── */}
       <Link
         href={href}
         aria-label="Blog"
-        className="blog-image-block group relative w-full overflow-hidden"
+        ref={containerRef as any}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        className="relative w-full flex flex-col items-end overflow-hidden"
+        style={{ display: "flex" }}
       >
-        {/* Main image — starts skewed/scaled, resets on hover */}
+        {/* Main image — skewed/scaled by default, resets on hover */}
         <img
           src={imageSrc}
           alt={imageAlt}
           loading="lazy"
-          className="
-            block w-full object-cover
-            transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
-            [transform:translate3d(0px,0px,0px)_scale3d(1.2,1.2,1)_skew(0deg,5deg)]
-            [transform-style:preserve-3d]
-            group-hover:[transform:translate3d(0px,0px,0px)_scale3d(1,1,1)_skew(0deg,0deg)]
-          "
+          className="block w-full max-w-full object-cover object-[50%_0%]"
+          style={{
+            transform: hovered
+              ? "translate3d(0px,0px,0px) scale3d(1,1,1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg,0deg)"
+              : "translate3d(0px,0px,0px) scale3d(1.2,1.2,1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg,5deg)",
+            transformStyle: "preserve-3d",
+            transition: "transform 700ms cubic-bezier(0.22, 1, 0.36, 1)",
+          }}
         />
 
-        {/* Hover overlay — slides up from bottom (height 0 → 100%) */}
+        {/* Hover overlay — absolute inset-0, overflow hidden, height animates 0 → 100% */}
         <div
-          className="
-            absolute inset-x-0 bottom-0 h-0 overflow-hidden
-            transition-[height] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
-            group-hover:h-full
-          "
+          className="absolute inset-0 overflow-hidden"
+          style={{
+            height: hovered ? "100%" : "0px",
+            transition: "height 700ms cubic-bezier(0.22, 1, 0.36, 1)",
+          }}
         >
           <img
             src={imageSrc}
             alt={imageAlt}
             loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover"
+            className="w-full max-w-full object-cover object-[50%_0%]"
+            style={{
+              // Pin the image to the bottom of the reveal container so it appears
+              // to wipe up — matches Growra's exact behaviour
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+            }}
           />
         </div>
       </Link>
 
       {/* ── Content block ── */}
-      <Link href={href} className="blog-content-wrap flex flex-col gap-3 no-underline">
-
+      <Link
+        href={href}
+        className="flex flex-col gap-3 w-full no-underline"
+        style={{ textDecoration: "none" }}
+      >
         {/* Date + read time */}
         <div className="flex items-center gap-2">
           <p className="m-0 text-sm text-[#989898]">{date}</p>
@@ -78,7 +91,14 @@ export default function BlogCard({
         </div>
 
         {/* Title */}
-        <h3 className="m-0 font-['Inter_Tight',sans-serif] text-2xl font-medium leading-snug tracking-[-0.86px] text-white">
+        <h3
+          className="m-0 text-white font-medium leading-snug"
+          style={{
+            fontFamily: "'Inter Tight', sans-serif",
+            fontSize: "24px",
+            letterSpacing: "-0.86px",
+          }}
+        >
           {title}
         </h3>
 
@@ -90,13 +110,26 @@ export default function BlogCard({
 }
 
 function LearnMoreBtn() {
+  const [hovered, setHovered] = useState(false);
+
   return (
-    <div className="group/btn relative flex items-center gap-3 cursor-pointer">
-      <span className="font-['Inter_Tight',sans-serif] text-base text-[#989898] transition-colors duration-300 group-hover/btn:text-white">
+    <div
+      className="relative flex items-center gap-2 cursor-pointer w-fit"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <span
+        className="text-base"
+        style={{
+          fontFamily: "'Inter Tight', sans-serif",
+          color: hovered ? "#ffffff" : "#989898",
+          transition: "color 300ms ease",
+        }}
+      >
         Learn More
       </span>
 
-      {/* Arrow icon */}
+      {/* Arrow */}
       <div className="flex items-center justify-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +137,10 @@ function LearnMoreBtn() {
           height="21"
           viewBox="0 0 21 21"
           fill="none"
-          className="text-[#989898] transition-colors duration-300 group-hover/btn:text-white"
+          style={{
+            color: hovered ? "#ffffff" : "#989898",
+            transition: "color 300ms ease",
+          }}
         >
           <path
             d="M15.6183 10.1309H4.2207"
@@ -123,13 +159,13 @@ function LearnMoreBtn() {
         </svg>
       </div>
 
-      {/* Underline that grows on hover */}
+      {/* Growing underline */}
       <span
-        className="
-          absolute bottom-0 left-0 h-px bg-white
-          w-0 transition-[width] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
-          group-hover/btn:w-full
-        "
+        className="absolute bottom-0 left-0 h-px bg-white"
+        style={{
+          width: hovered ? "100%" : "0%",
+          transition: "width 500ms cubic-bezier(0.22, 1, 0.36, 1)",
+        }}
       />
     </div>
   );

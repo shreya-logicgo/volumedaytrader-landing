@@ -181,10 +181,10 @@ const IndicatorSystemCarousal = ({
           className={cn(
             'control-button flex shrink-0 cursor-pointer items-center justify-center rounded-full text-white transition-opacity',
             'h-10 w-10 disabled:cursor-not-allowed disabled:opacity-40',
-            'sm:h-11 sm:w-11 md:h-12 md:w-12 lg:h-14 lg:w-14 xl:h-16 xl:w-16'
+            'sm:h-11 sm:w-11 md:h-11 md:w-11'
           )}
         >
-          <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5 md:h-5 md:w-5 lg:h-6 lg:w-6 xl:h-7 xl:w-7" />
+          <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
         </button>
         <button
           type="button"
@@ -194,10 +194,10 @@ const IndicatorSystemCarousal = ({
           className={cn(
             'control-button flex shrink-0 cursor-pointer items-center justify-center rounded-full text-white transition-opacity',
             'h-10 w-10 disabled:cursor-not-allowed disabled:opacity-40',
-            'sm:h-11 sm:w-11 md:h-12 md:w-12 lg:h-14 lg:w-14 xl:h-16 xl:w-16'
+            'sm:h-11 sm:w-11 md:h-11 md:w-11'
           )}
         >
-          <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 md:h-5 md:w-5 lg:h-6 lg:w-6 xl:h-7 xl:w-7" />
+          <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
         </button>
       </div>
       </div>

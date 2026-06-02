@@ -4,6 +4,7 @@ import { gsap } from "gsap"
 import { Inter_Tight } from "next/font/google"
 import type { ReactNode } from "react"
 import { useLayoutEffect, useMemo, useRef } from "react"
+import { useTranslation } from "react-i18next"
 
 import { cn } from "@/lib/utils"
 
@@ -22,6 +23,8 @@ export interface SectionTitleWrapProps {
   subheadingClassName?: string
   /** Animate when scrolled into view (default). false = animate on mount. */
   scrollTrigger?: boolean
+  /** Keep the full heading on one line (no auto split). */
+  headingSingleLine?: boolean
 }
 
 const REVEAL_DURATION = 1.05
@@ -57,14 +60,20 @@ export default function SectionTitleWrap({
   headingClassName,
   subheadingClassName,
   scrollTrigger = true,
+  headingSingleLine = false,
 }: SectionTitleWrapProps) {
+  const { i18n } = useTranslation()
   const rootRef = useRef<HTMLDivElement>(null)
   const hasAnimatedRef = useRef(false)
+  const locale = i18n.resolvedLanguage ?? i18n.language
 
-  const headingLines = useMemo(
-    () => splitHeadingLines(heading),
-    [heading]
-  )
+  const headingLines = useMemo(() => {
+    const trimmed = heading.trim()
+    if (headingSingleLine && trimmed) return [trimmed]
+    return splitHeadingLines(heading)
+  }, [heading, headingSingleLine])
+
+  const headingLinesKey = headingLines.join("\u0001")
 
   useLayoutEffect(() => {
     const root = rootRef.current
@@ -72,6 +81,9 @@ export default function SectionTitleWrap({
 
     const inners = root.querySelectorAll<HTMLElement>("[data-reveal-inner]")
     if (!inners.length) return
+
+    hasAnimatedRef.current = false
+    gsap.killTweensOf(inners)
 
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
@@ -110,13 +122,18 @@ export default function SectionTitleWrap({
 
     if (prefersReducedMotion) {
       gsap.set(inners, { yPercent: 0, opacity: 1, scale: 1 })
-    } else {
-      gsap.set(inners, { yPercent: 100, opacity: 0, scale: 0.96 })
+      hasAnimatedRef.current = true
+      return
     }
+
+    gsap.set(inners, { yPercent: 100, opacity: 0, scale: 0.96 })
 
     if (!scrollTrigger) {
       const timer = window.setTimeout(runReveal, 120)
-      return () => window.clearTimeout(timer)
+      return () => {
+        window.clearTimeout(timer)
+        gsap.killTweensOf(inners)
+      }
     }
 
     const observer = new IntersectionObserver(
@@ -136,17 +153,36 @@ export default function SectionTitleWrap({
       observer.disconnect()
     }
 
-    return () => observer.disconnect()
-  }, [scrollTrigger, headingLines.length, subheading])
+    return () => {
+      observer.disconnect()
+      gsap.killTweensOf(inners)
+    }
+  }, [
+    scrollTrigger,
+    locale,
+    heading,
+    subheading,
+    headingSingleLine,
+    headingLinesKey,
+  ])
 
   return (
     <div
       ref={rootRef}
-      className={cn("section-title-wrap", interTight.className, className)}
+      className={cn("section-title-wrap xl:-mt-16 sm:-mt-13 max-sm:-mt-15 max-[530px]:-mt-7 ", interTight.className, className)}
     >
-      <h2 className={cn("section-title-wrap__heading", headingClassName)}>
+      <h2
+        className={cn(
+          "section-title-wrap__heading",
+          headingSingleLine && "section-title-wrap__heading--single-line",
+          !headingSingleLine &&
+            heading.trim().length > 42 &&
+            "section-title-wrap__heading--long",
+          headingClassName
+        )}
+      >
         {headingLines.map((line, index) => (
-          <RevealBlock key={`${index}-${line}`}>{line}</RevealBlock>
+          <RevealBlock key={`${locale}-${index}-${line}`}>{line}</RevealBlock>
         ))}
       </h2>
 
@@ -154,10 +190,12 @@ export default function SectionTitleWrap({
         <p
           className={cn(
             "section-title-wrap__subheading",
+            subheading.trim().length > 120 &&
+              "section-title-wrap__subheading--long",
             subheadingClassName
           )}
         >
-          <RevealBlock>{subheading}</RevealBlock>
+          <RevealBlock key={locale}>{subheading}</RevealBlock>
         </p>
       ) : null}
     </div>

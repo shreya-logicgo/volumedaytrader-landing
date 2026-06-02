@@ -23,7 +23,11 @@ const IndicatorSystem = () => {
           <Heading className="mx-auto" text={t('title')} />
           <SubHeading className="mx-auto max-w-3xl leading-snug" text={t('description')} />
         </div> */}
-        <SectionTitleWrap heading={t('title')} subheading={t('description')} />
+        <SectionTitleWrap
+          heading={t('title')}
+          subheading={t('description')}
+          headingSingleLine
+        />
       </div>
 
       <div className="relative">

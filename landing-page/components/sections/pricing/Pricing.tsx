@@ -120,7 +120,11 @@ const Pricing = () => {
         <Heading className="max-w-2xl mx-auto" text={t('title')} />
         <SubHeading className="max-w-[780px] mx-auto" text={t('description')} />
       </div> */}
-      <SectionTitleWrap heading={t('title')} subheading={t('description')} />
+      <SectionTitleWrap
+        heading={t('title')}
+        subheading={t('description')}
+        headingSingleLine
+      />
 
       <div className="content-pt grid grid-cols-1 gap-5  md:grid-cols-2 xl:grid-cols-4">
         {plans.map((plan) => (

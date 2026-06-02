@@ -383,13 +383,33 @@
 
   /* SectionTitleWrap — Growra-style title block */
   .section-title-wrap {
-    @apply mx-auto mb-[70px] flex max-w-[555px] flex-col items-center gap-[18px] text-center;
+    @apply mx-auto  flex w-full max-w-[min(100%,56rem)] flex-col items-center gap-4  text-center  sm:gap-5 sm:px-4 md:gap-6;
   }
 
   .section-title-wrap__heading {
-    @apply m-0 w-full pb-[3px] text-center font-normal leading-[1.15] tracking-[-1.56px] text-white;
-    font-size: 52px;
+    @apply m-0 w-full max-w-[56rem] pb-[3px] text-center font-normal text-white;
+    font-size: clamp(1.25rem, 5.5vw + 0.35rem, 2.875rem);
+    line-height: 1.14;
+    letter-spacing: -0.03em;
     perspective: 1px;
+    overflow: visible;
+  }
+
+  .section-title-wrap__heading--long {
+    font-size: clamp(1.125rem, 4.8vw + 0.3rem, 2.5rem);
+    letter-spacing: -0.025em;
+  }
+
+  .section-title-wrap__heading--single-line .section-title-wrap__line-inner {
+    font-size: clamp(1.125rem, 4.5vw + 0.3rem, 2.875rem);
+    text-wrap: balance;
+    white-space: normal;
+  }
+
+  @media (min-width: 640px) {
+    .section-title-wrap__heading--single-line .section-title-wrap__line-inner {
+      white-space: nowrap;
+    }
   }
 
   .section-title-wrap__mask {
@@ -398,15 +418,58 @@
     overflow: clip;
   }
 
-  .section-title-wrap__line-inner {
+  .section-title-wrap__heading .section-title-wrap__line-inner {
     display: block;
+    width: 100%;
+    max-width: 56rem;
+    margin-inline: auto;
     transform-origin: 50% 100%;
     will-change: transform, opacity;
+    text-wrap: balance;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+  }
+
+  .section-title-wrap__subheading .section-title-wrap__line-inner {
+    display: block;
+    max-width: min(100%, 52rem);
+    margin-inline: auto;
+    transform-origin: 50% 100%;
+    will-change: transform, opacity;
+    white-space: normal;
+    text-wrap: pretty;
   }
 
   .section-title-wrap__subheading {
-    @apply m-0 max-w-[480px] text-center text-[18px] font-normal leading-relaxed tracking-normal text-[#989898];
+    @apply m-0 w-full max-w-[min(100%,52rem)] px-0 text-center font-normal tracking-normal text-[#989898];
+    font-size: clamp(0.875rem, 2.6vw + 0.45rem, 1.125rem);
+    line-height: 1.55;
     perspective: 1px;
+    overflow: visible;
+  }
+
+  @media (min-width: 640px) {
+    .section-title-wrap__subheading {
+      line-height: 1.65;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-title-wrap__subheading {
+      line-height: 1.7;
+    }
+  }
+
+  .section-title-wrap__subheading--long {
+    max-width: min(100%, 52rem);
+    font-size: clamp(0.8125rem, 2.4vw + 0.4rem, 1.0625rem);
+  }
+
+  @media (min-width: 640px) {
+    .section-title-wrap__subheading--long {
+      font-size: clamp(0.9375rem, 1.8vw + 0.5rem, 1.125rem);
+    }
   }
 
   .signal-card__media-mask {
