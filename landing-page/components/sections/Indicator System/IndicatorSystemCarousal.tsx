@@ -126,82 +126,99 @@ const IndicatorSystemCarousal = ({
   const canGoPrev = activeIndex > 0
   const canGoNext = activeIndex < totalSlides - 1
 
+  const navButtonClass = cn(
+    'control-button flex shrink-0 cursor-pointer items-center justify-center rounded-full text-white transition-opacity',
+    'h-10 w-10 disabled:cursor-not-allowed disabled:opacity-40',
+    'sm:h-11 sm:w-11 md:h-12 md:w-12 lg:h-14 lg:w-14 xl:h-16 xl:w-16',
+  )
+
+  const chevronClass = 'h-4 w-4 sm:h-5 sm:w-5 md:h-5 md:w-5 lg:h-6 lg:w-6 xl:h-7 xl:w-7'
+
   return (
     <div className={`relative content-pt w-full mx-auto overflow-visible ${className}`.trim()}>
-      <div className="relative z-10">
-      {/* Clipping viewport */}
-      <div className="w-full overflow-visible">
-        <div
-          className="flex gap-6 transition-transform duration-500 ease-out"
-          style={trackStyle}
-        >
-          {slides.map((slide, idx) => (
-            <article
-              key={`${slide.title}-${idx}`}
-              className="shrink-0 rounded-3xl border border-card-border bg-card-bg p-3
-                         flex flex-col
-                         xl:grid xl:grid-cols-[1.1fr_1fr]"
-              style={{ width: `${slideWidthPct}%` }}
-            >
-              {/* Image — always on top on mobile, left on desktop */}
-              <div className="p-2">
-                <ChartPanel
-                  path={slide.linePath}
-                  imageSrc={slide.imageSrc}
-                  imageAlt={slide.imageAlt}
-                />
-              </div>
-
-              {/* Text — below image on mobile, right column on desktop */}
-              <div className="px-4 py-4 md:py-2 md:my-auto">
-                <h3 className="card-heading text-left font-semibold text-white line-clamp-2">
-                  {t(slide.title)}
-                </h3>
-                <p className="card-desc mt-3 text-secondary-text line-clamp-4">
-                  {t(slide.subtitle)}
-                </p>
-                <ul className="card-desc mt-4 line-clamp-4">
-                  {slide.points.map((point) => (
-                    <li key={point}>{t(point)}</li>
-                  ))}
-                </ul>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-
-      {/* Navigation */}
-      <div className="relative mt-4 flex w-full items-center justify-center gap-3 sm:mt-6 sm:gap-4">
+      <div className="relative z-10 flex flex-col gap-4 sm:gap-5 lg:flex-row lg:items-center lg:gap-4 xl:gap-6">
         <button
           type="button"
           onClick={() => canGoPrev && setActiveIndex((prev) => prev - 1)}
           disabled={!canGoPrev}
           aria-label="Previous slide"
-          className={cn(
-            'control-button flex shrink-0 cursor-pointer items-center justify-center rounded-full text-white transition-opacity',
-            'h-10 w-10 disabled:cursor-not-allowed disabled:opacity-40',
-            'sm:h-11 sm:w-11 md:h-12 md:w-12 lg:h-14 lg:w-14 xl:h-16 xl:w-16'
-          )}
+          className={cn(navButtonClass, 'hidden lg:flex')}
         >
-          <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5 md:h-5 md:w-5 lg:h-6 lg:w-6 xl:h-7 xl:w-7" />
+          <ChevronLeft className={chevronClass} />
         </button>
+
+        <div className="min-w-0 flex-1 overflow-visible">
+          <div className="w-full overflow-visible">
+            <div
+              className="flex gap-6 transition-transform duration-500 ease-out"
+              style={trackStyle}
+            >
+              {slides.map((slide, idx) => (
+                <article
+                  key={`${slide.title}-${idx}`}
+                  className="shrink-0 rounded-3xl border border-card-border bg-card-bg p-3
+                             flex flex-col
+                             xl:grid xl:grid-cols-[1.1fr_1fr]"
+                  style={{ width: `${slideWidthPct}%` }}
+                >
+                  <div className="p-2">
+                    <ChartPanel
+                      path={slide.linePath}
+                      imageSrc={slide.imageSrc}
+                      imageAlt={slide.imageAlt}
+                    />
+                  </div>
+
+                  <div className="px-4 py-4 md:py-2 md:my-auto">
+                    <h3 className="card-heading text-left font-semibold text-white line-clamp-2">
+                      {t(slide.title)}
+                    </h3>
+                    <p className="card-desc mt-3 text-secondary-text line-clamp-4">
+                      {t(slide.subtitle)}
+                    </p>
+                    <ul className="card-desc mt-4 line-clamp-4">
+                      {slide.points.map((point) => (
+                        <li key={point}>{t(point)}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+
         <button
           type="button"
           onClick={() => canGoNext && setActiveIndex((prev) => prev + 1)}
           disabled={!canGoNext}
           aria-label="Next slide"
-          className={cn(
-            'control-button flex shrink-0 cursor-pointer items-center justify-center rounded-full text-white transition-opacity',
-            'h-10 w-10 disabled:cursor-not-allowed disabled:opacity-40',
-            'sm:h-11 sm:w-11 md:h-12 md:w-12 lg:h-14 lg:w-14 xl:h-16 xl:w-16'
-          )}
+          className={cn(navButtonClass, 'hidden lg:flex')}
         >
-          <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 md:h-5 md:w-5 lg:h-6 lg:w-6 xl:h-7 xl:w-7" />
+          <ChevronRight className={chevronClass} />
         </button>
-      </div>
-      </div>
 
+        <div className="flex w-full items-center justify-center gap-3 sm:gap-4 lg:hidden">
+          <button
+            type="button"
+            onClick={() => canGoPrev && setActiveIndex((prev) => prev - 1)}
+            disabled={!canGoPrev}
+            aria-label="Previous slide"
+            className={navButtonClass}
+          >
+            <ChevronLeft className={chevronClass} />
+          </button>
+          <button
+            type="button"
+            onClick={() => canGoNext && setActiveIndex((prev) => prev + 1)}
+            disabled={!canGoNext}
+            aria-label="Next slide"
+            className={navButtonClass}
+          >
+            <ChevronRight className={chevronClass} />
+          </button>
+        </div>
+      </div>
     </div>
   )
 }

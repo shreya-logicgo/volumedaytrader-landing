@@ -188,16 +188,43 @@
             "smartProfits": "Smart Profits",
             "hiddenStrategy": "Hidden Strategy"
         },
-        "content": {
-            "title": "Wyckoff Wave Volume Indicators For Smart Market Analysis",
-            "description": "The Wyckoff Wave Volume Indicator helps traders analyze real buying and selling pressure by visualizing cumulative volume directly on the chart.",
-            "points": {
-                "point1": "Understand demand and supply strength",
-                "point2": "Detect buyer vs seller pressure",
-                "point3": "Analyze momentum shifts more clearly",
-                "point4": "Identify stronger market participation",
-                "point5": "Improve structured decision-making",
-                "point6": "Reduce emotional trading behavior"
+        "imageAlt": "Two traders analyzing charts together",
+        "contentByTab": {
+            "volumeEdge": {
+                "title": "Wyckoff Wave Volume Indicators For Smart Market Analysis",
+                "description": "The Wyckoff Wave Volume Indicator helps traders analyze real buying and selling pressure by visualizing cumulative volume directly on the chart.",
+                "points": {
+                    "point1": "Understand demand and supply strength",
+                    "point2": "Detect buyer vs seller pressure",
+                    "point3": "Analyze momentum shifts more clearly",
+                    "point4": "Identify stronger market participation",
+                    "point5": "Improve structured decision-making",
+                    "point6": "Reduce emotional trading behavior"
+                }
+            },
+            "smartProfits": {
+                "title": "Trade Smarter Entries And Exits With Volume Confirmation",
+                "description": "Smart Profits combines Wyckoff volume logic with clear signal zones so you can spot high-probability setups, manage risk, and capture moves with greater confidence.",
+                "points": {
+                    "point1": "Highlight areas where buyers or sellers take control",
+                    "point2": "Confirm breakouts and reversals with volume behavior",
+                    "point3": "Plan entries with clearer structure on the chart",
+                    "point4": "Define logical stop and target levels",
+                    "point5": "Filter weak setups before capital is at risk",
+                    "point6": "Build a repeatable process for consistent execution"
+                }
+            },
+            "hiddenStrategy": {
+                "title": "Reveal Institutional Activity Hidden In Plain Sight",
+                "description": "Hidden Strategy exposes accumulation, distribution, and supply tests that often precede major moves—so you can align with smart money instead of reacting late.",
+                "points": {
+                    "point1": "Spot quiet accumulation before price expands",
+                    "point2": "Recognize distribution and easing of demand",
+                    "point3": "Read tests of supply and signs of no supply",
+                    "point4": "Anticipate trend continuation or reversal earlier",
+                    "point5": "Reduce false signals during choppy conditions",
+                    "point6": "Trade with context from professional volume flows"
+                }
             }
         }
     },
