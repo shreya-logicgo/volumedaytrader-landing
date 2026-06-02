@@ -3,7 +3,7 @@
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
-import Vector from "@/assets/icons/Vector.svg";
+import VectorArrow from "@/components/ui/vector-arrow/VectorArrow";
 import Heading from "@/components/ui/heading/Heading";
 import SubHeading from "@/components/ui/subheading/SubHeading";
 import blogAuthor from "@/assets/images/blog/blog-author.png";
@@ -105,7 +105,7 @@ export default function BlogDetailView({ post }: BlogDetailViewProps) {
   return (
     <div className="mx-auto flex w-full max-w-[960px] flex-col gap-8 px-4 sm:gap-10 sm:px-6 lg:px-8">
       <Link href="/blogs" className={blogPillButtonClassName}>
-        <Vector className="h-3.5 w-3.5 shrink-0 rotate-180 sm:h-4 sm:w-4" aria-hidden="true" />
+        <VectorArrow className="h-3.5 w-3.5 sm:h-4 sm:w-4" flipped />
         {t("detail.backToBlogs")}
       </Link>
 

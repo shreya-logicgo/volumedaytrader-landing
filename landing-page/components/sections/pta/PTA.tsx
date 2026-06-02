@@ -87,12 +87,26 @@ const PTA = () => {
 
       {/* Carousel block only — does not clip section gradients */}
       <div className="relative z-10 mx-auto w-full max-w-[1165px] px-4 content-pt sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-5">
-          <div className="min-w-0 overflow-hidden">
+        <div className="flex flex-col items-stretch gap-5 lg:flex-row lg:items-center lg:gap-4 xl:gap-6">
+          <NavButton
+            direction="prev"
+            disabled={!canScrollPrev}
+            onClick={() => api?.scrollPrev()}
+            className="hidden shrink-0 lg:flex"
+          />
+
+          <div className="min-w-0 flex-1 overflow-hidden">
             <PTACards setApi={setApi} />
           </div>
 
-          <div className="relative z-10 flex items-center justify-center gap-4">
+          <NavButton
+            direction="next"
+            disabled={!canScrollNext}
+            onClick={() => api?.scrollNext()}
+            className="hidden shrink-0 lg:flex"
+          />
+
+          <div className="flex items-center justify-center gap-4 lg:hidden">
             <NavButton
               direction="prev"
               disabled={!canScrollPrev}
