@@ -39,6 +39,12 @@ export default function RootLayout({
         className={`min-h-full flex flex-col ${rethinkSans.className}`}
       >
         <I18nProvider>
+          <div className="site-horns-layer" aria-hidden>
+            <div className="horns-container">
+              <div className="horn horn-left" />
+              <div className="horn horn-right" />
+            </div>
+          </div>
           <Container>
             {children}
           </Container>
