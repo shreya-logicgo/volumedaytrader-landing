@@ -143,7 +143,7 @@ export default function ContactForm() {
         className="inline-flex cursor-pointer w-full items-center justify-center gap-1.5 rounded-full bg-[#ED1F24] px-5 py-3 text-base font-medium text-white shadow-control-inset shadow-[0_4px_14px_rgba(237,31,36,0.35)] transition-opacity hover:opacity-90 sm:w-fit sm:px-6 sm:py-3.5 sm:text-lg"
       >
         {t("submit")}
-        <VectorArrow className="h-4 w-4 sm:p-1 sm:h-5 sm:w-5" />
+        <VectorArrow className="h-4 w-4 sm:h-5 sm:w-5" />
       </button>
     </form>
   );
