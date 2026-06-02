@@ -1,6 +1,15 @@
 @import "tailwindcss";
 
+@source "../components/**/*.{js,ts,jsx,tsx}";
+@source "../app/**/*.{js,ts,jsx,tsx}";
+
 @theme {
+  /* Custom section spacing (used by .section-pb, .section-pt, .content-pt) */
+  --spacing-13: 3.25rem;
+  --spacing-17: 4.25rem;
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+  --spacing-26: 6.5rem;
   --font-rethink: var(--font-rethink-sans), sans-serif;
 
   /* Core surfaces */
