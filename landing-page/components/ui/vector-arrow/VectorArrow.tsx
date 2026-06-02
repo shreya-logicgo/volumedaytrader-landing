@@ -17,8 +17,8 @@ export default function VectorArrow({ className, flipped = false }: VectorArrowP
       )}
       aria-hidden
     >
-      <Vector className="vector-arrow__svg" />
-      <Vector className="vector-arrow__svg vector-arrow__svg--copy" />
+      <Vector className="vector-arrow__svg " />
+      <Vector className="vector-arrow__svg vector-arrow__svg--copy sm:p-1" />
     </span>
   )
 }

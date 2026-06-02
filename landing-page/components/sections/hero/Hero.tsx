@@ -58,7 +58,7 @@ export default function Hero() {
         },
     ]
     return (
-        <section className="relative  left-1/2 w-screen max-w-[1720px] -translate-x-1/2 overflow-x-clip pt-8 sm:pt-12 md:pt-16 lg:pt-20 2xl:pt-28">
+        <section className="relative   left-1/2 w-screen max-w-[1720px] -translate-x-1/2 overflow-x-clip pt-8 sm:pt-12 md:pt-16 lg:pt-20 2xl:pt-28">
             {/* Starry background */}
             {/* <div
                 className="pointer-events-none absolute inset-0 opacity-50"
