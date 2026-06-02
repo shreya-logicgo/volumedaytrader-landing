@@ -39,7 +39,7 @@ export default function Hero() {
         .filter(Boolean)
         .map((part, index, arr) => (index < arr.length - 1 ? `${part}.` : part))
 
-    const floatingTags = [
+  const floatingTags = [
         {
             label: t("hero.leftTopTag"),
             className: "left-[3%] top-[14%] 2xl:left-[8%]",
@@ -57,9 +57,8 @@ export default function Hero() {
             className: "right-[6%] top-[28%] 2xl:right-[12%]",
         },
     ]
-
     return (
-        <section className="relative overflow-x-clip pt-8 sm:pt-12 md:pt-16 lg:pt-20 2xl:pt-28">
+        <section className="relative  left-1/2 w-screen max-w-[1720px] -translate-x-1/2 overflow-x-clip pt-8 sm:pt-12 md:pt-16 lg:pt-20 2xl:pt-28">
             {/* Starry background */}
             {/* <div
                 className="pointer-events-none absolute inset-0 opacity-50"
@@ -83,17 +82,19 @@ export default function Hero() {
             </div>
 
 
-            <div className="pointer-events-none absolute inset-0 z-10 hidden xl:block ">
+            <div className="pointer-events-none absolute inset-0 z-20 hidden xl:block">
+              <div className="relative mx-auto h-full w-full max-w-[1400px]">
                 {floatingTags.map((tag, index) => (
                     <div
                         key={tag.label}
-                        className={`absolute max-w-[min(240px,22vw)] scale-90 ${tag.className}`}
+                        className={`absolute max-w-[min(220px,18vw)] xl:scale-80 2xl:max-w-[min(240px,18vw)] 2xl:scale-90 ${tag.className}`}
                     >
-                        <div className="hero-tag-bounce" style={{ animationDelay: `${index * 180}ms` }}>
+                        <div className="hero-tag-bounce" style={{ animationDelay: `${index * 90}ms` }}>
                             <HeroFeatureTag label={tag.label} />
                         </div>
                     </div>
                 ))}
+              </div>
             </div>
 
 
@@ -141,7 +142,7 @@ export default function Hero() {
                         <div
                             key={tag.label}
                             className="hero-tag-bounce flex justify-center px-1"
-                            style={{ animationDelay: `${index * 180}ms` }}
+                            style={{ animationDelay: `${index * 90}ms` }}
                         >
                             <HeroFeatureTag label={tag.label} compact />
                         </div>
