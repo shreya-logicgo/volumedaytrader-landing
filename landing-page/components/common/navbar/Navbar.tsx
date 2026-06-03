@@ -8,8 +8,8 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Logo from '../../../assets/logo/logo.svg'
 import { useLanguage } from '@/hooks/use-language'
 import { useTranslation } from 'react-i18next'
-import { scrollToSectionId } from '@/lib/scroll'
-import VectorArrow from '@/components/ui/vector-arrow/VectorArrow'
+import { scrollToSectionId, scrollToTop } from '@/lib/scroll'
+import CtaFlowLink from '@/components/ui/cta-flow/CtaFlowLink'
 import NavLink from './Navlink'
 
 const NAV_LINKS = [
@@ -118,7 +118,7 @@ export default function Navbar() {
     }
 
     event.preventDefault()
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    scrollToTop()
   }
 
   const handleNavLinkClick = (
@@ -290,13 +290,12 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
 
-            <Link
+            <CtaFlowLink
               href="https://volumedaytrader.com/login/"
+              label={t('navbar.signIn')}
+              arrowClassName="h-3 w-3"
               className="inline-flex h-11 shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-full bg-tab-active px-3.5 text-[13px] font-medium text-white shadow-[inset_0px_1.41px_3.18px_0px_rgba(255,255,255,0.5)] transition-colors duration-300 hover:bg-[#f52b31] min-[1440px]:px-4 min-[1440px]:text-[14px] 2xl:px-5 2xl:text-[15px]"
-            >
-              <span>{t('navbar.signIn')}</span>
-              <VectorArrow className="h-3 w-3" />
-            </Link>
+            />
           </div>
 
           <button
@@ -354,14 +353,13 @@ export default function Navbar() {
 
                   <div className="mt-5 flex flex-col gap-5">
                     <div className="flex flex-col gap-3 sm:flex-row">
-                      <Link
+                      <CtaFlowLink
                         href="https://volumedaytrader.com/login/"
+                        label={t('navbar.signIn')}
+                        arrowClassName="h-3 w-3"
                         className="inline-flex w-full items-center justify-center gap-1.5 rounded-xl border border-white/10 bg-white/5 px-6 py-3 font-medium text-white transition-all hover:bg-white/10"
                         onClick={() => setMobileOpen(false)}
-                      >
-                        <span>{t('navbar.signIn')}</span>
-                        <VectorArrow className="h-3 w-3" />
-                      </Link>
+                      />
                     </div>
 
                     <div className="flex items-center justify-center gap-3 border-t border-white/10 pt-5">

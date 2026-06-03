@@ -81,6 +81,15 @@
     scroll-padding-top: var(--scroll-anchor-offset);
   }
 
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  html.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
   @media (min-width: 768px) {
     html {
       scroll-padding-top: var(--scroll-anchor-offset-md);
@@ -542,6 +551,56 @@
     }
   }
 
+  /* Hero only — same sizes as legacy h1 / description; other sections unchanged */
+  .section-title-wrap--hero {
+    @apply mx-auto mt-4 max-w-[652px] flex-col gap-0 sm:mt-6 md:mt-8 2xl:mt-8;
+  }
+
+  .section-title-wrap--hero .section-title-wrap__heading {
+    @apply max-w-[652px] pb-0 font-bold leading-[1.2] tracking-normal text-white;
+    font-size: clamp(1.375rem, 5vw + 0.65rem, 3.75rem);
+    letter-spacing: normal;
+  }
+
+  @media (min-width: 1024px) {
+    .section-title-wrap--hero .section-title-wrap__heading {
+      font-size: 47px;
+    }
+  }
+
+  .section-title-wrap--hero .section-title-wrap__heading .section-title-wrap__line-inner {
+    max-width: 652px;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+  }
+
+  .section-title-wrap--hero .section-title-wrap__subheading {
+    @apply mt-3 max-w-[640px] px-1 font-normal text-secondary-text sm:mt-4 md:mt-5 2xl:mt-5;
+    font-size: clamp(0.8125rem, 1.6vw + 0.45rem, 1.25rem);
+    line-height: 1.625;
+  }
+
+  @media (min-width: 1024px) {
+    .section-title-wrap--hero .section-title-wrap__subheading {
+      font-size: 18px;
+      line-height: 1.375;
+    }
+  }
+
+  .section-title-wrap--hero .section-title-wrap__subheading .section-title-wrap__line-inner {
+    max-width: 640px;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+  }
+
+  .hero-cta-row a {
+    visibility: hidden;
+    opacity: 0;
+  }
+
   .signal-card__media-mask {
     position: relative;
     overflow: clip;
@@ -591,6 +650,33 @@
   .group:hover .vector-arrow__svg--copy {
     transform: translate(0);
     transition: transform 0.3s ease-in-out 0.1s;
+  }
+
+  /* CTA flow — preserve arrow motion; delay until label flow completes */
+  .cta-flow .vector-arrow__svg,
+  .cta-flow .vector-arrow__svg--copy {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .cta-flow:hover .vector-arrow__svg:first-of-type,
+  .cta-flow:focus-visible .vector-arrow__svg:first-of-type {
+    transform: translate(150%, -150%);
+    transition: transform 0.3s ease-in-out var(--cta-arrow-delay, 336ms);
+  }
+
+  .cta-flow:hover .vector-arrow__svg--copy,
+  .cta-flow:focus-visible .vector-arrow__svg--copy {
+    transform: translate(0);
+    transition: transform 0.3s ease-in-out var(--cta-arrow-delay, 336ms);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta-flow .flow-text__letters > span,
+    .cta-flow:hover .vector-arrow__svg,
+    .cta-flow:focus-visible .vector-arrow__svg {
+      transform: translate3d(0, 0, 0) !important;
+      transition: none !important;
+    }
   }
 
   /* Premium blog card — light streak base (motion via GSAP) */
