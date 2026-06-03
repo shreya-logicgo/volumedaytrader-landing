@@ -1,10 +1,15 @@
 "use client"
 
 import Image from "next/image"
+import { useCallback, useLayoutEffect, useRef } from "react"
 import { useTranslation } from "react-i18next"
+import { gsap } from "gsap"
 import HeroChart from "./HeroChart"
-import CtaFlowLink from "@/components/ui/cta-flow/CtaFlowLink";
-import { Particles } from "@/components/ui/particles";
+import CtaFlowLink from "@/components/ui/cta-flow/CtaFlowLink"
+import SectionTitleWrap, {
+  SECTION_TITLE_REVEAL,
+} from "@/components/ui/heading/Sectiontitlewrap"
+import { Particles } from "@/components/ui/particles"
 
 
 function HeroFeatureTag({ label, compact }: { label: string; compact?: boolean }) {
@@ -31,12 +36,39 @@ function HeroFeatureTag({ label, compact }: { label: string; compact?: boolean }
 }
 
 export default function Hero() {
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
+    const ctaRef = useRef<HTMLDivElement>(null)
+    const locale = i18n.resolvedLanguage ?? i18n.language
+    const heroTitle = t("hero.title")
+    const heroDescription = t("hero.description")
 
-    const titleParts = t("hero.title")
-        .split(". ")
-        .filter(Boolean)
-        .map((part, index, arr) => (index < arr.length - 1 ? `${part}.` : part))
+    const revealHeroCtas = useCallback(() => {
+        const row = ctaRef.current
+        if (!row) return
+
+        const buttons = row.querySelectorAll<HTMLElement>("a")
+        const targets = buttons.length ? buttons : [row]
+
+        gsap.killTweensOf(targets)
+        gsap.set(targets, { autoAlpha: 0, y: 18, scale: 0.98 })
+
+        gsap.to(targets, {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: SECTION_TITLE_REVEAL.duration,
+            ease: SECTION_TITLE_REVEAL.ease,
+            stagger: buttons.length > 1 ? 0.07 : 0,
+            overwrite: "auto",
+        })
+    }, [])
+
+    useLayoutEffect(() => {
+        const row = ctaRef.current
+        if (!row) return
+        gsap.killTweensOf(row.querySelectorAll("a"))
+        gsap.set(row.querySelectorAll("a"), { autoAlpha: 0, y: 18, scale: 0.98 })
+    }, [locale, heroTitle, heroDescription])
 
   const floatingTags = [
         {
@@ -82,7 +114,7 @@ export default function Hero() {
 
 
             <div className="pointer-events-none absolute inset-0 z-20 hidden xl:block">
-              <div className="relative mx-auto h-full w-full max-w-[1400px]">
+              <div className="relative mx-auto h-full w-full max-w-[1500px]">
                 {floatingTags.map((tag, index) => (
                     <div
                         key={tag.label}
@@ -97,7 +129,7 @@ export default function Hero() {
             </div>
 
 
-            <div className="relative  z-30 mx-auto w-full max-w-[872px] px-4 text-center sm:px-6">
+            <div className="relative  z-30 mx-auto w-full max-w-[872px] px-4 text-center sm:px-6 ">
                 {/* Top pill badge */}
                 <div className="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-[#1D1938] bg-[#151032] px-2 py-1.5 backdrop-blur-sm sm:gap-2 2xl:gap-3 2xl:px-3 2xl:py-2">
                     <span className="rounded-2xl bg-[#1D1938] px-2 py-0.5 text-[10px] font-normal tracking-wide text-white shadow-control-inset sm:px-2.5 sm:py-1 sm:text-sm 2xl:text-lg">
@@ -108,17 +140,19 @@ export default function Hero() {
                     </span>
                 </div>
 
-                {/* Heading scales down on small screens; full size only at 2xl */}
-                <h1 className="mx-auto mt-4 max-w-[652px] text-[clamp(1.375rem,5vw+0.65rem,3.75rem)]  lg:text-[47px] font-bold leading-[1.2] tracking-normal text-white sm:mt-6 md:mt-8 2xl:mt-8 2xl:leading-[1.2]">
-                    {titleParts.join(' ')}
-                </h1>
+                <SectionTitleWrap
+                    variant="hero"
+                    heading={heroTitle}
+                    subheading={heroDescription}
+                    scrollTrigger={false}
+                    onDescriptionRevealStart={revealHeroCtas}
+                />
 
-                <p className="mx-auto mt-3 max-w-[640px] px-1 text-[clamp(0.8125rem,1.6vw+0.45rem,1.25rem)] lg:text-[18px] leading-relaxed text-secondary-text sm:mt-4 md:mt-5 2xl:mt-5 2xl:leading-snug">
-                    {t("hero.description")}
-                </p>
-
-                {/* CTAs */}
-                <div className="mx-auto mt-5 flex w-full max-w-md flex-col items-stretch justify-center gap-3 sm:mt-6 sm:max-w-lg sm:flex-row sm:items-center sm:justify-center sm:gap-4 2xl:mt-8 2xl:max-w-none">
+                {/* CTAs — reveal in sync with description (no extra wait) */}
+                <div
+                    ref={ctaRef}
+                    className="hero-cta-row mx-auto mt-5 flex w-full max-w-md flex-col items-stretch justify-center gap-3 sm:mt-6 sm:max-w-lg sm:flex-row sm:items-center sm:justify-center sm:gap-4 2xl:mt-8 2xl:max-w-none"
+                >
                     <CtaFlowLink
                         href="https://volumedaytrader.com/login/"
                         label={t("hero.primaryButton")}
@@ -129,7 +163,7 @@ export default function Hero() {
                         href="https://volumedaytrader.com/login/"
                         label={t("hero.secondaryButton")}
                         arrowClassName="h-3 w-3"
-                        className="inline-flex w-full items-center justify-center shadow-control-inset gap-2 rounded-full border border-[#2B2A56] bg-[#0D082B]/80 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:border-[#3d3c6e] sm:w-auto sm:px-6 sm:text-base 2xl:px-7 2xl:py-3 2xl:text-lg cursor-pointer"
+                        className="inline-flex w-full items-center justify-center shadow-control-inset gap-2 rounded-full border border-[#2B2A56] bg-[#0D082B]/80 px-5 py-3 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:border-[#3d3c6e] sm:w-auto sm:px-6 sm:text-base 2xl:px-7 2xl:py-3 2xl:text-lg cursor-pointer "
                     />
                 </div>
 
