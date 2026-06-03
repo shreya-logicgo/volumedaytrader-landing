@@ -4,12 +4,10 @@ import Badge from "@/components/ui/badge/Badge";
 import SectionTitleWrap from "@/components/ui/heading/Sectiontitlewrap";
 // import Heading from "@/components/ui/heading/Heading";
 // import SubHeading from "@/components/ui/subheading/SubHeading";
-import Vector from "@/assets/icons/Vector.svg";
-import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
 import BlogsCards from "./BlogsCards";
-import VectorArrow from "@/components/ui/vector-arrow/VectorArrow";
+import CtaFlowLink from "@/components/ui/cta-flow/CtaFlowLink";
 
 const Blogs = () => {
   const { t } = useTranslation("translation", { keyPrefix: "blogs" });
@@ -34,15 +32,12 @@ const Blogs = () => {
       <BlogsCards />
 
       <div className="mt-12 flex justify-center ">
-        <Link
+        <CtaFlowLink
           href="/blogs"
-          className="flex items-center gap-2 shadow-control-inset  rounded-full border border-white/10 bg-white/5 px-6 py-3 text-lg font-medium text-white/80 transition hover:bg-white/10 hover:text-white"
-        >
-          <span>{t("allBlogsButton")}</span>
-          <span className="flex h-4 w-4 shrink-0 items-center justify-center">
-            <VectorArrow className="h-3 w-3" />
-          </span>
-        </Link>
+          label={t("allBlogsButton")}
+          arrowClassName="h-3 w-3"
+          className="flex items-center gap-2 shadow-control-inset rounded-full border border-white/10 bg-white/5 px-6 py-3 text-lg font-medium text-white/80 transition hover:bg-white/10 hover:text-white"
+        />
       </div>
     </section>
   );

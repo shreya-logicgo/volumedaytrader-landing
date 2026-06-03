@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
-import VectorArrow from "@/components/ui/vector-arrow/VectorArrow";
+import CtaFlowLink from "@/components/ui/cta-flow/CtaFlowLink";
 import Heading from "@/components/ui/heading/Heading";
 import BlogCard from "./BlogCard";
 import type { BlogPost } from "./blogPosts";
@@ -24,13 +24,12 @@ export default function SimilarBlogs({ posts }: SimilarBlogsProps) {
           text={t("detail.similarBlogs")}
         />
 
-        <Link
+        <CtaFlowLink
           href="/blogs"
+          label={t("detail.allBlogs")}
+          arrowClassName="h-3.5 w-3.5 sm:h-4 sm:w-4"
           className="inline-flex items-center gap-2 rounded-full bg-[#151032] px-4 py-2 text-sm font-medium text-white shadow-[inset_0px_1.41px_3.18px_0px_rgba(255,255,255,0.5)] transition hover:bg-[#1a1440] sm:text-base"
-        >
-          {t("detail.allBlogs")}
-          <VectorArrow className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-        </Link>
+        />
       </div>
 
       <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3 xl:justify-between">

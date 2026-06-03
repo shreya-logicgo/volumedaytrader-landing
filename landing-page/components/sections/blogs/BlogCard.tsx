@@ -3,10 +3,12 @@
 import Image, { type StaticImageData } from "next/image"
 import Link from "next/link"
 import { useState } from "react"
+import CtaFlowLabel from "@/components/ui/cta-flow/CtaFlowLabel"
+import VectorArrow from "@/components/ui/vector-arrow/VectorArrow"
+import { getCtaArrowDelayMs } from "@/lib/motion/flow-text-motion"
 
 const REVEAL_EASE = "cubic-bezier(0.22, 1, 0.36, 1)"
 const IMAGE_REVEAL_MS = "1100ms"
-const LABEL_COLOR_MS = "450ms"
 const UNDERLINE_MS = "750ms"
 
 export type BlogCardProps = {
@@ -30,50 +32,27 @@ function BlogLearnMore({
   return (
     <Link
       href={href}
-      className="relative flex w-fit cursor-pointer items-center gap-2 no-underline"
+      className="cta-flow relative flex w-fit cursor-pointer items-center gap-2 no-underline"
+      style={{
+        ["--cta-arrow-delay" as string]: `${getCtaArrowDelayMs(label.length)}ms`,
+      }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <span
-        className="text-base"
+      <CtaFlowLabel
+        label={label}
+        hovered={hovered}
+        shadowColor="#989898"
+        className="text-base text-[#989898]"
         style={{
           fontFamily: "'Inter Tight', sans-serif",
-          color: hovered ? "#ffffff" : "#989898",
-          transition: `color ${LABEL_COLOR_MS} ease`,
+          color: "#989898",
         }}
-      >
-        {label}
-      </span>
+      />
 
-      <div className="flex items-center justify-center">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="21"
-          height="21"
-          viewBox="0 0 21 21"
-          fill="none"
-          aria-hidden
-          style={{
-            color: hovered ? "#ffffff" : "#989898",
-            transition: `color ${LABEL_COLOR_MS} ease`,
-          }}
-        >
-          <path
-            d="M15.6183 10.1309H4.2207"
-            stroke="currentColor"
-            strokeWidth="1.68852"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M10.9746 15.1966C10.9746 15.1966 16.0402 11.4659 16.0402 10.131C16.0402 8.79606 10.9746 5.06543 10.9746 5.06543"
-            stroke="currentColor"
-            strokeWidth="1.68852"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </div>
+      <span className="inline-flex shrink-0 text-[#989898]">
+        <VectorArrow className="h-[21px] w-[21px]" />
+      </span>
 
       <span
         className="absolute bottom-0 left-0 h-px bg-white"

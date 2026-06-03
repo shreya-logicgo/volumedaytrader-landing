@@ -593,6 +593,33 @@
     transition: transform 0.3s ease-in-out 0.1s;
   }
 
+  /* CTA flow — preserve arrow motion; delay until label flow completes */
+  .cta-flow .vector-arrow__svg,
+  .cta-flow .vector-arrow__svg--copy {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .cta-flow:hover .vector-arrow__svg:first-of-type,
+  .cta-flow:focus-visible .vector-arrow__svg:first-of-type {
+    transform: translate(150%, -150%);
+    transition: transform 0.3s ease-in-out var(--cta-arrow-delay, 336ms);
+  }
+
+  .cta-flow:hover .vector-arrow__svg--copy,
+  .cta-flow:focus-visible .vector-arrow__svg--copy {
+    transform: translate(0);
+    transition: transform 0.3s ease-in-out var(--cta-arrow-delay, 336ms);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta-flow .flow-text__letters > span,
+    .cta-flow:hover .vector-arrow__svg,
+    .cta-flow:focus-visible .vector-arrow__svg {
+      transform: translate3d(0, 0, 0) !important;
+      transition: none !important;
+    }
+  }
+
   /* Premium blog card — light streak base (motion via GSAP) */
   .blog-card-light-streak {
     position: absolute;
