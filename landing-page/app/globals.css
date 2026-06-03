@@ -132,7 +132,13 @@
   }
 
   .badge-text {
-    @apply text-base font-medium leading-6 text-center text-white;
+    @apply text-base font-normal leading-6 text-center;
+    font-family: var(--font-rethink);
+  }
+
+  .badge-pill {
+    @apply relative z-10 inline-flex shrink-0 items-center justify-center rounded-full bg-[#0D082B] px-3 py-1.5 text-xs font-normal whitespace-nowrap text-white shadow-[0px_1.41px_3.18px_0px_#FFFFFF80_inset] sm:px-5 sm:py-2.5 sm:text-base md:px-6 md:py-3 md:text-xl;
+    font-family: var(--font-rethink);
   }
 
   /* Heading */
@@ -157,7 +163,8 @@
 
   /* Badge arc background wrapper — full 717×268 graphic, no clipping */
   .badge-wrap {
-    @apply relative mx-auto w-full min-w-0 max-w-[717px] overflow-visible;
+    @apply relative mx-auto w-full min-w-0 max-w-[717px] overflow-visible font-normal;
+    font-family: var(--font-rethink);
   }
 
   /*
@@ -454,7 +461,8 @@
 
   /* SectionTitleWrap — Growra-style title block */
   .section-title-wrap {
-    @apply mx-auto  flex w-full max-w-[min(100%,56rem)] flex-col items-center gap-4  text-center  sm:gap-5 sm:px-4 md:gap-6;
+    @apply mx-auto flex w-full max-w-[min(100%,56rem)] flex-col items-center gap-4 text-center font-normal sm:gap-5 sm:px-4 md:gap-6;
+    font-family: var(--font-rethink);
   }
 
   .section-title-wrap__heading {
