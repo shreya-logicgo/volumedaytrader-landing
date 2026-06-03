@@ -8,7 +8,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Logo from '../../../assets/logo/logo.svg'
 import { useLanguage } from '@/hooks/use-language'
 import { useTranslation } from 'react-i18next'
-import { scrollToSectionId } from '@/lib/scroll'
+import { scrollToSectionId, scrollToTop } from '@/lib/scroll'
 import VectorArrow from '@/components/ui/vector-arrow/VectorArrow'
 import NavLink from './Navlink'
 
@@ -118,7 +118,7 @@ export default function Navbar() {
     }
 
     event.preventDefault()
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    scrollToTop()
   }
 
   const handleNavLinkClick = (

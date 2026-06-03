@@ -81,6 +81,15 @@
     scroll-padding-top: var(--scroll-anchor-offset);
   }
 
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  html.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
   @media (min-width: 768px) {
     html {
       scroll-padding-top: var(--scroll-anchor-offset-md);
