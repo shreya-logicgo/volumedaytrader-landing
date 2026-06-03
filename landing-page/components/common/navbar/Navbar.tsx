@@ -29,7 +29,6 @@ const languages = [
 export default function Navbar() {
   const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
-  const [compactDesktop, setCompactDesktop] = useState(false)
   const [langMenuOpen, setLangMenuOpen] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const langRef = useRef<HTMLDivElement>(null)
@@ -77,12 +76,6 @@ export default function Navbar() {
   }, [])
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(min-width: 1280px) and (max-width: 1500px)')
-
-    const syncCompactDesktop = () => {
-      setCompactDesktop(mediaQuery.matches)
-    }
-
     const onResize = () => {
       if (window.innerWidth >= 1280) {
         setMobileOpen(false)
@@ -90,21 +83,8 @@ export default function Navbar() {
       }
     }
 
-    syncCompactDesktop()
-    mediaQuery.addEventListener('change', syncCompactDesktop)
-    syncCompactDesktop()
-    mediaQuery.addEventListener('change', syncCompactDesktop)
     window.addEventListener('resize', onResize)
-
-    return () => {
-      mediaQuery.removeEventListener('change', syncCompactDesktop)
-      window.removeEventListener('resize', onResize)
-    }
-
-    return () => {
-      mediaQuery.removeEventListener('change', syncCompactDesktop)
-      window.removeEventListener('resize', onResize)
-    }
+    return () => window.removeEventListener('resize', onResize)
   }, [])
 
   useLayoutEffect(() => {
@@ -164,22 +144,24 @@ export default function Navbar() {
   return (
     <header className="fixed left-0 top-5 z-50 w-full pointer-events-none md:top-7">
       <div className="relative mx-auto w-full max-w-[1920px] px-4 sm:px-6 lg:px-8 pointer-events-none">
-       
-
-        <nav
-          className={`pointer-events-auto relative mx-auto flex min-h-[68px] items-center gap-3 rounded-full border px-4 py-2 text-[15px] font-medium tracking-[-0.01em] backdrop-blur-2xl will-change-[width,box-shadow,background-color,border-color,transform] transition-[width,box-shadow,background-color,border-color,transform] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] md:min-h-[76px] md:px-4 md:pl-8 xl:text-[15px] 2xl:text-[18px] ${
-            scrolled
-              ? compactDesktop
-                ? 'w-[86%] border-white/10 bg-[#151032]/90 shadow-[0_24px_80px_rgba(0,0,0,0.45)] xl:px-3 xl:pl-6'
-                : 'w-[82%] border-white/10 bg-[#151032]/90 shadow-[0_24px_80px_rgba(0,0,0,0.45)]'
-              : 'w-full border-card-border bg-[#151032]/70 shadow-[0_18px_60px_rgba(0,0,0,0.28)]'
-          }`}
+        <motion.nav
+          animate={{
+            width: scrolled ? '85.375%' : '100%',
+            backgroundColor: scrolled ? 'rgba(21, 16, 50, 0.9)' : 'rgba(21, 16, 50, 0.7)',
+          }}
+          transition={{
+            type: 'spring',
+            stiffness: 200,
+            damping: 50,
+          }}
+          style={{ willChange: 'width' }}
+          className="pointer-events-auto relative mx-auto flex min-h-[68px] items-center gap-2.5 rounded-full border border-card-border px-4 py-2 text-[15px] font-normal tracking-[-0.01em] shadow-[0_18px_60px_rgba(0,0,0,0.28)] backdrop-blur-2xl md:min-h-[76px] md:pl-8 xl:gap-2.5 xl:text-[13px] min-[1366px]:text-[14px] min-[1440px]:gap-3 min-[1440px]:text-[14px] 2xl:gap-3 2xl:text-[15px] min-[1920px]:text-[18px]"
         >
           <Link
             href="/"
             aria-label="home"
             onClick={handleLogoClick}
-            className="relative flex h-11 w-auto shrink-0 items-center justify-start overflow-hidden cursor-pointer xl:w-[224px] 2xl:w-[240px]"
+            className="relative flex h-11 w-auto shrink-0 items-center justify-start overflow-hidden cursor-pointer xl:w-[240px]"
           >
             <span className="flex xl:hidden">
               <Image
@@ -230,33 +212,33 @@ export default function Navbar() {
             </span>
           </Link>
 
-          <ul className="hidden min-w-0 flex-1 items-center justify-center gap-3 px-2 text-secondary-text xl:flex xl:gap-4 2xl:gap-6">
+          <ul className="hidden min-w-0 flex-1 flex-nowrap items-center justify-center gap-4 overflow-visible px-1 text-secondary-text xl:flex min-[1440px]:gap-5 2xl:gap-6 min-[1920px]:gap-8">
             {navLinks.map((link) => {
               const isActive = isNavLinkActive(link)
 
               return (
-                <li key={link.id}>
+                <li key={link.id} className="shrink-0">
                   <NavLink
                     href={link.href}
                     label={link.label}
                     active={isActive}
                     onClick={(event) => handleNavLinkClick(event, link.href)}
-                    className={`relative max-w-[8.25rem] rounded-full px-1 py-1 text-center leading-tight transition-colors duration-300 ${compactDesktop ? 'xl:max-w-[7.25rem] xl:px-0.5' : '2xl:max-w-none 2xl:whitespace-nowrap'}`}
+                    className="relative whitespace-nowrap rounded-full px-0.5 py-1 text-center leading-tight transition-colors duration-300 min-[1440px]:px-1"
                   />
                 </li>
               )
             })}
           </ul>
 
-          <div className="hidden h-11 shrink-0 items-center justify-end gap-3 xl:flex xl:w-[224px] xl:gap-4 2xl:w-[240px]">
+          <div className="hidden h-11 shrink-0 items-center justify-end gap-3 xl:flex xl:w-[240px]">
             <div
               ref={langRef}
-              className={`relative flex h-11 shrink-0 items-center justify-center rounded-full border border-white/5 bg-white/5 transition-colors duration-300 hover:bg-white/10 ${compactDesktop ? 'min-w-[88px] px-2.5' : 'min-w-[96px] px-3'}`}
+              className="relative flex h-11 shrink-0 items-center justify-center rounded-full border border-white/5 bg-white/5 px-2.5 transition-colors duration-300 hover:bg-white/10 min-[1440px]:min-w-[96px] min-[1440px]:px-3 xl:min-w-[88px]"
             >
               <button
                 type="button"
                 onClick={() => setLangMenuOpen((value) => !value)}
-                className={`relative flex w-full cursor-pointer items-center justify-center gap-2 whitespace-nowrap text-[14px] font-medium text-white ${compactDesktop ? 'pr-4 xl:text-[14px]' : 'pr-5 xl:pr-6 xl:text-[15px]'}`}
+                className="relative flex w-full cursor-pointer items-center justify-center gap-2 whitespace-nowrap pr-4 text-[13px] font-medium text-white min-[1440px]:pr-5 min-[1440px]:text-[14px] xl:pr-4 2xl:pr-6 2xl:text-[15px]"
                 aria-label="Select language"
                 aria-expanded={langMenuOpen}
               >
@@ -310,7 +292,7 @@ export default function Navbar() {
 
             <Link
               href="https://volumedaytrader.com/login/"
-              className={`inline-flex h-11 shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-full bg-tab-active text-[14px] font-medium text-white shadow-[inset_0px_1.41px_3.18px_0px_rgba(255,255,255,0.5)] transition-colors duration-300 hover:bg-[#f52b31] ${compactDesktop ? 'px-3.5 xl:px-4 xl:text-[14px]' : 'px-4 xl:px-5 xl:text-[15px]'}`}
+              className="inline-flex h-11 shrink-0 items-center justify-center gap-1 whitespace-nowrap rounded-full bg-tab-active px-3.5 text-[13px] font-medium text-white shadow-[inset_0px_1.41px_3.18px_0px_rgba(255,255,255,0.5)] transition-colors duration-300 hover:bg-[#f52b31] min-[1440px]:px-4 min-[1440px]:text-[14px] 2xl:px-5 2xl:text-[15px]"
             >
               <span>{t('navbar.signIn')}</span>
               <VectorArrow className="h-3 w-3" />
@@ -403,7 +385,7 @@ export default function Navbar() {
               </motion.div>
             )}
           </AnimatePresence>
-        </nav>
+        </motion.nav>
       </div>
     </header>
   )
