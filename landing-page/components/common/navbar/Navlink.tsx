@@ -28,13 +28,11 @@ export default function NavLink({ href, label, onClick, className, active = fals
       onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className={cn(className)}
+      className={cn("font-normal", className)}
       style={{
-   
-        color: active ? "white" : "#A7ADBE",
+        color: "#A7ADBE",
         padding: "0.06em 0",
         textDecoration: "none",
-        transition: "color 0.3s",
         display: "inline-flex",
         alignItems: "center",
         lineHeight: 1.08,
