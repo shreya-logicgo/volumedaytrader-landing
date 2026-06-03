@@ -4,7 +4,6 @@ import Image from 'next/image'
 import React, { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { cn } from '@/lib/utils'
 
 interface IndicatorSlide {
   title: string
@@ -19,6 +18,9 @@ interface IndicatorSystemCarousalProps {
   slides?: IndicatorSlide[]
   className?: string
 }
+
+const carouselNavButtonClass =
+  'glass-surface flex shrink-0 cursor-pointer items-center justify-center rounded-full text-white transition-opacity hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40 h-10 w-10 sm:h-11 sm:w-11 md:h-11 md:w-11'
 
 const defaultSlides: IndicatorSlide[] = [
   {
@@ -178,11 +180,7 @@ const IndicatorSystemCarousal = ({
           onClick={() => canGoPrev && setActiveIndex((prev) => prev - 1)}
           disabled={!canGoPrev}
           aria-label="Previous slide"
-          className={cn(
-            'control-button flex shrink-0 cursor-pointer items-center justify-center rounded-full text-white transition-opacity',
-            'h-10 w-10 disabled:cursor-not-allowed disabled:opacity-40',
-            'sm:h-11 sm:w-11 md:h-11 md:w-11'
-          )}
+          className={carouselNavButtonClass}
         >
           <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
         </button>
@@ -191,11 +189,7 @@ const IndicatorSystemCarousal = ({
           onClick={() => canGoNext && setActiveIndex((prev) => prev + 1)}
           disabled={!canGoNext}
           aria-label="Next slide"
-          className={cn(
-            'control-button flex shrink-0 cursor-pointer items-center justify-center rounded-full text-white transition-opacity',
-            'h-10 w-10 disabled:cursor-not-allowed disabled:opacity-40',
-            'sm:h-11 sm:w-11 md:h-11 md:w-11'
-          )}
+          className={carouselNavButtonClass}
         >
           <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
         </button>

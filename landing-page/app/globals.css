@@ -81,6 +81,15 @@
     scroll-padding-top: var(--scroll-anchor-offset);
   }
 
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  html.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
   @media (min-width: 768px) {
     html {
       scroll-padding-top: var(--scroll-anchor-offset-md);
@@ -102,9 +111,34 @@
 
 @layer components {
 
-  /* Badge */
+  /* Glass surface — shared by badge pill and circular controls */
+  .glass-surface {
+    position: relative;
+    overflow: clip;
+    border: 0.0625rem solid #fff3;
+    background-color: #0d082b;
+    box-shadow: inset 0 4px 8px #f4f4fe40;
+  }
+
+  /* Badge pill — glassmorphism (matches .badge_element from design) */
+  .badge-element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5rem;
+    color: #fff;
+  }
+
   .badge-text {
-    @apply text-base font-medium leading-6 text-center;
+    @apply text-base font-normal leading-6 text-center;
+    font-family: var(--font-rethink);
+  }
+
+  .badge-pill {
+    @apply relative z-10 inline-flex shrink-0 items-center justify-center rounded-full bg-[#0D082B] px-3 py-1.5 text-xs font-normal whitespace-nowrap text-white shadow-[0px_1.41px_3.18px_0px_#FFFFFF80_inset] sm:px-5 sm:py-2.5 sm:text-base md:px-6 md:py-3 md:text-xl;
+    font-family: var(--font-rethink);
   }
 
   /* Heading */
@@ -129,7 +163,8 @@
 
   /* Badge arc background wrapper — full 717×268 graphic, no clipping */
   .badge-wrap {
-    @apply relative mx-auto w-full min-w-0 max-w-[717px] overflow-visible;
+    @apply relative mx-auto w-full min-w-0 max-w-[717px] overflow-visible font-normal;
+    font-family: var(--font-rethink);
   }
 
   /*
@@ -426,7 +461,8 @@
 
   /* SectionTitleWrap — Growra-style title block */
   .section-title-wrap {
-    @apply mx-auto  flex w-full max-w-[min(100%,56rem)] flex-col items-center gap-4  text-center  sm:gap-5 sm:px-4 md:gap-6;
+    @apply mx-auto flex w-full max-w-[min(100%,56rem)] flex-col items-center gap-4 text-center font-normal sm:gap-5 sm:px-4 md:gap-6;
+    font-family: var(--font-rethink);
   }
 
   .section-title-wrap__heading {
@@ -564,6 +600,33 @@
   .group:hover .vector-arrow__svg--copy {
     transform: translate(0);
     transition: transform 0.3s ease-in-out 0.1s;
+  }
+
+  /* CTA flow — preserve arrow motion; delay until label flow completes */
+  .cta-flow .vector-arrow__svg,
+  .cta-flow .vector-arrow__svg--copy {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .cta-flow:hover .vector-arrow__svg:first-of-type,
+  .cta-flow:focus-visible .vector-arrow__svg:first-of-type {
+    transform: translate(150%, -150%);
+    transition: transform 0.3s ease-in-out var(--cta-arrow-delay, 336ms);
+  }
+
+  .cta-flow:hover .vector-arrow__svg--copy,
+  .cta-flow:focus-visible .vector-arrow__svg--copy {
+    transform: translate(0);
+    transition: transform 0.3s ease-in-out var(--cta-arrow-delay, 336ms);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta-flow .flow-text__letters > span,
+    .cta-flow:hover .vector-arrow__svg,
+    .cta-flow:focus-visible .vector-arrow__svg {
+      transform: translate3d(0, 0, 0) !important;
+      transition: none !important;
+    }
   }
 
   /* Premium blog card — light streak base (motion via GSAP) */

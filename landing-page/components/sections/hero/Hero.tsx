@@ -1,10 +1,9 @@
 "use client"
 
-import Link from 'next/link'
 import Image from "next/image"
 import { useTranslation } from "react-i18next"
 import HeroChart from "./HeroChart"
-import VectorArrow from "@/components/ui/vector-arrow/VectorArrow";
+import CtaFlowLink from "@/components/ui/cta-flow/CtaFlowLink";
 import { Particles } from "@/components/ui/particles";
 
 
@@ -120,20 +119,18 @@ export default function Hero() {
 
                 {/* CTAs */}
                 <div className="mx-auto mt-5 flex w-full max-w-md flex-col items-stretch justify-center gap-3 sm:mt-6 sm:max-w-lg sm:flex-row sm:items-center sm:justify-center sm:gap-4 2xl:mt-8 2xl:max-w-none">
-                    <Link
+                    <CtaFlowLink
                         href="https://volumedaytrader.com/login/"
+                        label={t("hero.primaryButton")}
+                        arrowClassName="h-3 w-3"
                         className="btn-primary font-medium w-full justify-center px-5 py-2.5 text-sm sm:w-auto sm:px-6 sm:py-3 sm:text-base 2xl:inline-flex 2xl:px-7 2xl:text-lg shadow-control-inset cursor-pointer"
-                    >
-                        {t("hero.primaryButton")}
-                        <VectorArrow className="h-3 w-3" />
-                    </Link>
-                    <Link
+                    />
+                    <CtaFlowLink
                         href="https://volumedaytrader.com/login/"
+                        label={t("hero.secondaryButton")}
+                        arrowClassName="h-3 w-3"
                         className="inline-flex w-full items-center justify-center shadow-control-inset gap-2 rounded-full border border-[#2B2A56] bg-[#0D082B]/80 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:border-[#3d3c6e] sm:w-auto sm:px-6 sm:text-base 2xl:px-7 2xl:py-3 2xl:text-lg cursor-pointer"
-                    >
-                        {t("hero.secondaryButton")}
-                        <VectorArrow className="h-3 w-3" />
-                    </Link>
+                    />
                 </div>
 
                 {/* Stacked tags below content until 2xl */}
