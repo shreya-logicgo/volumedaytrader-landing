@@ -1,14 +1,100 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import Image from "next/image"
-import { Play } from "lucide-react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { Pause, Play, Volume2, VolumeX } from "lucide-react"
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion"
+import { useLanguage } from "@/hooks/use-language"
+import type { Language } from "@/lib/i18n/settings"
+
+const VIMEO_BY_LANGUAGE: Record<
+  Language,
+  { id: string; hash?: string }
+> = {
+  en: { id: "1001970850" },
+  pl: { id: "950095166", hash: "b5b4640389" },
+}
+
+function buildVimeoEmbedSrc({ id, hash }: { id: string; hash?: string }) {
+  const params = new URLSearchParams({
+    badge: "0",
+    autopause: "0",
+    title: "0",
+    byline: "0",
+    portrait: "0",
+    controls: "0",
+    dnt: "1",
+  })
+  if (hash) params.set("h", hash)
+  return `https://player.vimeo.com/video/${id}?${params.toString()}`
+}
+
+type VimeoPlayerInstance = {
+  play: () => Promise<void>
+  pause: () => Promise<void>
+  getPaused: () => Promise<boolean>
+  setVolume: (volume: number) => Promise<number>
+  getVolume: () => Promise<number>
+  on: (event: string, callback: () => void) => void
+  off: (event: string, callback: () => void) => void
+  destroy: () => void
+}
+
+type VimeoPlayerConstructor = new (
+  element: HTMLIFrameElement
+) => VimeoPlayerInstance
+
+declare global {
+  interface Window {
+    Vimeo?: {
+      Player: VimeoPlayerConstructor
+    }
+  }
+}
+
+let vimeoApiPromise: Promise<void> | null = null
+
+function loadVimeoPlayerApi() {
+  if (typeof window === "undefined") return Promise.resolve()
+  if (window.Vimeo?.Player) return Promise.resolve()
+  if (vimeoApiPromise) return vimeoApiPromise
+
+  vimeoApiPromise = new Promise((resolve, reject) => {
+    const existing = document.querySelector<HTMLScriptElement>(
+      'script[data-vimeo-player-api="true"]'
+    )
+    if (existing) {
+      existing.addEventListener("load", () => resolve(), { once: true })
+      existing.addEventListener("error", () => reject(), { once: true })
+      return
+    }
+
+    const script = document.createElement("script")
+    script.src = "https://player.vimeo.com/api/player.js"
+    script.async = true
+    script.dataset.vimeoPlayerApi = "true"
+    script.onload = () => resolve()
+    script.onerror = () => reject(new Error("Failed to load Vimeo Player API"))
+    document.body.appendChild(script)
+  })
+
+  return vimeoApiPromise
+}
 
 export default function HeroChart() {
   const chartRef = useRef<HTMLElement | null>(null)
+  const iframeRef = useRef<HTMLIFrameElement | null>(null)
+  const playerRef = useRef<VimeoPlayerInstance | null>(null)
   const reduceMotion = useReducedMotion()
+  const { currentLanguage } = useLanguage()
   const [maxTilt, setMaxTilt] = useState(18)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [isMuted, setIsMuted] = useState(false)
+  const [playerReady, setPlayerReady] = useState(false)
+
+  const vimeoSrc = useMemo(
+    () => buildVimeoEmbedSrc(VIMEO_BY_LANGUAGE[currentLanguage]),
+    [currentLanguage]
+  )
 
   useEffect(() => {
     const mobileQuery = window.matchMedia("(max-width: 767px)")
@@ -51,8 +137,97 @@ export default function HeroChart() {
   const y = useSpring(yRaw, { stiffness: 95, damping: 30, mass: 1 })
   const scale = useSpring(scaleRaw, { stiffness: 100, damping: 32, mass: 0.9 })
 
+  useEffect(() => {
+    const iframe = iframeRef.current
+    if (!iframe) return
+
+    let cancelled = false
+    let onPlay: (() => void) | undefined
+    let onPause: (() => void) | undefined
+    let onVolumeChange: (() => void) | undefined
+
+    setPlayerReady(false)
+    setIsPlaying(false)
+
+    const initPlayer = async () => {
+      try {
+        await loadVimeoPlayerApi()
+        if (cancelled || !iframeRef.current || !window.Vimeo?.Player) return
+
+        playerRef.current?.destroy()
+        const player = new window.Vimeo.Player(iframeRef.current)
+        playerRef.current = player
+
+        onPlay = () => setIsPlaying(true)
+        onPause = () => setIsPlaying(false)
+        onVolumeChange = async () => {
+          const volume = await player.getVolume()
+          setIsMuted(volume === 0)
+        }
+
+        player.on("play", onPlay)
+        player.on("pause", onPause)
+        player.on("volumechange", onVolumeChange)
+
+        const [paused, volume] = await Promise.all([
+          player.getPaused(),
+          player.getVolume(),
+        ])
+
+        if (cancelled) return
+        setIsPlaying(!paused)
+        setIsMuted(volume === 0)
+        setPlayerReady(true)
+      } catch {
+        if (!cancelled) setPlayerReady(false)
+      }
+    }
+
+    void initPlayer()
+
+    return () => {
+      cancelled = true
+      if (playerRef.current && onPlay && onPause && onVolumeChange) {
+        playerRef.current.off("play", onPlay)
+        playerRef.current.off("pause", onPause)
+        playerRef.current.off("volumechange", onVolumeChange)
+        playerRef.current.destroy()
+        playerRef.current = null
+      }
+    }
+  }, [vimeoSrc])
+
+  const handlePlayPause = useCallback(async () => {
+    const player = playerRef.current
+    if (!player || !playerReady) return
+
+    const paused = await player.getPaused()
+    if (paused) {
+      await player.play()
+    } else {
+      await player.pause()
+    }
+  }, [playerReady])
+
+  const handleMuteToggle = useCallback(async () => {
+    const player = playerRef.current
+    if (!player || !playerReady) return
+
+    const volume = await player.getVolume()
+    if (volume === 0) {
+      await player.setVolume(1)
+      setIsMuted(false)
+    } else {
+      await player.setVolume(0)
+      setIsMuted(true)
+    }
+  }, [playerReady])
+
   return (
-    <section ref={chartRef} className="relative z-20 mx-auto mt-8 w-full px-3 sm:mt-10 sm:px-4 md:mt-12 md:px-6 lg:mt-10 lg:px-4">
+    <section
+      ref={chartRef}
+      className="relative z-20 mx-auto mt-8 w-full px-3 sm:mt-10 sm:px-4 md:mt-12 md:px-6 lg:mt-10 lg:px-4"
+    >
       <div
         className="relative mx-auto max-w-[1200px]"
         style={{ perspective: "1200px", transformStyle: "preserve-3d" }}
@@ -80,48 +255,56 @@ export default function HeroChart() {
           <div
             aria-hidden
             className="pointer-events-none absolute inset-x-[6%] -bottom-8 -z-10 h-20 rounded-full"
-            style={{
-              // background: "rgba(255, 0, 0, 0.15)",
-              // filter: "blur(80px)",
-              transform: "translateZ(-40px)",
-            }}
+            style={{ transform: "translateZ(-40px)" }}
           />
 
-          <div
-            className="relative mx-auto aspect-video w-full overflow-hidden rounded-2xl sm:rounded-3xl"
-            style={{ position: "relative" }}
-          >
-            <Image
-              src="/assets/images/video_thumbnail.jpg"
-              alt="Trading platform preview"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1200px"
-              priority
+          <div className="relative mx-auto aspect-video w-full overflow-hidden rounded-2xl bg-[#050024] sm:rounded-3xl">
+            <iframe
+              key={vimeoSrc}
+              ref={iframeRef}
+              src={vimeoSrc}
+              title={
+                currentLanguage === "pl"
+                  ? "Volume Day Trader — wideo (PL)"
+                  : "Volume Day Trader — video (EN)"
+              }
+              className="absolute inset-0 h-full w-full"
+              allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+              allowFullScreen
             />
 
-            <div className="absolute inset-0 bg-[#050024]/20" aria-hidden />
-
-            <div className="absolute inset-0 flex items-center justify-center px-4">
+            <div className="absolute bottom-3 right-3 z-10 flex items-center gap-2 sm:bottom-4 sm:right-4">
               <button
                 type="button"
-                className="inline-flex h-11 items-center gap-2 rounded-full bg-white/95 pl-1.5 pr-4 shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-transform hover:scale-[1.02] sm:h-12 sm:gap-3 sm:pl-2 sm:pr-5 lg:h-14 lg:pr-6 cursor-pointer"
-                aria-label="Watch demo"
+                onClick={() => void handlePlayPause()}
+                disabled={!playerReady}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-[#151032]/90 text-white shadow-control-inset backdrop-blur-sm transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 sm:h-11 sm:w-11"
+                aria-label={isPlaying ? "Pause video" : "Play video"}
               >
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-[#ED1F24] to-[#ff4d52] sm:h-9 sm:w-9 lg:h-10 lg:w-10">
-                  <Play className="ml-0.5 h-3.5 w-3.5 fill-white text-white sm:h-4 sm:w-4" />
-                </span>
-                <span className="text-sm font-semibold text-[#1a1a1a] lg:text-base">Watch Demo</span>
+                {isPlaying ? (
+                  <Pause className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
+                ) : (
+                  <Play className="ml-0.5 h-4 w-4 fill-current sm:h-[18px] sm:w-[18px]" />
+                )}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => void handleMuteToggle()}
+                disabled={!playerReady}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-[#151032]/90 text-white shadow-control-inset backdrop-blur-sm transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 sm:h-11 sm:w-11"
+                aria-label={isMuted ? "Unmute video" : "Mute video"}
+              >
+                {isMuted ? (
+                  <VolumeX className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
+                ) : (
+                  <Volume2 className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
+                )}
               </button>
             </div>
           </div>
         </motion.div>
       </div>
-
-      {/* <div
-        className="pointer-events-none absolute left-0 right-0 top-[calc(100%-3rem)] z-20 h-24 bg-gradient-to-t from-[#050024] via-[#050024]/80 to-transparent sm:top-[calc(100%-4rem)] sm:h-32"
-        aria-hidden
-      /> */}
     </section>
   )
 }
