@@ -118,7 +118,7 @@ export default function Navbar() {
     }
 
     event.preventDefault()
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    scrollToTop()
   }
 
   const handleNavLinkClick = (

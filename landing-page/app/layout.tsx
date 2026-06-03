@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import I18nProvider from "@/components/providers/i18n-provider";
+import SmoothScrollProvider from "@/components/providers/smooth-scroll-provider";
 import { Geist, Geist_Mono, Rethink_Sans } from "next/font/google";
 import "./globals.css";
 import Container from "@/components/layout/container/Container";
@@ -45,11 +46,13 @@ export default function RootLayout({
         className={`min-h-full flex flex-col ${rethinkSans.className}`}
       >
         <I18nProvider>
-          <SiteHorns />
-          <Container>
-            {children}
-          </Container>
-          <Footer />
+          <SmoothScrollProvider>
+            <SiteHorns />
+            <Container>
+              {children}
+            </Container>
+            <Footer />
+          </SmoothScrollProvider>
         </I18nProvider>
       </body>
     </html>

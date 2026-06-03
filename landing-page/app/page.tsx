@@ -30,7 +30,9 @@ export default function Page() {
       const sectionId = window.location.hash.replace(/^#/, "")
       if (!sectionId) return
       requestAnimationFrame(() => {
-        scrollToSectionId(sectionId)
+        requestAnimationFrame(() => {
+          scrollToSectionId(sectionId)
+        })
       })
     }
 
