@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useFaqStackReveal } from "@/components/ui/motion/useFaqStackReveal";
 import { Search, X } from "lucide-react";
 import Badge from "@/components/ui/badge/Badge";
 import SectionTitleWrap from "@/components/ui/heading/Sectiontitlewrap";
@@ -26,6 +27,7 @@ export default function FAQ() {
   ];
 
   const [searchTerm, setSearchTerm] = useState("");
+  const faqRevealRef = useRef<HTMLDivElement>(null);
 
   const filteredQuestions = QUESTIONS.filter((faq) => {
     const question = t(`faq.questions.${faq.key}.question`);
@@ -36,6 +38,10 @@ export default function FAQ() {
       answer.toLowerCase().includes(normalizedSearch)
     );
   });
+
+  const filteredKeys = filteredQuestions.map((faq) => faq.key).join(",");
+
+  useFaqStackReveal(faqRevealRef, {}, [filteredKeys]);
 
   return (
     <section id="faq" className="scroll-anchor-offset section-pb">
@@ -57,7 +63,10 @@ export default function FAQ() {
         />
       </div>
 
-      <div className="content-pt mx-auto flex max-w-4xl flex-col items-center gap-6 ">
+      <div
+        ref={faqRevealRef}
+        className="content-pt mx-auto flex max-w-4xl flex-col items-center gap-6"
+      >
         <div className="group relative w-full max-w-md">
           <div className="pointer-events-none absolute inset-y-0 left-3 z-10 flex items-center sm:left-4">
             <Search className="h-4 w-4 text-[#B8BDC9] transition-colors group-focus-within:text-white sm:h-5 sm:w-5" />
@@ -83,14 +92,19 @@ export default function FAQ() {
           ) : null}
         </div>
 
-        <div className="flex w-full max-w-3xl flex-col gap-3 sm:gap-4">
+        <div className="flex w-full max-w-3xl flex-col gap-3 overflow-visible sm:gap-4">
           {filteredQuestions.length > 0 ? (
             filteredQuestions.map((faq) => (
-              <FAQItem
+              <div
                 key={faq.key}
-                question={t(`faq.questions.${faq.key}.question`)}
-                answer={t(`faq.questions.${faq.key}.answer`)}
-              />
+                data-faq-reveal
+                className="origin-bottom will-change-transform"
+              >
+                <FAQItem
+                  question={t(`faq.questions.${faq.key}.question`)}
+                  answer={t(`faq.questions.${faq.key}.answer`)}
+                />
+              </div>
             ))
           ) : (
             <div className="px-4 py-10 text-center">
