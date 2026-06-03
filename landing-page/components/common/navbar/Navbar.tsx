@@ -8,7 +8,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Logo from '../../../assets/logo/logo.svg'
 import { useLanguage } from '@/hooks/use-language'
 import { useTranslation } from 'react-i18next'
-import { scrollToSectionId } from '@/lib/scroll'
+import { scrollToSectionId, scrollToTop } from '@/lib/scroll'
 import CtaFlowLink from '@/components/ui/cta-flow/CtaFlowLink'
 import NavLink from './Navlink'
 
