@@ -13,7 +13,7 @@ import PTACards from '@/components/sections/pta/PTACards'
 import SideGradients from '@/components/common/backgrounds/SideGradients'
 
 const navButtonClass =
-  'flex h-11 w-11 shrink-0 items-center hover:cursor-pointer justify-center rounded-full shadow-control-inset border border-[#2A2450] bg-[#161032] text-white transition-opacity hover:bg-[#1e1640] disabled:cursor-not-allowed disabled:opacity-35 sm:h-12 sm:w-12 2xl:h-14 2xl:w-14'
+  'glass-surface flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-white transition-opacity hover:cursor-pointer hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-35 sm:h-12 sm:w-12 2xl:h-14 2xl:w-14'
 
 type NavButtonProps = {
   direction: 'prev' | 'next'

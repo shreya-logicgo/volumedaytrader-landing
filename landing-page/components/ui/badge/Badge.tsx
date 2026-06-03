@@ -58,8 +58,8 @@ const Badge = ({
             />
           ) : null}
 
-          <div className={pillClasses}>
-            <span>{text}</span>
+          <div className="glass-surface badge-element relative z-10 shrink-0">
+            <span className="badge-text">{text}</span>
           </div>
 
           {showArrows ? (
