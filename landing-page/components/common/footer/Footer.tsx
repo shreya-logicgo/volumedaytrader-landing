@@ -50,8 +50,8 @@ const Footer = () => {
 
     return (
         <footer id="contact" className="scroll-anchor-offset relative overflow-x-clip pb-10">
+            {/* <Container> */}
             <FooterBackground />
-            <Container>
             <div className="relative z-10 mx-auto w-full min-w-0">
                 {/* CTA */}
                 <div className="relative overflow-hidden py-16">
@@ -62,7 +62,7 @@ const Footer = () => {
                             size={1}
                             color="#fff"
                             className="h-full w-full opacity-70"
-                        />
+                            />
                     </div>
                     <div className="space-y-5 px-2 sm:px-0 relative z-10">
                         <Heading text={t('footer.cta.title')} />
@@ -75,11 +75,11 @@ const Footer = () => {
                                 label={t('footer.cta.button')}
                                 arrowClassName="h-3 w-3"
                                 className="btn-primary shadow-control-inset mt-3"
-                            />
+                                />
                         </div>
                     </div>
                 </div>
-
+<Container>
                 {/* Footer Grid */}
                 <div className="grid min-w-0 grid-cols-1 gap-y-10 gap-x-8 pt-16 sm:pt-20 md:grid-cols-2 lg:grid-cols-[3fr_1fr_1fr_1fr] lg:gap-x-12 xl:pt-24">
                     {/* Left */}
@@ -214,8 +214,8 @@ const Footer = () => {
                         </p>
                     </div>
                 </div>
-            </div>
             </Container>
+            </div>
         </footer>
     )
 }
