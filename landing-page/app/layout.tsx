@@ -22,7 +22,7 @@ const rethinkSans = Rethink_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Volume Trader",
+  title: "Volume Day Trader",
   description: "Trading Platform",
   icons: {
     icon: [{ url: "/assets/images/Union.svg", type: "image/svg+xml" }],
