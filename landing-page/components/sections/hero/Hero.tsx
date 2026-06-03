@@ -163,7 +163,7 @@ export default function Hero() {
                         href="https://volumedaytrader.com/login/"
                         label={t("hero.secondaryButton")}
                         arrowClassName="h-3 w-3"
-                        className="inline-flex w-full items-center justify-center shadow-control-inset gap-2 rounded-full border border-[#2B2A56] bg-[#0D082B]/80 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:border-[#3d3c6e] sm:w-auto sm:px-6 sm:text-base 2xl:px-7 2xl:py-3 2xl:text-lg cursor-pointer"
+                        className="inline-flex w-full items-center justify-center shadow-control-inset gap-2 rounded-full border border-[#2B2A56] bg-[#0D082B]/80 px-5 py-3 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:border-[#3d3c6e] sm:w-auto sm:px-6 sm:text-base 2xl:px-7 2xl:py-3 2xl:text-lg cursor-pointer "
                     />
                 </div>
 
