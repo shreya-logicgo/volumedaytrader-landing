@@ -1,7 +1,6 @@
 "use client"
 
 import { gsap } from "gsap"
-import { Inter_Tight } from "next/font/google"
 import type { ReactNode } from "react"
 import { useLayoutEffect, useMemo, useRef } from "react"
 import { useTranslation } from "react-i18next"
@@ -9,11 +8,6 @@ import { useTranslation } from "react-i18next"
 import { cn } from "@/lib/utils"
 
 import { splitHeadingLines } from "./splitHeadingLines"
-
-const interTight = Inter_Tight({
-  subsets: ["latin"],
-  weight: ["400"],
-})
 
 export interface SectionTitleWrapProps {
   heading: string
@@ -169,7 +163,7 @@ export default function SectionTitleWrap({
   return (
     <div
       ref={rootRef}
-      className={cn("section-title-wrap xl:-mt-16 sm:-mt-13 max-sm:-mt-15 max-[530px]:-mt-7 ", interTight.className, className)}
+      className={cn("section-title-wrap xl:-mt-16 sm:-mt-13 max-sm:-mt-15 max-[530px]:-mt-7", className)}
     >
       <h2
         className={cn(
