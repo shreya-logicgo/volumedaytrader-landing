@@ -19,6 +19,8 @@ const Badge = ({
   className = '',
   ...rest
 }: BadgeProps) => {
+  const pillClasses = 'badge-pill'
+
   const arrowClasses =
     'relative z-10 h-3 w-[clamp(36px,11vw,88px)] shrink object-contain object-center sm:h-[18px] sm:w-[108px] md:h-5 md:w-[128px]'
 

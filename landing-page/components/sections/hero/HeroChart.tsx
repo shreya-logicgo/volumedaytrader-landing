@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { Pause, Play, Volume2, VolumeX } from "lucide-react"
-import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion"
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion"
 import { useLanguage } from "@/hooks/use-language"
 import type { Language } from "@/lib/i18n/settings"
 
@@ -129,13 +129,9 @@ export default function HeroChart() {
     offset: ["start end", "center center"],
   })
 
-  const rotateXRaw = useTransform(scrollYProgress, [0, 1], [maxTilt, 0])
-  const yRaw = useTransform(scrollYProgress, [0, 1], [80, 0])
-  const scaleRaw = useTransform(scrollYProgress, [0, 1], [0.92, 1])
-
-  const rotateX = useSpring(rotateXRaw, { stiffness: 90, damping: 28, mass: 0.95 })
-  const y = useSpring(yRaw, { stiffness: 95, damping: 30, mass: 1 })
-  const scale = useSpring(scaleRaw, { stiffness: 100, damping: 32, mass: 0.9 })
+  const rotateX = useTransform(scrollYProgress, [0, 1], [maxTilt, 0])
+  const y = useTransform(scrollYProgress, [0, 1], [80, 0])
+  const scale = useTransform(scrollYProgress, [0, 1], [0.92, 1])
 
   useEffect(() => {
     const iframe = iframeRef.current
@@ -246,6 +242,7 @@ export default function HeroChart() {
                   rotateX,
                   y,
                   scale,
+                  transformOrigin: "50% 100%",
                   transformStyle: "preserve-3d",
                   willChange: "transform",
                 }
