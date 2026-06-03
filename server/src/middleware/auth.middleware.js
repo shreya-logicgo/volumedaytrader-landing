@@ -33,4 +33,15 @@ function requireAuth(req, res, next) {
   }
 }
 
+/**
+ * Use after requireAuth on admin-only routes.
+ */
+function requireAdmin(req, res, next) {
+  if (!req.admin || req.admin.role !== "admin") {
+    return res.status(403).json({ error: "Admin access required" });
+  }
+  next();
+}
+
 module.exports = requireAuth;
+module.exports.requireAdmin = requireAdmin;

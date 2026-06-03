@@ -505,7 +505,17 @@
       "phonePlaceholder": "Twój numer telefonu",
       "message": "Wiadomość",
       "messagePlaceholder": "Napisz swoją wiadomość...",
-      "submit": "Wyślij"
+      "submit": "Wyślij",
+      "submitting": "Wysyłanie...",
+      "successMessage": "Twój e-mail został odebrany i utworzono zgłoszenie.",
+      "ticketLabel": "Zgłoszenie: {{ticket}}",
+      "errorMessage": "Coś poszło nie tak. Spróbuj ponownie później.",
+      "errors": {
+        "required": "To pole jest wymagane.",
+        "emailInvalid": "Podaj prawidłowy adres e-mail.",
+        "phoneInvalid": "Podaj prawidłowy numer telefonu dla wybranego kraju.",
+        "messageMin": "Wiadomość musi mieć co najmniej 10 znaków."
+      }
     }
   },
   "howIndicatorsWork": {

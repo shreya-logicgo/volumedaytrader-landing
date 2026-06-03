@@ -1,17 +1,21 @@
 # Brevo email setup
 
-## Option A — API key only (what you have now)
+## Option A — API key + verified sender (recommended)
 
-If your key starts with **`xkeysib-`**, put only that in `.env`:
+1. Brevo → **SMTP & API** → **API Keys** → create & copy key (`xkeysib-...`)
+2. Brevo → **Senders** → add & **verify** your email (e.g. `you@yourdomain.com`)
 
 ```env
-BREVO_SMTP_KEY=xkeysib-your-api-key-here
+BREVO_SENDER_EMAIL=you@yourdomain.com
+BREVO_SMTP_KEY=xkeysib-paste-your-real-key-here
 ```
 
-The app uses Brevo API and your **first verified sender** in Brevo.
+| Variable | Example | Role |
+|----------|---------|------|
+| `BREVO_SENDER_EMAIL` | any email | **From** address sent to Brevo |
+| `INQUIRY_NOTIFY_EMAIL` | `volumedaytrader@yopmail.com` | **To** — receives inquiry copies |
 
-1. Brevo → **SMTP & API** → **API Keys** → copy key (`xkeysib-...`)
-2. Brevo → **Senders** → add & **verify** your email (e.g. `abhishekvithani.logicgo@gmail.com`)
+**Using yopmail?** See **[YOPMAIL_SETUP.md](./YOPMAIL_SETUP.md)** — add `GMAIL_APP_PASSWORD` so emails reach yopmail inboxes.
 
 ---
 

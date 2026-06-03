@@ -1,8 +1,8 @@
 {
   "info": {
     "_postman_id": "vdt-auth-collection-001",
-    "name": "Volume Day Trader - Auth API",
-    "description": "Admin auth APIs for Volume Day Trader backend.\n\nImport → set `baseUrl` → run **Login** → other protected routes use `{{token}}` automatically.",
+    "name": "Volume Day Trader API",
+    "description": "All backend APIs: Health, Auth, Inquiries.\n\nImport → set `baseUrl`, `adminEmail`, `adminPassword` → run **Login** → protected routes use `{{token}}` automatically.\n\nDocs: server/docs/AUTH_API.md · server/docs/INQUIRY_API.md",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
@@ -29,6 +29,30 @@
     {
       "key": "resetSecret",
       "value": "your-ADMIN_RESET_SECRET"
+    },
+    {
+      "key": "lastTicketNumber",
+      "value": ""
+    },
+    {
+      "key": "inquiryFirstName",
+      "value": "John"
+    },
+    {
+      "key": "inquiryLastName",
+      "value": "Doe"
+    },
+    {
+      "key": "inquiryEmail",
+      "value": "john@example.com"
+    },
+    {
+      "key": "inquiryPhone",
+      "value": "1234567890"
+    },
+    {
+      "key": "inquiryMessage",
+      "value": "I would like more information about your indicators."
     }
   ],
   "item": [
@@ -229,6 +253,89 @@
               "path": ["api", "auth", "reset-password-emergency"]
             },
             "description": "Requires ADMIN_RESET_SECRET in server .env. Not for admin UI."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Inquiries",
+      "description": "Contact form / tickets — POST public, GET admin (Bearer JWT).",
+      "item": [
+        {
+          "name": "1. Submit inquiry (public)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "  const json = pm.response.json();",
+                  "  if (json.ticketNumber) {",
+                  "    pm.collectionVariables.set('lastTicketNumber', json.ticketNumber);",
+                  "  }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"{{inquiryFirstName}}\",\n  \"lastName\": \"{{inquiryLastName}}\",\n  \"email\": \"{{inquiryEmail}}\",\n  \"phone\": \"{{inquiryPhone}}\",\n  \"message\": \"{{inquiryMessage}}\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/inquiries",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "inquiries"]
+            },
+            "description": "POST /api/inquiries — no auth. Creates ticket + sends emails. Expect 201."
+          }
+        },
+        {
+          "name": "2. List all inquiries (admin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "  const json = pm.response.json();",
+                  "  pm.test('Has inquiries array', function () {",
+                  "    pm.expect(json.inquiries).to.be.an('array');",
+                  "  });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/inquiries",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "inquiries"]
+            },
+            "description": "GET /api/inquiries — Bearer JWT. Run Login first. Expect 200 with count + inquiries."
           }
         }
       ]

@@ -90,6 +90,10 @@
     scroll-behavior: auto !important;
   }
 
+  html.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
   @media (min-width: 768px) {
     html {
       scroll-padding-top: var(--scroll-anchor-offset-md);
