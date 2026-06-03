@@ -250,9 +250,7 @@ function PricingPlanCard({
   return (
     <article
       ref={cardRef}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className={`group pricing-card-rise min-w-0 cursor-pointer overflow-hidden rounded-3xl p-0.5 [transform:translateZ(0)] backface-hidden xl:max-h-fit ${
+      className={`pricing-card-rise min-w-0 overflow-hidden rounded-3xl p-0.5 [transform:translateZ(0)] backface-hidden xl:max-h-fit ${
         isHighlighted
           ? 'bg-service-accent shadow-[0_0_0_1px_rgba(255,46,46,0.2)_inset]'
           : 'bg-pricing-header'
@@ -291,11 +289,12 @@ function PricingPlanCard({
 
         <button
           type="button"
-          tabIndex={-1}
-          className={`cta-flow mt-5 flex w-full items-center justify-center rounded-full py-2.5 font-medium text-white shadow-[inset_0px_1px_3.18px_0px_#FFFFFF80] transition-colors duration-300 md:text-lg pointer-events-none ${
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          className={`cta-flow mt-5 flex w-full cursor-pointer items-center justify-center rounded-full border py-2.5 font-medium text-white shadow-[inset_0px_1px_3.18px_0px_#FFFFFF80] transition-colors duration-300 hover:border-transparent hover:bg-service-accent md:text-lg ${
             isHighlighted
-              ? 'border border-transparent bg-service-accent group-hover:opacity-90'
-              : 'border border-btn-border bg-signal-panel-bg group-hover:border-[#3d3c6e]'
+              ? 'border-transparent bg-service-accent'
+              : 'border-btn-border bg-signal-panel-bg'
           }`}
         >
           <CtaFlowLabel label={buttonLabel} hovered={hovered} />
