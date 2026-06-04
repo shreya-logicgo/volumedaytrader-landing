@@ -1,7 +1,8 @@
 'use client'
 
-import React, { useLayoutEffect, useRef } from 'react'
+import React, { useLayoutEffect, useRef, useState } from 'react'
 import Badge from '@/components/ui/badge/Badge'
+import CtaFlowLabel from '@/components/ui/cta-flow/CtaFlowLabel'
 import SectionTitleWrap from '@/components/ui/heading/Sectiontitlewrap'
 // import Heading from '@/components/ui/heading/Heading'
 // import SubHeading from '@/components/ui/subheading/SubHeading'
@@ -23,6 +24,7 @@ interface PricingPlan {
   features: string[]
   cta: string
   popular?: boolean
+  highlighted?: boolean
 }
 
 const plans: PricingPlan[] = [
@@ -85,6 +87,7 @@ const plans: PricingPlan[] = [
       'Access to the Community',
     ],
     cta: 'Buy Now',
+    highlighted: true,
   },
   {
     key: 'lifetimeAccess',
@@ -231,6 +234,96 @@ function usePricingCardRise(
   }, [])
 }
 
+function PricingPlanCard({
+  plan,
+  isHighlighted,
+  cardRef,
+}: {
+  plan: PricingPlan
+  isHighlighted: boolean
+  cardRef: (el: HTMLElement | null) => void
+}) {
+  const { t } = useTranslation('translation', { keyPrefix: 'pricing' })
+  const [hovered, setHovered] = useState(false)
+  const buttonLabel = t(`plans.${plan.key}.button`)
+
+  return (
+    <article
+      ref={cardRef}
+      className={`pricing-card-rise min-w-0 overflow-hidden rounded-3xl p-0.5 [transform:translateZ(0)] backface-hidden xl:max-h-fit ${
+        isHighlighted
+          ? 'bg-service-accent shadow-[0_0_0_1px_rgba(255,46,46,0.2)_inset]'
+          : 'bg-pricing-header'
+      }`}
+    >
+      <div
+        className={`px-4 py-2 text-center 2xl:text-lg font-semibold ${
+          isHighlighted
+            ? 'bg-service-accent text-white'
+            : 'bg-pricing-header text-pricing-header'
+        }`}
+      >
+        {t(`plans.${plan.key}.tag`)}
+      </div>
+
+      <div className="p-5 bg-card-bg rounded-3xl xl:h-fit h-[730px]">
+        <h3 className="break-words flex items-center text-md 2xl:text-lg font-semibold uppercase tracking-wide text-white">
+          <span>{plan.svg && <img src={plan.svg} alt={t(`plans.${plan.key}.title`)} className="h-6 w-6 inline-block mr-2" />}</span>
+          {t(`plans.${plan.key}.title`)}
+        </h3>
+        <div className="mt-4 flex items-end gap-2">
+          {plan.oldPrice ? (
+            <span className="md:text-[32px] text-xl font-bold text-[var(--color-oldprice-rgba)] line-through">{plan.oldPrice}</span>
+          ) : null}
+        </div>
+
+        <div className="mt-1 flex flex-wrap items-end gap-2">
+          <span className="text-3xl font-semibold leading-none text-white sm:text-[40px]">{plan.price}</span>
+          <span className="pb-1 text-base text-price-unit">/{t(`plans.${plan.key}.duration`)}</span>
+          {plan.discount ? (
+            <span className="my-auto text-base font-medium text-white bg-[#151032] px-3 py-2 my-auto rounded-3xl">{t(`plans.${plan.key}.discount`)}</span>
+          ) : null}
+        </div>
+
+        <p className="mt-3 text-base text-secondary-text">{t(`plans.${plan.key}.note`)}</p>
+
+        <button
+          type="button"
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          className={`cta-flow mt-5 flex w-full cursor-pointer items-center justify-center rounded-full border py-2.5 font-medium text-white shadow-[inset_0px_1px_3.18px_0px_#FFFFFF80] transition-colors duration-300 hover:border-transparent hover:bg-service-accent md:text-lg ${
+            isHighlighted
+              ? 'border-transparent bg-service-accent'
+              : 'border-btn-border bg-signal-panel-bg'
+          }`}
+        >
+          <CtaFlowLabel label={buttonLabel} hovered={hovered} />
+        </button>
+
+        <p className="mt-6 text-lg font-semibold text-white">{t(`plans.${plan.key}.includedTitle`)}</p>
+        <ul className="mt-3 space-y-2">
+          {plan.features.map((_, featureIndex) => (
+            <li key={`${plan.key}-feature-${featureIndex}`} className="flex items-start gap-2 text-lg leading-snug text-feature-text">
+              <span className="mt-1 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-service-accent">
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-2.5 w-2.5 fill-none stroke-white"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M5 13l4 4L19 7" />
+                </svg>
+              </span>
+              <span className="min-w-0 break-words 2xl:text-lg md:text-base text-sm">{t(`plans.${plan.key}.features.feature${featureIndex + 1}`)}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </article>
+  )
+}
+
 const Pricing = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'pricing' })
   const sectionRef = useRef<HTMLElement>(null)
@@ -264,70 +357,12 @@ const Pricing = () => {
         className="content-pt grid grid-cols-1 gap-5 overflow-visible md:grid-cols-2 xl:grid-cols-4"
       >
         {plans.map((plan, index) => (
-          <article
+          <PricingPlanCard
             key={plan.key}
-            ref={(el) => { cardRefs.current[index] = el }}
-            className="pricing-card-rise group min-w-0 cursor-pointer overflow-hidden rounded-3xl bg-pricing-header p-0.5 [transform:translateZ(0)] backface-hidden xl:max-h-fit hover:bg-tab-active hover:shadow-[0_0_0_1px_rgba(255,46,46,0.2)_inset] hover:transition-[background-color,box-shadow] hover:duration-300"
-          >
-            <div
-              className={`px-4 py-2 text-center 2xl:text-lg font-semibold transition-colors duration-300 ${
-                'bg-pricing-header text-pricing-header group-hover:bg-service-accent group-hover:text-white'
-              }`}
-            >
-              {t(`plans.${plan.key}.tag`)}
-            </div>
-
-            <div className="p-5 bg-card-bg rounded-3xl xl:h-fit h-[730px]">
-              <h3 className="break-words flex items-center text-md 2xl:text-lg font-semibold uppercase tracking-wide text-white">
-                <span>{plan.svg && <img src={plan.svg} alt={t(`plans.${plan.key}.title`)} className="h-6 w-6 inline-block mr-2" />}</span>
-                {t(`plans.${plan.key}.title`)}
-              </h3>
-              <div className="mt-4 flex items-end gap-2">
-                {plan.oldPrice ? (
-                  <span className="md:text-[32px] text-xl font-bold text-[var(--color-oldprice-rgba)] line-through">{plan.oldPrice}</span>
-                ) : null}
-              </div>
-
-              <div className="mt-1 flex flex-wrap items-end gap-2">
-                <span className="text-3xl font-semibold leading-none text-white sm:text-[40px]">{plan.price}</span>
-                <span className="pb-1 text-base text-price-unit">/{t(`plans.${plan.key}.duration`)}</span>
-                {plan.discount ? (
-                  <span className="my-auto text-base font-medium text-white bg-[#151032] px-3 py-2 my-auto rounded-3xl">{t(`plans.${plan.key}.discount`)}</span>
-                ) : null}
-              </div>
-
-              <p className="mt-3 text-base text-secondary-text">{t(`plans.${plan.key}.note`)}</p>
-
-              <button
-                type="button"
-                className={`mt-5 hover:cursor-pointer w-full rounded-full py-2.5 md:text-lg font-medium shadow-[inset_0px_1px_3.18px_0px_#FFFFFF80] transition-colors duration-300 ${
-                  'border border-btn-border bg-signal-panel-bg text-white group-hover:bg-service-accent group-hover:border-transparent'
-                }`}
-              >
-                {t(`plans.${plan.key}.button`)}
-              </button>
-
-              <p className="mt-6 text-lg font-semibold text-white">{t(`plans.${plan.key}.includedTitle`)}</p>
-              <ul className="mt-3 space-y-2">
-                {plan.features.map((_, index) => (
-                  <li key={`${plan.key}-feature-${index}`} className="flex items-start gap-2 text-lg leading-snug text-feature-text">
-                    <span className="mt-1 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-service-accent">
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="h-2.5 w-2.5 fill-none stroke-white"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M5 13l4 4L19 7" />
-                      </svg>
-                    </span>
-                    <span className="min-w-0 break-words 2xl:text-lg md:text-base text-sm">{t(`plans.${plan.key}.features.feature${index + 1}`)}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </article>
+            plan={plan}
+            isHighlighted={plan.highlighted === true}
+            cardRef={(el) => { cardRefs.current[index] = el }}
+          />
         ))}
       </div>
     </section>
