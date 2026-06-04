@@ -63,6 +63,7 @@ All routes are prefixed with `/api`.
 |------|-----------|------|
 | Health | `GET /api/health` | No |
 | Auth | `/api/auth/*` | Mixed (see below) |
+| Inquiries | `/api/inquiries` | `POST` public, `GET` admin JWT |
 
 ### Auth endpoints
 
@@ -81,7 +82,7 @@ Protected routes use:
 Authorization: Bearer <token>
 ```
 
-Full request/response details, error codes, and flows: **[docs/AUTH_API.md](./docs/AUTH_API.md)**
+Full request/response details, error codes, and flows: **[docs/AUTH_API.md](./docs/AUTH_API.md)** · **[docs/INQUIRY_API.md](./docs/INQUIRY_API.md)**
 
 ## Environment variables
 
@@ -139,7 +140,7 @@ server/
 | [docs/AUTH_API.md](./docs/AUTH_API.md) | Auth API reference |
 | [docs/BREVO_SETUP.md](./docs/BREVO_SETUP.md) | Brevo API vs SMTP configuration |
 | [docs/POSTMAN.md](./docs/POSTMAN.md) | Postman import and environment setup |
-| [docs/postman/VolumeDayTrader-Auth.postman_collection.json](./docs/postman/VolumeDayTrader-Auth.postman_collection.json) | Postman collection |
+| [docs/postman/VolumeDayTrader-Auth.postman_collection.json](./docs/postman/VolumeDayTrader-Auth.postman_collection.json) | Postman — all APIs (Health, Auth, Inquiries) |
 
 ## Security notes
 

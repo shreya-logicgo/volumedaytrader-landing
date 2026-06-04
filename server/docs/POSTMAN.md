@@ -1,6 +1,6 @@
-# Postman collection — Auth API
+# Postman collection
 
-Test all admin auth endpoints without writing code first.
+Test all APIs without writing code first.
 
 ---
 
@@ -8,8 +8,9 @@ Test all admin auth endpoints without writing code first.
 
 | File | Purpose |
 |------|---------|
-| [postman/VolumeDayTrader-Auth.postman_collection.json](./postman/VolumeDayTrader-Auth.postman_collection.json) | Import into Postman |
-| [AUTH_API.md](./AUTH_API.md) | Full API reference (bodies, errors, flows) |
+| [postman/VolumeDayTrader-Auth.postman_collection.json](./postman/VolumeDayTrader-Auth.postman_collection.json) | Single collection — Health, Auth, Inquiries |
+| [AUTH_API.md](./AUTH_API.md) | Auth API reference |
+| [INQUIRY_API.md](./INQUIRY_API.md) | Inquiry API reference |
 
 ---
 
@@ -21,7 +22,7 @@ Test all admin auth endpoints without writing code first.
    ```
    server/docs/postman/VolumeDayTrader-Auth.postman_collection.json
    ```
-4. Collection appears: **Volume Day Trader - Auth API**
+4. Collection appears: **Volume Day Trader API**
 
 ---
 
@@ -52,6 +53,12 @@ Click collection → **Variables** tab:
 | `adminPassword` | `Volumedaytrader123` | Your admin password |
 | `resetToken` | *(empty)* | Paste from forgot-password email URL |
 | `resetSecret` | — | Only for emergency reset |
+| `inquiryFirstName` | `John` | Contact form |
+| `inquiryLastName` | `Doe` | Contact form |
+| `inquiryEmail` | `john@example.com` | Contact form |
+| `inquiryPhone` | `1234567890` | Contact form |
+| `inquiryMessage` | *(sample text)* | Contact form (min 10 chars) |
+| `lastTicketNumber` | *(empty)* | Auto-filled after Submit inquiry |
 
 Change `adminEmail` / `adminPassword` to match your `.env` / database.
 
@@ -111,6 +118,8 @@ Change `adminEmail` / `adminPassword` to match your `.env` / database.
 | Forgot Password | POST | `/api/auth/forgot-password` | No |
 | Reset Password | POST | `/api/auth/reset-password` | No |
 | Reset Emergency | POST | `/api/auth/reset-password-emergency` | No |
+| Submit inquiry | POST | `/api/inquiries` | No |
+| List all inquiries | GET | `/api/inquiries` | Bearer |
 
 ---
 
