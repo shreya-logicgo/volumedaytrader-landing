@@ -222,10 +222,10 @@ export default function HeroChart() {
   return (
     <section
       ref={chartRef}
-      className="relative z-20 mx-auto mt-8 w-full px-3 sm:mt-10 sm:px-4 md:mt-12 md:px-6 lg:mt-10 lg:px-4"
+      className="relative z-20 mx-auto mt-8 w-full overflow-visible px-3 sm:mt-10 sm:px-4 md:mt-12 md:px-6 lg:mt-10 lg:px-4"
     >
       <div
-        className="relative mx-auto max-w-[1200px]"
+        className="relative mx-auto max-w-[1200px] overflow-visible"
         style={{ perspective: "1200px", transformStyle: "preserve-3d" }}
       >
         <motion.div
@@ -247,7 +247,7 @@ export default function HeroChart() {
                   willChange: "transform",
                 }
           }
-          className="relative z-10 rounded-2xl border bg-[#FFFFFF0D] p-3 sm:rounded-3xl sm:p-4 lg:p-5"
+          className="relative z-10 overflow-visible rounded-2xl border bg-[#FFFFFF0D] p-3 sm:rounded-3xl sm:p-4 lg:p-5"
         >
           <div
             aria-hidden
@@ -255,7 +255,10 @@ export default function HeroChart() {
             style={{ transform: "translateZ(-40px)" }}
           />
 
-          <div className="relative mx-auto aspect-video w-full overflow-hidden rounded-2xl bg-[#050024] sm:rounded-3xl">
+            {/* <div aria-hidden className="hero-chart-top-glow" />
+            <div aria-hidden className="hero-chart-top-glow" /> */}
+          <div className="relative isolate mx-auto aspect-video w-full overflow-visible rounded-2xl bg-[#050024] sm:rounded-3xl">
+            <div aria-hidden className="hero-chart-top-glow" />
             <iframe
               key={vimeoSrc}
               ref={iframeRef}
@@ -265,7 +268,7 @@ export default function HeroChart() {
                   ? "Volume Day Trader — wideo (PL)"
                   : "Volume Day Trader — video (EN)"
               }
-              className="absolute inset-0 h-full w-full"
+              className="absolute inset-0 z-[1] h-full w-full rounded-2xl sm:rounded-3xl"
               allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
               allowFullScreen
             />
