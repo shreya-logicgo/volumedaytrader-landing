@@ -6,6 +6,7 @@ import { Pause, Play, Volume2, VolumeX } from "lucide-react"
 import { motion, useInView, useReducedMotion, useScroll, useTransform } from "framer-motion"
 import { useLanguage } from "@/hooks/use-language"
 import { HERO_VIDEO_BY_LANGUAGE, HERO_VIDEO_POSTER } from "@/lib/hero-videos"
+import HeroVisual from "./Herovisual"
 
 export default function HeroChart() {
   const chartRef = useRef<HTMLElement | null>(null)
@@ -81,8 +82,9 @@ export default function HeroChart() {
   })
 
   const rotateX = useTransform(scrollYProgress, [0, 1], [maxTilt, 0])
-  const y = useTransform(scrollYProgress, [0, 1], [80, 0])
-  const scale = useTransform(scrollYProgress, [0, 1], [0.92, 1])
+  const y = useTransform(scrollYProgress, [0, 1], [100, 0])
+  const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1])
+  const visualOpacity = useTransform(scrollYProgress, [0, 0.2, 0.55], [0, 0.7, 1])
 
   useEffect(() => {
     isInViewRef.current = chartInView
@@ -214,6 +216,25 @@ export default function HeroChart() {
     setIsMuted(nextMuted)
   }, [playerReady])
 
+  const motionStyle = reduceMotion
+    ? {
+        rotateX: 0,
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        transformStyle: "preserve-3d" as const,
+        willChange: "transform" as const,
+      }
+    : {
+        rotateX,
+        y,
+        scale,
+        opacity: visualOpacity,
+        transformOrigin: "50% 100%",
+        transformStyle: "preserve-3d" as const,
+        willChange: "transform" as const,
+      }
+
   return (
     <section
       ref={chartRef}
@@ -221,40 +242,16 @@ export default function HeroChart() {
     >
       <div
         className="relative mx-auto max-w-[1200px] overflow-visible"
-        style={{ perspective: "1200px", transformStyle: "preserve-3d" }}
+        style={{ perspective: "1500px", transformStyle: "preserve-3d" }}
       >
-        <motion.div
-          style={
-            reduceMotion
-              ? {
-                  rotateX: 0,
-                  y: 0,
-                  scale: 1,
-                  transformStyle: "preserve-3d",
-                  willChange: "transform",
-                }
-              : {
-                  rotateX,
-                  y,
-                  scale,
-                  transformOrigin: "50% 100%",
-                  transformStyle: "preserve-3d",
-                  willChange: "transform",
-                }
-          }
-          className="relative z-10 overflow-visible rounded-2xl border bg-[#FFFFFF0D] p-3 sm:rounded-3xl sm:p-4 lg:p-5"
-        >
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-x-[6%] -bottom-8 -z-10 h-20 rounded-full"
-            style={{ transform: "translateZ(-40px)" }}
-          />
+        <motion.div style={motionStyle} className="hero-aurion-stage">
+          <HeroVisual />
 
-          <div
-            ref={videoContainerRef}
-            className="relative isolate mx-auto aspect-video w-full overflow-visible rounded-2xl bg-[#050024] sm:rounded-3xl"
-          >
-            <div aria-hidden className="hero-chart-top-glow" />
+          <div className="relative z-10 overflow-visible rounded-2xl border border-white/[0.08] bg-[#FFFFFF0D] p-3 shadow-[0_0_0_1px_rgba(120,190,255,0.06)_inset,0_24px_80px_rgba(0,0,0,0.4)] sm:rounded-3xl sm:p-4 lg:p-5">
+            <div
+              ref={videoContainerRef}
+              className="relative isolate mx-auto aspect-video w-full overflow-hidden rounded-2xl bg-[#050024] sm:rounded-3xl"
+            >
             {showThumbnail ? (
               <Image
                 src={HERO_VIDEO_POSTER}
@@ -307,6 +304,7 @@ export default function HeroChart() {
                   <Volume2 className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
                 )}
               </button>
+            </div>
             </div>
           </div>
         </motion.div>

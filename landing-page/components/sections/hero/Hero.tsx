@@ -7,10 +7,9 @@ import { gsap } from "gsap"
 import HeroChart from "./HeroChart"
 import CtaFlowLink from "@/components/ui/cta-flow/CtaFlowLink"
 import SectionTitleWrap, {
-  SECTION_TITLE_REVEAL,
+    SECTION_TITLE_REVEAL,
 } from "@/components/ui/heading/Sectiontitlewrap"
 import { Particles } from "@/components/ui/particles"
-import Herovisual from "./Herovisual"
 
 
 function HeroFeatureTag({ label, compact }: { label: string; compact?: boolean }) {
@@ -71,7 +70,7 @@ export default function Hero() {
         gsap.set(row.querySelectorAll("a"), { autoAlpha: 0, y: 18, scale: 0.98 })
     }, [locale, heroTitle, heroDescription])
 
-  const floatingTags = [
+    const floatingTags = [
         {
             label: t("hero.leftTopTag"),
             className: "left-[3%] top-[14%] 2xl:left-[8%]",
@@ -90,7 +89,7 @@ export default function Hero() {
         },
     ]
     return (
-        <section className="relative   left-1/2 w-screen max-w-[1720px] -translate-x-1/2 overflow-x-clip pt-8 sm:pt-12 md:pt-16 lg:pt-20 2xl:pt-28">
+        <section className="relative left-1/2 w-screen max-w-[1720px] -translate-x-1/2 overflow-x-visible pt-8 sm:pt-12 md:pt-16 lg:pt-20 2xl:pt-28">
             {/* Starry background */}
             {/* <div
                 className="pointer-events-none absolute inset-0 opacity-50"
@@ -115,18 +114,18 @@ export default function Hero() {
 
 
             <div className="pointer-events-none absolute inset-0 z-20 hidden xl:block">
-              <div className="relative mx-auto h-full w-full max-w-[1500px]">
-                {floatingTags.map((tag, index) => (
-                    <div
-                        key={tag.label}
-                        className={`absolute max-w-[min(220px,18vw)] xl:scale-80 2xl:max-w-[min(240px,18vw)] 2xl:scale-90 ${tag.className}`}
-                    >
-                        <div className="hero-tag-bounce" style={{ animationDelay: `${index * 90}ms` }}>
-                            <HeroFeatureTag label={tag.label} />
+                <div className="relative mx-auto h-full w-full max-w-[1500px]">
+                    {floatingTags.map((tag, index) => (
+                        <div
+                            key={tag.label}
+                            className={`absolute max-w-[min(220px,18vw)] xl:scale-80 2xl:max-w-[min(240px,18vw)] 2xl:scale-90 ${tag.className}`}
+                        >
+                            <div className="hero-tag-bounce" style={{ animationDelay: `${index * 90}ms` }}>
+                                <HeroFeatureTag label={tag.label} />
+                            </div>
                         </div>
-                    </div>
-                ))}
-              </div>
+                    ))}
+                </div>
             </div>
 
 
@@ -182,7 +181,6 @@ export default function Hero() {
                 </div>
             </div>
 
-            {/* <Herovisual /> */}
             <HeroChart />
         </section>
     )
