@@ -5,4 +5,4 @@ export const HERO_VIDEO_BY_LANGUAGE: Record<Language, string> = {
   pl: "/assets/video/polish.mp4",
 }
 
-export const HERO_VIDEO_POSTER = "/assets/images/video_thumbnail.jpg"
+export const HERO_VIDEO_POSTER = "/assets/images/video_thumbnail.png"
