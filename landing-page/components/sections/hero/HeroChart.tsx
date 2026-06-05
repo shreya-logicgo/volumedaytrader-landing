@@ -317,7 +317,7 @@ export default function HeroChart() {
         />
 
         <iframe
-          src=" https://vimeo.com/950095166/b5b4640389"
+          src="https://vimeo.com/950095166/b5b4640389?fl=pl&fe=vl"
           width="100%"
           height="500"
           allow="autoplay; fullscreen; picture-in-picture"
