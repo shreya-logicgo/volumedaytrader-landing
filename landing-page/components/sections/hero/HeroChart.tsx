@@ -5,7 +5,6 @@ import { Pause, Play, Volume2, VolumeX } from "lucide-react"
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion"
 import { useLanguage } from "@/hooks/use-language"
 import type { Language } from "@/lib/i18n/settings"
-import VimeoPlayer from "./VimeroPlayer"
 
 const VIMEO_BY_LANGUAGE: Record<
   Language,
@@ -233,20 +232,20 @@ export default function HeroChart() {
           style={
             reduceMotion
               ? {
-                rotateX: 0,
-                y: 0,
-                scale: 1,
-                transformStyle: "preserve-3d",
-                willChange: "transform",
-              }
+                  rotateX: 0,
+                  y: 0,
+                  scale: 1,
+                  transformStyle: "preserve-3d",
+                  willChange: "transform",
+                }
               : {
-                rotateX,
-                y,
-                scale,
-                transformOrigin: "50% 100%",
-                transformStyle: "preserve-3d",
-                willChange: "transform",
-              }
+                  rotateX,
+                  y,
+                  scale,
+                  transformOrigin: "50% 100%",
+                  transformStyle: "preserve-3d",
+                  willChange: "transform",
+                }
           }
           className="relative z-10 overflow-visible rounded-2xl border bg-[#FFFFFF0D] p-3 sm:rounded-3xl sm:p-4 lg:p-5"
         >
@@ -256,7 +255,7 @@ export default function HeroChart() {
             style={{ transform: "translateZ(-40px)" }}
           />
 
-          {/* <div aria-hidden className="hero-chart-top-glow" />
+            {/* <div aria-hidden className="hero-chart-top-glow" />
             <div aria-hidden className="hero-chart-top-glow" /> */}
           <div className="relative isolate mx-auto aspect-video w-full overflow-visible rounded-2xl bg-[#050024] sm:rounded-3xl">
             <div aria-hidden className="hero-chart-top-glow" />
@@ -273,7 +272,6 @@ export default function HeroChart() {
               allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
               allowFullScreen
             />
-
 
             <div className="absolute bottom-3 right-3 z-10 flex items-center gap-2 sm:bottom-4 sm:right-4">
               <button
@@ -306,23 +304,6 @@ export default function HeroChart() {
             </div>
           </div>
         </motion.div>
-        <VimeoPlayer />
-        <iframe
-          src="https://vimeo.com/1001970850"
-          width="100%"
-          height="500"
-          frameBorder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowFullScreen
-        />
-
-        <iframe
-          src="https://vimeo.com/950095166/b5b4640389?fl=pl&fe=vl"
-          width="100%"
-          height="500"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowFullScreen
-        />
       </div>
     </section>
   )
