@@ -1,48 +1,51 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion"
-
-const YOUTUBE_VIDEO_ID = "xU2hBVXIQ5c"
-const VIEWPORT_THRESHOLD = 0.4
-
-function buildYouTubeEmbedSrc(origin: string) {
-  const params = new URLSearchParams({
-    si: "rVhSl-MA6CRuC-SH",
-    enablejsapi: "1",
-    mute: "1",
-    rel: "0",
-    playsinline: "1",
-    origin,
-  })
-
-  return `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?${params.toString()}`
-}
-
-function postPlayerCommand(
-  iframe: HTMLIFrameElement,
-  command: "playVideo" | "pauseVideo"
-) {
-  iframe.contentWindow?.postMessage(
-    JSON.stringify({ event: "command", func: command, args: "" }),
-    "https://www.youtube.com"
-  )
-}
+import Image from "next/image"
+import { useCallback, useEffect, useRef, useState } from "react"
+import { Pause, Play, Volume2, VolumeX } from "lucide-react"
+import { motion, useInView, useReducedMotion, useScroll, useTransform } from "framer-motion"
+import { useLanguage } from "@/hooks/use-language"
+import { HERO_VIDEO_BY_LANGUAGE, HERO_VIDEO_POSTER } from "@/lib/hero-videos"
 
 export default function HeroChart() {
   const chartRef = useRef<HTMLElement | null>(null)
-  const iframeRef = useRef<HTMLIFrameElement>(null)
-  const isVisibleRef = useRef(false)
-  const isReadyRef = useRef(false)
+  const videoContainerRef = useRef<HTMLDivElement | null>(null)
+  const videoRef = useRef<HTMLVideoElement | null>(null)
+  const userHasControlledRef = useRef(false)
+  const isInViewRef = useRef(false)
   const reduceMotion = useReducedMotion()
+  const { currentLanguage } = useLanguage()
   const [maxTilt, setMaxTilt] = useState(18)
-  const [embedSrc, setEmbedSrc] = useState(() =>
-    buildYouTubeEmbedSrc("http://localhost:3000")
-  )
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [isMuted, setIsMuted] = useState(true)
+  const [playerReady, setPlayerReady] = useState(false)
+  const [showThumbnail, setShowThumbnail] = useState(true)
 
-  useEffect(() => {
-    setEmbedSrc(buildYouTubeEmbedSrc(window.location.origin))
+  const videoSrc = HERO_VIDEO_BY_LANGUAGE[currentLanguage]
+  const chartInView = useInView(videoContainerRef, { amount: 0.35, once: false })
+
+  const attemptAutoPlay = useCallback(async () => {
+    const video = videoRef.current
+    if (
+      !video ||
+      userHasControlledRef.current ||
+      !isInViewRef.current ||
+      !video.paused
+    ) {
+      return
+    }
+
+    video.muted = true
+
+    try {
+      await video.play()
+    } catch {
+      // Video may still be buffering; media events will retry.
+    }
   }, [])
+
+  const attemptAutoPlayRef = useRef(attemptAutoPlay)
+  attemptAutoPlayRef.current = attemptAutoPlay
 
   useEffect(() => {
     const mobileQuery = window.matchMedia("(max-width: 767px)")
@@ -72,70 +75,6 @@ export default function HeroChart() {
     }
   }, [])
 
-  useEffect(() => {
-    const section = chartRef.current
-    const iframe = iframeRef.current
-    if (!section || !iframe) return
-
-    let retryTimer: ReturnType<typeof setTimeout> | undefined
-
-    const syncPlayback = () => {
-      if (!isReadyRef.current) return
-
-      if (retryTimer) {
-        clearTimeout(retryTimer)
-        retryTimer = undefined
-      }
-
-      if (isVisibleRef.current) {
-        postPlayerCommand(iframe, "playVideo")
-        retryTimer = setTimeout(() => postPlayerCommand(iframe, "playVideo"), 600)
-      } else {
-        postPlayerCommand(iframe, "pauseVideo")
-      }
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        isVisibleRef.current = entry.isIntersecting
-        syncPlayback()
-      },
-      { threshold: [0, VIEWPORT_THRESHOLD, 0.6, 1] }
-    )
-
-    const handleLoad = () => {
-      isReadyRef.current = true
-      syncPlayback()
-    }
-
-    const handleMessage = (event: MessageEvent) => {
-      if (event.origin !== "https://www.youtube.com") return
-      if (typeof event.data !== "string") return
-
-      try {
-        const data = JSON.parse(event.data) as { event?: string }
-        if (data.event === "onReady") {
-          isReadyRef.current = true
-          syncPlayback()
-        }
-      } catch {
-        // ignore non-JSON messages from YouTube
-      }
-    }
-
-    window.addEventListener("message", handleMessage)
-    iframe.addEventListener("load", handleLoad)
-    observer.observe(section)
-
-    return () => {
-      if (retryTimer) clearTimeout(retryTimer)
-      window.removeEventListener("message", handleMessage)
-      iframe.removeEventListener("load", handleLoad)
-      observer.disconnect()
-      isReadyRef.current = false
-    }
-  }, [embedSrc])
-
   const { scrollYProgress } = useScroll({
     target: chartRef,
     offset: ["start end", "center center"],
@@ -144,6 +83,136 @@ export default function HeroChart() {
   const rotateX = useTransform(scrollYProgress, [0, 1], [maxTilt, 0])
   const y = useTransform(scrollYProgress, [0, 1], [80, 0])
   const scale = useTransform(scrollYProgress, [0, 1], [0.92, 1])
+
+  useEffect(() => {
+    isInViewRef.current = chartInView
+    if (chartInView) {
+      void attemptAutoPlayRef.current()
+    }
+  }, [chartInView])
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    setPlayerReady(false)
+    setShowThumbnail(true)
+    setIsPlaying(false)
+    setIsMuted(true)
+    userHasControlledRef.current = false
+
+    video.pause()
+    video.currentTime = 0
+    video.muted = true
+    video.playsInline = true
+    video.load()
+
+    const syncState = () => {
+      setIsPlaying(!video.paused)
+      setIsMuted(video.muted || video.volume === 0)
+      setPlayerReady(true)
+    }
+
+    const requestAutoPlay = () => {
+      void attemptAutoPlayRef.current()
+    }
+
+    const handlePlay = () => setIsPlaying(true)
+    const handlePause = () => setIsPlaying(false)
+    const handleVolumeChange = () => {
+      setIsMuted(video.muted || video.volume === 0)
+    }
+    const markVideoLoaded = () => {
+      setShowThumbnail(false)
+    }
+    const handleLoadedData = () => {
+      syncState()
+      markVideoLoaded()
+      requestAutoPlay()
+    }
+    const handleCanPlay = () => {
+      syncState()
+      markVideoLoaded()
+      requestAutoPlay()
+    }
+    const handleError = () => {
+      setShowThumbnail(true)
+      setPlayerReady(false)
+    }
+
+    video.addEventListener("play", handlePlay)
+    video.addEventListener("pause", handlePause)
+    video.addEventListener("volumechange", handleVolumeChange)
+    video.addEventListener("loadeddata", handleLoadedData)
+    video.addEventListener("canplay", handleCanPlay)
+    video.addEventListener("error", handleError)
+
+    if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+      syncState()
+      markVideoLoaded()
+      requestAutoPlay()
+    }
+
+    return () => {
+      video.removeEventListener("play", handlePlay)
+      video.removeEventListener("pause", handlePause)
+      video.removeEventListener("volumechange", handleVolumeChange)
+      video.removeEventListener("loadeddata", handleLoadedData)
+      video.removeEventListener("canplay", handleCanPlay)
+      video.removeEventListener("error", handleError)
+    }
+  }, [videoSrc])
+
+  useEffect(() => {
+    if (!chartInView) return
+
+    let attempts = 0
+    const retryId = window.setInterval(() => {
+      const video = videoRef.current
+      if (
+        !isInViewRef.current ||
+        userHasControlledRef.current ||
+        !video ||
+        !video.paused ||
+        attempts >= 20
+      ) {
+        window.clearInterval(retryId)
+        return
+      }
+
+      attempts += 1
+      void attemptAutoPlayRef.current()
+    }, 500)
+
+    return () => window.clearInterval(retryId)
+  }, [chartInView, videoSrc])
+
+  const handlePlayPause = useCallback(() => {
+    const video = videoRef.current
+    if (!video || !playerReady) return
+
+    userHasControlledRef.current = true
+
+    if (video.paused) {
+      void video.play()
+    } else {
+      video.pause()
+    }
+  }, [playerReady])
+
+  const handleMuteToggle = useCallback(() => {
+    const video = videoRef.current
+    if (!video || !playerReady) return
+
+    userHasControlledRef.current = true
+
+    const nextMuted = !(video.muted || video.volume === 0)
+    video.muted = nextMuted
+    if (!nextMuted) {
+      video.volume = 1
+    }
+    setIsMuted(nextMuted)
+  }, [playerReady])
 
   return (
     <section
@@ -181,18 +250,64 @@ export default function HeroChart() {
             style={{ transform: "translateZ(-40px)" }}
           />
 
-          <div className="relative isolate mx-auto aspect-video w-full overflow-visible rounded-2xl bg-[#050024] sm:rounded-3xl">
+          <div
+            ref={videoContainerRef}
+            className="relative isolate mx-auto aspect-video w-full overflow-visible rounded-2xl bg-[#050024] sm:rounded-3xl"
+          >
             <div aria-hidden className="hero-chart-top-glow" />
-            <iframe
-              key={embedSrc}
-              ref={iframeRef}
-              src={embedSrc}
-              title="YouTube video player"
-              className="absolute inset-0 z-[1] h-full w-full rounded-2xl sm:rounded-3xl"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
+            {showThumbnail ? (
+              <Image
+                src={HERO_VIDEO_POSTER}
+                alt=""
+                fill
+                priority
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                className="pointer-events-none absolute inset-0 z-[2] rounded-2xl object-cover sm:rounded-3xl"
+              />
+            ) : null}
+            <video
+              ref={videoRef}
+              src={videoSrc}
+              poster={HERO_VIDEO_POSTER}
+              className="pointer-events-none absolute inset-0 z-[1] h-full w-full rounded-2xl object-cover sm:rounded-3xl"
+              playsInline
+              preload="auto"
+              aria-label={
+                currentLanguage === "pl"
+                  ? "Volume Day Trader — wideo (PL)"
+                  : "Volume Day Trader — video (EN)"
+              }
             />
+
+            <div className="pointer-events-auto absolute bottom-3 right-3 z-20 flex items-center gap-2 sm:bottom-4 sm:right-4">
+              <button
+                type="button"
+                onClick={handlePlayPause}
+                disabled={!playerReady}
+                className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-[#151032]/90 text-white shadow-control-inset backdrop-blur-sm transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 sm:h-11 sm:w-11"
+                aria-label={isPlaying ? "Pause video" : "Play video"}
+              >
+                {isPlaying ? (
+                  <Pause className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
+                ) : (
+                  <Play className="ml-0.5 h-4 w-4 fill-current sm:h-[18px] sm:w-[18px]" />
+                )}
+              </button>
+
+              <button
+                type="button"
+                onClick={handleMuteToggle}
+                disabled={!playerReady}
+                className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-[#151032]/90 text-white shadow-control-inset backdrop-blur-sm transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 sm:h-11 sm:w-11"
+                aria-label={isMuted ? "Unmute video" : "Mute video"}
+              >
+                {isMuted ? (
+                  <VolumeX className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
+                ) : (
+                  <Volume2 className="h-4 w-4 sm:h-[18px] sm:w-[18px]" />
+                )}
+              </button>
+            </div>
           </div>
         </motion.div>
       </div>

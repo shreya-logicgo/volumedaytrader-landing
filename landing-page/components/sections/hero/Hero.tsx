@@ -10,6 +10,7 @@ import SectionTitleWrap, {
   SECTION_TITLE_REVEAL,
 } from "@/components/ui/heading/Sectiontitlewrap"
 import { Particles } from "@/components/ui/particles"
+import Herovisual from "./Herovisual"
 
 
 function HeroFeatureTag({ label, compact }: { label: string; compact?: boolean }) {
@@ -181,6 +182,7 @@ export default function Hero() {
                 </div>
             </div>
 
+            {/* <Herovisual /> */}
             <HeroChart />
         </section>
     )
