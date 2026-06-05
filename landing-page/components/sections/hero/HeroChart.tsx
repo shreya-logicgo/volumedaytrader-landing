@@ -1,10 +1,11 @@
 "use client"
 
+import Image from "next/image"
 import { useCallback, useEffect, useRef, useState } from "react"
 import { Pause, Play, Volume2, VolumeX } from "lucide-react"
 import { motion, useInView, useReducedMotion, useScroll, useTransform } from "framer-motion"
 import { useLanguage } from "@/hooks/use-language"
-import { HERO_VIDEO_BY_LANGUAGE } from "@/lib/hero-videos"
+import { HERO_VIDEO_BY_LANGUAGE, HERO_VIDEO_POSTER } from "@/lib/hero-videos"
 
 export default function HeroChart() {
   const chartRef = useRef<HTMLElement | null>(null)
@@ -18,6 +19,7 @@ export default function HeroChart() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(true)
   const [playerReady, setPlayerReady] = useState(false)
+  const [showThumbnail, setShowThumbnail] = useState(true)
 
   const videoSrc = HERO_VIDEO_BY_LANGUAGE[currentLanguage]
   const chartInView = useInView(videoContainerRef, { amount: 0.35, once: false })
@@ -94,6 +96,7 @@ export default function HeroChart() {
     if (!video) return
 
     setPlayerReady(false)
+    setShowThumbnail(true)
     setIsPlaying(false)
     setIsMuted(true)
     userHasControlledRef.current = false
@@ -119,13 +122,22 @@ export default function HeroChart() {
     const handleVolumeChange = () => {
       setIsMuted(video.muted || video.volume === 0)
     }
+    const markVideoLoaded = () => {
+      setShowThumbnail(false)
+    }
     const handleLoadedData = () => {
       syncState()
+      markVideoLoaded()
       requestAutoPlay()
     }
     const handleCanPlay = () => {
       syncState()
+      markVideoLoaded()
       requestAutoPlay()
+    }
+    const handleError = () => {
+      setShowThumbnail(true)
+      setPlayerReady(false)
     }
 
     video.addEventListener("play", handlePlay)
@@ -133,9 +145,11 @@ export default function HeroChart() {
     video.addEventListener("volumechange", handleVolumeChange)
     video.addEventListener("loadeddata", handleLoadedData)
     video.addEventListener("canplay", handleCanPlay)
+    video.addEventListener("error", handleError)
 
     if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
       syncState()
+      markVideoLoaded()
       requestAutoPlay()
     }
 
@@ -145,6 +159,7 @@ export default function HeroChart() {
       video.removeEventListener("volumechange", handleVolumeChange)
       video.removeEventListener("loadeddata", handleLoadedData)
       video.removeEventListener("canplay", handleCanPlay)
+      video.removeEventListener("error", handleError)
     }
   }, [videoSrc])
 
@@ -240,9 +255,20 @@ export default function HeroChart() {
             className="relative isolate mx-auto aspect-video w-full overflow-visible rounded-2xl bg-[#050024] sm:rounded-3xl"
           >
             <div aria-hidden className="hero-chart-top-glow" />
+            {showThumbnail ? (
+              <Image
+                src={HERO_VIDEO_POSTER}
+                alt=""
+                fill
+                priority
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                className="pointer-events-none absolute inset-0 z-[2] rounded-2xl object-cover sm:rounded-3xl"
+              />
+            ) : null}
             <video
               ref={videoRef}
               src={videoSrc}
+              poster={HERO_VIDEO_POSTER}
               className="pointer-events-none absolute inset-0 z-[1] h-full w-full rounded-2xl object-cover sm:rounded-3xl"
               playsInline
               preload="auto"
