@@ -205,27 +205,27 @@
         }
       },
       "smartProfits": {
-        "title": "Inteligentniejsze wejścia i wyjścia z potwierdzeniem wolumenu",
-        "description": "Inteligentne Zyski łączy logikę wolumenu Wyckoffa z wyraźnymi strefami sygnałów, aby łatwiej wychwytywać setupy o wysokim prawdopodobieństwie, zarządzać ryzykiem i realizować ruchy z większą pewnością.",
+        "title": "Zrozum strukturę rynku z większą jasnością",
+        "description": "Stworzone, aby pomóc traderom lepiej rozumieć kontynuację trendu, odwrócenia, strefy płynności i reakcje rynku dzięki uporządkowanej interpretacji wolumenu.",
         "points": {
-          "point1": "Wskazywanie obszarów, w których przejmują kontrolę kupujący lub sprzedający",
-          "point2": "Potwierdzanie wybicia i odwróceń zachowaniem wolumenu",
-          "point3": "Planowanie wejść z wyraźniejszą strukturą na wykresie",
-          "point4": "Określanie logicznych poziomów stop loss i celu",
-          "point5": "Filtrowanie słabych setupów zanim kapitał jest zagrożony",
-          "point6": "Budowa powtarzalnego procesu dla konsekwentnej egzekucji"
+          "point1": "Rozpoznawaj możliwe odwrócenia rynku",
+          "point2": "Rozumiej zachowanie kontynuacji trendu",
+          "point3": "Analizuj strefy płynności i momentum",
+          "point4": "Poprawiaj timing transakcji i strukturę",
+          "point5": "Stosuj jaśniejszą interpretację wykresów",
+          "point6": "Wspieraj zdyscyplinowane procesy tradingowe"
         }
       },
       "hiddenStrategy": {
-        "title": "Ujawnij aktywność instytucji ukrytą na wykresie",
-        "description": "Ukryta strategia pokazuje akumulację, dystrybucję i testy podaży, które często poprzedzają duże ruchy — abyś mógł działać zgodnie z smart money zamiast reagować z opóźnieniem.",
+        "title": "Śledź wolumen, płynność i zachowanie smart money",
+        "description": "Inspirowane metodologią Wyckoffa i analizą zachowania wolumenu — ekosystem wskaźników upraszcza złożone ruchy rynku do praktycznych, wizualnych spostrzeżeń.",
         "points": {
-          "point1": "Wychwytywanie cichej akumulacji przed rozszerzeniem ceny",
-          "point2": "Rozpoznawanie dystrybucji i osłabienia popytu",
-          "point3": "Odczyt testów podaży i sygnałów braku podaży",
-          "point4": "Wcześniejsze przewidywanie kontynuacji lub odwrócenia trendu",
-          "point5": "Mniej fałszywych sygnałów w warunkach bocznych",
-          "point6": "Trading z kontekstem profesjonalnych przepływów wolumenu"
+          "point1": "Ucz się, jak profesjonaliści czytają rynek",
+          "point2": "Rozumiej akumulację i dystrybucję",
+          "point3": "Wizualizuj udział rynku bardziej przejrzyście",
+          "point4": "Stosuj uporządkowaną analizę wolumenu",
+          "point5": "Poprawiaj świadomość rynku i pewność siebie",
+          "point6": "Zaprojektowane dla Forex, Krypto, Akcji i Indeksów"
         }
       }
     }
