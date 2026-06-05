@@ -244,9 +244,9 @@
         "button": "Kup teraz",
         "includedTitle": "Co zawiera pakiet:",
         "features": {
-          "feature1": "Wskaźnik skumulowanego wolumenu: Wyckoff Wave Volume",
-          "feature2": "Wskaźnik skumulowanego wolumenu: Wyckoff Wave Chart",
-          "feature3": "Wskaźniki działające bezpośrednio na platformie",
+          "feature1": "Wskaźnik skumulowanego wolumenu: \"Wyckoff Wave Volume\"",
+          "feature2": "Wskaźnik skumulowanego wolumenu: \"Wyckoff Wave Chart\"",
+          "feature3": "Wskaźniki działające bezpośrednio na platformie: Tradingview",
           "feature4": "Instrukcje instalacji i dopasowania wskaźnika do różnych materiałów wideo"
         }
       },
@@ -261,7 +261,7 @@
         "includedTitle": "Co zawiera pakiet:",
         "features": {
           "feature1": "Kompleksowy kurs Richarda Wyckoffa",
-          "feature2": "Kurs Analizy Rozkładu Wolumenu (VSA)",
+          "feature2": "Kurs Analizy Rozkładu Wolumenu [VSA]",
           "feature3": "Codzienny raport sygnałów US PTA",
           "feature4": "Mastering the Richard Wyckoff Method - praktyczne lekcje dla traderów",
           "feature5": "Wskaźniki Premium",
@@ -285,7 +285,7 @@
         "includedTitle": "Co zawiera pakiet:",
         "features": {
           "feature1": "Kompleksowy kurs Richarda Wyckoffa",
-          "feature2": "Kurs Analizy Rozkładu Wolumenu (VSA)",
+          "feature2": "Kurs Analizy Rozkładu Wolumenu [VSA]",
           "feature3": "Codzienny raport sygnałów US PTA",
           "feature4": "Mastering the Richard Wyckoff Method - praktyczne lekcje dla traderów",
           "feature5": "Wskaźniki Premium",
@@ -309,7 +309,7 @@
         "includedTitle": "Co zawiera pakiet:",
         "features": {
           "feature1": "Kompleksowy kurs Richarda Wyckoffa",
-          "feature2": "Kurs Analizy Rozkładu Wolumenu (VSA)",
+          "feature2": "Kurs Analizy Rozkładu Wolumenu [VSA]",
           "feature3": "Codzienny raport sygnałów US PTA",
           "feature4": "Mastering the Richard Wyckoff Method - praktyczne lekcje dla traderów",
           "feature5": "Wskaźniki Premium",
@@ -505,7 +505,17 @@
       "phonePlaceholder": "Twój numer telefonu",
       "message": "Wiadomość",
       "messagePlaceholder": "Napisz swoją wiadomość...",
-      "submit": "Wyślij"
+      "submit": "Wyślij",
+      "submitting": "Wysyłanie...",
+      "successMessage": "Twój e-mail został odebrany i utworzono zgłoszenie.",
+      "ticketLabel": "Zgłoszenie: {{ticket}}",
+      "errorMessage": "Coś poszło nie tak. Spróbuj ponownie później.",
+      "errors": {
+        "required": "To pole jest wymagane.",
+        "emailInvalid": "Podaj prawidłowy adres e-mail.",
+        "phoneInvalid": "Podaj prawidłowy numer telefonu dla wybranego kraju.",
+        "messageMin": "Wiadomość musi mieć co najmniej 10 znaków."
+      }
     }
   },
   "howIndicatorsWork": {
