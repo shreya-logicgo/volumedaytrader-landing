@@ -9,7 +9,8 @@
     "seed:admin": "node scripts/seed-admin.js",
     "reset:admin-password": "node scripts/reset-admin-password.js",
     "check:brevo": "node scripts/check-brevo.js",
-    "test:inquiry-email": "node scripts/test-inquiry-email.js"
+    "test:inquiry-email": "node scripts/test-inquiry-email.js",
+    "migrate:blog-status": "node scripts/migrate-blog-status.js"
   },
   "keywords": [],
   "author": "",

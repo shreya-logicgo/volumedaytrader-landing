@@ -4,7 +4,22 @@ const { blogService } = require("../services/blog.service");
 const { openaiService } = require("../services/openai.service");
 const cloudinaryService = require("../services/cloudinary.service");
 const { coverImageUpload, parseMultipartBody, } = require("../services/upload.service");
-const { createBlogSchema, updateBlogSchema, } = require("../validation/blog.validation");
+const {
+  createBlogSchema,
+  updateBlogSchema,
+} = require("../validation/blog.validation");
+
+const CLIENT_ERROR_MESSAGES = new Set([
+  "Archived blogs cannot be edited.",
+  "Invalid status transition.",
+  "featuredImage.url must be a Cloudinary secure URL.",
+]);
+
+function getErrorStatus(message) {
+  if (message.includes("JSON")) return 400;
+  if (CLIENT_ERROR_MESSAGES.has(message)) return 400;
+  return 500;
+}
 
 // Parse blog payload from JSON or multipart requests
 async function parseBlogBody(req) {
@@ -31,7 +46,43 @@ async function parseBlogBody(req) {
 }
 
 
-// Fetch paginated blog list with search and sorting support
+function handleBlogError(res, error, fallbackMessage) {
+  const message =
+    error instanceof Error ? error.message : fallbackMessage;
+  console.error(fallbackMessage, error);
+  return res.status(getErrorStatus(message)).json({ error: message });
+}
+
+// Public blog list — published only
+async function listPublic(req, res) {
+  const query = req.query;
+
+  try {
+    await connectDB();
+    const result = await blogService.list(query, { publishedOnly: true });
+    return res.json(result);
+  } catch (error) {
+    if (isMongoConnectionError(error)) {
+      const hint =
+        process.env.NODE_ENV === "development"
+          ? " Check MONGODB_URI in .env (Atlas SRV host should look like cluster0.xxxxx.mongodb.net)."
+          : "";
+      console.warn(
+        `[api/blogs] MongoDB unavailable.${hint} Returning empty blog list.`,
+      );
+      return res.json({
+        blogs: [],
+        total: 0,
+        page: query.page,
+        limit: query.limit,
+        hasMore: false,
+      });
+    }
+    return handleBlogError(res, error, "Error listing public blogs:");
+  }
+}
+
+// Admin blog list with optional status filter
 async function list(req, res) {
   const query = req.query;
 
@@ -62,7 +113,24 @@ async function list(req, res) {
 }
 
 
-// Fetch a single blog by ID or slug
+// Public single blog — published only
+async function getOnePublic(req, res) {
+  try {
+    await connectDB();
+    const blog = await blogService.getByIdentifier(
+      String(req.params.identifier),
+      { publishedOnly: true },
+    );
+    if (!blog) {
+      return res.status(404).json({ error: "Blog not found" });
+    }
+    return res.json(blog);
+  } catch (error) {
+    return handleBlogError(res, error, "Error fetching public blog:");
+  }
+}
+
+// Admin single blog by ID or slug
 async function getOne(req, res) {
   try {
     await connectDB();
@@ -97,10 +165,7 @@ async function create(req, res) {
     return res.status(201).json(blog);
   } catch (error) {
     console.error("Error creating blog:", error);
-    const message =
-      error instanceof Error ? error.message : "Failed to save blog";
-    const status = message.includes("JSON") ? 400 : 500;
-    return res.status(status).json({ error: message });
+    return handleBlogError(res, error, "Error creating blog:");
   }
 }
 
@@ -129,11 +194,39 @@ async function update(req, res) {
 
     return res.json(updated);
   } catch (error) {
-    console.error("Error updating blog:", error);
-    return res.status(500).json({ error: "Failed to update blog" });
+    return handleBlogError(res, error, "Error updating blog:");
   }
 }
 
+// Update blog status (publish, archive, restore)
+async function updateStatus(req, res) {
+  try {
+    await connectDB();
+    const updated = await blogService.updateStatus(
+      String(req.params.identifier),
+      req.body.status,
+    );
+
+    if (!updated) {
+      return res.status(404).json({ error: "Blog not found" });
+    }
+
+    return res.json(updated);
+  } catch (error) {
+    return handleBlogError(res, error, "Error updating blog status:");
+  }
+}
+
+// Blog status counts for admin dashboard
+async function stats(req, res) {
+  try {
+    await connectDB();
+    const result = await blogService.getStats();
+    return res.json(result);
+  } catch (error) {
+    return handleBlogError(res, error, "Error fetching blog stats:");
+  }
+}
 
 // Delete a blog and its associated Cloudinary assets
 async function remove(req, res) {
@@ -210,10 +303,14 @@ async function generateImage(req, res) {
 const uploadCoverMiddleware = coverImageUpload.single("coverImage");
 
 module.exports = {
+  listPublic,
   list,
+  getOnePublic,
   getOne,
   create,
   update,
+  updateStatus,
+  stats,
   remove,
   generateContent,
   generateImage,

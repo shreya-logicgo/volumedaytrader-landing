@@ -1,5 +1,7 @@
 const { z } = require("zod");
 
+const blogStatusSchema = z.enum(["draft", "published", "archived"]);
+
 const featuredImageSchema = z.object({
   publicId: z.string().min(1),
   url: z.string().url(),
@@ -11,6 +13,7 @@ const createBlogSchema = z.object({
   content: z.string().optional(),
   coverImage: z.string().optional(),
   featuredImage: featuredImageSchema.optional(),
+  status: z.enum(["draft", "published"]).optional().default("draft"),
 });
 
 const updateBlogSchema = z
@@ -20,15 +23,21 @@ const updateBlogSchema = z
     content: z.string().optional(),
     coverImage: z.string().optional(),
     featuredImage: featuredImageSchema.optional(),
+    status: blogStatusSchema.optional(),
   })
   .refine((data) => Object.keys(data).length > 0, {
     message: "At least one field is required to update",
   });
 
+const updateBlogStatusSchema = z.object({
+  status: z.enum(["draft", "published", "archived"]),
+});
+
 const listBlogsQuerySchema = z.object({
   page: z.coerce.number().int().min(1).default(1),
   limit: z.coerce.number().int().min(1).max(100).default(10),
   search: z.string().optional(),
+  status: blogStatusSchema.optional(),
   sortBy: z.enum(["createdAt", "updatedAt", "title"]).default("updatedAt"),
   sortOrder: z.enum(["asc", "desc"]).default("desc"),
 });
@@ -44,9 +53,11 @@ const generateImageSchema = z.object({
 });
 
 module.exports = {
+  blogStatusSchema,
   featuredImageSchema,
   createBlogSchema,
   updateBlogSchema,
+  updateBlogStatusSchema,
   listBlogsQuerySchema,
   generateBlogSchema,
   generateImageSchema,

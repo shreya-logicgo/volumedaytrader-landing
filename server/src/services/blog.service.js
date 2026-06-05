@@ -5,6 +5,11 @@ const {
   extractTitleFromHtml,
   slugifyTitle,
 } = require("../utils/slug.util");
+const {
+  assertValidTransition,
+  hasContentUpdates,
+  normalizeStatus,
+} = require("../utils/blogStatus.util");
 const cloudinaryService = require("./cloudinary.service");
 
 function buildIdentifierQuery(identifier) {
@@ -19,6 +24,7 @@ function serializeBlog(doc) {
   return {
     ...obj,
     id: String(obj._id),
+    status: normalizeStatus(obj.status),
   };
 }
 
@@ -31,6 +37,7 @@ function pickUpdates(input) {
     updates.featuredImage = input.featuredImage;
   }
   if (input.slug !== undefined) updates.slug = input.slug;
+  if (input.status !== undefined) updates.status = input.status;
   return updates;
 }
 
@@ -49,21 +56,43 @@ function normalizeFeaturedImage(featuredImage) {
   };
 }
 
-class BlogService {
-  async list(query) {
-    const { page, limit, search, sortBy, sortOrder } = query;
-    const skip = (page - 1) * limit;
+function buildListFilter(query, { publishedOnly = false } = {}) {
+  const filter = {};
 
-    const filter = {};
+  if (publishedOnly || query.status === "published") {
+    filter.$or = [
+      { status: "published" },
+      { status: { $exists: false } },
+    ];
+  } else if (query.status) {
+    filter.status = query.status;
+  }
 
-    if (search?.trim()) {
-      const term = search.trim();
-      filter.$or = [
+  if (query.search?.trim()) {
+    const term = query.search.trim();
+    const searchFilter = {
+      $or: [
         { title: { $regex: term, $options: "i" } },
         { slug: { $regex: term, $options: "i" } },
         { content: { $regex: term, $options: "i" } },
-      ];
+      ],
+    };
+
+    if (Object.keys(filter).length > 0) {
+      return { $and: [filter, searchFilter] };
     }
+
+    return searchFilter;
+  }
+
+  return filter;
+}
+
+class BlogService {
+  async list(query, options = {}) {
+    const { page, limit, sortBy, sortOrder } = query;
+    const skip = (page - 1) * limit;
+    const filter = buildListFilter(query, options);
 
     const sort = {
       [sortBy]: sortOrder === "asc" ? 1 : -1,
@@ -83,8 +112,35 @@ class BlogService {
     };
   }
 
-  async getByIdentifier(identifier) {
-    const blog = await Blog.findOne(buildIdentifierQuery(identifier));
+  async getStats() {
+    const [total, draft, published, archived] = await Promise.all([
+      Blog.countDocuments(),
+      Blog.countDocuments({ status: "draft" }),
+      Blog.countDocuments({
+        $or: [{ status: "published" }, { status: { $exists: false } }],
+      }),
+      Blog.countDocuments({ status: "archived" }),
+    ]);
+
+    return {
+      total,
+      draft,
+      published,
+      archived,
+    };
+  }
+
+  async getByIdentifier(identifier, options = {}) {
+    const query = buildIdentifierQuery(identifier);
+
+    if (options.publishedOnly) {
+      query.$or = [
+        { status: "published" },
+        { status: { $exists: false } },
+      ];
+    }
+
+    const blog = await Blog.findOne(query);
     if (!blog) return null;
     return serializeBlog(blog);
   }
@@ -138,6 +194,7 @@ class BlogService {
   async create(input) {
     let title = input.title?.trim();
     const content = input.content ?? "";
+    const status = input.status ?? "draft";
 
     if (!title) {
       title =
@@ -156,6 +213,7 @@ class BlogService {
       title,
       content,
       slug,
+      status,
       ...coverFields,
     });
 
@@ -166,6 +224,16 @@ class BlogService {
     const query = buildIdentifierQuery(identifier);
     const existing = await Blog.findOne(query);
     if (!existing) return null;
+
+    const currentStatus = normalizeStatus(existing.status);
+
+    if (currentStatus === "archived" && hasContentUpdates(input)) {
+      throw new Error("Archived blogs cannot be edited.");
+    }
+
+    if (input.status !== undefined) {
+      assertValidTransition(currentStatus, input.status);
+    }
 
     const coverFields = await this.resolveCoverFields(input);
     const updates = pickUpdates(input);
@@ -201,6 +269,26 @@ class BlogService {
       returnDocument: "after",
       runValidators: true,
     });
+
+    return updated ? serializeBlog(updated) : null;
+  }
+
+  async updateStatus(identifier, nextStatus) {
+    const query = buildIdentifierQuery(identifier);
+    const existing = await Blog.findOne(query);
+    if (!existing) return null;
+
+    const currentStatus = normalizeStatus(existing.status);
+    assertValidTransition(currentStatus, nextStatus);
+
+    const updated = await Blog.findOneAndUpdate(
+      query,
+      { status: nextStatus },
+      {
+        returnDocument: "after",
+        runValidators: true,
+      },
+    );
 
     return updated ? serializeBlog(updated) : null;
   }

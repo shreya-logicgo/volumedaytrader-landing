@@ -15,6 +15,11 @@ const blogSchema = new mongoose.Schema(
     coverImage: { type: String, trim: true },
     featuredImage: featuredImageSchema,
     slug: { type: String, unique: true, sparse: true, trim: true },
+    status: {
+      type: String,
+      enum: ["draft", "published", "archived"],
+      default: "draft",
+    },
   },
   { timestamps: true },
 );

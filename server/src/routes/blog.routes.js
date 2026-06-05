@@ -8,32 +8,53 @@ const {
   generateBlogSchema,
   generateImageSchema,
   listBlogsQuerySchema,
+  updateBlogStatusSchema,
 } = require("../validation/blog.validation");
 
 const router = express.Router();
 
-// Protect all blog management routes with authentication and admin authorization
 router.use(requireAuth, requireAdmin);
 
-// Generate AI blog content
-router.post("/generate", validateBody(generateBlogSchema), asyncHandler(blogController.generateContent),);
+router.post(
+  "/generate",
+  validateBody(generateBlogSchema),
+  asyncHandler(blogController.generateContent),
+);
 
-// Generate AI cover image and upload to Cloudinary
-router.post("/generate-image", validateBody(generateImageSchema), asyncHandler(blogController.generateImage),);
+router.post(
+  "/generate-image",
+  validateBody(generateImageSchema),
+  asyncHandler(blogController.generateImage),
+);
 
-// List blogs with pagination, search, and sorting
-router.get("/", validateQuery(listBlogsQuerySchema), asyncHandler(blogController.list),);
+router.get("/stats", asyncHandler(blogController.stats));
 
-// Create a new blog (supports cover image upload)
-router.post("/", blogController.uploadCoverMiddleware, asyncHandler(blogController.create),);
+router.get(
+  "/",
+  validateQuery(listBlogsQuerySchema),
+  asyncHandler(blogController.list),
+);
 
-// Get a single blog by ID or slug
+router.post(
+  "/",
+  blogController.uploadCoverMiddleware,
+  asyncHandler(blogController.create),
+);
+
+router.patch(
+  "/:identifier/status",
+  validateBody(updateBlogStatusSchema),
+  asyncHandler(blogController.updateStatus),
+);
+
 router.get("/:identifier", asyncHandler(blogController.getOne));
 
-// Update an existing blog (supports cover image replacement)
-router.patch("/:identifier", blogController.uploadCoverMiddleware, asyncHandler(blogController.update),);
+router.patch(
+  "/:identifier",
+  blogController.uploadCoverMiddleware,
+  asyncHandler(blogController.update),
+);
 
-// Delete a blog and associated Cloudinary assets
 router.delete("/:identifier", asyncHandler(blogController.remove));
 
 module.exports = router;
