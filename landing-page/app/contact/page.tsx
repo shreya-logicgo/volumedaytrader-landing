@@ -10,7 +10,7 @@ import FAQ from "@/components/sections/faq/FAQ";
 
 export default function ContactPage() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden pt-24 sm:pt-28 md:pt-32 lg:pt-36">
+    <div className="relative min-h-screen pt-24 sm:pt-28 md:pt-32 lg:pt-36">
       <BlogPageBackground />
 
       <Container>
@@ -29,7 +29,7 @@ export default function ContactPage() {
         {/* </Container> */}
       </section>
 
-      <div className="relative z-10 mt-24 md:mt-28">
+      <div className="relative z-10 mt-24 md:mt-28 overflow-y-hidden">
         {/* <Container> */}
           <FAQ/>
         {/* </Container> */}
