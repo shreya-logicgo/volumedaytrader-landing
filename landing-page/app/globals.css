@@ -605,6 +605,144 @@
     opacity: 0;
   }
 
+  /* Aurion hero glow — only around the video (https://aurion-temlis.webflow.io/home/home-v1) */
+  .hero-aurion-stage {
+    position: relative;
+    width: 100%;
+    overflow: visible;
+    padding-block: 2.5rem 3.5rem;
+    pointer-events: none;
+  }
+
+  .hero-aurion-interactive {
+    position: relative;
+    z-index: 20;
+    pointer-events: auto;
+    transform: translateZ(2px);
+    transform-style: preserve-3d;
+  }
+
+  .hero-aurion-glow,
+  .hero-aurion-glow * {
+    pointer-events: none !important;
+  }
+
+  .hero-aurion-controls {
+    position: absolute;
+    z-index: 50;
+    pointer-events: auto;
+    touch-action: manipulation;
+  }
+
+  .hero-aurion-glow__arch {
+    position: absolute;
+    top: -7%;
+    left: 50%;
+    z-index: 2;
+    width: 110%;
+    min-width: 107%;
+    height: 107%;
+    max-height: 110%;
+    object-fit: cover;
+    transform: translateX(-50%);
+    transform-origin: center top;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      #000 12%,
+      #000 88%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      #000 12%,
+      #000 88%,
+      transparent 100%
+    );
+  }
+
+  /* Aurion dash_left / dash_right — tapered horizontal beams */
+  .hero-aurion-glow__beam {
+    position: absolute;
+    top: -50%;
+    z-index: 3;
+    width: 100%;
+    height: 110%;
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  .hero-aurion-glow__beam img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-aurion-glow__beam--left {
+    left: -52%;
+    right: auto;
+  }
+
+  .hero-aurion-glow__beam--left img {
+    object-position: right center;
+  }
+
+  .hero-aurion-glow__beam--right {
+    right: -52%;
+    left: auto;
+  }
+
+  .hero-aurion-glow__beam--right img {
+    object-position: left center;
+  }
+
+  .hero-aurion-glow__bottom-fade {
+    pointer-events: none;
+    position: absolute;
+    inset: auto 0 -18%;
+    z-index: 1;
+    height: 45%;
+    background: linear-gradient(180deg, transparent 0%, rgba(5, 0, 36, 0.55) 55%, #050024 100%);
+  }
+
+  @media (min-width: 768px) {
+    .hero-aurion-stage {
+      padding-block: 3rem 4.5rem;
+    }
+
+    .hero-aurion-glow__beam--left {
+      left: -58%;
+    }
+
+    .hero-aurion-glow__beam--right {
+      right: -58%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-aurion-glow__beam--left {
+      left: -65%;
+    }
+
+    .hero-aurion-glow__beam--right {
+      right: -65%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-aurion-glow__beam--left {
+      left: -42%;
+    }
+
+    .hero-aurion-glow__beam--right {
+      right: -42%;
+    }
+  }
+
   /* Hero video — backlight behind frame; fades up + side edges (#ED1F24) */
   .hero-chart-top-glow {
     pointer-events: none;
