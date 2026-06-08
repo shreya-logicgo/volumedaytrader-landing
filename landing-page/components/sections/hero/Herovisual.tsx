@@ -51,30 +51,30 @@ export default function HeroVisual() {
       target.current.y = 0
     }
 
-    const wrap = wrapRef.current
-    wrap?.addEventListener("mousemove", handleMouseMove)
-    wrap?.addEventListener("mouseleave", handleMouseLeave)
+    window.addEventListener("mousemove", handleMouseMove, { passive: true })
+    window.addEventListener("blur", handleMouseLeave)
 
     return () => {
       cancelAnimationFrame(rafRef.current)
-      wrap?.removeEventListener("mousemove", handleMouseMove)
-      wrap?.removeEventListener("mouseleave", handleMouseLeave)
+      window.removeEventListener("mousemove", handleMouseMove)
+      window.removeEventListener("blur", handleMouseLeave)
     }
   }, [animate])
 
   return (
     <div
       ref={wrapRef}
-      className="hero-aurion-glow pointer-events-none absolute inset-0 z-0 overflow-visible"
+      className="hero-aurion-glow pointer-events-none absolute inset-0 z-0 overflow-visible "
       aria-hidden
     >
-      <img
+      {/* <img
         ref={gradientRef}
         src={GRADIENT_SRC}
         alt=""
-        className="hero-aurion-glow__arch will-change-transform"
+        className="hero-aurion-glow__arch will-change-transform "
         style={{ transform: "translate3d(-50%, 0, 0)", transformOrigin: "center top" }}
-      />
+      /> */}
+
 
       {/* <div className="hero-aurion-glow__beam hero-aurion-glow__beam--left">
         <img src={BEAM_LEFT_SRC} alt="" className="h-350 w-full object-cover  " />
@@ -83,8 +83,20 @@ export default function HeroVisual() {
       {/* <div className="hero-aurion-glow__beam hero-aurion-glow__beam--right">
         <img src={BEAM_RIGHT_SRC} alt="" className=" w-full h-350 object-cover " />
       </div> */}
+      <div
+        className="pointer-events-none absolute left-1/2 top-10 -translate-x-1/2 sm:top-15 md:bottom-10"
+        style={{
+          width: "clamp(500px, 95vw, 1200px)",
+          height: "clamp(150px, 52vw, 680px)",
+          background:
+            "radial-gradient(ellipse at center, rgba(237,31,36,0.95) 100%, rgba(237,31,36,0.7) 25%, rgba(237,31,36,0.35) 50%, rgba(237,31,36,0.12) 75%, transparent 100%)",
+          filter: "blur(50px)",
+          pointerEvents: "none",
+        }}
+      />
 
-      <div className="hero-aurion-glow__bottom-fade" />
+
+      {/* <div className="hero-aurion-glow__bottom-fade" /> */}
     </div>
   )
 }

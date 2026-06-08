@@ -247,41 +247,42 @@ export default function HeroChart() {
         <motion.div style={motionStyle} className="hero-aurion-stage">
           <HeroVisual />
 
-          <div className="relative z-10 overflow-visible rounded-2xl border border-white/[0.08] bg-[#FFFFFF0D] p-3 shadow-[0_0_0_1px_rgba(120,190,255,0.06)_inset,0_24px_80px_rgba(0,0,0,0.4)] sm:rounded-3xl sm:p-4 lg:p-5">
+          <div className="hero-aurion-interactive overflow-visible rounded-2xl border border-white/[0.08] bg-[#FFFFFF0D] p-3 shadow-[0_0_0_1px_rgba(120,190,255,0.06)_inset,0_24px_80px_rgba(0,0,0,0.4)] sm:rounded-3xl sm:p-4 lg:p-5">
             <div
               ref={videoContainerRef}
-              className="relative isolate mx-auto aspect-video w-full overflow-hidden rounded-2xl bg-[#050024] sm:rounded-3xl"
+              className="relative mx-auto aspect-video w-full overflow-hidden rounded-2xl bg-[#050024] sm:rounded-3xl"
             >
-            {showThumbnail ? (
-              <Image
-                src={HERO_VIDEO_POSTER}
-                alt=""
-                fill
-                priority
-                sizes="(max-width: 1200px) 100vw, 1200px"
-                className="pointer-events-none absolute inset-0 z-[2] rounded-2xl object-cover sm:rounded-3xl"
+              {showThumbnail ? (
+                <Image
+                  src={HERO_VIDEO_POSTER}
+                  alt=""
+                  fill
+                  priority
+                  sizes="(max-width: 1200px) 100vw, 1200px"
+                  className="pointer-events-none absolute inset-0 z-[1] rounded-2xl object-cover sm:rounded-3xl"
+                />
+              ) : null}
+              <video
+                ref={videoRef}
+                src={videoSrc}
+                poster={HERO_VIDEO_POSTER}
+                className="pointer-events-none absolute inset-0 z-0 h-full w-full rounded-2xl object-cover sm:rounded-3xl"
+                playsInline
+                preload="auto"
+                aria-label={
+                  currentLanguage === "pl"
+                    ? "Volume Day Trader — wideo (PL)"
+                    : "Volume Day Trader — video (EN)"
+                }
               />
-            ) : null}
-            <video
-              ref={videoRef}
-              src={videoSrc}
-              poster={HERO_VIDEO_POSTER}
-              className="pointer-events-none absolute inset-0 z-[1] h-full w-full rounded-2xl object-cover sm:rounded-3xl"
-              playsInline
-              preload="auto"
-              aria-label={
-                currentLanguage === "pl"
-                  ? "Volume Day Trader — wideo (PL)"
-                  : "Volume Day Trader — video (EN)"
-              }
-            />
+            </div>
 
-            <div className="pointer-events-auto absolute bottom-3 right-3 z-20 flex items-center gap-2 sm:bottom-4 sm:right-4">
+            <div className="hero-aurion-controls bottom-3 right-3 flex items-center gap-2 sm:bottom-8 sm:right-10">
               <button
                 type="button"
                 onClick={handlePlayPause}
                 disabled={!playerReady}
-                className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-[#151032]/90 text-white shadow-control-inset backdrop-blur-sm transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 sm:h-11 sm:w-11"
+                className="relative z-50 inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-[#151032]/90 text-white shadow-control-inset backdrop-blur-sm transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 sm:h-11 sm:w-11"
                 aria-label={isPlaying ? "Pause video" : "Play video"}
               >
                 {isPlaying ? (
@@ -295,7 +296,7 @@ export default function HeroChart() {
                 type="button"
                 onClick={handleMuteToggle}
                 disabled={!playerReady}
-                className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-[#151032]/90 text-white shadow-control-inset backdrop-blur-sm transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 sm:h-11 sm:w-11"
+                className="relative z-50 inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-[#151032]/90 text-white shadow-control-inset backdrop-blur-sm transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 sm:h-11 sm:w-11"
                 aria-label={isMuted ? "Unmute video" : "Mute video"}
               >
                 {isMuted ? (
@@ -305,10 +306,11 @@ export default function HeroChart() {
                 )}
               </button>
             </div>
-            </div>
           </div>
         </motion.div>
+        
       </div>
+      
     </section>
   )
 }

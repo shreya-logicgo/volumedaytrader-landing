@@ -611,6 +611,27 @@
     width: 100%;
     overflow: visible;
     padding-block: 2.5rem 3.5rem;
+    pointer-events: none;
+  }
+
+  .hero-aurion-interactive {
+    position: relative;
+    z-index: 20;
+    pointer-events: auto;
+    transform: translateZ(2px);
+    transform-style: preserve-3d;
+  }
+
+  .hero-aurion-glow,
+  .hero-aurion-glow * {
+    pointer-events: none !important;
+  }
+
+  .hero-aurion-controls {
+    position: absolute;
+    z-index: 50;
+    pointer-events: auto;
+    touch-action: manipulation;
   }
 
   .hero-aurion-glow__arch {
