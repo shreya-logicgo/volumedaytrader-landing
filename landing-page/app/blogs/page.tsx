@@ -9,7 +9,7 @@ import FAQ from "@/components/sections/faq/FAQ";
 
 export default function BlogsPage() {
   return (
-    <div className="relative mt-20 min-h-screen overflow-x-hidden">
+    <div className="relative mt-20 min-h-screen overflow-x-hidden ">
       <BlogPageBackground />
 
       {/* <Container> */}
@@ -22,7 +22,7 @@ export default function BlogsPage() {
         {/* </Container> */}
       </section>
 
-      <div className="relative z-10">
+      <div className="relative z-10 overflow-y-hidden">
         {/* <Container> */}
           <FAQ />
         {/* </Container> */}

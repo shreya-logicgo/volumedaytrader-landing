@@ -1,100 +1,52 @@
 "use client"
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react"
+import Image from "next/image"
+import { useCallback, useEffect, useRef, useState } from "react"
 import { Pause, Play, Volume2, VolumeX } from "lucide-react"
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion"
+import { motion, useInView, useReducedMotion, useScroll, useTransform } from "framer-motion"
 import { useLanguage } from "@/hooks/use-language"
-import type { Language } from "@/lib/i18n/settings"
-
-const VIMEO_BY_LANGUAGE: Record<
-  Language,
-  { id: string; hash?: string }
-> = {
-  en: { id: "1001970850" },
-  pl: { id: "950095166", hash: "b5b4640389" },
-}
-
-function buildVimeoEmbedSrc({ id, hash }: { id: string; hash?: string }) {
-  const params = new URLSearchParams({
-    badge: "0",
-    autopause: "0",
-    title: "0",
-    byline: "0",
-    portrait: "0",
-    controls: "0",
-    dnt: "1",
-  })
-  if (hash) params.set("h", hash)
-  return `https://player.vimeo.com/video/${id}?${params.toString()}`
-}
-
-type VimeoPlayerInstance = {
-  play: () => Promise<void>
-  pause: () => Promise<void>
-  getPaused: () => Promise<boolean>
-  setVolume: (volume: number) => Promise<number>
-  getVolume: () => Promise<number>
-  on: (event: string, callback: () => void) => void
-  off: (event: string, callback: () => void) => void
-  destroy: () => void
-}
-
-type VimeoPlayerConstructor = new (
-  element: HTMLIFrameElement
-) => VimeoPlayerInstance
-
-declare global {
-  interface Window {
-    Vimeo?: {
-      Player: VimeoPlayerConstructor
-    }
-  }
-}
-
-let vimeoApiPromise: Promise<void> | null = null
-
-function loadVimeoPlayerApi() {
-  if (typeof window === "undefined") return Promise.resolve()
-  if (window.Vimeo?.Player) return Promise.resolve()
-  if (vimeoApiPromise) return vimeoApiPromise
-
-  vimeoApiPromise = new Promise((resolve, reject) => {
-    const existing = document.querySelector<HTMLScriptElement>(
-      'script[data-vimeo-player-api="true"]'
-    )
-    if (existing) {
-      existing.addEventListener("load", () => resolve(), { once: true })
-      existing.addEventListener("error", () => reject(), { once: true })
-      return
-    }
-
-    const script = document.createElement("script")
-    script.src = "https://player.vimeo.com/api/player.js"
-    script.async = true
-    script.dataset.vimeoPlayerApi = "true"
-    script.onload = () => resolve()
-    script.onerror = () => reject(new Error("Failed to load Vimeo Player API"))
-    document.body.appendChild(script)
-  })
-
-  return vimeoApiPromise
-}
+import { HERO_VIDEO_BY_LANGUAGE, HERO_VIDEO_POSTER } from "@/lib/hero-videos"
+import HeroVisual from "./Herovisual"
 
 export default function HeroChart() {
   const chartRef = useRef<HTMLElement | null>(null)
-  const iframeRef = useRef<HTMLIFrameElement | null>(null)
-  const playerRef = useRef<VimeoPlayerInstance | null>(null)
+  const videoContainerRef = useRef<HTMLDivElement | null>(null)
+  const videoRef = useRef<HTMLVideoElement | null>(null)
+  const userHasControlledRef = useRef(false)
+  const isInViewRef = useRef(false)
   const reduceMotion = useReducedMotion()
   const { currentLanguage } = useLanguage()
   const [maxTilt, setMaxTilt] = useState(18)
   const [isPlaying, setIsPlaying] = useState(false)
-  const [isMuted, setIsMuted] = useState(false)
+  const [isMuted, setIsMuted] = useState(true)
   const [playerReady, setPlayerReady] = useState(false)
+  const [showThumbnail, setShowThumbnail] = useState(true)
 
-  const vimeoSrc = useMemo(
-    () => buildVimeoEmbedSrc(VIMEO_BY_LANGUAGE[currentLanguage]),
-    [currentLanguage]
-  )
+  const videoSrc = HERO_VIDEO_BY_LANGUAGE[currentLanguage]
+  const chartInView = useInView(videoContainerRef, { amount: 0.35, once: false })
+
+  const attemptAutoPlay = useCallback(async () => {
+    const video = videoRef.current
+    if (
+      !video ||
+      userHasControlledRef.current ||
+      !isInViewRef.current ||
+      !video.paused
+    ) {
+      return
+    }
+
+    video.muted = true
+
+    try {
+      await video.play()
+    } catch {
+      // Video may still be buffering; media events will retry.
+    }
+  }, [])
+
+  const attemptAutoPlayRef = useRef(attemptAutoPlay)
+  attemptAutoPlayRef.current = attemptAutoPlay
 
   useEffect(() => {
     const mobileQuery = window.matchMedia("(max-width: 767px)")
@@ -130,94 +82,158 @@ export default function HeroChart() {
   })
 
   const rotateX = useTransform(scrollYProgress, [0, 1], [maxTilt, 0])
-  const y = useTransform(scrollYProgress, [0, 1], [80, 0])
-  const scale = useTransform(scrollYProgress, [0, 1], [0.92, 1])
+  const y = useTransform(scrollYProgress, [0, 1], [100, 0])
+  const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1])
+  const visualOpacity = useTransform(scrollYProgress, [0, 0.2, 0.55], [0, 0.7, 1])
 
   useEffect(() => {
-    const iframe = iframeRef.current
-    if (!iframe) return
+    isInViewRef.current = chartInView
+    if (chartInView) {
+      void attemptAutoPlayRef.current()
+    }
+  }, [chartInView])
 
-    let cancelled = false
-    let onPlay: (() => void) | undefined
-    let onPause: (() => void) | undefined
-    let onVolumeChange: (() => void) | undefined
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
 
     setPlayerReady(false)
+    setShowThumbnail(true)
     setIsPlaying(false)
+    setIsMuted(true)
+    userHasControlledRef.current = false
 
-    const initPlayer = async () => {
-      try {
-        await loadVimeoPlayerApi()
-        if (cancelled || !iframeRef.current || !window.Vimeo?.Player) return
+    video.pause()
+    video.currentTime = 0
+    video.muted = true
+    video.playsInline = true
+    video.load()
 
-        playerRef.current?.destroy()
-        const player = new window.Vimeo.Player(iframeRef.current)
-        playerRef.current = player
-
-        onPlay = () => setIsPlaying(true)
-        onPause = () => setIsPlaying(false)
-        onVolumeChange = async () => {
-          const volume = await player.getVolume()
-          setIsMuted(volume === 0)
-        }
-
-        player.on("play", onPlay)
-        player.on("pause", onPause)
-        player.on("volumechange", onVolumeChange)
-
-        const [paused, volume] = await Promise.all([
-          player.getPaused(),
-          player.getVolume(),
-        ])
-
-        if (cancelled) return
-        setIsPlaying(!paused)
-        setIsMuted(volume === 0)
-        setPlayerReady(true)
-      } catch {
-        if (!cancelled) setPlayerReady(false)
-      }
+    const syncState = () => {
+      setIsPlaying(!video.paused)
+      setIsMuted(video.muted || video.volume === 0)
+      setPlayerReady(true)
     }
 
-    void initPlayer()
+    const requestAutoPlay = () => {
+      void attemptAutoPlayRef.current()
+    }
+
+    const handlePlay = () => setIsPlaying(true)
+    const handlePause = () => setIsPlaying(false)
+    const handleVolumeChange = () => {
+      setIsMuted(video.muted || video.volume === 0)
+    }
+    const markVideoLoaded = () => {
+      setShowThumbnail(false)
+    }
+    const handleLoadedData = () => {
+      syncState()
+      markVideoLoaded()
+      requestAutoPlay()
+    }
+    const handleCanPlay = () => {
+      syncState()
+      markVideoLoaded()
+      requestAutoPlay()
+    }
+    const handleError = () => {
+      setShowThumbnail(true)
+      setPlayerReady(false)
+    }
+
+    video.addEventListener("play", handlePlay)
+    video.addEventListener("pause", handlePause)
+    video.addEventListener("volumechange", handleVolumeChange)
+    video.addEventListener("loadeddata", handleLoadedData)
+    video.addEventListener("canplay", handleCanPlay)
+    video.addEventListener("error", handleError)
+
+    if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+      syncState()
+      markVideoLoaded()
+      requestAutoPlay()
+    }
 
     return () => {
-      cancelled = true
-      if (playerRef.current && onPlay && onPause && onVolumeChange) {
-        playerRef.current.off("play", onPlay)
-        playerRef.current.off("pause", onPause)
-        playerRef.current.off("volumechange", onVolumeChange)
-        playerRef.current.destroy()
-        playerRef.current = null
+      video.removeEventListener("play", handlePlay)
+      video.removeEventListener("pause", handlePause)
+      video.removeEventListener("volumechange", handleVolumeChange)
+      video.removeEventListener("loadeddata", handleLoadedData)
+      video.removeEventListener("canplay", handleCanPlay)
+      video.removeEventListener("error", handleError)
+    }
+  }, [videoSrc])
+
+  useEffect(() => {
+    if (!chartInView) return
+
+    let attempts = 0
+    const retryId = window.setInterval(() => {
+      const video = videoRef.current
+      if (
+        !isInViewRef.current ||
+        userHasControlledRef.current ||
+        !video ||
+        !video.paused ||
+        attempts >= 20
+      ) {
+        window.clearInterval(retryId)
+        return
       }
-    }
-  }, [vimeoSrc])
 
-  const handlePlayPause = useCallback(async () => {
-    const player = playerRef.current
-    if (!player || !playerReady) return
+      attempts += 1
+      void attemptAutoPlayRef.current()
+    }, 500)
 
-    const paused = await player.getPaused()
-    if (paused) {
-      await player.play()
+    return () => window.clearInterval(retryId)
+  }, [chartInView, videoSrc])
+
+  const handlePlayPause = useCallback(() => {
+    const video = videoRef.current
+    if (!video || !playerReady) return
+
+    userHasControlledRef.current = true
+
+    if (video.paused) {
+      void video.play()
     } else {
-      await player.pause()
+      video.pause()
     }
   }, [playerReady])
 
-  const handleMuteToggle = useCallback(async () => {
-    const player = playerRef.current
-    if (!player || !playerReady) return
+  const handleMuteToggle = useCallback(() => {
+    const video = videoRef.current
+    if (!video || !playerReady) return
 
-    const volume = await player.getVolume()
-    if (volume === 0) {
-      await player.setVolume(1)
-      setIsMuted(false)
-    } else {
-      await player.setVolume(0)
-      setIsMuted(true)
+    userHasControlledRef.current = true
+
+    const nextMuted = !(video.muted || video.volume === 0)
+    video.muted = nextMuted
+    if (!nextMuted) {
+      video.volume = 1
     }
+    setIsMuted(nextMuted)
   }, [playerReady])
+
+  const motionStyle = reduceMotion
+    ? {
+        rotateX: 0,
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        transformStyle: "preserve-3d" as const,
+        willChange: "transform" as const,
+      }
+    : {
+        rotateX,
+        y,
+        scale,
+        opacity: visualOpacity,
+        transformOrigin: "50% 100%",
+        transformStyle: "preserve-3d" as const,
+        willChange: "transform" as const,
+      }
 
   return (
     <section
@@ -226,59 +242,47 @@ export default function HeroChart() {
     >
       <div
         className="relative mx-auto max-w-[1200px] overflow-visible"
-        style={{ perspective: "1200px", transformStyle: "preserve-3d" }}
+        style={{ perspective: "1500px", transformStyle: "preserve-3d" }}
       >
-        <motion.div
-          style={
-            reduceMotion
-              ? {
-                  rotateX: 0,
-                  y: 0,
-                  scale: 1,
-                  transformStyle: "preserve-3d",
-                  willChange: "transform",
-                }
-              : {
-                  rotateX,
-                  y,
-                  scale,
-                  transformOrigin: "50% 100%",
-                  transformStyle: "preserve-3d",
-                  willChange: "transform",
-                }
-          }
-          className="relative z-10 overflow-visible rounded-2xl border bg-[#FFFFFF0D] p-3 sm:rounded-3xl sm:p-4 lg:p-5"
-        >
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-x-[6%] -bottom-8 -z-10 h-20 rounded-full"
-            style={{ transform: "translateZ(-40px)" }}
-          />
+        <motion.div style={motionStyle} className="hero-aurion-stage">
+          <HeroVisual />
 
-            {/* <div aria-hidden className="hero-chart-top-glow" />
-            <div aria-hidden className="hero-chart-top-glow" /> */}
-          <div className="relative isolate mx-auto aspect-video w-full overflow-visible rounded-2xl bg-[#050024] sm:rounded-3xl">
-            <div aria-hidden className="hero-chart-top-glow" />
-            <iframe
-              key={vimeoSrc}
-              ref={iframeRef}
-              src={vimeoSrc}
-              title={
-                currentLanguage === "pl"
-                  ? "Volume Day Trader — wideo (PL)"
-                  : "Volume Day Trader — video (EN)"
-              }
-              className="absolute inset-0 z-[1] h-full w-full rounded-2xl sm:rounded-3xl"
-              allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
-              allowFullScreen
-            />
+          <div className="hero-aurion-interactive overflow-visible rounded-2xl border border-white/[0.08] bg-[#FFFFFF0D] p-3 shadow-[0_0_0_1px_rgba(120,190,255,0.06)_inset,0_24px_80px_rgba(0,0,0,0.4)] sm:rounded-3xl sm:p-4 lg:p-5">
+            <div
+              ref={videoContainerRef}
+              className="relative mx-auto aspect-video w-full overflow-hidden rounded-2xl bg-[#050024] sm:rounded-3xl"
+            >
+              {showThumbnail ? (
+                <Image
+                  src={HERO_VIDEO_POSTER}
+                  alt=""
+                  fill
+                  priority
+                  sizes="(max-width: 1200px) 100vw, 1200px"
+                  className="pointer-events-none absolute inset-0 z-[1] rounded-2xl object-cover sm:rounded-3xl"
+                />
+              ) : null}
+              <video
+                ref={videoRef}
+                src={videoSrc}
+                poster={HERO_VIDEO_POSTER}
+                className="pointer-events-none absolute inset-0 z-0 h-full w-full rounded-2xl object-cover sm:rounded-3xl"
+                playsInline
+                preload="auto"
+                aria-label={
+                  currentLanguage === "pl"
+                    ? "Volume Day Trader — wideo (PL)"
+                    : "Volume Day Trader — video (EN)"
+                }
+              />
+            </div>
 
-            <div className="absolute bottom-3 right-3 z-10 flex items-center gap-2 sm:bottom-4 sm:right-4">
+            <div className="hero-aurion-controls bottom-3 right-3 flex items-center gap-2 sm:bottom-8 sm:right-10">
               <button
                 type="button"
-                onClick={() => void handlePlayPause()}
+                onClick={handlePlayPause}
                 disabled={!playerReady}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-[#151032]/90 text-white shadow-control-inset backdrop-blur-sm transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 sm:h-11 sm:w-11"
+                className="relative z-50 inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-[#151032]/90 text-white shadow-control-inset backdrop-blur-sm transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 sm:h-11 sm:w-11"
                 aria-label={isPlaying ? "Pause video" : "Play video"}
               >
                 {isPlaying ? (
@@ -290,9 +294,9 @@ export default function HeroChart() {
 
               <button
                 type="button"
-                onClick={() => void handleMuteToggle()}
+                onClick={handleMuteToggle}
                 disabled={!playerReady}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-[#151032]/90 text-white shadow-control-inset backdrop-blur-sm transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 sm:h-11 sm:w-11"
+                className="relative z-50 inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-[#151032]/90 text-white shadow-control-inset backdrop-blur-sm transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 sm:h-11 sm:w-11"
                 aria-label={isMuted ? "Unmute video" : "Mute video"}
               >
                 {isMuted ? (
@@ -304,7 +308,9 @@ export default function HeroChart() {
             </div>
           </div>
         </motion.div>
+        
       </div>
+      
     </section>
   )
 }

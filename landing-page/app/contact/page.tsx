@@ -29,7 +29,7 @@ export default function ContactPage() {
         {/* </Container> */}
       </section>
 
-      <div className="relative z-10 mt-24 md:mt-28">
+      <div className="relative z-10 mt-24 md:mt-28 overflow-y-hidden">
         {/* <Container> */}
           <FAQ/>
         {/* </Container> */}

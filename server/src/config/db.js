@@ -1,18 +1,32 @@
 const mongoose = require("mongoose");
+const { env } = require("./env");
 
-/**
- * Connects to MongoDB using MONGODB_URI from .env
- * Database name is part of the URI (e.g. .../volumedaytrader)
- */
+let isConnected = false;
+
 async function connectDB() {
-  const uri = process.env.MONGODB_URI;
-
-  if (!uri) {
-    throw new Error("MONGODB_URI is missing in .env file");
+  if (isConnected && mongoose.connection.readyState === 1) {
+    return mongoose;
   }
 
-  await mongoose.connect(uri);
+  mongoose.set("strictQuery", true);
+  await mongoose.connect(env.mongoUri);
+  isConnected = true;
   console.log("MongoDB connected:", mongoose.connection.name);
+  return mongoose;
+}
+
+function isMongoConnectionError(error) {
+  if (!(error instanceof Error)) return false;
+  const message = error.message.toLowerCase();
+  return (
+    message.includes("mongodb") ||
+    message.includes("querysrv") ||
+    message.includes("enotfound") ||
+    message.includes("mongoose") ||
+    message.includes("timed out") ||
+    message.includes("econnrefused")
+  );
 }
 
 module.exports = connectDB;
+module.exports.isMongoConnectionError = isMongoConnectionError;

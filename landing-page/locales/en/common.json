@@ -203,27 +203,27 @@
                 }
             },
             "smartProfits": {
-                "title": "Trade Smarter Entries And Exits With Volume Confirmation",
-                "description": "Smart Profits combines Wyckoff volume logic with clear signal zones so you can spot high-probability setups, manage risk, and capture moves with greater confidence.",
+                "title": "Understand Market Structure With More Clarity",
+                "description": "Built to help traders better understand trend continuation, reversals, liquidity zones, and market reactions using structured volume interpretation.",
                 "points": {
-                    "point1": "Highlight areas where buyers or sellers take control",
-                    "point2": "Confirm breakouts and reversals with volume behavior",
-                    "point3": "Plan entries with clearer structure on the chart",
-                    "point4": "Define logical stop and target levels",
-                    "point5": "Filter weak setups before capital is at risk",
-                    "point6": "Build a repeatable process for consistent execution"
+                    "point1": "Recognize possible market reversals",
+                    "point2": "Understand trend continuation behavior",
+                    "point3": "Analyze liquidity and momentum zones",
+                    "point4": "Improve trade timing and structure",
+                    "point5": "Follow clearer chart interpretation",
+                    "point6": "Support disciplined trading workflows"
                 }
             },
             "hiddenStrategy": {
-                "title": "Reveal Institutional Activity Hidden In Plain Sight",
-                "description": "Hidden Strategy exposes accumulation, distribution, and supply tests that often precede major moves—so you can align with smart money instead of reacting late.",
+                "title": "Follow Volume, Liquidity & Smart Money Behavior",
+                "description": "Inspired by Wyckoff methodology and volume behavior analysis, the indicator ecosystem is designed to simplify complex market movement into actionable visual insights.",
                 "points": {
-                    "point1": "Spot quiet accumulation before price expands",
-                    "point2": "Recognize distribution and easing of demand",
-                    "point3": "Read tests of supply and signs of no supply",
-                    "point4": "Anticipate trend continuation or reversal earlier",
-                    "point5": "Reduce false signals during choppy conditions",
-                    "point6": "Trade with context from professional volume flows"
+                    "point1": "Learn how professionals read the market",
+                    "point2": "Understand accumulation & distribution",
+                    "point3": "Visualize market participation more clearly",
+                    "point4": "Follow structured volume analysis",
+                    "point5": "Improve market awareness and confidence",
+                    "point6": "Designed for Forex, Crypto, Stocks & Indices"
                 }
             }
         }
@@ -242,9 +242,9 @@
                 "button": "Buy Now",
                 "includedTitle": "What's Included:",
                 "features": {
-                    "feature1": "Cumulative Volume Indicator: Wyckoff Wave Volume",
-                    "feature2": "Cumulative Volume Indicator: Wyckoff Wave Chart",
-                    "feature3": "Indicators run on the platform",
+                    "feature1": "Cumulative Volume Indicator: \"Wyckoff Wave Volume\"",
+                    "feature2": "Cumulative Volume Indicator: \"Wyckoff Wave Chart\"",
+                    "feature3": "Indicators run on the platform: Tradingview",
                     "feature4": "Instructions for installing and adjusting the indicator to different values"
                 }
             },
@@ -259,7 +259,7 @@
                 "includedTitle": "What's Included:",
                 "features": {
                     "feature1": "Richard Wyckoff's Comprehensive Course",
-                    "feature2": "Volume Distribution Analysis (VSA) Course",
+                    "feature2": "Volume Distribution Analysis [VSA] Course",
                     "feature3": "Daily US PTA Signal Report",
                     "feature4": "Mastering the Richard Wyckoff Method - Practical Classes for Traders",
                     "feature5": "Premium Indicators",
@@ -277,13 +277,13 @@
                 "duration": "Annual",
                 "oldPrice": "$1,700",
                 "price": "$850",
-                "discount": "50% Off",
+                "discount": "50% off",
                 "note": "No contracts. Cancel anytime.",
                 "button": "Buy Now",
                 "includedTitle": "What's Included:",
                 "features": {
                     "feature1": "Richard Wyckoff's Comprehensive Course",
-                    "feature2": "Volume Distribution Analysis (VSA) Course",
+                    "feature2": "Volume Distribution Analysis [VSA] Course",
                     "feature3": "Daily US PTA Signal Report",
                     "feature4": "Mastering the Richard Wyckoff Method - Practical Classes for Traders",
                     "feature5": "Premium Indicators",
@@ -301,13 +301,13 @@
                 "duration": "Lifetime",
                 "oldPrice": "$6,250",
                 "price": "$1,250",
-                "discount": "60% Off",
+                "discount": "80% Off",
                 "note": "No contracts. Cancel anytime.",
                 "button": "Buy Now",
                 "includedTitle": "What's Included:",
                 "features": {
                     "feature1": "Richard Wyckoff's Comprehensive Course",
-                    "feature2": "Volume Distribution Analysis (VSA) Course",
+                    "feature2": "Volume Distribution Analysis [VSA] Course",
                     "feature3": "Daily US PTA Signal Report",
                     "feature4": "Mastering the Richard Wyckoff Method - Practical Classes for Traders",
                     "feature5": "Premium Indicators",
