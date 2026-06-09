@@ -41,28 +41,26 @@ export default function Page() {
     return () => window.removeEventListener("hashchange", scrollToHash)
   }, [])
 
+  function ScrollToTop() {
+    useEffect(() => {
+      window.history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
+    }, []);
+
+    return null;
+  }
+  
   return (
     <div className="relative mt-20">
-      {/* <div className="relative bg-amber-100 h-50 w-full"> */}
-
-      {/* </div> */}
-
-      {/* <Container> */}
+      <ScrollToTop />
       <Navbar />
       <Hero />
       <TrustedLogos />
       <OurServices />
       <Trust />
       <SignalsAndIndicators />
-
-      {/* </Container> */}
-
-
       <div className="relative overflow-visible bg-page-bg">
-
         <IndicatorSystem />
-
-        {/* Bottom fade into testimonials — hides any remaining curve seam */}
         <div
           aria-hidden
           className="pointer-events-none  absolute inset-x-0 bottom-0 z-20 h-32 bg-gradient-to-t from-page-bg via-page-bg/90 to-transparent sm:h-40 lg:h-48"
@@ -71,26 +69,12 @@ export default function Page() {
           <Testimonials />
         </div>
       </div>
-
-
-      {/* <Container> */}
       <OurIndicators />
-      {/* </Container> */}
-
       <Pricing />
-
-      {/* <Container> */}
-      {/* <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-0" > */}
       <PTA />
-      {/* </div> */}
       <Wyckoff />
       <FAQ />
       <Blogs />
-      {/* </Container> */}
-      {/* <Footer /> */}
-
-
-
     </div>
   );
 }
