@@ -46,6 +46,11 @@ export default function RootLayout({
       <body
         className={`min-h-full flex flex-col ${rethinkSans.className}`}
       >
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){if("scrollRestoration"in history)history.scrollRestoration="manual";if(!location.hash)scrollTo(0,0);})();`,
+          }}
+        />
         <I18nProvider>
           <SmoothScrollProvider>
             <SiteHorns />

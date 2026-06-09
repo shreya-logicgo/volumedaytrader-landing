@@ -24,10 +24,24 @@ export default function SmoothScrollProvider({
     setLenisInstance(lenis)
     document.documentElement.classList.add("lenis", "lenis-smooth")
 
+    const resetScrollToTop = () => {
+      if (window.location.hash) return
+      lenis.scrollTo(0, { immediate: true })
+      window.scrollTo(0, 0)
+    }
+
+    resetScrollToTop()
+
     const onLenisScroll = () => ScrollTrigger.update()
     lenis.on("scroll", onLenisScroll)
 
+    const onPageShow = (event: PageTransitionEvent) => {
+      if (event.persisted) resetScrollToTop()
+    }
+    window.addEventListener("pageshow", onPageShow)
+
     return () => {
+      window.removeEventListener("pageshow", onPageShow)
       lenis.off("scroll", onLenisScroll)
       lenis.destroy()
       setLenisInstance(null)

@@ -41,18 +41,8 @@ export default function Page() {
     return () => window.removeEventListener("hashchange", scrollToHash)
   }, [])
 
-  function ScrollToTop() {
-    useEffect(() => {
-      window.history.scrollRestoration = "manual";
-      window.scrollTo(0, 0);
-    }, []);
-
-    return null;
-  }
-  
   return (
     <div className="relative mt-20">
-      <ScrollToTop />
       <Navbar />
       <Hero />
       <TrustedLogos />
