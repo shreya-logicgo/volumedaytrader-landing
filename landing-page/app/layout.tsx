@@ -5,8 +5,6 @@ import { Geist, Geist_Mono, Rethink_Sans } from "next/font/google";
 import "./globals.css";
 import Container from "@/components/layout/container/Container";
 import Footer from "@/components/common/footer/Footer";
-import SiteHorns from "@/components/common/backgrounds/SiteHorns";
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -53,7 +51,6 @@ export default function RootLayout({
         />
         <I18nProvider>
           <SmoothScrollProvider>
-            <SiteHorns />
             <Container>
               {children}
             </Container>

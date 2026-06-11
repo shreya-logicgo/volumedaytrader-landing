@@ -93,6 +93,14 @@ export const Particles: React.FC<ParticlesProps> = ({
       }, 200)
     }
 
+    const container = canvasContainerRef.current
+    const ro =
+      container &&
+      new ResizeObserver(() => {
+        initCanvasRef.current()
+      })
+    if (container && ro) ro.observe(container)
+
     window.addEventListener("resize", handleResize)
 
     return () => {
@@ -102,9 +110,10 @@ export const Particles: React.FC<ParticlesProps> = ({
       if (resizeTimeout.current) {
         clearTimeout(resizeTimeout.current)
       }
+      ro?.disconnect()
       window.removeEventListener("resize", handleResize)
     }
-  }, [color])
+  }, [color, quantity, size, refresh])
 
 
   useEffect(() => {

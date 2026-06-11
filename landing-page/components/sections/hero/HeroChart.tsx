@@ -241,7 +241,7 @@ export default function HeroChart() {
       className="relative z-20 mx-auto mt-8 w-full overflow-visible px-3 sm:mt-10 sm:px-4 md:mt-12 md:px-6 lg:mt-10 lg:px-4"
     >
       <div
-        className="relative mx-auto max-w-[1200px] overflow-visible"
+        className="relative mx-auto max-w-[1200px] mb-4 overflow-visible"
         style={{ perspective: "1500px", transformStyle: "preserve-3d" }}
       >
         <motion.div style={motionStyle} className="hero-aurion-stage">

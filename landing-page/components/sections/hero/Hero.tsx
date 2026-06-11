@@ -9,8 +9,10 @@ import CtaFlowLink from "@/components/ui/cta-flow/CtaFlowLink"
 import SectionTitleWrap, {
     SECTION_TITLE_REVEAL,
 } from "@/components/ui/heading/Sectiontitlewrap"
+import Aurora from "@/components/ui/aurora/Aurora"
 import { Particles } from "@/components/ui/particles"
 
+const HERO_AURORA_COLORS = ["#bb1a1a", "#de2424", "#f03838"] as const
 
 function HeroFeatureTag({ label, compact }: { label: string; compact?: boolean }) {
     return (
@@ -88,30 +90,27 @@ export default function Hero() {
             className: "right-[6%] top-[28%] 2xl:right-[12%]",
         },
     ]
+
     return (
-        <section className="relative left-1/2 w-screen max-w-[1720px] -translate-x-1/2 overflow-x-visible pt-8 sm:pt-12 md:pt-16 lg:pt-20 2xl:pt-28">
-            {/* Starry background */}
-            {/* <div
-                className="pointer-events-none absolute inset-0 opacity-50"
-                style={{
-                    backgroundImage:
-                        "radial-gradient(circle, rgba(255,255,255,0.22) 1px, transparent 1px)",
-                    backgroundSize: "42px 42px",
-                }}
-                aria-hidden
-            /> */}
-
-            {/* Center subtle glow */}
-            <div
-                className="pointer-events-none absolute left-1/2 top-[38%] z-0 h-[220px] w-[min(900px,92vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(80,40,120,0.18)_0%,transparent_70%)] sm:h-[280px] lg:h-[320px]"
-                aria-hidden
-            />
-
-            {/* Particles background (client-only canvas) */}
-            <div className="pointer-events-none absolute inset-0 z-[5] -translate-y-30 md:-translate-y-35 lg:-translate-y-40  ">
-                <Particles quantity={90} size={0.9} color="#ffffff" className="opacity-70" />
+        <section className="relative -mt-20 left-1/2 w-screen max-w-none -translate-x-1/2 overflow-hidden">
+            {/* Absolute background — scrolls with hero, no scroll listeners */}
+            <div className="pointer-events-none absolute inset-0 z-[1]" aria-hidden>
+                <Aurora
+                    colorStops={[...HERO_AURORA_COLORS]}
+                    speed={0.45}
+                    amplitude={1.25}
+                    className="absolute inset-0 h-full w-full"
+                />
+                <div className="absolute inset-0 z-[2] h-full w-full">
+                    <Particles
+                        quantity={100}
+                        size={1}
+                        ease={16}
+                        color="#ffffff"
+                        className="h-full w-full opacity-90"
+                    />
+                </div>
             </div>
-
 
             <div className="pointer-events-none absolute inset-0 z-20 hidden xl:block">
                 <div className="relative mx-auto h-full w-full max-w-[1500px]">
@@ -128,9 +127,7 @@ export default function Hero() {
                 </div>
             </div>
 
-
-            <div className="relative  z-30 mx-auto w-full max-w-[872px] px-4 text-center sm:px-6 ">
-                {/* Top pill badge */}
+            <div className="relative z-30 mx-auto w-full max-w-[872px] px-4 pt-28 text-center sm:px-6 sm:pt-32 md:pt-36 lg:pt-40 2xl:pt-48">
                 <div className="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border border-[#1D1938] bg-[#151032] px-2 py-1.5 backdrop-blur-sm sm:gap-2 2xl:gap-3 2xl:px-3 2xl:py-2">
                     <span className="rounded-2xl bg-[#1D1938] px-2 py-0.5 text-[10px] font-normal tracking-wide text-white shadow-control-inset sm:px-2.5 sm:py-1 sm:text-sm 2xl:text-lg">
                         {t("hero.newBadge")}
@@ -148,7 +145,6 @@ export default function Hero() {
                     onDescriptionRevealStart={revealHeroCtas}
                 />
 
-                {/* CTAs — reveal in sync with description (no extra wait) */}
                 <div
                     ref={ctaRef}
                     className="hero-cta-row mx-auto mt-5 flex w-full max-w-md flex-col items-stretch justify-center gap-3 sm:mt-6 sm:max-w-lg sm:flex-row sm:items-center sm:justify-center sm:gap-4 2xl:mt-8 2xl:max-w-none"
@@ -167,7 +163,6 @@ export default function Hero() {
                     />
                 </div>
 
-                {/* Stacked tags below content until 2xl */}
                 <div className="mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3 xl:hidden">
                     {floatingTags.map((tag, index) => (
                         <div
