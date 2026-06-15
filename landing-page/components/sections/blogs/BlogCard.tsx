@@ -1,18 +1,19 @@
 "use client"
 
-import Image, { type StaticImageData } from "next/image"
+import type { StaticImageData } from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 import CtaFlowLabel from "@/components/ui/cta-flow/CtaFlowLabel"
 import VectorArrow from "@/components/ui/vector-arrow/VectorArrow"
 import { getCtaArrowDelayMs } from "@/lib/motion/flow-text-motion"
+import BlogCoverImage from "./BlogCoverImage"
 
 const REVEAL_EASE = "cubic-bezier(0.22, 1, 0.36, 1)"
 const IMAGE_REVEAL_MS = "1100ms"
 const UNDERLINE_MS = "750ms"
 
 export type BlogCardProps = {
-  image: StaticImageData
+  image: StaticImageData | string
   category: string
   date: string
   title: string
@@ -89,10 +90,9 @@ export default function BlogCard({
         className="relative flex w-full flex-col items-end overflow-hidden rounded-xl sm:rounded-2xl"
       >
         <div className="relative aspect-[4/3] w-full sm:aspect-auto sm:h-[220px] md:h-[250px] lg:h-[276px]">
-          <Image
+          <BlogCoverImage
             src={image}
             alt={title}
-            fill
             className="object-cover object-[50%_0%]"
             sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
             style={{
@@ -109,11 +109,9 @@ export default function BlogCard({
               transition: `height ${IMAGE_REVEAL_MS} ${REVEAL_EASE}`,
             }}
           >
-            <Image
+            <BlogCoverImage
               src={image}
               alt=""
-              fill
-              aria-hidden
               className="object-cover object-[50%_0%]"
               sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
             />
