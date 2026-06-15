@@ -21,6 +21,7 @@ export default function HeroChart() {
   const [isMuted, setIsMuted] = useState(true)
   const [playerReady, setPlayerReady] = useState(false)
   const [showThumbnail, setShowThumbnail] = useState(true)
+  const [glowShift, setGlowShift] = useState("15%")
 
   const videoSrc = HERO_VIDEO_BY_LANGUAGE[currentLanguage]
   const chartInView = useInView(videoContainerRef, { amount: 0.35, once: false })
@@ -47,6 +48,18 @@ export default function HeroChart() {
 
   const attemptAutoPlayRef = useRef(attemptAutoPlay)
   attemptAutoPlayRef.current = attemptAutoPlay
+
+  useEffect(() => {
+    const glowQuery = window.matchMedia("(max-width: 639px)")
+    const syncGlowShift = () => {
+      setGlowShift(glowQuery.matches ? "28%" : "15%")
+    }
+
+    syncGlowShift()
+    glowQuery.addEventListener("change", syncGlowShift)
+
+    return () => glowQuery.removeEventListener("change", syncGlowShift)
+  }, [])
 
   useEffect(() => {
     const mobileQuery = window.matchMedia("(max-width: 767px)")
@@ -271,8 +284,8 @@ export default function HeroChart() {
                 preload="auto"
                 aria-label={
                   currentLanguage === "pl"
-                    ? "Volume Day Trader — wideo (PL)"
-                    : "Volume Day Trader — video (EN)"
+                    ? "Volume Day Trader - wideo (PL)"
+                    : "Volume Day Trader - video (EN)"
                 }
               />
             </div>

@@ -218,7 +218,7 @@
       },
       "hiddenStrategy": {
         "title": "Śledź wolumen, płynność i zachowanie smart money",
-        "description": "Inspirowane metodologią Wyckoffa i analizą zachowania wolumenu — ekosystem wskaźników upraszcza złożone ruchy rynku do praktycznych, wizualnych spostrzeżeń.",
+        "description": "Inspirowane metodologią Wyckoffa i analizą zachowania wolumenu - ekosystem wskaźników upraszcza złożone ruchy rynku do praktycznych, wizualnych spostrzeżeń.",
         "points": {
           "point1": "Ucz się, jak profesjonaliści czytają rynek",
           "point2": "Rozumiej akumulację i dystrybucję",
@@ -391,6 +391,13 @@
       "searchPlaceholder": "Szukaj na blogu",
       "clearSearch": "Wyczyść wyszukiwanie",
       "noResults": "Nie znaleziono wpisów dla \"{{searchTerm}}\"",
+      "emptyState": "Brak opublikowanych wpisów na blogu.",
+      "error": "Nie udało się teraz załadować blogów.",
+      "tryAgain": "Spróbuj ponownie",
+      "loadMore": "Załaduj więcej",
+      "loadingMore": "Ładowanie...",
+      "defaultCategory": "Analiza rynku",
+      "readMore": "Dowiedz się więcej",
       "posts": {
         "post1": {
           "category": "Marketing cyfrowy",
@@ -473,6 +480,7 @@
       "backToBlogs": "Powrót do blogów",
       "similarBlogs": "Podobne blogi",
       "allBlogs": "Wszystkie blogi",
+      "defaultAuthor": "Volume Day Trader",
       "notFoundTitle": "Nie znaleziono wpisu",
       "notFoundDescription": "Szukany wpis na blogu nie istnieje.",
       "posts": {
@@ -485,7 +493,7 @@
           "section2Title": "Siła zaangażowania online:",
           "section2Body": "W cyfrowym świecie zaangażowanie online jest kluczowe dla relacji, świadomości marki i lojalności. Zaangażowani odbiorcy częściej ufają marce, reagują na treści i stają się ambasadorami. Priorytetyzując engagement, firmy zyskują wgląd w potrzeby odbiorców i wspierają konwersje oraz wzrost.",
           "section3Title": "Podsumowanie:",
-          "section3Body": "Zwiększanie zaangażowania online jest niezbędne dla długoterminowego sukcesu. Dzięki interaktywnym treściom, trendom w social media i personalizacji możesz budować silniejsze relacje i widoczność marki. Pamiętaj, że engagement to dialog — słuchaj społeczności, dostarczaj wartość i twórz okazje do sensownych interakcji."
+          "section3Body": "Zwiększanie zaangażowania online jest niezbędne dla długoterminowego sukcesu. Dzięki interaktywnym treściom, trendom w social media i personalizacji możesz budować silniejsze relacje i widoczność marki. Pamiętaj, że engagement to dialog - słuchaj społeczności, dostarczaj wartość i twórz okazje do sensownych interakcji."
         }
       }
     }
