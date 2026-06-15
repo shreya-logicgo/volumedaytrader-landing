@@ -1,32 +1,77 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Search, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Badge from "@/components/ui/badge/Badge";
 import SectionTitleWrap from "@/components/ui/heading/Sectiontitlewrap";
 import BlogCard from "./BlogCard";
-import { BLOG_POSTS } from "./blogPosts";
+import { fetchPublicBlogs, type BlogPost } from "@/lib/blogs-api";
+import {
+  formatBlogDate,
+  getBlogCoverImage,
+} from "@/lib/blog-utils";
+import CtaFlowButton from "@/components/ui/cta-flow/CtaFlowButton";
 
 export default function BlogPageSection() {
-  const { t } = useTranslation("translation", { keyPrefix: "blogs" });
+  const { t, i18n } = useTranslation("translation", { keyPrefix: "blogs" });
   const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [error, setError] = useState(false);
 
-  const filteredPosts = useMemo(() => {
-    const query = searchTerm.trim().toLowerCase();
-    if (!query) return BLOG_POSTS;
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setDebouncedSearch(searchTerm.trim());
+    }, 300);
 
-    return BLOG_POSTS.filter((post) => {
-      const category = t(`page.posts.${post.key}.category`).toLowerCase();
-      const date = t(`page.posts.${post.key}.date`).toLowerCase();
-      const title = t(`page.posts.${post.key}.title`).toLowerCase();
-      return (
-        category.includes(query) ||
-        date.includes(query) ||
-        title.includes(query)
-      );
-    });
-  }, [searchTerm, t]);
+    return () => window.clearTimeout(timer);
+  }, [searchTerm]);
+
+  const loadBlogs = useCallback(
+    async (nextPage: number, search: string, append: boolean) => {
+      if (append) {
+        setLoadingMore(true);
+      } else {
+        setLoading(true);
+        setError(false);
+      }
+
+      try {
+        const result = await fetchPublicBlogs({
+          page: nextPage,
+          limit: 9,
+          search: search || undefined,
+        });
+
+        setPosts((current) =>
+          append ? [...current, ...result.blogs] : result.blogs,
+        );
+        setPage(result.page);
+        setHasMore(result.hasMore);
+      } catch {
+        if (!append) {
+          setPosts([]);
+          setError(true);
+        }
+      } finally {
+        setLoading(false);
+        setLoadingMore(false);
+      }
+    },
+    [],
+  );
+
+  useEffect(() => {
+    setPage(1);
+    loadBlogs(1, debouncedSearch, false);
+  }, [debouncedSearch, loadBlogs]);
+
+  const filteredPosts = useMemo(() => posts, [posts]);
 
   return (
     <div className="mx-auto flex w-full max-w-[1360px] justify-center flex-col items-center">
@@ -71,24 +116,67 @@ export default function BlogPageSection() {
       </div>
 
       <div className="w-full pt-20">
-        {filteredPosts.length > 0 ? (
+        {loading ? (
           <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3 xl:justify-between">
-            {filteredPosts.map((post) => (
-              <div key={post.key}>
-                <BlogCard
-                  image={post.image}
-                  category={t(`page.posts.${post.key}.category`)}
-                  date={t(`page.posts.${post.key}.date`)}
-                  title={t(`page.posts.${post.key}.title`)}
-                buttonLabel={t(`page.posts.${post.key}.button`)}
-                href={`/blogs/${post.key}`}
-              />
+            {[1, 2, 3, 4, 5, 6].map((item) => (
+              <div
+                key={item}
+                className="flex w-full min-w-0 animate-pulse flex-col gap-2 rounded-[20px] border border-card-border bg-card-bg p-2 pb-3 sm:rounded-[24px] sm:p-2.5 sm:pb-4"
+              >
+                <div className="aspect-[4/3] w-full rounded-xl bg-white/10 sm:aspect-auto sm:h-[220px] md:h-[250px] lg:h-[276px]" />
+                <div className="flex flex-col gap-3 px-2 py-3">
+                  <div className="h-4 w-24 rounded bg-white/10" />
+                  <div className="h-6 w-full rounded bg-white/10" />
+                </div>
               </div>
             ))}
           </div>
+        ) : error ? (
+          <div className="py-10 text-center">
+            <p className="mb-4 text-base text-[#C7CCD2] sm:text-lg">
+              {t("page.error")}
+            </p>
+            <CtaFlowButton
+              type="button"
+              label={t("page.tryAgain")}
+              onClick={() => loadBlogs(1, debouncedSearch, false)}
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-base font-medium text-white/80 transition hover:bg-white/10 hover:text-white"
+            />
+          </div>
+        ) : filteredPosts.length > 0 ? (
+          <>
+            <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3 xl:justify-between">
+              {filteredPosts.map((post) => (
+                <div key={post._id}>
+                  <BlogCard
+                    image={getBlogCoverImage(post)}
+                    category={t("page.defaultCategory")}
+                    date={formatBlogDate(post.createdAt, i18n.language)}
+                    title={post.title}
+                    buttonLabel={t("page.readMore")}
+                    href={`/blogs/${post.slug || post._id}`}
+                  />
+                </div>
+              ))}
+            </div>
+
+            {hasMore ? (
+              <div className="mt-12 flex justify-center">
+                <CtaFlowButton
+                  type="button"
+                  label={loadingMore ? t("page.loadingMore") : t("page.loadMore")}
+                  disabled={loadingMore}
+                  onClick={() => loadBlogs(page + 1, debouncedSearch, true)}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-base font-medium text-white/80 transition hover:bg-white/10 hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
+                />
+              </div>
+            ) : null}
+          </>
         ) : (
           <p className="py-10 text-center text-base text-[#C7CCD2] sm:text-lg">
-            {t("page.noResults", { searchTerm })}
+            {debouncedSearch
+              ? t("page.noResults", { searchTerm: debouncedSearch })
+              : t("page.emptyState")}
           </p>
         )}
       </div>
